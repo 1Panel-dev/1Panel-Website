@@ -2,6 +2,7 @@
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import BlogPostList from "../../components/BlogPostList.astro";
+import Statistics from "../../components/Statistics.astro";
 import Layout from "../../layouts/Layout.astro";
 import posts from "../../data/blog-posts.json";
 import {
@@ -154,6 +155,7 @@ const ogType = isListPage ? "website" : "article";
   structuredData={structuredData}
 >
   <Fragment slot="head">
+    <Statistics />
     {
       isListPage && (
         <>
