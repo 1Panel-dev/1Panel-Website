@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import BlogPostList from "../components/BlogPostList.astro";
+import Statistics from "../components/Statistics.astro";
 import Layout from "../layouts/Layout.astro";
 import posts from "../data/blog-posts.json";
 import {
@@ -81,6 +82,7 @@ const nextPagePath = totalPages > 1 ? getBlogPagePath(2) : null;
   structuredData={structuredData}
 >
   <Fragment slot="head">
+    <Statistics />
     {nextPagePath && <link rel="next" href={`${SITE_URL}${nextPagePath}`} />}
   </Fragment>
   <Fragment slot="main">
