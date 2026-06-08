@@ -9,16 +9,22 @@ import Fit2cloudHeader from "./Fit2cloudHeader.astro";
   class="sticky top-0 left-0 right-0 z-50 bg-dark-200/90 backdrop-blur-md border-b border-gray-200"
 >
   <nav class="container-custom">
-    <div class="flex items-center justify-between h-16 lg:h-18">
+    <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <div class="flex items-center space-x-3">
         <a href="/">
-          <img src="/images/logo-blue.png" alt="1Panel Logo" class="h-12" />
+          <img src="/images/logo-blue.png" alt="1Panel Logo" class="h-10 lg:h-11" />
         </a>
       </div>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center space-x-8">
+      <div class="hidden lg:flex items-center gap-6 text-[15px] xl:gap-7">
+        <a
+          href="/"
+          class="relative inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
+        >
+          <span class="nav-link-label" data-text="首页">首页</span>
+        </a>
         <a
           href="/versions.html"
           class="relative inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
@@ -180,21 +186,21 @@ import Fit2cloudHeader from "./Fit2cloudHeader.astro";
           class="inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
           ><span class="nav-link-label" data-text="在线体验">在线体验</span></a
         >
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center gap-3">
           <a
             href="https://jsj.top/f/umuYtv"
             target="_blank"
-            class="btn-secondary text-sm inline-flex items-center"
+            class="btn-secondary inline-flex items-center whitespace-nowrap !rounded-md !px-4 !py-2 !text-sm !shadow-sm"
           >
-            <Icon name="carbon:demo" class="w-5 h-5 mr-2" />
+            <Icon name="carbon:demo" class="w-4 h-4 mr-1.5" />
             企业版试用
           </a>
           <a
             href="https://github.com/1Panel-dev/1Panel"
             target="_blank"
-            class="btn-primary text-sm inline-flex items-center"
+            class="btn-primary inline-flex items-center whitespace-nowrap !rounded-md !px-4 !py-2 !text-sm !shadow-md"
           >
-            <Icon name="carbon:logo-github" class="w-5 h-5 mr-2" />
+            <Icon name="carbon:logo-github" class="w-4 h-4 mr-1.5" />
             代码仓库
           </a>
         </div>
@@ -223,6 +229,12 @@ import Fit2cloudHeader from "./Fit2cloudHeader.astro";
     <!-- Mobile Navigation -->
     <div id="mobile-menu" class="lg:hidden hidden pb-4">
       <div class="flex flex-col space-y-4">
+        <a
+          href="/"
+          class="relative text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
+        >
+          首页
+        </a>
         <a
           href="/versions.html"
           class="relative text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
