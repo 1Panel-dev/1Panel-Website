@@ -24,6 +24,7 @@ export type BlogPost = {
   url: string;
   cover: string;
   content?: string;
+  keywords?: string[];
 };
 
 export type BlogArticle = BlogPost & {
@@ -78,7 +79,7 @@ export function getBlogPostKeywords(post: BlogPost) {
     .map((term) => term.trim())
     .filter((term) => term.length > 1);
 
-  return Array.from(new Set([post.title, ...titleTerms, ...BLOG_KEYWORDS]));
+  return Array.from(new Set([post.title, ...titleTerms, ...(post.keywords ?? []), ...BLOG_KEYWORDS]));
 }
 
 export function getBlogPostPreviewImage(post: BlogPost) {

@@ -13,23 +13,88 @@ import "../styles/global.css";
 
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/aicoding.html", siteUrl);
-const pageTitle = "1Panel AI 编程一体机 | 飞致云与英特尔联合打造";
+const assistantAppliancePageUrl = toAbsoluteUrl("/openclaw.html", siteUrl);
+const pageTitle = "1Panel AI 编程一体机 - 纯内网 AI Coding 一体机";
 const pageDescription =
-  "1Panel AI 编程一体机由飞致云匠心打造，适合政府/军工内网开发、金融级安全研发、能源/制造涉密项目、企业核心代码开发等需纯内网隔离的场景。";
+  "1Panel AI 编程一体机由飞致云匠心打造，面向 10-20 人研发团队，适合政府/军工内网开发、金融级安全研发、能源/制造涉密项目、企业核心代码开发等纯内网隔离场景。";
+const pageKeywords = [
+  "1Panel AI 编程一体机",
+  "AI 编程一体机",
+  "AI Coding 一体机",
+  "B70 一体机",
+  "Intel Arc Pro B70",
+  "内网 AI 编程",
+  "纯内网 AI 编程",
+  "私有化 AI 编程",
+  "企业代码安全",
+  "本地 AI 部署",
+  "AI 一体机",
+  "1Panel 企业版",
+  "vLLM 推理引擎",
+];
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "@id": `${pageUrl}#product`,
   name: "1Panel AI 编程一体机",
-  alternateName: ["AI Coding 一体机", "1Panel AI Coding 一体机"],
+  alternateName: ["AI Coding 一体机", "1Panel AI Coding 一体机", "1Panel AI 编程一体机（B70版）"],
   description: pageDescription,
+  model: "B70",
+  sku: "1panel-ai-coding-appliance-b70",
   category: "AI coding appliance",
   image: toAbsoluteUrl("/images/aicoding-b70.png", siteUrl),
   brand: {
     "@type": "Brand",
     name: "FIT2CLOUD 飞致云",
   },
+  manufacturer: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+  audience: {
+    "@type": "BusinessAudience",
+    audienceType: "政府、军工、金融、能源、制造等需纯内网隔离的研发团队",
+  },
   url: pageUrl,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+  },
+  additionalProperty: [
+    {
+      "@type": "PropertyValue",
+      name: "硬件底座",
+      value: "4 x Intel Arc Pro B70，128G 显存，1468 TOPS 峰值 AI 算力（Int8）",
+    },
+    {
+      "@type": "PropertyValue",
+      name: "软件能力",
+      value: "1Panel 企业版、vLLM 推理引擎、AI 网关、Skills Hub、DevOps 工具链",
+    },
+    {
+      "@type": "PropertyValue",
+      name: "典型场景",
+      value: "纯内网隔离环境下的 AI 编程、代码生成、研发协作与企业核心代码保护",
+    },
+  ],
+  isRelatedTo: [
+    {
+      "@type": "Product",
+      name: "1Panel AI 助理一体机（GB10版）",
+      url: assistantAppliancePageUrl,
+    },
+  ],
+  offers: {
+    "@type": "Offer",
+    price: "119000",
+    priceCurrency: "CNY",
+    availability: "https://schema.org/InStock",
+    url: `${pageUrl}#contact`,
+    seller: {
+      "@type": "Organization",
+      name: "杭州飞致云信息科技有限公司",
+    },
+  },
 };
 ---
 
@@ -41,7 +106,7 @@ const productSchema = {
   canonical="/aicoding.html"
   image="/images/aicoding-b70.png"
   imageAlt="1Panel AI 编程一体机产品示意图"
-  keywords={["内网AI编程","AI编程一体机","1Panel AI 编程一体机"]}
+  keywords={pageKeywords}
   structuredData={[
     createBreadcrumbSchema([
       { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
