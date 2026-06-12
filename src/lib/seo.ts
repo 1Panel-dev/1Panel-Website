@@ -23,6 +23,11 @@ export const DEFAULT_KEYWORDS = [
   "数据库管理",
   "应用商店",
   "AI 模型管理",
+  "本地 AI 部署",
+  "私有化 AI 部署",
+  "AI 一体机",
+  "AI 助理一体机",
+  "AI 编程一体机",
 ];
 export const DEFAULT_OG_IMAGE = "/images/overview-full.png";
 
@@ -272,6 +277,28 @@ export function createItemListSchema({
   };
 }
 
+export function createFAQPageSchema({
+  url,
+  items,
+}: {
+  url: string;
+  items: Array<{ question: string; answer: string }>;
+}): StructuredData {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 export function createSoftwareApplicationSchema(siteUrl: string = SITE_URL): StructuredData {
   const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
 
@@ -309,6 +336,9 @@ export function createSoftwareApplicationSchema(siteUrl: string = SITE_URL): Str
       "本地 AI 模型与智能体管理",
       "OpenClaw 智能体管理",
       "GPU 监控",
+      "AI 助理一体机",
+      "AI 编程一体机",
+      "纯内网 AI 部署",
     ],
   };
 }
