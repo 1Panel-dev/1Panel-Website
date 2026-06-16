@@ -217,18 +217,15 @@ const versionComparisonSchema = {
                   </div>
 
                   <div class="rounded-lg bg-white p-6 text-center shadow-sm">
-                    <div class="flex min-h-[54px] items-end justify-center gap-1">
+                    <div class="flex min-h-[54px] items-end justify-center gap-2">
                       <span class={`text-4xl font-bold tracking-normal ${plan.originalPrice ? "text-red-600" : "text-gray-800"}`}>{plan.price}</span>
                       {plan.priceNote && (
                         <span class="pb-2 text-sm text-gray-500">{plan.priceNote}</span>
                       )}
+                      {plan.originalPrice && (
+                        <span class="line-through pb-2 text-base font-semibold text-gray-400">{plan.originalPrice}</span>
+                      )}
                     </div>
-                    {plan.originalPrice && (
-                      <div class="mt-1 flex items-center justify-center gap-1 text-base font-semibold text-gray-400">
-                        <span class="line-through">{plan.originalPrice}</span>
-                        <span>{plan.priceNote}</span>
-                      </div>
-                    )}
                     <p class="mt-4 text-sm text-gray-500">{plan.subtitle}</p>
                     <a
                       href={plan.href}
