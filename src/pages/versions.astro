@@ -43,7 +43,8 @@ const plans = [
   },
   {
     name: "1Panel 专业版",
-    price: "¥ 1500",
+    price: "¥ 750",
+    originalPrice: "¥ 1500",
     schemaPrice: "1500",
     priceNote: "/ 套",
     subtitle: "适合中小企业与开发者",
@@ -217,11 +218,17 @@ const versionComparisonSchema = {
 
                   <div class="rounded-lg bg-white p-6 text-center shadow-sm">
                     <div class="flex min-h-[54px] items-end justify-center gap-1">
-                      <span class="text-4xl font-bold tracking-normal text-gray-800">{plan.price}</span>
+                      <span class={`text-4xl font-bold tracking-normal ${plan.originalPrice ? "text-red-600" : "text-gray-800"}`}>{plan.price}</span>
                       {plan.priceNote && (
                         <span class="pb-2 text-sm text-gray-500">{plan.priceNote}</span>
                       )}
                     </div>
+                    {plan.originalPrice && (
+                      <div class="mt-1 flex items-center justify-center gap-1 text-base font-semibold text-gray-400">
+                        <span class="line-through">{plan.originalPrice}</span>
+                        <span>{plan.priceNote}</span>
+                      </div>
+                    )}
                     <p class="mt-4 text-sm text-gray-500">{plan.subtitle}</p>
                     <a
                       href={plan.href}
