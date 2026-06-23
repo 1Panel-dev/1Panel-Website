@@ -1,5 +1,30 @@
 [
   {
+    "id": "ai-coding-gateway-access-guide",
+    "title": "1Panel 企业版 AI 编程接入指南：通过 AI 网关统一接入 OpenCode、Qwen Code、Codex 等工具",
+    "description": "介绍 1Panel AI 网关接入 AI 编程工具的统一配置方式，覆盖 Base URL、API Key、Model 三个参数，以及 OpenCode、Qwen Code、Codex 等工具的接入和常见排查项。",
+    "date": "2026-06-23",
+    "dateText": "2026年06月23日",
+    "slug": "ai-coding-gateway-access-guide",
+    "path": "/blog/ai-coding-gateway-access-guide.html",
+    "url": "https://1panel.cn/blog/ai-coding-gateway-access-guide.html",
+    "cover": "/images/blog/ai-coding-gateway-access/cover.png",
+    "content": "<p>1Panel 企业版「AI 编程接入指南」围绕 1Panel AI 网关的 OpenAI 兼容接口，说明 OpenCode、Qwen Code、Codex 以及 Cursor、Continue、Cline、Aider 等 AI 编程工具的接入方式。</p><p>按照指南，大多数 AI 编程工具只要支持 OpenAI 兼容接口，就可以接入 1Panel AI 网关。接入时主要填写 <strong>Base URL</strong>、<strong>API Key</strong> 和 <strong>Model</strong> 三个参数，其中 Model 需要填写 AI 网关模型映射中的请求模型名称。</p><figure style=\"align-items: start; display: flex; flex-direction: column\" data-content-type=\"image\"><img src=\"/images/blog/ai-coding-gateway-access/image-01.svg\" alt=\"AI 编程工具接入 1Panel AI 网关示意图\" width=\"100%\" height=\"auto\" style=\"display: inline-block\" loading=\"lazy\" sizes=\"(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)\"></figure><p style=\"text-align: center;\"><span style=\"font-size: 12px;\">▲ AI 编程工具接入 1Panel AI 网关示意图</span></p><h2>统一接入参数</h2><ul><li><strong>Base URL：</strong>填写 AI 网关的外部访问地址，通常格式为 <code>http://&lt;服务器 IP&gt;:&lt;端口&gt;/v1</code>。</li><li><strong>API Key：</strong>填写 AI 网关中创建的 API Key。</li><li><strong>Model：</strong>填写 AI 网关模型映射中的请求模型名称，例如 <code>qwen3-coder</code>。</li></ul><p>Model 不一定是上游模型的真实名称。客户端请求的模型名称需要先在 <strong>AI -&gt; AI 网关 -&gt; 模型池</strong> 中完成映射，再由网关转发到实际模型。指南建议先通过 <code>/v1/chat/completions</code> 请求确认 AI 网关可以正常访问。</p><h2>已覆盖的工具配置</h2><ul><li><strong>OpenCode：</strong>支持在配置文件中自定义 Provider，并通过 <code>baseURL</code> 指向自定义 OpenAI 兼容接口；启动后通过 <code>/connect</code> 配置 API Key，并通过 <code>/models</code> 选择模型。</li><li><strong>Qwen Code：</strong>支持 OpenAI 兼容协议，可以在 <code>~/.qwen/settings.json</code> 中通过 <code>modelProviders.openai</code> 配置自定义服务地址；API Key 建议写入 <code>~/.qwen/.env</code>。</li><li><strong>Codex：</strong>支持通过 <code>config.toml</code> 配置模型供应商；接入 AI 网关时，建议写入用户级配置文件 <code>~/.codex/config.toml</code>。</li><li><strong>其他工具：</strong>Cursor、Continue、Cline、Aider 等工具如果支持 OpenAI 兼容接口，一般可配置 OpenAI Base URL 或 API Base、API Key 和 Model。</li></ul><h2>常见问题排查</h2><ul><li>返回 401 或 API Key 无效时，检查 API Key 是否填写正确、绑定的用户组是否启用，以及请求头是否为 <code>Authorization: Bearer &lt;API Key&gt;</code>。</li><li>返回 <code>model not found</code> 时，检查客户端填写的模型名称是否等于 AI 网关模型映射中的请求模型名称。</li><li>连接失败或返回 404 时，检查 Base URL 是否包含 <code>/v1</code>，以及 AI 网关服务、监听端口、防火墙和外部访问地址是否配置正确。</li><li>工具调用或代码编辑失败时，优先选择支持 tool calling / function calling 的编程模型，例如 Qwen Coder、DeepSeek Coder 等。</li><li>流式输出中断或请求超时时，检查 AI 网关设置中的最大并发、队列等待超时、非流式请求超时和流式空闲超时，并结合 AI 网关日志、用量统计排查上游模型响应情况。</li></ul><p>完整配置示例可查看 <a href=\"https://1panel.cn/docs/v2/faq/ai_coding/\" target=\"_blank\">1Panel 文档：AI 编程接入指南</a>。</p>",
+    "keywords": [
+      "1Panel 企业版",
+      "1Panel AI 网关",
+      "AI 编程接入指南",
+      "OpenAI 兼容接口",
+      "OpenCode",
+      "Qwen Code",
+      "Codex",
+      "Cursor",
+      "Continue",
+      "Cline",
+      "Aider"
+    ]
+  },
+  {
     "id": "halo-shop-v2.25-release",
     "title": "Halo 商城版 v2.25 正式发布：专为中国商家打造的在线商城解决方案",
     "description": "Halo 商城版 v2.25 正式上线，零平台佣金、原生支付对接、多商品类型支持、一键套用电商主题，搭配 1Panel 实现建站运维一体化，为中国商家提供自主可控的在线商城新选择。",
