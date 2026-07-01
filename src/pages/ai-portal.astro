@@ -31,48 +31,36 @@ const capabilityCards = [
     title: "自助申请API Key",
     advantage:
       "面向企业内部用户提供 API Key 自助申请、查看、重置和删除能力，并支持查看用量。",
-    benefit:
-      "让团队成员自行获取调用入口并了解使用情况，减少管理员手工分发和回收 API Key 的工作量。",
   },
   {
     icon: "carbon:machine-learning-model",
     title: "模型广场",
     advantage:
       "集中展示 1Panel AI 网关中的可用模型，帮助用户快速了解模型资源和调用入口。",
-    benefit:
-      "降低模型发现和接入门槛，让内部用户可以结合自助申请的 API Key 快速接入模型能力。",
   },
   {
     icon: "carbon:store",
     title: "技能市场",
     advantage:
       "展示 1Panel 已上架的 Skills，支持按分类浏览、搜索和安装。",
-    benefit:
-      "让团队成员按需安装 Skills，帮助企业将可复用能力以市场化方式开放给内部团队。",
   },
   {
     icon: "carbon:network-4",
     title: "MCP 市场",
     advantage:
       "面向 1Panel MCP 场景，展示和管理可用的 MCP 服务。",
-    benefit:
-      "让内部用户可以更方便地发现 MCP 服务，并在企业统一治理范围内使用外部工具能力。",
   },
   {
     icon: "carbon:review",
     title: "技能提交与审核",
     advantage:
       "支持用户上传技能包，管理员审核、发布和维护上架内容。",
-    benefit:
-      "在开放团队贡献的同时保留上架审核流程，确保进入市场的技能内容可管理、可维护。",
   },
   {
     icon: "carbon:settings-services",
     title: "管理后台",
     advantage:
-      "提供技能管理、用户管理、OAuth 登录配置和 1Panel 网关配置。",
-    benefit:
-      "帮助管理员统一运营 AI 门户，衔接企业身份登录、用户体系和 1Panel 企业版网关能力。",
+      "提供技能管理、用户管理、OAuth 登录配置，并支持对接企业微信、钉钉、飞书等企业通讯工具和 1Panel 网关。",
   },
 ];
 
@@ -95,14 +83,14 @@ const operationSteps = [
     icon: "carbon:gateway",
     title: "后台运营",
     description:
-      "管理员通过后台维护技能、用户、OAuth 登录与 1Panel 网关配置，保障门户长期稳定运营。",
-    points: ["技能审核发布", "用户管理", "网关配置"],
+      "管理员通过后台维护技能、用户、OAuth 登录、企业通讯工具对接与 1Panel 网关配置，保障门户长期稳定运营。",
+    points: ["技能审核发布", "用户与登录", "通讯工具对接"],
   },
 ];
 
 const pageTitle = "1Panel AI 门户 - 企业版自助式 AI 能力入口";
 const pageDescription =
-  "1Panel AI 门户面向企业内部用户提供自助入口，让团队成员自助申请API Key、查看用量、安装 Skills，并统一访问模型广场和 MCP 市场。";
+  "1Panel AI 门户面向企业内部用户提供自助入口，让团队成员自助申请API Key、查看用量、安装 Skills，并支持对接企业微信、钉钉、飞书等通讯工具，衔接用户管理和统一登录。";
 const aiPortalSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -130,6 +118,9 @@ const aiPortalSchema = {
     "技能提交与审核",
     "管理后台",
     "OAuth 登录配置",
+    "企业微信、钉钉、飞书对接",
+    "员工统一登录",
+    "组织协同",
     "1Panel 网关配置",
   ],
   publisher: {
@@ -161,6 +152,11 @@ const aiPortalSchema = {
     "安装 Skills",
     "MCP 市场",
     "技能提交审核",
+    "企业微信",
+    "钉钉",
+    "飞书",
+    "企业通讯工具",
+    "员工统一登录",
     "1Panel 企业版",
   ]}
   structuredData={[
@@ -227,7 +223,7 @@ const aiPortalSchema = {
               自助入口，统一运营
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              围绕 API Key、用量、模型、Skills 和 MCP 服务，让企业内部用户更方便地获取 AI 能力，管理员也能统一运营和审核。
+              围绕 API Key、用量、模型、Skills、MCP 服务和企业通讯工具对接，让企业内部用户更方便地获取 AI 能力，管理员也能统一运营用户、登录和审核流程。
             </p>
           </div>
 
@@ -242,10 +238,7 @@ const aiPortalSchema = {
                 </span>
                 <h3 class="text-xl font-bold text-gray-900">{capability.title}</h3>
                 <p class="mt-3 text-sm leading-relaxed text-gray-600">
-                  <span class="font-semibold text-gray-800">作用：</span>{capability.advantage}
-                </p>
-                <p class="mt-3 text-sm leading-relaxed text-gray-600">
-                  <span class="font-semibold text-gray-800">价值：</span>{capability.benefit}
+                  {capability.advantage}
                 </p>
               </article>
             ))}
@@ -260,7 +253,7 @@ const aiPortalSchema = {
               连接用户、市场和后台
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              AI 门户将普通用户的自助使用路径和管理员的后台运营能力放在同一套企业版治理体系中。
+              AI 门户将普通用户的自助使用路径、员工统一登录和管理员的后台运营能力放在同一套企业版治理体系中。
             </p>
           </div>
 
@@ -302,7 +295,7 @@ const aiPortalSchema = {
                   面向 1Panel 企业版的 AI 自助服务入口
                 </h2>
                 <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
-                  1Panel AI 门户将 API Key 自助申请、用量查看、模型广场、技能市场、MCP 市场、技能提交审核和后台配置集中到统一入口，帮助企业在开放 AI 能力的同时保持可运营、可管理。
+                  1Panel AI 门户将 API Key 自助申请、用量查看、模型广场、技能市场、MCP 市场、技能提交审核和后台配置集中到统一入口，并支持对接企业微信、钉钉、飞书等企业通讯工具，支撑企业用户管理、员工统一登录和组织协同，帮助企业在开放 AI 能力的同时保持可运营、可管理。
                 </p>
               </div>
               <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
