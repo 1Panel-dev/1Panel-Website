@@ -82,6 +82,7 @@ const plans = [
     color: "blue",
     features: [
       "专业版全部功能（不含短信）",
+      { label: "AI 门户", href: "/ai-portal.html" },
       { label: "AI 网关", href: "/ai-gateway.html" },
       { label: "Skills Hub", href: "/skills-hub.html" },
       { label: "多用户管理", href: "/user-management.html" },
@@ -119,7 +120,7 @@ const colorClassMap = {
 
 const pageTitle = "1Panel 版本对比 - 社区版、专业版、企业版功能与价格";
 const pageDescription =
-  "查看 1Panel 社区版、专业版、企业版的功能差异、价格信息与适用场景，了解多机管理、移动端 App、纯离线环境适配、多用户管理和 AI 网关能力。";
+  "查看 1Panel 社区版、专业版、企业版的功能差异、价格信息与适用场景，了解 AI 门户、AI 网关、多用户管理、纯离线环境适配和企业级 AI 治理能力。";
 const versionsPageUrl = toAbsoluteUrl("/versions.html", siteUrl);
 const versionComparisonSchema = {
   "@context": "https://schema.org",
@@ -171,6 +172,7 @@ const versionComparisonSchema = {
     "1Panel 功能对比",
     "1Panel 纯离线环境",
     "1Panel 多用户管理",
+    "1Panel AI 门户",
     "1Panel AI 网关",
   ]}
   structuredData={[
