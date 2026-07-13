@@ -32,17 +32,48 @@ export const DEFAULT_KEYWORDS = [
   "AI 编程一体机",
 ];
 export const DEFAULT_OG_IMAGE = "/images/overview-full.png";
+const DEFAULT_BASE_PATH = import.meta.env.BASE_URL ?? "/";
 
 function normalizeSiteUrl(siteUrl: string = SITE_URL) {
   return new URL("/", siteUrl).toString().replace(/\/$/, "");
 }
 
-export function toAbsoluteUrl(path: string, base: string = SITE_URL) {
-  return new URL(path, normalizeSiteUrl(base)).toString();
+function normalizeBasePath(basePath: string = DEFAULT_BASE_PATH) {
+  if (basePath === "." || basePath === "./" || basePath === "/") {
+    return "/";
+  }
+
+  return `/${basePath.replace(/^\/+|\/+$/g, "")}/`;
 }
 
-export function createOrganizationSchema(siteUrl: string = SITE_URL): StructuredData {
-  const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
+export function withBasePath(path: string, basePath: string = DEFAULT_BASE_PATH) {
+  if (/^(?:[a-z][a-z\d+.-]*:|#)/i.test(path)) {
+    return path;
+  }
+
+  return `${normalizeBasePath(basePath)}${path.replace(/^\/+/, "")}`;
+}
+
+export function toAbsoluteUrl(
+  path: string,
+  siteUrl: string = SITE_URL,
+  basePath: string = DEFAULT_BASE_PATH
+) {
+  if (/^[a-z][a-z\d+.-]*:/i.test(path)) {
+    return new URL(path).toString();
+  }
+
+  return new URL(
+    withBasePath(path, basePath),
+    normalizeSiteUrl(siteUrl)
+  ).toString();
+}
+
+export function createOrganizationSchema(
+  siteUrl: string = SITE_URL,
+  basePath: string = DEFAULT_BASE_PATH
+): StructuredData {
+  const resolvedSiteUrl = toAbsoluteUrl("/", siteUrl, basePath).replace(/\/$/, "");
 
   return {
     "@context": "https://schema.org",
@@ -51,13 +82,16 @@ export function createOrganizationSchema(siteUrl: string = SITE_URL): Structured
     name: ORGANIZATION_NAME,
     alternateName: ORGANIZATION_ALTERNATE_NAME,
     url: ORGANIZATION_URL,
-    logo: toAbsoluteUrl("/images/logo-light-FIT2CLOUD.svg", resolvedSiteUrl),
+    logo: toAbsoluteUrl("/images/logo-light-FIT2CLOUD.svg", siteUrl, basePath),
     sameAs: [ORGANIZATION_URL, GITHUB_URL],
   };
 }
 
-export function createWebsiteSchema(siteUrl: string = SITE_URL): StructuredData {
-  const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
+export function createWebsiteSchema(
+  siteUrl: string = SITE_URL,
+  basePath: string = DEFAULT_BASE_PATH
+): StructuredData {
+  const resolvedSiteUrl = toAbsoluteUrl("/", siteUrl, basePath).replace(/\/$/, "");
 
   return {
     "@context": "https://schema.org",
@@ -83,6 +117,7 @@ export function createWebPageSchema({
   datePublished,
   dateModified,
   siteUrl = SITE_URL,
+  basePath = DEFAULT_BASE_PATH,
 }: {
   title: string;
   description: string;
@@ -92,9 +127,10 @@ export function createWebPageSchema({
   datePublished?: string;
   dateModified?: string;
   siteUrl?: string;
+  basePath?: string;
 }): StructuredData {
-  const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
-  const imageUrl = image ? toAbsoluteUrl(image, resolvedSiteUrl) : undefined;
+  const resolvedSiteUrl = toAbsoluteUrl("/", siteUrl, basePath).replace(/\/$/, "");
+  const imageUrl = image ? toAbsoluteUrl(image, siteUrl, basePath) : undefined;
 
   return {
     "@context": "https://schema.org",
@@ -139,6 +175,7 @@ export function createBlogPostingSchema({
   articleSection,
   wordCount,
   siteUrl = SITE_URL,
+  basePath = DEFAULT_BASE_PATH,
 }: {
   title: string;
   description: string;
@@ -150,9 +187,10 @@ export function createBlogPostingSchema({
   articleSection?: string;
   wordCount?: number;
   siteUrl?: string;
+  basePath?: string;
 }): StructuredData {
-  const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
-  const imageUrl = image ? toAbsoluteUrl(image, resolvedSiteUrl) : undefined;
+  const resolvedSiteUrl = toAbsoluteUrl("/", siteUrl, basePath).replace(/\/$/, "");
+  const imageUrl = image ? toAbsoluteUrl(image, siteUrl, basePath) : undefined;
 
   return {
     "@context": "https://schema.org",
@@ -204,6 +242,7 @@ export function createBlogSchema({
   posts,
   dateModified,
   siteUrl = SITE_URL,
+  basePath = DEFAULT_BASE_PATH,
 }: {
   name: string;
   description: string;
@@ -211,8 +250,9 @@ export function createBlogSchema({
   posts: Array<{ title: string; url: string; date: string; description?: string }>;
   dateModified: string;
   siteUrl?: string;
+  basePath?: string;
 }): StructuredData {
-  const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
+  const resolvedSiteUrl = toAbsoluteUrl("/", siteUrl, basePath).replace(/\/$/, "");
 
   return {
     "@context": "https://schema.org",
@@ -243,14 +283,16 @@ export function createItemListSchema({
   url,
   items,
   siteUrl = SITE_URL,
+  basePath = DEFAULT_BASE_PATH,
 }: {
   name: string;
   description: string;
   url: string;
   items: Array<{ title: string; url: string; date?: string; description?: string }>;
   siteUrl?: string;
+  basePath?: string;
 }): StructuredData {
-  const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
+  const resolvedSiteUrl = toAbsoluteUrl("/", siteUrl, basePath).replace(/\/$/, "");
 
   return {
     "@context": "https://schema.org",
@@ -301,8 +343,11 @@ export function createFAQPageSchema({
   };
 }
 
-export function createSoftwareApplicationSchema(siteUrl: string = SITE_URL): StructuredData {
-  const resolvedSiteUrl = normalizeSiteUrl(siteUrl);
+export function createSoftwareApplicationSchema(
+  siteUrl: string = SITE_URL,
+  basePath: string = DEFAULT_BASE_PATH
+): StructuredData {
+  const resolvedSiteUrl = toAbsoluteUrl("/", siteUrl, basePath).replace(/\/$/, "");
 
   return {
     "@context": "https://schema.org",
@@ -313,10 +358,10 @@ export function createSoftwareApplicationSchema(siteUrl: string = SITE_URL): Str
     description: DEFAULT_DESCRIPTION,
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Linux",
-    image: toAbsoluteUrl(DEFAULT_OG_IMAGE, resolvedSiteUrl),
-    screenshot: toAbsoluteUrl("/images/dashboard-preview.png", resolvedSiteUrl),
+    image: toAbsoluteUrl(DEFAULT_OG_IMAGE, siteUrl, basePath),
+    screenshot: toAbsoluteUrl("/images/dashboard-preview.png", siteUrl, basePath),
     downloadUrl: GITHUB_URL,
-    softwareHelp: toAbsoluteUrl("/docs", resolvedSiteUrl),
+    softwareHelp: toAbsoluteUrl("/docs", siteUrl, basePath),
     isAccessibleForFree: true,
     offers: {
       "@type": "Offer",

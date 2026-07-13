@@ -27,6 +27,7 @@ import {
   createBlogPostingSchema,
   createBreadcrumbSchema,
   createItemListSchema,
+  toAbsoluteUrl,
 } from "../../lib/seo";
 import "../../styles/global.css";
 
@@ -76,36 +77,49 @@ const keywords = isListPage
 const articleWordCount = post
   ? post.content.replace(/<[^>]+>/g, "").replace(/\s+/g, "").length
   : undefined;
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const toSiteUrl = (url: string) => {
+  const sourceUrl = new URL(url, SITE_URL);
+  return toAbsoluteUrl(`${sourceUrl.pathname}${sourceUrl.search}${sourceUrl.hash}`, siteUrl);
+};
+const homeUrl = toAbsoluteUrl("/", siteUrl);
+const blogUrl = toAbsoluteUrl("/blog.html", siteUrl);
+const canonicalUrl = toAbsoluteUrl(canonical, siteUrl);
+const schemaBlogPosts = blogPosts.map((item) => ({ ...item, url: toSiteUrl(item.url) }));
+const schemaPagePosts = pagePosts.map((item) => ({ ...item, url: toSiteUrl(item.url) }));
+const postUrl = post ? toSiteUrl(post.url) : undefined;
 const structuredData = isListPage
   ? [
       createBreadcrumbSchema([
-        { name: "首页", url: `${SITE_URL}/` },
-        { name: "产品动态", url: `${SITE_URL}/blog.html` },
-        { name: `第 ${currentPage} 页`, url: `${SITE_URL}${canonical}` },
+        { name: "首页", url: homeUrl },
+        { name: "产品动态", url: blogUrl },
+        { name: `第 ${currentPage} 页`, url: canonicalUrl },
       ]),
       createBlogSchema({
         name: BLOG_SECTION_NAME,
         description: pageDescription,
-        url: `${SITE_URL}/blog.html`,
-        posts: blogPosts,
+        url: blogUrl,
+        posts: schemaBlogPosts,
         dateModified: latestDate,
+        siteUrl,
       }),
       createItemListSchema({
         name: `${BLOG_SECTION_NAME} - 第 ${currentPage} 页`,
         description: pageDescription,
-        url: `${SITE_URL}${canonical}`,
-        items: pagePosts,
+        url: canonicalUrl,
+        items: schemaPagePosts,
+        siteUrl,
       }),
       {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "@id": `${SITE_URL}${canonical}#collection`,
+        "@id": `${canonicalUrl}#collection`,
         name: pageTitle,
         description: pageDescription,
-        url: `${SITE_URL}${canonical}`,
+        url: canonicalUrl,
         inLanguage: "zh-CN",
         dateModified: pageLatestDate,
-        hasPart: pagePosts.map((item) => ({
+        hasPart: schemaPagePosts.map((item) => ({
           "@type": "BlogPosting",
           headline: item.title,
           url: item.url,
@@ -116,20 +130,21 @@ const structuredData = isListPage
     ]
   : [
       createBreadcrumbSchema([
-        { name: "首页", url: `${SITE_URL}/` },
-        { name: "产品动态", url: `${SITE_URL}/blog.html` },
-        { name: post.title, url: post.url },
+        { name: "首页", url: homeUrl },
+        { name: "产品动态", url: blogUrl },
+        { name: post.title, url: postUrl! },
       ]),
       createBlogPostingSchema({
         title: post.title,
         description: post.description,
-        url: post.url,
+        url: postUrl!,
         image: post.cover,
         datePublished: post.date,
         dateModified: post.date,
         keywords: articleKeywords,
         articleSection: BLOG_SECTION_NAME,
         wordCount: articleWordCount,
+        siteUrl,
       }),
     ];
 const socialTitle = isListPage ? pageTitle : post.title;
@@ -159,8 +174,8 @@ const ogType = isListPage ? "website" : "article";
     {
       isListPage && (
         <>
-          <link rel="prev" href={`${SITE_URL}${previousPagePath}`} />
-          {nextPagePath && <link rel="next" href={`${SITE_URL}${nextPagePath}`} />}
+          <link rel="prev" href={toAbsoluteUrl(previousPagePath!, siteUrl)} />
+          {nextPagePath && <link rel="next" href={toAbsoluteUrl(nextPagePath, siteUrl)} />}
         </>
       )
     }

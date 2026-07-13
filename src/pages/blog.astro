@@ -18,7 +18,13 @@ import {
   getBlogTotalPages,
   sortBlogPosts,
 } from "../lib/blog";
-import { SITE_URL, createBlogSchema, createBreadcrumbSchema, createItemListSchema } from "../lib/seo";
+import {
+  SITE_URL,
+  createBlogSchema,
+  createBreadcrumbSchema,
+  createItemListSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
 import "../styles/global.css";
 
 const blogPosts = sortBlogPosts(posts as BlogPost[]);
@@ -32,34 +38,45 @@ const yearCount = new Set(blogPosts.map((post) => post.date.slice(0, 4))).size;
 const pageTitle = getBlogPageTitle(currentPage);
 const pageDescription = getBlogPageDescription(blogPosts, currentPage);
 const keywords = BLOG_KEYWORDS;
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const toSiteUrl = (url: string) => {
+  const sourceUrl = new URL(url, SITE_URL);
+  return toAbsoluteUrl(`${sourceUrl.pathname}${sourceUrl.search}${sourceUrl.hash}`, siteUrl);
+};
+const homeUrl = toAbsoluteUrl("/", siteUrl);
+const blogUrl = toAbsoluteUrl("/blog.html", siteUrl);
+const schemaBlogPosts = blogPosts.map((post) => ({ ...post, url: toSiteUrl(post.url) }));
+const schemaPagePosts = pagePosts.map((post) => ({ ...post, url: toSiteUrl(post.url) }));
 const structuredData = [
   createBreadcrumbSchema([
-    { name: "首页", url: `${SITE_URL}/` },
-    { name: "产品动态", url: `${SITE_URL}/blog.html` },
+    { name: "首页", url: homeUrl },
+    { name: "产品动态", url: blogUrl },
   ]),
   createBlogSchema({
     name: BLOG_SECTION_NAME,
     description: pageDescription,
-    url: `${SITE_URL}/blog.html`,
-    posts: blogPosts,
+    url: blogUrl,
+    posts: schemaBlogPosts,
     dateModified: latestDate,
+    siteUrl,
   }),
   createItemListSchema({
     name: `${BLOG_SECTION_NAME} - 第 ${currentPage} 页`,
     description: pageDescription,
-    url: `${SITE_URL}/blog.html`,
-    items: pagePosts,
+    url: blogUrl,
+    items: schemaPagePosts,
+    siteUrl,
   }),
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${SITE_URL}/blog.html#collection`,
+    "@id": `${blogUrl}#collection`,
     name: pageTitle,
     description: pageDescription,
-    url: `${SITE_URL}/blog.html`,
+    url: blogUrl,
     inLanguage: "zh-CN",
     dateModified: pageLatestDate,
-    hasPart: pagePosts.map((post) => ({
+    hasPart: schemaPagePosts.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
       url: post.url,
@@ -83,7 +100,7 @@ const nextPagePath = totalPages > 1 ? getBlogPagePath(2) : null;
 >
   <Fragment slot="head">
     <Statistics />
-    {nextPagePath && <link rel="next" href={`${SITE_URL}${nextPagePath}`} />}
+    {nextPagePath && <link rel="next" href={toAbsoluteUrl(nextPagePath, siteUrl)} />}
   </Fragment>
   <Fragment slot="main">
     <Header />
