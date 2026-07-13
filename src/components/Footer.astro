@@ -3,25 +3,30 @@ import ContactUs from "./ContactUs.astro";
 // Footer component for 1Panel website
 ---
 
-<ContactUs />
+<div class="site-footer-cta relative isolate overflow-hidden border-t border-blue-100/80">
+  <div aria-hidden="true" class="site-footer-cta-glow pointer-events-none absolute inset-0"></div>
+  <div class="relative z-10">
+    <ContactUs />
 
-<section class="relative overflow-hidden border-t border-blue-100 bg-gradient-to-b from-white via-blue-100/60 to-blue-50 py-16 lg:py-20">
-  <div class="container-custom">
-    <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-2xl font-bold tracking-normal text-gray-950 lg:text-3xl">申请成为合作伙伴</h2>
-      <p class="mt-4 text-base leading-relaxed text-gray-500">1Panel 合作伙伴积极招募中，携手并进、开创未来。</p>
-      <div class="mt-8">
-        <a
-          href="https://jsj.top/f/vKGHRP"
-          target="_blank"
-          class="inline-flex items-center rounded-lg bg-[#005eeb] px-8 py-3 text-base font-medium text-white shadow-lg shadow-blue-900/10 transition-all duration-300 hover:bg-[#0050cd] hover:shadow-xl hover:shadow-blue-900/15"
-        >
-          立即申请
-        </a>
+    <section class="relative py-16 lg:py-20">
+      <div class="container-custom">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-2xl font-bold tracking-normal text-gray-950 lg:text-3xl">申请成为合作伙伴</h2>
+          <p class="mt-4 text-base leading-relaxed text-gray-500">1Panel 合作伙伴积极招募中，携手并进、开创未来。</p>
+          <div class="mt-8">
+            <a
+              href="https://jsj.top/f/vKGHRP"
+              target="_blank"
+              class="inline-flex items-center rounded-lg bg-[#005eeb] px-8 py-3 text-base font-medium text-white shadow-lg shadow-blue-900/10 transition-all duration-300 hover:bg-[#0050cd] hover:shadow-xl hover:shadow-blue-900/15"
+            >
+              立即申请
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
-</section>
+</div>
 
 <footer class="bg-dark-900 border-t border-gray-800 py-12">
   <div class="container-custom">
@@ -146,3 +151,15 @@ import ContactUs from "./ContactUs.astro";
     }
   });
 </script>
+
+<style>
+  .site-footer-cta {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 48%, #eef5ff 100%);
+  }
+
+  .site-footer-cta-glow {
+    background:
+      radial-gradient(circle at 10% 28%, rgb(191 219 254 / 0.32), transparent 24rem),
+      radial-gradient(circle at 88% 72%, rgb(219 234 254 / 0.64), transparent 28rem);
+  }
+</style>
