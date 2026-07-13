@@ -20,7 +20,7 @@ const skillsKeywords = [
   "安全审计",
   "技能沉淀",
   "风险等级评估",
-  "可审计",
+  "版本管理",
   "可治理",
 ];
 
@@ -29,9 +29,9 @@ const capabilityCards = [
     icon: "carbon:headset",
     title: "Skill 技能包统一管理",
     advantage:
-      "在组织内集中发布、发现、上传、导入和管理可复用的 Skills 技能。",
+      "在组织内集中发布、发现、上传、导入、管理和维护可复用的 Skills 技能。",
     benefit:
-      "帮助企业沉淀可复用的 AI 技能资产，避免技能分散管理和重复建设。",
+      "帮助企业沉淀可复用的 AI 技能资产，避免技能分散管理、版本混乱和重复建设。",
   },
   {
     icon: "carbon:network-4",
@@ -39,45 +39,45 @@ const capabilityCards = [
     advantage:
       "支持上传 Skill 技能包，也支持通过仓库或 URL 导入 Skill 技能包。",
     benefit:
-      "提升 Skill 接入灵活性，方便团队快速引入已有技能资产。",
+      "提升 Skill 接入灵活性，方便团队快速引入和更新已有技能资产。",
   },
   {
     icon: "carbon:user-role",
     title: "自定义智能体支持",
     advantage:
-      "可围绕不同智能体使用场景安装 Skill，统一复用组织内的技能能力。",
+      "可围绕不同智能体使用场景安装 Skill，统一复用组织内不同版本的技能能力。",
     benefit:
-      "扩展 Skill 的适用范围，让团队在多样化智能体场景中保持技能复用和统一管理。",
+      "扩展 Skill 的适用范围，让团队在多样化智能体场景中保持技能复用、版本可控和统一管理。",
   },
   {
     icon: "carbon:cloud-offline",
-    title: "Skill 技能包下载",
+    title: "版本管理与下载",
     advantage:
-      "支持 Skill 技能包下载，便于迁移、备份和复用。",
+      "支持 Skill 技能包版本管理和下载，便于回溯、迁移、备份和复用。",
     benefit:
-      "提升 Skill 资产流转效率，方便在不同环境或团队之间共享使用。",
+      "让团队清楚掌握 Skill 版本来源与变更状态，降低升级和协作成本。",
   },
   {
     icon: "carbon:security",
     title: "风险等级评估",
     advantage:
-      "对 Skill 技能包进行风险等级评估，识别潜在安全风险。",
+      "对 Skill 技能包进行风险等级评估，识别不同版本中的潜在安全风险。",
     benefit:
-      "帮助管理员提前发现高风险技能，降低不安全 Skill 带来的影响。",
+      "帮助管理员提前发现高风险 Skill 版本，降低不安全技能带来的影响。",
   },
   {
     icon: "carbon:report",
     title: "安全审计",
     advantage:
-      "支持 Skill 技能包安全审计，确保技能使用过程可审计、可治理。",
+      "支持 Skill 技能包安全审计，追踪版本变更和使用过程，确保可审计、可治理。",
     benefit:
-      "提升企业对 Skill 使用的安全性和合规性控制，满足组织级治理需求。",
+      "提升企业对 Skill 版本流转和使用的安全性、合规性控制，满足组织级治理需求。",
   },
 ];
 
-const pageTitle = "1Panel Skills Hub - 组织级 Skills 技能管理";
+const pageTitle = "1Panel Skills Hub - 组织级 Skills 技能与版本管理";
 const pageDescription =
-  "1Panel Skills Hub 用于在组织内发布、发现和管理可复用的 Skills 技能，确保可审计、可治理。";
+  "1Panel Skills Hub 用于在组织内发布、发现、管理和维护可复用的 Skills 技能，覆盖版本管理、风险评估与安全审计，确保可审计、可治理。";
 const skillsHubSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -92,7 +92,7 @@ const skillsHubSchema = {
     "Skill 技能包统一管理",
     "多种导入方式",
     "自定义智能体支持",
-    "Skill 技能包下载",
+    "版本管理与下载",
     "风险等级评估",
     "安全审计",
   ],
@@ -119,6 +119,7 @@ const skillsHubSchema = {
     "Skill 技能包",
     "技能沉淀",
     "统一管理",
+    "版本管理",
     "安全审计",
     "风险等级评估",
     "可审计",
@@ -148,7 +149,7 @@ const skillsHubSchema = {
               1Panel Skills Hub
             </h1>
             <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
-              在组织内发布、发现和管理可复用的 Skills 技能，确保可审计、可治理。
+              在组织内发布、发现、管理和维护可复用的 Skills 技能，覆盖版本管理、风险评估与安全审计。
             </p>
             <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
               {skillsKeywords.map((keyword) => (
@@ -182,10 +183,10 @@ const skillsHubSchema = {
         <div class="container-custom">
           <div class="mx-auto mb-12 max-w-3xl text-center">
             <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
-              统一管理，安全沉淀
+              统一管理，版本可控
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              围绕 Skill 技能包的发布、发现、导入、下载和审计，帮助组织沉淀可复用技能资产。
+              围绕 Skill 技能包的发布、发现、导入、版本管理、下载和审计，帮助组织沉淀可复用技能资产。
             </p>
           </div>
 
@@ -220,7 +221,7 @@ const skillsHubSchema = {
                   面向组织的 Skills 技能资产管理
                 </h2>
                 <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
-                  1Panel Skills Hub 通过 Skill 技能包上传、仓库或 URL 导入、自定义智能体安装、技能包下载、风险等级评估和安全审计等能力，帮助企业沉淀可复用技能资产，并确保 Skill 的使用过程可审计、可治理、安全合规。
+                  1Panel Skills Hub 通过 Skill 技能包上传、仓库或 URL 导入、自定义智能体安装、版本管理、技能包下载、风险等级评估和安全审计等能力，帮助企业沉淀可复用技能资产，并确保 Skill 的版本流转和使用过程可审计、可治理、安全合规。
                 </p>
               </div>
               <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
