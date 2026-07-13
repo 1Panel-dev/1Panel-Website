@@ -1,0 +1,311 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+  withBasePath,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const siteBase = import.meta.env.BASE_URL;
+const pageUrl = toAbsoluteUrl("/virtual-machine.html", siteUrl, siteBase);
+const homeUrl = toAbsoluteUrl("/", siteUrl, siteBase);
+const enterprisePageUrl = toAbsoluteUrl("/enterprise.html", siteUrl, siteBase);
+const enterprisePath = withBasePath("/enterprise.html", siteBase);
+const overviewImagePath = withBasePath("/images/virtual-machine/overview.png", siteBase);
+const trialUrl = "https://jsj.top/f/umuYtv";
+
+const vmKeywords = [
+  "资源概览",
+  "虚拟机生命周期",
+  "镜像与模板",
+  "VNC 控制台",
+  "网络管理",
+  "存储池",
+];
+
+const overviewHighlights = [
+  {
+    icon: "carbon:virtual-machine",
+    title: "运行状态总览",
+    description:
+      "汇总已启动、已停止、创建中和异常状态，快速掌握虚拟机整体运行情况。",
+  },
+  {
+    icon: "carbon:chart-line-data",
+    title: "资源分配概览",
+    description:
+      "集中查看 CPU、内存分配和存储使用情况，了解资源配置与剩余空间。",
+  },
+  {
+    icon: "carbon:clean",
+    title: "风险提醒与孤立数据清理",
+    description:
+      "展示运行环境和容量风险，并支持扫描、清理虚拟机孤立数据。",
+  },
+  {
+    icon: "carbon:storage-pool",
+    title: "存储池概况",
+    description:
+      "展示存储池路径、使用率、可用容量及关联虚拟机，快速掌握磁盘空间。",
+  },
+];
+
+const primaryFeature = {
+  icon: "carbon:virtual-machine",
+  title: "虚拟机生命周期管理",
+  description:
+    "支持卡片与列表两种视图，集中查看虚拟机状态、CPU、内存、磁盘、网络、存储池和磁盘路径，并完成创建、运行与日常维护。",
+  points: [
+    "多方式创建",
+    "生命周期操作",
+    "控制台与监控",
+    "快照与模板",
+  ],
+};
+
+const resourceFeatures = [
+  {
+    icon: "carbon:image-reference",
+    title: "ISO 镜像管理",
+    description:
+      "集中维护 ISO 镜像的名称、类型、文件路径、大小和状态，支持从服务器选择、本地上传或远程下载。",
+    points: ["镜像状态管理", "镜像路径信息", "本地镜像上传", "远程镜像下载"],
+  },
+  {
+    icon: "carbon:copy-file",
+    title: "虚拟机模板复用",
+    description:
+      "将已有虚拟机转换为模板，记录来源虚拟机、资源配置、存储池、磁盘路径和模板大小，并用于快速创建新虚拟机。",
+    points: ["来源虚拟机", "资源规格配置", "模板容量信息", "模板创建虚机"],
+  },
+  {
+    icon: "carbon:network-4",
+    title: "虚拟网络管理",
+    description:
+      "支持创建和维护 NAT、桥接网络，查看 CIDR、网关、DHCP 地址范围、关联虚拟机和已用 IP，并管理运行状态与开机自启。",
+    points: ["网络模式管理", "网关地址分配", "虚拟机关联", "地址使用情况"],
+  },
+  {
+    icon: "carbon:storage-pool",
+    title: "存储池管理",
+    description:
+      "集中管理本地目录存储池，查看路径、运行状态、容量、可用空间和关联虚拟机，并配置开机自启。",
+    points: ["本地目录存储", "容量空间概览", "虚拟机关联", "开机自动启动"],
+  },
+];
+
+const managementFeatures = [primaryFeature, ...resourceFeatures];
+
+const pageTitle = "虚拟机管理 - 1Panel 企业版虚拟机生命周期管理";
+const pageDescription =
+  "1Panel 企业版虚拟机管理支持资源概览、虚拟机生命周期、VNC 控制台、性能监控、快照与模板，以及 ISO 镜像、网络和存储池管理。";
+const virtualMachineSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel 虚拟机管理",
+  alternateName: "1Panel 企业版虚拟机管理",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "Virtual machine management",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  url: pageUrl,
+  softwareRequirements: "1Panel 企业版",
+  audience: {
+    "@type": "BusinessAudience",
+    audienceType: "企业运维与基础设施管理团队",
+  },
+  featureList: [
+    "虚拟机资源概览",
+    "虚拟机生命周期管理",
+    "VNC 控制台",
+    "性能监控",
+    "快照与模板",
+    "ISO 镜像管理",
+    "NAT 与桥接网络",
+    "存储池管理",
+    "孤立数据清理",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+  isPartOf: {
+    "@id": `${enterprisePageUrl}#product`,
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel 虚拟机管理"
+  schemaName="1Panel 虚拟机管理"
+  description={pageDescription}
+  canonical="/virtual-machine.html"
+  image="/images/virtual-machine/overview.png"
+  imageWidth={1918}
+  imageHeight={876}
+  imageAlt="1Panel 虚拟机管理概览"
+  modifiedTime="2026-07-13"
+  keywords={[
+    "1Panel 虚拟机管理",
+    "虚拟机管理",
+    "虚拟机生命周期",
+    "VNC 控制台",
+    "虚拟机监控",
+    "虚拟机快照",
+    "虚拟机模板",
+    "ISO 镜像",
+    "虚拟机网络",
+    "虚拟机存储池",
+    "孤立数据清理",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel 官网", url: homeUrl },
+      { name: "1Panel 虚拟机管理", url: pageUrl },
+    ]),
+    virtualMachineSchema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a href={enterprisePath} class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50" style="animation-delay: 0.05s;">
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              返回企业版
+            </a>
+            <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
+              虚拟机管理
+            </h1>
+            <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
+              统一管理虚拟机、镜像、模板、网络和存储池，从资源概览到运行操作一站完成。
+            </p>
+            <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
+              {vmKeywords.map((keyword) => (
+                <span class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary fade-in-up mt-7 inline-flex items-center justify-center px-9 py-4 text-base" style="animation-delay: 0.32s;">
+              申请试用
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+
+          <div class="fade-in-up mt-8" style="animation-delay: 0.35s;">
+            <div class="relative overflow-hidden rounded-lg shadow-2xl shadow-blue-100/70">
+              <div class="relative overflow-hidden rounded-lg bg-gray-50">
+                <img
+                  src={overviewImagePath}
+                  alt="1Panel 虚拟机运行状态与资源概览"
+                  class="h-auto w-full object-cover"
+                  width="1918"
+                  height="876"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              运行状态与资源使用，一眼掌握
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              从虚拟机运行状态、资源分配到存储池容量和风险提醒，集中呈现当前虚拟化环境的关键状态。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {overviewHighlights.map((item, index) => (
+              <article
+                class="fade-in-up rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name={item.icon} class="h-6 w-6" />
+                </span>
+                <h3 class="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-50 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              从虚拟机到关联资源，统一维护
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              围绕虚拟机运行所需的镜像、模板、网络和存储资源，提供清晰一致的管理入口。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
+            {managementFeatures.map((feature, index) => (
+              <article
+                class={`fade-in-up flex h-full flex-col rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""}`}
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name={feature.icon} class="h-6 w-6" />
+                </span>
+                <h3 class="text-xl font-bold text-gray-900">{feature.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">{feature.description}</p>
+                <div class="mt-auto grid grid-cols-2 gap-2 pt-5">
+                  {feature.points.map((point) => (
+                    <span class="flex min-h-8 items-center justify-center rounded-md bg-blue-50 px-3 py-1.5 text-center text-xs font-semibold text-1panel">{point}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  面向企业服务器的虚拟机集中管理
+                </h2>
+                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                  1Panel 虚拟机管理将资源概览、生命周期操作、VNC 控制台、性能监控、快照与模板，以及 ISO 镜像、网络和存储池管理集中到统一界面，帮助管理员更清晰地维护虚拟机及其关联资源。
+                </p>
+              </div>
+              <a href={enterprisePath} class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+                了解企业版
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>

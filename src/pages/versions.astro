@@ -8,10 +8,13 @@ import {
   SITE_URL,
   createBreadcrumbSchema,
   toAbsoluteUrl,
+  withBasePath,
 } from "../lib/seo";
 import "../styles/global.css";
 
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const siteBase = import.meta.env.BASE_URL;
+const virtualMachinePath = withBasePath("/virtual-machine.html", siteBase);
 
 const plans = [
   {
@@ -86,8 +89,9 @@ const plans = [
       { label: "AI 网关", href: "/ai-gateway.html" },
       { label: "Skills Hub", href: "/skills-hub.html" },
       { label: "多用户管理", href: "/user-management.html" },
+      { label: "虚拟机管理", href: virtualMachinePath },
       { label: "安全运维报表", href: "/security-ops-report.html" },
-      "支持纳管 20 个节点",
+      "多节点纳管（节点数按需授权）",
       "适配纯离线环境",
       "企业级支持服务（5x8 线上）",
     ],
@@ -120,8 +124,8 @@ const colorClassMap = {
 
 const pageTitle = "1Panel 版本对比 - 社区版、专业版、企业版功能与价格";
 const pageDescription =
-  "查看 1Panel 社区版、专业版、企业版的功能差异、价格信息与适用场景，了解 AI 门户、AI 网关、多用户管理、纯离线环境适配和企业级 AI 治理能力。";
-const versionsPageUrl = toAbsoluteUrl("/versions.html", siteUrl);
+  "查看 1Panel 社区版、专业版、企业版的功能差异、价格信息与适用场景，了解 AI 门户、AI 网关、虚拟机管理、多用户管理、纯离线环境适配和企业级 AI 治理能力。";
+const versionsPageUrl = toAbsoluteUrl("/versions.html", siteUrl, siteBase);
 const versionComparisonSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -174,10 +178,11 @@ const versionComparisonSchema = {
     "1Panel 多用户管理",
     "1Panel AI 门户",
     "1Panel AI 网关",
+    "1Panel 虚拟机管理",
   ]}
   structuredData={[
     createBreadcrumbSchema([
-      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl, siteBase) },
       { name: "版本对比", url: versionsPageUrl },
     ]),
     versionComparisonSchema,

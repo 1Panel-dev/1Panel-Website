@@ -2,6 +2,9 @@
 // Header component for 1Panel website
 import { Icon } from "astro-icon/components";
 import Fit2cloudHeader from "./Fit2cloudHeader.astro";
+import { withBasePath } from "../lib/seo";
+
+const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env.BASE_URL);
 ---
 
 <Fit2cloudHeader />
@@ -84,6 +87,12 @@ import Fit2cloudHeader from "./Fit2cloudHeader.astro";
                 class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
                 用户管理
+              </a>
+              <a
+                href={virtualMachinePath}
+                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+              >
+                虚拟机管理
               </a>
               <a
                 href="/security-ops-report.html"
@@ -305,6 +314,12 @@ import Fit2cloudHeader from "./Fit2cloudHeader.astro";
               class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
               用户管理
+            </a>
+            <a
+              href={virtualMachinePath}
+              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+            >
+              虚拟机管理
             </a>
             <a
               href="/security-ops-report.html"

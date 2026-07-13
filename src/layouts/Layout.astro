@@ -9,6 +9,7 @@ import {
   createWebPageSchema,
   createWebsiteSchema,
   toAbsoluteUrl,
+  withBasePath,
 } from "../lib/seo";
 
 export interface Props {
@@ -52,8 +53,10 @@ const {
 } = Astro.props;
 
 const siteUrl = (Astro.site ?? new URL(SITE_URL)).toString();
-const canonicalUrl = new URL(canonical ?? Astro.url.pathname, siteUrl).toString();
-const socialImageUrl = toAbsoluteUrl(image, siteUrl);
+const siteBase = import.meta.env.BASE_URL;
+const canonicalUrl = toAbsoluteUrl(canonical ?? Astro.url.pathname, siteUrl, siteBase);
+const socialImageUrl = toAbsoluteUrl(image, siteUrl, siteBase);
+const homeUrl = toAbsoluteUrl("/", siteUrl, siteBase);
 const imageExtension = image.split("?")[0].split(".").pop()?.toLowerCase();
 const imageMimeType = imageExtension === "jpg" || imageExtension === "jpeg"
   ? "image/jpeg"
@@ -67,12 +70,12 @@ const tagList = tags.filter(Boolean);
 const robotsContent = noindex
   ? "noindex, nofollow"
   : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
-const isHomePage = canonicalUrl === new URL("/", siteUrl).toString();
+const isHomePage = canonicalUrl === homeUrl;
 const extraStructuredData = Array.isArray(structuredData)
   ? structuredData
   : [structuredData];
 const structuredDataItems = [
-  createOrganizationSchema(siteUrl),
+  createOrganizationSchema(siteUrl, siteBase),
   createWebPageSchema({
     title: schemaName,
     description,
@@ -82,8 +85,9 @@ const structuredDataItems = [
     siteUrl,
     datePublished: publishedTime,
     dateModified: modifiedTime,
+    basePath: siteBase,
   }),
-  ...(isHomePage ? [createWebsiteSchema(siteUrl)] : []),
+  ...(isHomePage ? [createWebsiteSchema(siteUrl, siteBase)] : []),
   ...extraStructuredData.filter(Boolean),
 ];
 ---
@@ -97,9 +101,9 @@ const structuredDataItems = [
   <link rel="canonical" href={canonicalUrl} />
   <link rel="alternate" hreflang="zh-CN" href={canonicalUrl} />
   <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
-  <link rel="sitemap" type="application/xml" href={toAbsoluteUrl("/sitemap.xml", siteUrl)} />
-  <link rel="alternate" type="text/plain" title="LLMs.txt" href={toAbsoluteUrl("/llms.txt", siteUrl)} />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="sitemap" type="application/xml" href={toAbsoluteUrl("/sitemap.xml", siteUrl, siteBase)} />
+  <link rel="alternate" type="text/plain" title="LLMs.txt" href={toAbsoluteUrl("/llms.txt", siteUrl, siteBase)} />
+  <link rel="icon" type="image/png" href={withBasePath("/favicon.png", siteBase)} />
   <meta name="generator" content={Astro.generator} />
   <meta name="robots" content={robotsContent} />
   <meta name="author" content="杭州飞致云信息科技有限公司" />
@@ -138,8 +142,8 @@ const structuredDataItems = [
   
   <title>{title}</title>
   
-  <link rel="stylesheet" is:inline href="/lib/asciinema-player.css">
-  <script is:inline src="/lib/asciinema-player.min.js"></script>
+  <link rel="stylesheet" is:inline href={withBasePath("/lib/asciinema-player.css", siteBase)}>
+  <script is:inline src={withBasePath("/lib/asciinema-player.min.js", siteBase)}></script>
   {
     structuredDataItems.map((item) => (
       <script type="application/ld+json" set:html={JSON.stringify(item)} />
