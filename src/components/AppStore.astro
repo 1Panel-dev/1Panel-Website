@@ -34,6 +34,38 @@ interface Category {
 let allApps: App[] = [];
 let categories: Category[] = [];
 let defaultCategory: Category = { key: 'all', name: '全部应用', apps: [], totalApps: 0 };
+const kimiReferencePattern = /(?:kimi|moonshot)(?:[-\s]?[a-z0-9.]+)?(?:[、,，]\s*)?/gi;
+const danglingModelDescriptionPattern = /^(?:支持|兼容|调用|使用|接入)\s*等(?:多种)?模型(?:[。；;])?$/;
+
+function hasKimiReference(value?: string): boolean {
+  return /kimi|moonshot/i.test(value || '');
+}
+
+function removeKimiReference(value?: string): string | undefined {
+  const sanitized = value
+    ?.replace(kimiReferencePattern, '')
+    .replace(/、\s*、/g, '、')
+    .replace(/,\s*,/g, ',')
+    .trim();
+
+  if (!sanitized || danglingModelDescriptionPattern.test(sanitized)) {
+    return undefined;
+  }
+
+  return sanitized;
+}
+
+function sanitizeApp(app: App): App {
+  return {
+    ...app,
+    description: removeKimiReference(app.description),
+    title: removeKimiReference(app.title),
+    tags: app.tags
+      ?.filter(tag => !hasKimiReference(tag))
+      .map(tag => removeKimiReference(tag))
+      .filter((tag): tag is string => Boolean(tag)),
+  };
+}
 
 try {
   const response = await fetch('https://apps-assets.fit2cloud.com/stable/1panel.json');
@@ -41,11 +73,16 @@ try {
 
   if (appStoreData && appStoreData.apps) {
     allApps = appStoreData.apps
-      .filter(app => app.additionalProperties?.recommend !== undefined)
+      .filter(app =>
+        app.additionalProperties?.recommend !== undefined &&
+        ![app.id, app.name, app.title, app.icon].some(hasKimiReference)
+      )
+      .map(sanitizeApp)
       .sort((a, b) => (a.additionalProperties?.recommend || 10000) - (b.additionalProperties?.recommend || 10000));
     
     // 提取所有分类
-    categories = appStoreData.additionalProperties?.tags || [];
+    categories = (appStoreData.additionalProperties?.tags || [])
+      .filter(category => !hasKimiReference(category.name));
     
     allApps.forEach(app => {
       if (app.tags && app.tags.length > 0) {
@@ -286,4 +323,4 @@ function getAppIcon(app: App): string {
       });
     });
   });
-</script> 
+</script>
