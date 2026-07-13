@@ -16,44 +16,44 @@ const pageUrl = toAbsoluteUrl("/ai-gateway.html", siteUrl);
 const trialUrl = "https://jsj.top/f/umuYtv";
 
 const gatewayKeywords = [
-  "统一代理",
-  "模型接入",
-  "AI 代理调度",
-  "席位权限管理",
+  "统一接入",
+  "模型代理",
+  "席位管理",
   "用量统计",
-  "内容合规管控",
+  "智能路由",
+  "内容合规",
 ];
 
 const capabilityCards = [
   {
     icon: "carbon:gateway",
-    title: "统一 AI 网关入口",
+    title: "统一接入",
     advantage:
-      "为内部 AI 应用和模型调用提供统一接入入口，集中代理不同业务系统的 AI 请求。",
+      "为内部 AI 应用和模型调用提供统一接入入口，集中承接不同业务系统的 AI 请求。",
     benefit:
       "降低 AI 应用接入复杂度，避免各业务系统重复对接模型服务。",
   },
   {
     icon: "carbon:network-4",
-    title: "模型统一接入",
+    title: "模型代理",
     advantage:
-      "通过 AI 网关集中管理模型访问，支持内部应用统一调用模型能力。",
+      "通过 AI 网关统一代理模型访问，支持内部应用按需调用不同模型能力。",
     benefit:
-      "提升模型接入和后续维护效率，便于企业统一管理模型资源。",
+      "减少业务侧重复对接，便于企业统一管理模型资源和访问链路。",
   },
   {
     icon: "carbon:flow",
-    title: "AI 代理调度",
+    title: "智能路由",
     advantage:
-      "内置高性能 AI 网关能力，统一处理 AI 请求代理、转发和调用链路。",
+      "根据模型、应用和调用场景统一处理 AI 请求转发、路由和调用链路。",
     benefit:
       "提升 AI 调用链路的可管理性，便于问题排查和服务治理。",
   },
   {
     icon: "carbon:user-role",
-    title: "席位权限管理",
+    title: "席位管理",
     advantage:
-      "支持对用户、团队或应用的 AI 使用权限进行集中管理。",
+      "支持对用户、团队或应用的 AI 使用席位和权限进行集中管理。",
     benefit:
       "帮助企业控制 AI 使用范围，减少越权调用和资源滥用风险。",
   },
@@ -61,23 +61,23 @@ const capabilityCards = [
     icon: "carbon:chart-line-data",
     title: "用量统计",
     advantage:
-      "对 AI 调用次数、使用情况和资源消耗进行统一统计。",
+      "对 AI 调用次数、使用情况和资源消耗进行统一统计和查看。",
     benefit:
       "帮助企业清晰了解 AI 使用情况，为成本分析和资源规划提供依据。",
   },
   {
     icon: "carbon:content-delivery-network",
-    title: "内容合规管控",
+    title: "内容合规",
     advantage:
-      "对 AI 调用内容进行统一治理和合规管控。",
+      "对 AI 调用内容进行统一治理和合规检查。",
     benefit:
       "降低敏感内容、违规内容和不合规使用带来的风险，提升企业 AI 使用安全性。",
   },
 ];
 
-const pageTitle = "1Panel AI 网关 - AI 统一接入与集中管理入口";
+const pageTitle = "1Panel AI 网关 - AI 统一接入、模型代理与智能路由";
 const pageDescription =
-  "1Panel AI 网关为内部 AI 应用和模型调用提供统一接入入口，便于集中管理模型访问、使用统计和调用链路。";
+  "1Panel AI 网关为内部 AI 应用和模型调用提供统一接入入口，支持模型代理、席位管理、用量统计、智能路由和内容合规。";
 const aiGatewaySchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -89,12 +89,12 @@ const aiGatewaySchema = {
   description: pageDescription,
   url: pageUrl,
   featureList: [
-    "统一 AI 网关入口",
-    "模型统一接入",
+    "统一接入",
+    "模型代理",
+    "席位管理",
     "用量统计",
-    "AI 代理调度",
-    "席位权限管理",
-    "内容合规管控",
+    "智能路由",
+    "内容合规",
   ],
   publisher: {
     "@type": "Organization",
@@ -117,12 +117,11 @@ const aiGatewaySchema = {
     "1Panel AI 网关",
     "AI 网关",
     "统一接入",
-    "统一代理",
-    "模型接入",
+    "模型代理",
+    "席位管理",
     "用量统计",
-    "内容合规管控",
-    "AI 代理调度",
-    "席位权限管理",
+    "智能路由",
+    "内容合规",
   ]}
   structuredData={[
     createBreadcrumbSchema([
@@ -148,7 +147,7 @@ const aiGatewaySchema = {
               1Panel AI 网关
             </h1>
             <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
-              为内部 AI 应用和模型调用提供统一接入入口，便于集中管理模型访问、使用统计和调用链路。
+              为内部 AI 应用和模型调用提供统一接入入口，支持模型代理、席位管理、用量统计、智能路由和内容合规。
             </p>
             <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
               {gatewayKeywords.map((keyword) => (
@@ -182,10 +181,10 @@ const aiGatewaySchema = {
         <div class="container-custom">
           <div class="mx-auto mb-12 max-w-3xl text-center">
             <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
-              统一接入，集中管理
+              统一接入，智能路由
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              围绕模型访问、使用统计和调用链路，为内部 AI 应用提供清晰的网关入口。
+              围绕模型代理、席位管理、用量统计、智能路由和内容合规，为内部 AI 应用提供清晰的网关入口。
             </p>
           </div>
 
@@ -220,7 +219,7 @@ const aiGatewaySchema = {
                   面向内部 AI 应用和模型调用的统一入口
                 </h2>
                 <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
-                  1Panel AI 网关通过统一代理、模型接入、AI 代理调度、席位权限管理、用量统计和内容合规管控，帮助企业集中管理模型访问、调用链路和使用成本，提升 AI 应用的治理能力与安全可控性。
+                  1Panel AI 网关通过统一接入、模型代理、席位管理、用量统计、智能路由和内容合规，帮助企业集中管理模型访问、调用链路和使用成本，提升 AI 应用的治理能力与安全可控性。
                 </p>
               </div>
               <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
