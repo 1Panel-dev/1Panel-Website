@@ -1,5 +1,29 @@
 [
   {
+    "id": "kvm-web-ui-virtual-machine-management",
+    "title": "KVM Web UI 有了新选择：1Panel 企业版支持虚拟机管理",
+    "description": "1Panel 企业版新增 KVM 虚拟机管理能力，将虚拟机生命周期、VNC 控制台、性能监控、镜像、模板、网络和存储池管理纳入统一 Web 运维入口。",
+    "date": "2026-07-14",
+    "dateText": "2026年07月14日",
+    "slug": "kvm-web-ui-virtual-machine-management",
+    "path": "/blog/kvm-web-ui-virtual-machine-management.html",
+    "url": "https://1panel.cn/blog/kvm-web-ui-virtual-machine-management.html",
+    "cover": "/images/blog/kvm-web-ui/cover.webp",
+    "content": "<p>当管理员在搜索引擎中输入 <code>kvm web ui</code> 时，背后的需求往往很具体：服务器已经具备 KVM/QEMU 虚拟化能力，但日常创建虚拟机、查看运行状态、调整资源和进入控制台，不希望始终依赖命令行，也不希望在多套工具之间来回切换。</p><p>在 1Panel 企业版最新版本中，虚拟机管理已经成为企业级服务器运维能力的一部分。管理员可以直接在 1Panel 的 Web UI 中管理 KVM 虚拟机，并将虚拟机及其镜像、模板、网络和存储资源放到同一个入口下维护。</p><h2>KVM 管理为什么需要 Web 化</h2><p>KVM 与 QEMU 提供了成熟的虚拟化基础，但从底层能力到日常运维之间，仍需要一套更易用的管理界面。Web 化管理的价值，不只是把命令搬到浏览器里，而是让虚拟机状态、资源配置、关联网络和存储关系更直观，也让团队成员能够在一致的操作入口中完成常见任务。</p><p>围绕 KVM Web UI，市场上已有多种不同定位的方案：Cockpit 更接近 Linux 服务器的通用 Web 控制台，WebVirtCloud 与 Kimchi 聚焦 KVM 虚拟机管理，Proxmox VE 则提供完整的虚拟化平台。它们服务的场景和使用方式各有侧重。对于已经使用 1Panel 管理网站、数据库、容器和服务器系统的团队，1Panel 企业版提供了另一种选择：把 KVM 虚拟机管理纳入现有服务器运维入口。</p><figure style=\"align-items: start; display: flex; flex-direction: column\" data-content-type=\"image\"><img src=\"/images/virtual-machine/overview.webp\" alt=\"1Panel 企业版 KVM 虚拟机管理 Web UI 资源概览\" width=\"1918\" height=\"1214\" style=\"display: inline-block\" loading=\"lazy\" sizes=\"(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)\"></figure><p style=\"text-align: center;\"><span style=\"font-size: 12px;\">▲ 1Panel 企业版虚拟机管理概览</span></p><h2>1Panel 企业版已经支持哪些虚拟机管理能力</h2><p>本次新增能力围绕虚拟机日常管理和关联资源维护展开，当前代码与企业版页面已经覆盖以下功能：</p><ul><li><strong>虚拟机创建与生命周期管理：</strong>创建时可以选择 ISO 或已有模板，配置网络、存储池、CPU、内存和磁盘容量，并设置创建后启动。虚拟机列表支持卡片与表格视图，可执行启动、停止、重启、暂停、恢复、强制关机和删除等操作。</li><li><strong>资源配置与运行状态：</strong>集中查看虚拟机的 CPU、内存、磁盘、网络、存储池和磁盘路径；在允许的运行状态下编辑 CPU、内存、ISO、网络、启动顺序、开机自启和描述等配置。</li><li><strong>VNC 控制台与性能监控：</strong>运行中的虚拟机可以通过浏览器打开 VNC 控制台，并查看 CPU、内存、磁盘读写和网络收发等运行数据。</li><li><strong>快照与模板：</strong>支持创建和恢复虚拟机快照，也可以将已有虚拟机转换为模板，再通过模板快速创建新的虚拟机。</li><li><strong>ISO 镜像管理：</strong>统一维护 ISO 镜像的名称、路径、大小和状态，支持从服务器选择文件、本地上传或远程下载。</li><li><strong>虚拟网络与存储池：</strong>支持维护 NAT、桥接网络及其地址范围、关联虚拟机和已用 IP；支持管理本地目录存储池，查看容量、可用空间、运行状态和关联虚拟机。</li><li><strong>资源概览与孤立数据清理：</strong>在概览页查看已启动、已停止、创建中和异常的虚拟机数量，以及 CPU、内存、存储分配和风险提醒，并可扫描、清理虚拟机孤立数据。</li></ul><h2>统一入口，比单独增加一个管理页面更重要</h2><p>企业服务器上的运维对象通常并不只有虚拟机。虚拟机之上还会运行网站、数据库、容器和各类业务应用，管理员也需要持续处理系统状态、终端操作、计划任务等工作。如果虚拟化管理与服务器日常运维完全割裂，工具数量和操作上下文都会随之增加。</p><p>1Panel 企业版将虚拟机管理放入现有高级功能体系，并与网站、数据库、容器、系统、终端等入口保持一致。管理员无需为了日常 KVM 操作另开一套管理门户，可以继续在熟悉的 1Panel Web UI 中查看虚拟机及其关联资源。这种统一入口的价值，在虚拟机数量增加、运维角色变多之后会更加明显。</p><h2>1Panel 在 KVM Web UI 方案中的定位</h2><p>选择 KVM Web UI 时，没有一种工具适合所有环境。希望在 Linux 系统管理中顺带维护少量虚拟机，可以关注轻量级工具；以虚拟化为核心建设集群和资源池，可以评估专用虚拟化平台；而对于已经把 1Panel 作为服务器统一运维入口、希望补齐 KVM 虚拟机管理能力的企业团队，1Panel 企业版提供了更连贯的使用路径。</p><p>这项能力的重点不是替代所有虚拟化平台，而是让 KVM 虚拟机管理与企业服务器运维更自然地结合起来：从资源概览出发，完成虚拟机创建和生命周期操作，再继续维护镜像、模板、网络、存储池、控制台、监控和快照。</p><h2>写在最后</h2><p>从命令行到 Web UI，从单台虚拟机操作到虚拟机与关联资源的统一维护，KVM 管理正在变得更可视化、更适合团队协作。1Panel 企业版新增虚拟机管理后，企业用户可以在原有运维入口中继续向下管理 KVM/QEMU 虚拟化资源，进一步补齐企业级服务器运维场景。</p><p>更多功能界面与能力说明，可查看 <a href=\"/virtual-machine.html\">1Panel 虚拟机管理</a>；如需了解企业版整体能力，可访问 <a href=\"/enterprise.html\">1Panel 企业版</a>。</p>",
+    "keywords": [
+      "1Panel 企业版",
+      "KVM Web UI",
+      "KVM 虚拟机管理",
+      "QEMU",
+      "虚拟机管理",
+      "VNC 控制台",
+      "Cockpit",
+      "WebVirtCloud",
+      "Kimchi",
+      "Proxmox VE"
+    ]
+  },
+  {
     "id": "ai-coding-gateway-access-guide",
     "title": "1Panel 企业版 AI 编程接入指南：通过 AI 网关统一接入 OpenCode、Qwen Code、Codex 等工具",
     "description": "介绍 1Panel AI 网关接入 AI 编程工具的统一配置方式，覆盖 Base URL、API Key、Model 三个参数，以及 OpenCode、Qwen Code、Codex 等工具的接入和常见排查项。",
