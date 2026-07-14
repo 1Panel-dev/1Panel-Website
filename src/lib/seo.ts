@@ -114,6 +114,7 @@ export function createWebPageSchema({
   url,
   image,
   imageAlt,
+  keywords,
   datePublished,
   dateModified,
   siteUrl = SITE_URL,
@@ -124,6 +125,7 @@ export function createWebPageSchema({
   url: string;
   image?: string;
   imageAlt?: string;
+  keywords?: string[] | string;
   datePublished?: string;
   dateModified?: string;
   siteUrl?: string;
@@ -139,6 +141,9 @@ export function createWebPageSchema({
     url,
     name: title,
     description,
+    ...(keywords
+      ? { keywords: Array.isArray(keywords) ? keywords.join(",") : keywords }
+      : {}),
     inLanguage: "zh-CN",
     ...(datePublished ? { datePublished } : {}),
     ...(dateModified ? { dateModified } : {}),

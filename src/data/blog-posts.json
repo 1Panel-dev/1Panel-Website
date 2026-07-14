@@ -2,7 +2,7 @@
   {
     "id": "kvm-web-ui-virtual-machine-management",
     "title": "KVM Web UI 有了新选择：1Panel 企业版支持虚拟机管理",
-    "description": "1Panel 企业版新增 KVM 虚拟机管理能力，将虚拟机生命周期、VNC 控制台、性能监控、镜像、模板、网络和存储池管理纳入统一 Web 运维入口。",
+    "description": "1Panel 企业版新增 KVM Web 管理工具与可视化管理界面，将虚拟机生命周期、VNC 控制台、性能监控、镜像、模板、网络和存储池纳入统一运维入口。",
     "date": "2026-07-14",
     "dateText": "2026年07月14日",
     "slug": "kvm-web-ui-virtual-machine-management",
@@ -13,6 +13,10 @@
     "keywords": [
       "1Panel 企业版",
       "KVM Web UI",
+      "kvm web管理工具",
+      "kvm web管理界面",
+      "kvm web面板工具",
+      "kvm web管理",
       "KVM 虚拟机管理",
       "QEMU",
       "虚拟机管理",

@@ -7,6 +7,7 @@ import { Icon } from "astro-icon/components";
 import {
   SITE_URL,
   createBreadcrumbSchema,
+  createFAQPageSchema,
   toAbsoluteUrl,
   withBasePath,
 } from "../lib/seo";
@@ -18,8 +19,19 @@ const pageUrl = toAbsoluteUrl("/virtual-machine.html", siteUrl, siteBase);
 const homeUrl = toAbsoluteUrl("/", siteUrl, siteBase);
 const enterprisePageUrl = toAbsoluteUrl("/enterprise.html", siteUrl, siteBase);
 const enterprisePath = withBasePath("/enterprise.html", siteBase);
+const articlePath = withBasePath(
+  "/blog/kvm-web-ui-virtual-machine-management.html",
+  siteBase,
+);
 const overviewImagePath = withBasePath("/images/virtual-machine/overview.webp", siteBase);
 const trialUrl = "https://jsj.top/f/umuYtv";
+
+const searchIntentKeywords = [
+  "kvm web管理工具",
+  "kvm web管理界面",
+  "kvm web面板工具",
+  "kvm web管理",
+];
 
 const vmKeywords = [
   "资源概览",
@@ -103,19 +115,52 @@ const resourceFeatures = [
 
 const managementFeatures = [primaryFeature, ...resourceFeatures];
 
-const pageTitle = "虚拟机管理 - 1Panel 企业版虚拟机生命周期管理";
+const faqItems = [
+  {
+    question: "什么是 KVM Web 管理工具？",
+    answer:
+      "KVM Web 管理工具通过浏览器提供虚拟机管理界面，让管理员可以查看虚拟机状态、执行生命周期操作，并维护控制台及相关资源，减少日常操作对命令行的依赖。",
+  },
+  {
+    question: "1Panel 的 KVM Web 管理界面可以做什么？",
+    answer:
+      "1Panel 企业版支持虚拟机创建、启动、停止、重启、暂停、恢复、强制关机和删除，并提供 VNC 控制台、性能监控、快照与模板，以及 ISO 镜像、网络和存储池管理。",
+  },
+  {
+    question: "KVM Web 面板工具适合哪些场景？",
+    answer:
+      "适合希望通过可视化入口维护 KVM/QEMU 虚拟机的服务器运维场景。对于已使用 1Panel 管理网站、数据库、容器和服务器系统的团队，可以继续在统一入口中维护虚拟机及其关联资源。",
+  },
+  {
+    question: "1Panel 的 KVM Web 管理与常见方案如何选择？",
+    answer:
+      "Cockpit、WebVirtCloud、Kimchi、Proxmox VE 与 1Panel 的产品定位和适用场景各有侧重。1Panel 企业版更适合希望将 KVM 虚拟机管理纳入现有 1Panel 服务器运维入口的企业团队。",
+  },
+];
+
+const pageTitle = "KVM Web 管理工具 - 1Panel 企业版虚拟机管理";
 const pageDescription =
-  "1Panel 企业版虚拟机管理支持资源概览、虚拟机生命周期、VNC 控制台、性能监控、快照与模板，以及 ISO 镜像、网络和存储池管理。";
+  "1Panel 企业版提供面向 KVM/QEMU 的 Web 管理工具和可视化管理界面，支持虚拟机生命周期、VNC 控制台、性能监控、镜像、模板、网络与存储池管理。";
 const virtualMachineSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "@id": `${pageUrl}#product`,
-  name: "1Panel 虚拟机管理",
-  alternateName: "1Panel 企业版虚拟机管理",
+  name: "1Panel KVM Web 虚拟机管理",
+  alternateName: [
+    "1Panel 企业版虚拟机管理",
+    "1Panel KVM Web 管理工具",
+    "1Panel KVM Web 管理界面",
+  ],
   applicationCategory: "DeveloperApplication",
   applicationSubCategory: "Virtual machine management",
   operatingSystem: "Linux",
   description: pageDescription,
+  keywords: [
+    ...searchIntentKeywords,
+    "KVM Web UI",
+    "KVM 虚拟机管理",
+    "QEMU 虚拟机管理",
+  ].join(","),
   url: pageUrl,
   softwareRequirements: "1Panel 企业版",
   audience: {
@@ -145,16 +190,20 @@ const virtualMachineSchema = {
 
 <Layout
   title={pageTitle}
-  socialTitle="1Panel 虚拟机管理"
-  schemaName="1Panel 虚拟机管理"
+  socialTitle="1Panel KVM Web 虚拟机管理"
+  schemaName="1Panel KVM Web 虚拟机管理"
   description={pageDescription}
   canonical="/virtual-machine.html"
   image="/images/virtual-machine/overview.webp"
   imageWidth={1918}
   imageHeight={1214}
-  imageAlt="1Panel 虚拟机管理概览"
-  modifiedTime="2026-07-13"
+  imageAlt="1Panel 企业版 KVM Web 虚拟机管理概览"
+  modifiedTime="2026-07-14"
   keywords={[
+    ...searchIntentKeywords,
+    "KVM Web UI",
+    "KVM 虚拟机管理",
+    "QEMU 虚拟机管理",
     "1Panel 虚拟机管理",
     "虚拟机管理",
     "虚拟机生命周期",
@@ -173,6 +222,7 @@ const virtualMachineSchema = {
       { name: "1Panel 虚拟机管理", url: pageUrl },
     ]),
     virtualMachineSchema,
+    createFAQPageSchema({ url: pageUrl, items: faqItems }),
   ]}
 >
   <Statistics slot="head" />
@@ -188,10 +238,10 @@ const virtualMachineSchema = {
               返回企业版
             </a>
             <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
-              虚拟机管理
+              KVM Web 虚拟机管理
             </h1>
             <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
-              统一管理虚拟机、镜像、模板、网络和存储池，从资源概览到运行操作一站完成。
+              通过统一的 Web 管理界面维护 KVM/QEMU 虚拟机、镜像、模板、网络和存储池，从资源概览到运行操作一站完成。
             </p>
             <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
               {vmKeywords.map((keyword) => (
@@ -281,6 +331,36 @@ const virtualMachineSchema = {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-50 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              KVM Web 管理常见问题
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              了解 KVM Web 管理工具的能力范围，以及 1Panel 企业版适合的使用场景。
+            </p>
+          </div>
+
+          <div class="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2">
+            {faqItems.map((item, index) => (
+              <article
+                class="fade-in-up rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-blue-100 hover:shadow-lg"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <h3 class="text-xl font-bold leading-snug text-gray-900">{item.question}</h3>
+                <p class="mt-4 text-sm leading-relaxed text-gray-600">{item.answer}</p>
+              </article>
+            ))}
+          </div>
+
+          <p class="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-gray-600">
+            如需进一步了解不同 KVM Web UI 方案的定位，可查看
+            <a href={articlePath} class="font-semibold text-1panel hover:underline">1Panel 企业版 KVM 虚拟机管理产品动态</a>。
+          </p>
         </div>
       </section>
 
