@@ -53,28 +53,27 @@ const enterpriseMail =
 
     <!-- Social proof bar -->
     <div
-      class="max-w-5xl mx-auto mb-10 rounded-xl border border-white/[0.07] bg-slate-950 px-4 py-4 sm:px-8 sm:py-5 shadow-lg"
-      style="background-image: linear-gradient(rgba(255,255,255,0.03), rgba(255,255,255,0.03));"
+      class="max-w-5xl mx-auto mb-10 rounded-xl border border-blue-100 bg-gradient-to-r from-blue-50 via-white to-blue-50 px-4 py-4 sm:px-8 sm:py-5 shadow-sm"
     >
-      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm sm:text-[13.5px] text-slate-400">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm sm:text-[13.5px] text-gray-600">
         <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-white tabular-nums">{tr('pricing.proof.installNum')}</span>
-          <span class="text-slate-400">{tr('pricing.proof.installLabel')}</span>
+          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.installNum')}</span>
+          <span>{tr('pricing.proof.installLabel')}</span>
         </div>
-        <span class="hidden sm:inline text-slate-600" aria-hidden="true">·</span>
+        <span class="hidden sm:inline text-blue-200" aria-hidden="true">·</span>
         <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-white tabular-nums">{tr('pricing.proof.teamsNum')}</span>
-          <span class="text-slate-400">{tr('pricing.proof.teamsLabel')}</span>
+          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.teamsNum')}</span>
+          <span>{tr('pricing.proof.teamsLabel')}</span>
         </div>
-        <span class="hidden sm:inline text-slate-600" aria-hidden="true">·</span>
+        <span class="hidden sm:inline text-blue-200" aria-hidden="true">·</span>
         <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-white tabular-nums">{tr('pricing.proof.ratingNum')}</span>
-          <span class="text-slate-400">{tr('pricing.proof.ratingLabel')}</span>
+          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.ratingNum')}</span>
+          <span>{tr('pricing.proof.ratingLabel')}</span>
         </div>
-        <span class="hidden sm:inline text-slate-600" aria-hidden="true">·</span>
+        <span class="hidden sm:inline text-blue-200" aria-hidden="true">·</span>
         <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-white tabular-nums">{tr('pricing.proof.trialNum')}</span>
-          <span class="text-slate-400">{tr('pricing.proof.trialLabel')}</span>
+          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.trialNum')}</span>
+          <span>{tr('pricing.proof.trialLabel')}</span>
         </div>
       </div>
     </div>
@@ -98,7 +97,7 @@ const enterpriseMail =
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto relative items-stretch">
       <!-- OSS -->
       <div
-        class="fade-in-up card group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+        class="fade-in-up rounded-xl border border-gray-200 bg-white shadow-lg group hover:shadow-xl hover:border-gray-300 transition-all duration-300 flex flex-col h-full"
         style="animation-delay: 0.3s;"
       >
         <div class="p-6 flex flex-col flex-1">
@@ -120,14 +119,16 @@ const enterpriseMail =
               </li>
             ))}
           </ul>
-          <a
-            href={installUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full inline-flex justify-center items-center px-6 py-3 rounded-lg border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
-          >
-            {t(translations, 'pricing.quickStart')}
-          </a>
+          <div class="lg:min-h-36">
+            <a
+              href={installUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex justify-center items-center px-6 py-3 rounded-lg border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+            >
+              {t(translations, 'pricing.quickStart')}
+            </a>
+          </div>
         </div>
       </div>
 
@@ -167,33 +168,35 @@ const enterpriseMail =
               </li>
             ))}
           </ul>
-          <a
-            href={subBuyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="buy-subscription-license-button w-full inline-flex justify-center items-center px-6 py-3 bg-1panel text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
-          >
-            {tr('pricing.buySubscriptionCta')}
-          </a>
-          <a
-            href={trialMailto}
-            class="w-full mt-2 inline-flex justify-center items-center px-6 py-3 rounded-lg border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition-colors text-sm"
-          >
-            {tr('pricing.tryFreeCta')}
-          </a>
-          <p
-            class="text-[11px] text-center text-gray-500 mt-3 leading-snug"
-            set:html={tr('pricing.trustLXwareLine').replace(
-              '{{lxware}}',
-              `<a href="${lxwareUrl}" class="text-1panel hover:underline" target="_blank" rel="noopener noreferrer">LXware</a>`,
-            )}
-          />
+          <div class="lg:min-h-36">
+            <a
+              href={subBuyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="buy-subscription-license-button w-full inline-flex justify-center items-center px-6 py-3 bg-1panel text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            >
+              {tr('pricing.buySubscriptionCta')}
+            </a>
+            <a
+              href={trialMailto}
+              class="w-full mt-2 inline-flex justify-center items-center px-6 py-3 rounded-lg border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition-colors text-sm"
+            >
+              {tr('pricing.tryFreeCta')}
+            </a>
+            <p
+              class="text-[11px] text-center text-gray-500 mt-3 leading-snug"
+              set:html={tr('pricing.trustLXwareLine').replace(
+                '{{lxware}}',
+                `<a href="${lxwareUrl}" class="text-1panel hover:underline" target="_blank" rel="noopener noreferrer">LXware</a>`,
+              )}
+            />
+          </div>
         </div>
       </div>
 
       <!-- Perpetual — Best value -->
       <div
-        class="fade-in-up card group hover:shadow-xl transition-shadow duration-300 flex flex-col h-full relative"
+        class="fade-in-up rounded-xl border border-gray-200 bg-white shadow-lg group hover:shadow-xl hover:border-gray-300 transition-all duration-300 flex flex-col h-full relative"
         style="animation-delay: 0.5s;"
       >
         <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
@@ -234,27 +237,29 @@ const enterpriseMail =
               </li>
             ))}
           </ul>
-          <a
-            href={perpBuyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="buy-perpetual-license-button w-full inline-flex justify-center items-center px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
-          >
-            {tr('pricing.buyPerpetualCta')}
-          </a>
-          <a
-            href={trialMailto}
-            class="w-full mt-2 inline-flex justify-center items-center px-6 py-3 rounded-lg border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition-colors text-sm"
-          >
-            {tr('pricing.tryFreeCta')}
-          </a>
-          <p
-            class="text-[11px] text-center text-gray-500 mt-3 leading-snug"
-            set:html={tr('pricing.trustLXwareLine').replace(
-              '{{lxware}}',
-              `<a href="${lxwareUrl}" class="text-1panel hover:underline" target="_blank" rel="noopener noreferrer">LXware</a>`,
-            )}
-          />
+          <div class="lg:min-h-36">
+            <a
+              href={perpBuyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="buy-perpetual-license-button w-full inline-flex justify-center items-center px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+            >
+              {tr('pricing.buyPerpetualCta')}
+            </a>
+            <a
+              href={trialMailto}
+              class="w-full mt-2 inline-flex justify-center items-center px-6 py-3 rounded-lg border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition-colors text-sm"
+            >
+              {tr('pricing.tryFreeCta')}
+            </a>
+            <p
+              class="text-[11px] text-center text-gray-500 mt-3 leading-snug"
+              set:html={tr('pricing.trustLXwareLine').replace(
+                '{{lxware}}',
+                `<a href="${lxwareUrl}" class="text-1panel hover:underline" target="_blank" rel="noopener noreferrer">LXware</a>`,
+              )}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -595,12 +600,6 @@ const enterpriseMail =
 </section>
 
 <style>
-  .card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-200;
-  }
-  .card:hover {
-    @apply shadow-xl border-gray-300;
-  }
   details summary::-webkit-details-marker {
     display: none;
   }
