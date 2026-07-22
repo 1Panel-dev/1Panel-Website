@@ -60,44 +60,51 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
             <div class="rounded-lg border border-gray-100 bg-white py-2 shadow-xl shadow-gray-900/10">
               <a
                 href="/enterprise.html"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:enterprise" class="h-5 w-5 flex-shrink-0" />
                 概览
               </a>
               <a
                 href="/ai-portal.html"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:application-web" class="h-5 w-5 flex-shrink-0" />
                 AI 门户
               </a>
               <a
                 href="/ai-gateway.html"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:gateway" class="h-5 w-5 flex-shrink-0" />
                 AI 网关
               </a>
               <a
                 href="/skills-hub.html"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:skill-level" class="h-5 w-5 flex-shrink-0" />
                 Skills Hub
               </a>
               <a
                 href="/user-management.html"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:user-multiple" class="h-5 w-5 flex-shrink-0" />
                 用户管理
               </a>
               <a
                 href={virtualMachinePath}
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:virtual-machine" class="h-5 w-5 flex-shrink-0" />
                 虚拟机管理
               </a>
               <a
                 href="/security-ops-report.html"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:report" class="h-5 w-5 flex-shrink-0" />
                 安全运维报表
               </a>
             </div>
@@ -131,21 +138,21 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
                 href="/deepseek-appliance.html"
                 class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
-                <img src="/images/logo/1panel.ico" alt="" class="w-5 h-5 flex-shrink-0" />
+                <Icon name="carbon:ai" class="h-5 w-5 flex-shrink-0" />
                 1Panel AI 通用一体机
               </a>
               <a
                 href="/aicoding.html"
                 class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
-                <img src="/images/logo/1panel.ico" alt="" class="w-5 h-5 flex-shrink-0" />
+                <Icon name="carbon:code" class="h-5 w-5 flex-shrink-0" />
                 1Panel AI 编程一体机
               </a>
               <a
                 href="/openclaw.html"
                 class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
-                <img src="/images/logo/1panel.ico" alt="" class="w-5 h-5 flex-shrink-0" />
+                <Icon name="carbon:chat-bot" class="h-5 w-5 flex-shrink-0" />
                 1Panel AI 助理一体机
               </a>
             </div>
@@ -184,21 +191,24 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
               <a
                 href="https://1panel.cn/docs"
                 target="_blank"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:book" class="h-5 w-5 flex-shrink-0" />
                 使用手册
               </a>
               <a
                 href="https://bbs.fit2cloud.com/c/1p/"
                 target="_blank"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:forum" class="h-5 w-5 flex-shrink-0" />
                 论坛求助
               </a>
               <a
                 href="/blog.html"
-                class="block px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
+                <Icon name="carbon:blog" class="h-5 w-5 flex-shrink-0" />
                 产品动态
               </a>
             </div>
@@ -270,44 +280,51 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
           <div class="flex flex-col space-y-3 pl-3 border-l border-gray-200">
             <a
               href="/enterprise.html"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:enterprise" class="h-5 w-5 flex-shrink-0" />
               概览
             </a>
             <a
               href="/ai-portal.html"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:application-web" class="h-5 w-5 flex-shrink-0" />
               AI 门户
             </a>
             <a
               href="/ai-gateway.html"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:gateway" class="h-5 w-5 flex-shrink-0" />
               AI 网关
             </a>
             <a
               href="/skills-hub.html"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:skill-level" class="h-5 w-5 flex-shrink-0" />
               Skills Hub
             </a>
             <a
               href="/user-management.html"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:user-multiple" class="h-5 w-5 flex-shrink-0" />
               用户管理
             </a>
             <a
               href={virtualMachinePath}
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:virtual-machine" class="h-5 w-5 flex-shrink-0" />
               虚拟机管理
             </a>
             <a
               href="/security-ops-report.html"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:report" class="h-5 w-5 flex-shrink-0" />
               安全运维报表
             </a>
           </div>
@@ -319,21 +336,21 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
               href="/openclaw.html"
               class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
-              <img src="/images/logo/1panel.ico" alt="" class="w-5 h-5 flex-shrink-0" />
+              <Icon name="carbon:chat-bot" class="h-5 w-5 flex-shrink-0" />
               1Panel AI 助理一体机
             </a>
             <a
               href="/aicoding.html"
               class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
-              <img src="/images/logo/1panel.ico" alt="" class="w-5 h-5 flex-shrink-0" />
+              <Icon name="carbon:code" class="h-5 w-5 flex-shrink-0" />
               1Panel AI 编程一体机
             </a>
             <a
               href="/deepseek-appliance.html"
               class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
-              <img src="/images/logo/1panel.ico" alt="" class="w-5 h-5 flex-shrink-0" />
+              <Icon name="carbon:ai" class="h-5 w-5 flex-shrink-0" />
               1Panel AI 通用一体机
             </a>
           </div>
@@ -350,21 +367,24 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
             <a
               href="https://1panel.cn/docs"
               target="_blank"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:book" class="h-5 w-5 flex-shrink-0" />
               使用手册
             </a>
             <a
               href="https://bbs.fit2cloud.com/c/1p/"
               target="_blank"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:forum" class="h-5 w-5 flex-shrink-0" />
               论坛求助
             </a>
             <a
               href="/blog.html"
-              class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
+              <Icon name="carbon:blog" class="h-5 w-5 flex-shrink-0" />
               产品动态
             </a>
           </div>
