@@ -28,7 +28,7 @@ const desktopLocaleMenuItems = [
   items.push({
     code: locale,
     label: getLocaleLabel(locale),
-    href: locale === DEFAULT_LOCALE ? '/' : `/${locale}/`,
+    href: locale === DEFAULT_LOCALE ? '/' : `/${locale}`,
     internal: true,
     active: locale === currentLocale,
   });
@@ -57,6 +57,8 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
           <img
             src={logoSrc}
             alt="1Panel Logo"
+            width="1762"
+            height="486"
             class="h-12 w-auto max-h-12 object-contain object-left"
             loading="eager"
             decoding="async"
@@ -65,11 +67,15 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
       </div>
       <!-- Center: 主菜单 -->
       <div id="header-center-nav" class="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex">
-        <a href={`${prefix}/pricing`} target="_blank" class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
+        <a href={prefix || '/'} class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
+          <span>{t(translations, 'header.home')}</span>
+          <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
+        </a>
+        <a href={`${prefix}/pricing`} class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
           <span>{t(translations, 'header.pricing')}</span>
           <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
         </a>
-        <a href={prefix ? `${prefix}/blog.html` : '/blog.html'} class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
+        <a href={`${prefix}/blog`} class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
           <span>{t(translations, 'header.blog')}</span>
           <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
         </a>
@@ -135,14 +141,19 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
 
         <nav class="flex flex-col gap-1 mt-2">
           <a
+            href={prefix || '/'}
+            class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"
+          >
+            {t(translations, 'header.home')}
+          </a>
+          <a
             href={`${prefix}/pricing`}
-            target="_blank"
             class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"
           >
             {t(translations, 'header.pricing')}
           </a>
           <a
-            href={prefix ? `${prefix}/blog.html` : '/blog.html'}
+            href={`${prefix}/blog`}
             class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"
           >
             {t(translations, 'header.blog')}
@@ -364,7 +375,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
     localeLinks.forEach((link) => {
       const targetLocale = link.getAttribute('data-locale');
       if (!targetLocale) return;
-      const href = targetLocale === 'en' ? (suffix === '/' ? '/' : suffix) : `/${targetLocale}${suffix === '/' ? '/' : suffix}`;
+      const href = targetLocale === 'en' ? (suffix === '/' ? '/' : suffix) : `/${targetLocale}${suffix === '/' ? '' : suffix}`;
       link.setAttribute('href', href);
     });
   });

@@ -5,6 +5,7 @@
     "ogDescription": "モダンな cPanel 代替。Ollama配備、DeepSeekやQwenのローカル運用、Docker・SSL・Webサイト管理を1つのWebダッシュボードで実現。無料かつオープンソース。"
   },
   "header": {
+    "home": "ホーム",
     "pricing": "料金",
     "blog": "ブログ",
     "appStore": "アプリストア",

@@ -43,7 +43,7 @@ Die entscheidende Frage ist nicht „Kann ich es starten?“, sondern „Kann ic
 - **Umfassend**: App Store mit viel genutzter Open-Source-Software.
 - **Zuverlässig**: Sicherheitsfunktionen und geplante Backups.
 
-Die deutschsprachige Startseite finden Sie unter [`/de.html`](https://1panel.pro/de.html); im App-Store-Bereich sehen Sie, was Sie bereitstellen können.
+Die deutschsprachige Startseite finden Sie unter [`/de`](https://1panel.pro/de); im App-Store-Bereich sehen Sie, was Sie bereitstellen können.
 
 ## Beliebte Self-Hosting-Ersatzlösungen mit 1Panel
 

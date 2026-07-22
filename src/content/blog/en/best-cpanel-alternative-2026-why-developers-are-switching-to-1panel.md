@@ -60,7 +60,7 @@ A practical example is running Ollama on VPS infrastructure. With 1Panel, teams 
 - Lower ongoing ops overhead versus DIY scripts + scattered tools
 - Better security control with panel-level firewall and access management
 
-If your migration goal includes private LLM capabilities, this is where 1Panel creates a clear advantage over cPanel-style workflows. See the deployment walkthrough: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html).
+If your migration goal includes private LLM capabilities, this is where 1Panel creates a clear advantage over cPanel-style workflows. See the deployment walkthrough: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel).
 
 ### 5) Built-In Security Capabilities
 

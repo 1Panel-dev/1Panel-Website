@@ -60,7 +60,7 @@ cPanel 가격은 개인 개발자와 성장하는 팀 모두에게 큰 마찰 �
 - DIY 스크립트 + 분산 도구 대비 지속 운영 비용 절감
 - 패널 수준 방화벽/접근 제어로 보안 통제 강화
 
-프라이빗 LLM이 전환 목표에 포함되어 있다면, 이 지점이 cPanel 스타일 워크플로우 대비 1Panel의 분명한 강점입니다. 배포 가이드: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html).
+프라이빗 LLM이 전환 목표에 포함되어 있다면, 이 지점이 cPanel 스타일 워크플로우 대비 1Panel의 분명한 강점입니다. 배포 가이드: [Run Ollama on VPS with 1Panel](/ko/blog/run-ollama-on-vps-with-1panel).
 
 ### 5) 내장 보안 기능
 

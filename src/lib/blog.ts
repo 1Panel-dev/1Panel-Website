@@ -17,14 +17,14 @@ export const BLOG_DATE_LOCALE: Record<Locale, string> = {
   'zh-hant': 'zh-HK',
 };
 
-/** Paths match `build.format: 'file'` output (e.g. `/blog.html`, `/en/blog/post-slug.html`). */
+/** Public URLs stay extensionless; Cloudflare Pages maps them to `build.format: 'file'` output. */
 export function blogListPath(lang: string | undefined): string {
-  return lang ? `/${lang}/blog.html` : '/blog.html';
+  return lang ? `/${lang}/blog` : '/blog';
 }
 
 /** `articleSlug` is the filename without locale (e.g. `deploy-wordpress-php-runtime`). */
 export function blogPostPath(lang: string | undefined, articleSlug: string): string {
-  return lang ? `/${lang}/blog/${articleSlug}.html` : `/blog/${articleSlug}.html`;
+  return lang ? `/${lang}/blog/${articleSlug}` : `/blog/${articleSlug}`;
 }
 
 export function sortPostsByDate(posts: BlogPost[]): BlogPost[] {

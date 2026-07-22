@@ -60,7 +60,7 @@ Un ejemplo práctico es ejecutar Ollama en infraestructura VPS. Con 1Panel, pued
 - Menor carga operativa continua frente a scripts DIY + herramientas dispersas
 - Mejor control de seguridad con firewall y gestión de acceso a nivel de panel
 
-Si tu migración incluye capacidades de LLM privado, aquí es donde 1Panel muestra una ventaja clara frente a flujos estilo cPanel. Guía: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html).
+Si tu migración incluye capacidades de LLM privado, aquí es donde 1Panel muestra una ventaja clara frente a flujos estilo cPanel. Guía: [Run Ollama on VPS with 1Panel](/es/blog/run-ollama-on-vps-with-1panel).
 
 ### 5) Capacidades de seguridad integradas
 

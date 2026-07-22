@@ -60,7 +60,7 @@ Prakticheskiy primer — zapusk Ollama na VPS. S 1Panel mozhno ustanovit Ollama 
 - Nizhe postoyannye operacionnye zatraty po sravneniyu s DIY-skriptami i razbrosannymi instrumentami
 - Luchshiy kontrol bezopasnosti za schet firewall i access management na urovne paneli
 
-Esli vashi migracionnye celi vklyuchayut privatnye LLM, imenno zdes 1Panel daet yavnoye preimushchestvo nad cPanel-style workflow. Smotrite guide: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html).
+Esli vashi migracionnye celi vklyuchayut privatnye LLM, imenno zdes 1Panel daet yavnoye preimushchestvo nad cPanel-style workflow. Smotrite guide: [Run Ollama on VPS with 1Panel](/ru/blog/run-ollama-on-vps-with-1panel).
 
 ### 5) Vstroennye vozmozhnosti bezopasnosti
 

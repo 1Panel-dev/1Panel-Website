@@ -51,7 +51,7 @@ const siteOrigin = (import.meta.env.SITE ?? "https://1panel.pro").replace(
   "",
 );
 const prefix = !lang || lang === DEFAULT_LOCALE ? "" : `/${lang}`;
-const canonicalUrl = `${siteOrigin}${prefix}/apps/${slug}.html`;
+const canonicalUrl = `${siteOrigin}${prefix}/apps/${slug}`;
 
 const pageTitleSuffix = t(translations, "appDetail.pageTitleSuffix");
 const pageTitle =
@@ -126,9 +126,9 @@ const sameAs = [
   app.additionalProperties?.document,
 ].filter((u): u is string => typeof u === "string" && u.length > 0);
 
-const homeUrl = prefix ? `${siteOrigin}${prefix}/` : `${siteOrigin}/`;
+const homeUrl = prefix ? `${siteOrigin}${prefix}` : `${siteOrigin}/`;
 const appStoreListUrl = prefix
-  ? `${siteOrigin}${prefix}/#appstore`
+  ? `${siteOrigin}${prefix}#appstore`
   : `${siteOrigin}/#appstore`;
 
 const jsonLdHomeRaw = t(translations, "appDetail.jsonLdHome");
@@ -255,7 +255,7 @@ const breadcrumbAria = t(translations, "appDetail.breadcrumbAria");
                 : "Breadcrumb"}
             >
               <a
-                href={prefix ? `${prefix}/` : "/"}
+                href={prefix || "/"}
                 class="inline-flex items-center gap-1.5 hover:text-1panel transition-colors font-medium"
               >
                 <Icon name="carbon:arrow-left" class="w-4 h-4" />
@@ -264,7 +264,7 @@ const breadcrumbAria = t(translations, "appDetail.breadcrumbAria");
               <span class="text-gray-300 select-none" aria-hidden="true">/</span
               >
               <a
-                href={prefix ? `${prefix}/#appstore` : "/#appstore"}
+                href={prefix ? `${prefix}#appstore` : "/#appstore"}
                 class="inline-flex items-center gap-1.5 hover:text-1panel transition-colors font-medium"
                 >{t(translations, "appDetail.appsShort")}</a
               >

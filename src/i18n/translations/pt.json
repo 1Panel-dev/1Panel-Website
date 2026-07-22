@@ -5,6 +5,7 @@
     "ogDescription": "A alternativa moderna ao cPanel. Implante Ollama, rode DeepSeek ou Qwen localmente e gerencie Docker, SSL e sites em um painel web limpo."
   },
   "header": {
+    "home": "Início",
     "pricing": "Preços",
     "blog": "Blog",
     "appStore": "Loja de Apps",
