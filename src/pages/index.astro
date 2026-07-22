@@ -17,7 +17,7 @@ const basePath = getBasePath(undefined);
 const title = t(translations, 'meta.defaultTitle');
 const description = t(translations, 'meta.defaultDescription');
 const ogDescription = t(translations, 'meta.ogDescription');
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const canonicalUrl = new URL('/', Astro.site).href;
 const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -46,7 +46,7 @@ const softwareJsonLd = {
       <link
         rel="alternate"
         hreflang={loc}
-        href={new URL(loc === 'en' ? '/' : `/${loc}.html`, Astro.site).href}
+        href={new URL(loc === 'en' ? '/' : `/${loc}`, Astro.site).href}
       />
     ))}
     <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).href} />

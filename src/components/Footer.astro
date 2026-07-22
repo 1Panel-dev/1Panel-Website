@@ -1,6 +1,7 @@
 ---
 // Footer component for 1Panel website
 import { Icon } from 'astro-icon/components'
+import { DEFAULT_LOCALE } from '../i18n/config';
 import { t, getTranslations } from '../i18n/utils';
 import type { TranslationDict } from '../i18n/utils';
 
@@ -10,8 +11,9 @@ interface Props {
   translations?: TranslationDict;
 }
 
-const { translations: rawTranslations } = Astro.props;
+const { lang, translations: rawTranslations } = Astro.props;
 const translations = rawTranslations && Object.keys(rawTranslations || {}).length > 0 ? rawTranslations! : getTranslations('en');
+const prefix = !lang || lang === DEFAULT_LOCALE ? '' : `/${lang}`;
 ---
 
 <footer class="bg-dark-900 border-t border-gray-800 py-12">
@@ -61,16 +63,16 @@ const translations = rawTranslations && Object.keys(rawTranslations || {}).lengt
         <h4 class="text-lg font-semibold text-white mb-4">{t(translations, 'footer.resources')}</h4>
         <ul class="space-y-3">
           <li><a href="https://github.com/1Panel-dev/1Panel" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center"><Icon name="carbon:logo-github" class="w-4 h-4 mr-2" />GitHub</a></li>
-          <li><a href="/blog.html" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center"><Icon name="carbon:blog" class="w-4 h-4 mr-2" />{t(translations, 'footer.blog')}</a></li>
+          <li><a href={`${prefix}/blog`} target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center"><Icon name="carbon:blog" class="w-4 h-4 mr-2" />{t(translations, 'footer.blog')}</a></li>
           <li><a href="https://1panel.pro/docs/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center"><Icon name="carbon:documentation" class="w-4 h-4 mr-2" />{t(translations, 'footer.documentation')}</a></li>
       </div>
       <!-- Compare -->
       <div>
         <h4 class="text-lg font-semibold text-white mb-4">{t(translations, 'footer.compare')}</h4>
         <ul class="space-y-3">
-          <li><a href="/1panel-vs-cpanel.html" class="text-gray-400 hover:text-white transition-colors duration-300"> VS cPanel</a></li>
-          <li><a href="/1panel-vs-webmin.html" class="text-gray-400 hover:text-white transition-colors duration-300"> VS Webmin</a></li>
-          <li><a href="/1panel-vs-plesk.html" class="text-gray-400 hover:text-white transition-colors duration-300"> VS Plesk</a></li>
+          <li><a href={`${prefix}/1panel-vs-cpanel`} class="text-gray-400 hover:text-white transition-colors duration-300"> VS cPanel</a></li>
+          <li><a href={`${prefix}/1panel-vs-webmin`} class="text-gray-400 hover:text-white transition-colors duration-300"> VS Webmin</a></li>
+          <li><a href={`${prefix}/1panel-vs-plesk`} class="text-gray-400 hover:text-white transition-colors duration-300"> VS Plesk</a></li>
         </ul>
       </div>
       <!-- Quick Links -->

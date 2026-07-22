@@ -43,7 +43,7 @@ If you are evaluating self-hosted alternatives, the most important question is n
 - **Complete**: an App Store that aggregates widely used open-source software.
 - **Reliable**: built-in security capabilities and support for scheduled backups.
 
-You can start with the English site homepage at [`/en.html`](https://1panel.pro/en.html) and explore the App Store section for what you can deploy.
+You can start with the English site homepage at [`/`](https://1panel.pro/) and explore the App Store section for what you can deploy.
 
 ## Common self-hosted replacements you can deploy with 1Panel
 

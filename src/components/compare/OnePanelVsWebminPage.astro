@@ -23,8 +23,8 @@ const title = isDe
 const description = isDe
   ? 'Praktischer Vergleich von 1Panel und Webmin: Architektur, Deployment, Sicherheit, Effizienz und Team-Passung.'
   : 'A practical comparison of 1Panel and Webmin across architecture, deployment workflow, security model, operations efficiency, and team fit.';
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const pagePath = '/1panel-vs-webmin';
+const canonicalUrl = new URL(lang === DEFAULT_LOCALE ? pagePath : `/${lang}${pagePath}`, Astro.site).href;
 const hreflangLinks = SUPPORTED_LOCALES.map((locale) => ({
   hreflang: locale === 'zh-hant' ? 'zh-Hant' : locale,
   href: new URL(locale === DEFAULT_LOCALE ? pagePath : `/${locale}${pagePath}`, Astro.site).href,

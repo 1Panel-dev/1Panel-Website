@@ -10,6 +10,7 @@ export default defineConfig({
   // base: './',
   integrations: [tailwind(), react(), icon(), sitemap()],
   output: 'static',
+  trailingSlash: 'never',
   build: {
     assets: 'assets',
     // assetsPrefix: './',

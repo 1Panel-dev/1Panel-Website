@@ -5,6 +5,7 @@
     "ogDescription": "The modern cPanel alternative. Deploy Ollama, run DeepSeek or Qwen locally, manage Docker, SSL, and websites — all from a clean web dashboard. Free and open source."
   },
   "header": {
+    "home": "Home",
     "pricing": "Pricing",
     "blog": "Blog",
     "appStore": "App Store",

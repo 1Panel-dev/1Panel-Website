@@ -5,6 +5,7 @@
     "ogDescription": "Die moderne cPanel-Alternative. Ollama bereitstellen, DeepSeek oder Qwen lokal betreiben, Docker, SSL und Websites verwalten — alles in einem übersichtlichen Web-Dashboard. Kostenlos und Open Source."
   },
   "header": {
+    "home": "Startseite",
     "pricing": "Preise",
     "blog": "Blog",
     "appStore": "App-Store",

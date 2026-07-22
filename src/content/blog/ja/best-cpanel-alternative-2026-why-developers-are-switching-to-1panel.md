@@ -60,7 +60,7 @@ cPanel の価格は、個人開発者や成長中のプロダクトチームに�
 - DIY スクリプト + 分散ツール構成より継続運用コストを抑えられる
 - パネルレベルのファイアウォールとアクセス制御で、より良いセキュリティ統制が可能
 
-移行の目的にプライベート LLM 活用が含まれるなら、ここが 1Panel が cPanel 型ワークフローより明確に優位なポイントです。導入手順はこちら: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html)。
+移行の目的にプライベート LLM 活用が含まれるなら、ここが 1Panel が cPanel 型ワークフローより明確に優位なポイントです。導入手順はこちら: [Run Ollama on VPS with 1Panel](/ja/blog/run-ollama-on-vps-with-1panel)。
 
 ### 5) 組み込みのセキュリティ機能
 

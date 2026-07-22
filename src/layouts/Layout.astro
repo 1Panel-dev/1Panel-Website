@@ -26,6 +26,9 @@ import LanguageModal from '../components/LanguageModal.astro';
 
 const siteOrigin = (import.meta.env.SITE ?? 'https://1panel.pro').replace(/\/$/, '');
 const faviconHref = publicAsset('favicon.png');
+const interLatinHref = publicAsset('fonts/inter-latin.woff2');
+const interLatinExtHref = publicAsset('fonts/inter-latin-ext.woff2');
+const interCyrillicHref = publicAsset('fonts/inter-cyrillic.woff2');
 const {
   title,
   description = "1Panel is a modern open-source VPS control panel — deploy Ollama, run local LLMs, manage MCP servers, and monitor GPUs. One-click WordPress, Docker, SSL. Free forever. The cPanel alternative built for the AI era.",
@@ -42,6 +45,11 @@ const {
 } = Astro.props;
 const defaultOgImage = `${siteOrigin}/images/overview-full.png`;
 const resolvedOgImage = ogImageUrl ?? defaultOgImage;
+const interPreloadHrefs = [
+  interLatinHref,
+  ...(lang === 'tr' ? [interLatinExtHref] : []),
+  ...(lang === 'ru' ? [interCyrillicHref] : []),
+];
 const htmlLang =
   lang === 'en'
     ? 'en'
@@ -85,10 +93,7 @@ const htmlLang =
   
   <title>{title}</title>
   
-  <!-- Preload critical fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {interPreloadHrefs.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
   <Statistics />
   <slot name="head" />
 </head>

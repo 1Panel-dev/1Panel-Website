@@ -23,8 +23,8 @@ const title = isDe
 const description = isDe
   ? 'Vergleich von 1Panel und Plesk: Docker-Architektur, Ressourcen, Lizenzmodell, KI-Automatisierung, DNS und Eignung für moderne VPS-Workloads.'
   : 'Compare 1Panel and Plesk across Docker-native architecture, resource footprint, licensing model, AI automation (MCP), DNS integrations, and team fit for modern VPS workloads.';
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const pagePath = '/1panel-vs-plesk';
+const canonicalUrl = new URL(lang === DEFAULT_LOCALE ? pagePath : `/${lang}${pagePath}`, Astro.site).href;
 const hreflangLinks = SUPPORTED_LOCALES.map((locale) => ({
   hreflang: locale === 'zh-hant' ? 'zh-Hant' : locale,
   href: new URL(locale === DEFAULT_LOCALE ? pagePath : `/${locale}${pagePath}`, Astro.site).href,

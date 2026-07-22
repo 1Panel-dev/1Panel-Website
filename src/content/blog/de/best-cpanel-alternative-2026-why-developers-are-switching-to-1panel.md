@@ -60,7 +60,7 @@ Ollama auf einem VPS: 1Panel installiert Ollama aus dem App Store, startet Model
 - Weniger laufender Ops-Aufwand als DIY-Skripte
 - Bessere Kontrolle durch Firewall und Zugriffsregeln im Panel
 
-Wenn private LLMs Teil der Migration sind, liegt hier ein Vorteil gegenüber klassischem cPanel-Workflow. Anleitung: [Ollama auf VPS mit 1Panel](/de/blog/run-ollama-on-vps-with-1panel.html).
+Wenn private LLMs Teil der Migration sind, liegt hier ein Vorteil gegenüber klassischem cPanel-Workflow. Anleitung: [Ollama auf VPS mit 1Panel](/de/blog/run-ollama-on-vps-with-1panel).
 
 ### 5) Integrierte Sicherheit
 
@@ -93,8 +93,8 @@ Für diese Gruppe ist 1Panel 2026 eine der praktikabelsten Alternativen.
 
 ## Nächste Schritte
 
-- [1Panel kostenlos installieren →](https://1panel.pro/de.html#quickstart) — etwa 2 Minuten
+- [1Panel kostenlos installieren →](https://1panel.pro/de#quickstart) — etwa 2 Minuten
 
-- [OSS vs. Pro vergleichen](https://1panel.pro/de/pricing.html) — Pro ab 80 $/Jahr
+- [OSS vs. Pro vergleichen](https://1panel.pro/de/pricing) — Pro ab 80 $/Jahr
 
-- [cPanel vs. 1Panel (Vergleich)](https://1panel.pro/de/1panel-vs-cpanel.html)
+- [cPanel vs. 1Panel (Vergleich)](https://1panel.pro/de/1panel-vs-cpanel)

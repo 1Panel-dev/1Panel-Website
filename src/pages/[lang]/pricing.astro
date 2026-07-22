@@ -16,7 +16,7 @@ const translations = getTranslations(lang ?? 'en');
 const basePath = getBasePath(lang);
 const title = t(translations, 'pricing.metaTitle');
 const description = t(translations, 'pricing.metaDescription');
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const canonicalUrl = new URL(`/${lang}/pricing`, Astro.site).href;
 ---
 
 <Layout title={title} description={description} lang={lang} basePath={basePath} canonicalUrl={canonicalUrl}>

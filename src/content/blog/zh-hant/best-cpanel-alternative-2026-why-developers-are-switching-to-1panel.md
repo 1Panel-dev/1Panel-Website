@@ -60,7 +60,7 @@ cPanel 定價已成為獨立開發者與成長中產品團隊的常見痛點。�
 - 相比 DIY 腳本 + 分散工具，持續運維成本更低
 - 借助面板級防火牆與存取管理，獲得更好安全控制
 
-如果你的遷移目標包括私有 LLM 能力，這正是 1Panel 相比 cPanel 類流程具明顯優勢的地方。部署指南： [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html)。
+如果你的遷移目標包括私有 LLM 能力，這正是 1Panel 相比 cPanel 類流程具明顯優勢的地方。部署指南： [Run Ollama on VPS with 1Panel](/zh-hant/blog/run-ollama-on-vps-with-1panel)。
 
 ### 5) 內建安全能力
 

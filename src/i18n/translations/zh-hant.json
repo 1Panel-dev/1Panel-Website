@@ -5,6 +5,7 @@
     "ogDescription": "現代化 cPanel 替代方案。可部署 Ollama、在本地運行 DeepSeek 或 Qwen，並在同一介面管理 Docker、SSL 與網站。"
   },
   "header": {
+    "home": "首頁",
     "pricing": "定價",
     "blog": "網誌",
     "appStore": "應用商店",

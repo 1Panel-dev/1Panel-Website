@@ -60,7 +60,7 @@ Pratik bir ornek, VPS altyapisinda Ollama calistirmaktir. 1Panel ile ekipler Oll
 - DIY script + daginik araclara gore daha dusuk surekli operasyon maliyeti
 - Panel seviyesinde firewall ve erisim yonetimiyle daha iyi guvenlik kontrolu
 
-Eger gecis hedefinizde ozel LLM yetenekleri varsa, 1Panel'in cPanel tarzi is akislarina gore net avantaj sagladigi nokta burasidir. Dagitim rehberi: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html).
+Eger gecis hedefinizde ozel LLM yetenekleri varsa, 1Panel'in cPanel tarzi is akislarina gore net avantaj sagladigi nokta burasidir. Dagitim rehberi: [Run Ollama on VPS with 1Panel](/tr/blog/run-ollama-on-vps-with-1panel).
 
 ### 5) Yerlesik guvenlik kabiliyetleri
 

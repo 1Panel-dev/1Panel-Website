@@ -23,8 +23,8 @@ const title = isDe
 const description = isDe
   ? 'Objektiver Vergleich von 1Panel und cPanel: Architektur, KI-Readiness, Betrieb und langfristige Kosten.'
   : 'A practical and objective comparison of 1Panel and cPanel across architecture, AI readiness, operations, and long-term cost behavior.';
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const pagePath = '/1panel-vs-cpanel';
+const canonicalUrl = new URL(lang === DEFAULT_LOCALE ? pagePath : `/${lang}${pagePath}`, Astro.site).href;
 const hreflangLinks = SUPPORTED_LOCALES.map((locale) => ({
   hreflang: locale === 'zh-hant' ? 'zh-Hant' : locale,
   href: new URL(locale === DEFAULT_LOCALE ? pagePath : `/${locale}${pagePath}`, Astro.site).href,

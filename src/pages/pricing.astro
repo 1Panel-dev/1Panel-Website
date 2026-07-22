@@ -12,7 +12,7 @@ const translations = getTranslations(lang);
 const basePath = getBasePath(undefined);
 const title = t(translations, 'pricing.metaTitle');
 const description = t(translations, 'pricing.metaDescription');
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const canonicalUrl = new URL('/pricing', Astro.site).href;
 const pricingFaqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -96,4 +96,3 @@ const pricingFaqJsonLd = {
     z-index: 1;
   }
 </style>
-

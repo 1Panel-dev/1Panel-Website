@@ -5,6 +5,7 @@
     "ogDescription": "Modern cPanel alternatifi. Ollama dağıtın, DeepSeek veya Qwen’i yerelde çalıştırın; Docker, SSL ve web sitelerini tek bir panelden yönetin."
   },
   "header": {
+    "home": "Ana Sayfa",
     "pricing": "Fiyatlandırma",
     "blog": "Blog",
     "appStore": "Uygulama Mağazası",

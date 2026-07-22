@@ -5,6 +5,7 @@
     "ogDescription": "Alternatif cPanel moden. Deploy Ollama, jalankan DeepSeek atau Qwen secara tempatan, dan urus Docker, SSL serta laman web dari satu panel web."
   },
   "header": {
+    "home": "Laman Utama",
     "pricing": "Harga",
     "blog": "Blog",
     "appStore": "App Store",

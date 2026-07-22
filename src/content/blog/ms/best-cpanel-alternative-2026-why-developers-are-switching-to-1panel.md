@@ -60,7 +60,7 @@ Contoh praktikal ialah menjalankan Ollama di infrastruktur VPS. Dengan 1Panel, p
 - Overhed operasi berterusan lebih rendah berbanding skrip DIY + alat berasingan
 - Kawalan keselamatan lebih baik melalui firewall peringkat panel dan pengurusan akses
 
-Jika sasaran migrasi anda termasuk keupayaan LLM peribadi, di sinilah 1Panel memberikan kelebihan jelas berbanding aliran kerja gaya cPanel. Lihat panduan: [Run Ollama on VPS with 1Panel](/blog/run-ollama-on-vps-with-1panel.html).
+Jika sasaran migrasi anda termasuk keupayaan LLM peribadi, di sinilah 1Panel memberikan kelebihan jelas berbanding aliran kerja gaya cPanel. Lihat panduan: [Run Ollama on VPS with 1Panel](/ms/blog/run-ollama-on-vps-with-1panel).
 
 ### 5) Keupayaan keselamatan terbina dalam
 

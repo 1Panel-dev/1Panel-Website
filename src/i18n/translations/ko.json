@@ -5,6 +5,7 @@
     "ogDescription": "현대적인 cPanel 대안. Ollama 배포, DeepSeek 또는 Qwen 로컬 실행, Docker·SSL·웹사이트 관리를 깔끔한 웹 대시보드 하나로."
   },
   "header": {
+    "home": "홈",
     "pricing": "요금",
     "blog": "블로그",
     "appStore": "앱 스토어",
