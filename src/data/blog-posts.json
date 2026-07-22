@@ -1,5 +1,33 @@
 [
   {
+    "id": "deepseek-ai-general-appliance",
+    "title": "1Panel AI 通用一体机：DeepSeek 私有化部署首选",
+    "description": "1Panel AI 通用一体机以超融合架构整合高性能算力、DeepSeek V4 Flash 模型服务、AI 应用与统一运维，为企业提供开箱即用、纯内网运行的 AI 私有化部署方案。",
+    "date": "2026-07-22",
+    "dateText": "2026年07月22日",
+    "slug": "deepseek-ai-general-appliance",
+    "path": "/blog/deepseek-ai-general-appliance.html",
+    "url": "https://1panel.cn/blog/deepseek-ai-general-appliance.html",
+    "cover": "/images/blog/deepseek-ai-general-appliance/cover.webp",
+    "content": "<p>随着大模型逐步进入企业生产环境，私有化部署的关注点已经不只是“把模型跑起来”。算力资源、推理服务、模型维护、AI 应用、安全治理和日常运维能否协同，直接影响 AI 项目的落地效率和长期使用成本。</p><p><strong>1Panel AI 通用一体机</strong>以“超融合”为设计理念，将底层算力、模型服务和 AI 应用整合为一套开箱即用的企业 AI 基础设施，帮助企业从分散搭建转向软硬件一体化交付，让 DeepSeek 私有化部署更省心、更安全，也更容易转化为实际生产力。</p><h2>AI 时代的超融合新范式</h2><p>传统的 AI 私有化部署往往需要分别完成服务器选型、GPU 环境配置、推理框架调优、模型上线、应用接入和运维体系建设。环节多、技术门槛高，后续升级与故障排查也容易形成新的运维负担。</p><p>1Panel AI 通用一体机围绕企业落地 AI 的完整链路，将算力底座、DeepSeek 模型服务、AI 网关、模型管理、智能体开发、AI 编程、AI 办公和运维管理统一起来，实现从底层硬件到上层应用的一站式交付。</p><h2>省心、安全、高效、全能</h2><ul><li><strong>省心：</strong>搭载图形化运维界面，将复杂的模型部署与管理封装为可视化流程，支持开箱即用和分钟级部署，降低环境搭建与日常维护门槛。</li><li><strong>安全：</strong>支持 100% 纯内网私有化部署，推理数据、业务代码与核心资产保留在企业自有环境中，并满足企业级安全审计需求。</li><li><strong>高效：</strong>针对 DeepSeek V4 Flash 的模型特性，从底层加速卡到推理框架进行适配优化，提升响应速度与整体推理效率。</li><li><strong>全能：</strong>同时覆盖低代码智能体开发、内网 AI 编程和 AI 办公等场景，一台设备即可承载企业多元化的 AI 应用需求。</li></ul><h2>从高性能算力到 AI 应用落地</h2><p><strong>硬件层面，</strong>一体机采用可上架的 5U 工作站，配备双路、双电源以及 4 张 NVIDIA RTX Pro 5000 72G 专业级工作站加速卡，为本地大模型推理提供稳定的高性能算力底座。</p><p><strong>模型层面，</strong>围绕 DeepSeek V4 Flash 提供模型部署、模型维护和模型性能测试能力，减少企业自行适配硬件、推理框架和启动参数的工作量。</p><p><strong>平台层面，</strong>内置 1Panel 企业版和 MaxKB 企业版软件套件。1Panel 企业版统一提供 AI 网关、模型管理、资源监控、席位管理、用量统计、虚拟机管理、WAF 和备份等能力；MaxKB 企业版则帮助团队通过低代码方式构建和落地企业智能体。</p><p><strong>应用层面，</strong>一体机可作为企业 AI 能力中枢，为智能体开发、内网 AI 编程和 AI 办公提供统一的模型与算力服务，减少多套系统分别建设、分别运维带来的复杂度。</p><h2>软硬协同，全栈赋能</h2><p>从硬件、软件到配套服务，1Panel AI 通用一体机采用一体化交付方式。企业无需从零拼装复杂的 AI 技术栈，即可快速获得覆盖模型部署、应用建设、安全治理和日常运维的完整环境，并通过专属交流群持续获取应用场景交流、最佳实践与同行业案例分享。</p><p>对于希望在自有环境中部署 DeepSeek，并兼顾数据安全、运维效率和多场景应用落地的企业，1Panel AI 通用一体机提供了一条更直接、更可控的实施路径。</p><h2>了解更多</h2><ul><li><a href=\"/deepseek-appliance.html\">1Panel AI 通用一体机产品详情</a></li><li><a href=\"/deepseek-appliance.html#pricing\">一体机配置与咨询入口</a></li><li><a href=\"/enterprise.html\">1Panel 企业版</a></li></ul>",
+    "keywords": [
+      "1Panel AI 通用一体机",
+      "DeepSeek 私有化部署",
+      "DeepSeek 一体机",
+      "DeepSeek V4 Flash",
+      "AI 一体机",
+      "AI 私有化部署",
+      "企业 AI 基础设施",
+      "AI 超融合",
+      "本地大模型部署",
+      "纯内网 AI",
+      "低代码智能体开发",
+      "内网 AI 编程",
+      "AI 办公",
+      "NVIDIA RTX Pro 5000"
+    ]
+  },
+  {
     "id": "019f65ea-245f-732f-b269-23983e8f31e4",
     "title": "1Panel企业版：企业全员落地WorkBuddy的好帮手",
     "description": "介绍企业全员部署 WorkBuddy 时面临的成本与安全合规问题，以及通过 1Panel 企业版 AI 网关、AI 门户、Skills Hub 和 MCP 市场实现统一接入、用量管控与内容审计的方案。",
