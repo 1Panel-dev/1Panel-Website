@@ -53,18 +53,22 @@ const operationPoints = [
 ];
 
 const architectureTiles = [
-  "AI代理",
+  "AI 代理",
   "模型部署",
-  "智能体开发",
+  "AI 知识库",
   "资源监控",
   "席位管理",
   "模型维护",
-  "AI编程",
+  "AI 工作流",
   "虚机管理",
   "用量统计",
   "模型性能测试",
-  "AI办公",
-  "WAF和备份",
+  "AI 编程",
+  "WAF 和备份",
+  "智能路由",
+  "模型下载",
+  "AI 办公",
+  "运维报表",
 ];
 
 const architectureModules = ["AI网关", "模型管理", "AI应用", "运维管理"];
@@ -159,7 +163,7 @@ const architectureModules = ["AI网关", "模型管理", "AI应用", "运维管�
             <div class="w-full rounded-lg border border-gray-100 bg-gray-50/80 px-4 py-5 sm:px-6">
               <div class="grid grid-cols-4 gap-1.5 sm:gap-2 w-full mb-5">
                 {architectureTiles.map((tile) => (
-                  <span class="min-h-10 rounded-md border border-gray-200 bg-white px-1 py-2 text-center text-[11px] font-medium leading-snug text-gray-800 shadow-sm sm:text-xs">{tile}</span>
+                  <span class="flex min-h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-1 py-2 text-center text-[11px] font-medium leading-snug text-gray-800 shadow-sm sm:text-xs">{tile}</span>
                 ))}
               </div>
 
