@@ -84,6 +84,12 @@ export function createOrganizationSchema(
     url: ORGANIZATION_URL,
     logo: toAbsoluteUrl("/images/logo-light-FIT2CLOUD.svg", siteUrl, basePath),
     sameAs: [ORGANIZATION_URL, GITHUB_URL],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+86-400-052-0755",
+      areaServed: "CN",
+      availableLanguage: "zh-CN",
+    },
   };
 }
 
