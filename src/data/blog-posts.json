@@ -1,5 +1,33 @@
 [
   {
+    "id": "1panel-community-professional-enterprise-comparison",
+    "title": "1Panel 社区版、专业版和企业版有什么区别？",
+    "description": "基于 1Panel 官网与官方文档，全面对比社区版、专业版和企业版的功能、价格、支持方式与适用场景，并说明 WAF、AI 模型管理等容易混淆的版本边界。",
+    "date": "2026-07-28",
+    "dateText": "2026年07月28日",
+    "slug": "1panel-community-professional-enterprise-comparison",
+    "path": "/blog/1panel-community-professional-enterprise-comparison.html",
+    "url": "https://1panel.cn/blog/1panel-community-professional-enterprise-comparison.html",
+    "cover": "/images/blog/1panel-editions-comparison/cover.webp",
+    "content": "<p>1Panel 目前提供社区版、专业版和企业版三个版本。它们共享网站、数据库、容器、文件和服务器管理等基础能力，但在多机运维、网站安全、企业级 AI 治理、多人协作、离线部署和支持服务上有不同边界。</p><p>很多用户在选型时都会问：个人或单台服务器使用社区版够不够？专业版比社区版多了什么？什么情况下需要直接选择企业版？本文以 <a href=\"/versions.html\">1Panel 官网版本对比页</a>和 <a href=\"/docs/v2/\">1Panel V2 官方文档</a>为依据，从功能、价格与适用场景三个维度进行说明。本文数据核对日期为 2026 年 7 月 28 日，后续如有调整，请以官网与对应版本文档的最新说明为准。</p><h2>三个版本都包含哪些基础能力？</h2><p>社区版不是只能体验的精简版本。按照官方版本表，三个版本都支持应用商店、网站管理、数据库管理、容器管理、文件管理、服务器监控、防火墙、进程管理、SSH 管理、计划任务、日志审计、AI 模型管理和 GPU 监控。</p><p>三者最主要的区别，可以先概括为：</p><ul><li><strong>社区版：</strong>覆盖日常 Linux 服务器运维与基础 AI 能力，适合轻量使用和快速上手。</li><li><strong>专业版：</strong>在社区版基础上，增加多机管理、移动端 App、网站安全与监控、品牌界面定制和更多告警能力。</li><li><strong>企业版：</strong>在专业版运维能力之上，进一步加入企业级 AI 治理、多用户权限、KVM 虚拟机、安全运维报表、纯离线环境适配和企业级支持服务。</li></ul><h2>社区版：开源免费，覆盖核心运维场景</h2><p>1Panel 社区版当前官网标价为 <strong>¥ 0</strong>，定位为开源免费版本。它已经覆盖服务器日常管理的主要对象，包括应用、网站、数据库、容器、文件、监控、系统防火墙、进程、SSH、计划任务和日志审计。</p><p>在 AI 方面，社区版支持 AI 智能体管理，但数量限制为 <strong>5 个</strong>；AI 模型管理和 GPU 监控也属于三个版本共有的能力。需要注意的是，官方<a href=\"/docs/v2/user_manual/ai/model/\">模型管理文档</a>进一步明确：模型账号和 Ollama 管理在三个版本中均可使用，而 vLLM 和模型下载器需要专业版或企业版许可证。因此，“支持 AI 模型管理”并不代表三个版本的每一项本地模型能力完全相同。</p><p>网站安全方面也有一个容易混淆的细节：官网版本卡把“WAF 防火墙”列在专业版增强能力中，但最新的 <a href=\"/docs/v2/user_manual/xpack/waf/waf/\">WAF 官方文档</a>说明，社区版已经可以使用黑白名单、网站设置和全局基础规则等 WAF 基础防护；专业版和企业版增加首页统计、攻击报表、拦截与封锁记录、漏洞防御、应用规则、自定义规则、地区访问限制等增强能力。</p><p>社区版适合个人开发者、家庭服务器、实验环境、单机业务，以及具备自主部署和排障能力、暂时不需要商业增强功能的用户。支持方式以 GitHub、社区论坛和在线文档为主。</p><h2>专业版：面向多机运维、网站安全与精细化管理</h2><p>1Panel 专业版当前官网标价为 <strong>¥ 1500 / 套</strong>，定位为适合中小企业与开发者的商业版本。它包含社区版全部功能，并解除 AI 智能体 5 个的数量限制。</p><p>专业版的增强能力主要集中在以下几类：</p><ul><li><strong>多服务器与数据能力：</strong>多机管理、数据库主从复制。官方<a href=\"/docs/v2/user_manual/xpack/node/\">节点管理文档</a>明确，多节点统一管理需要专业版或企业版许可证。</li><li><strong>网站安全与可观测性：</strong>WAF 增强能力、网站监控报表、网站防篡改。<a href=\"/docs/v2/user_manual/xpack/website_monitor/\">网站监控文档</a>明确该功能仅在专业版和企业版中可用。</li><li><strong>使用体验与品牌定制：</strong>移动端 App、AI 建站、自定义 LOGO、水印、自定义主题配色和内网代理模式。</li><li><strong>安全巡检与告警：</strong>定时病毒扫描，企业微信、钉钉、飞书告警，以及短信告警和 500 条短信额度。官方<a href=\"/docs/v2/user_manual/settings/\">面板设置文档</a>同时说明，邮箱和 Bark 告警三个版本均可使用，企业微信、钉钉、飞书与短信告警需要专业版或企业版许可证。</li><li><strong>更完整的本地模型管理：</strong>除三个版本共有的模型账号和 Ollama 管理外，专业版还可使用 vLLM 和模型下载器。</li></ul><p>如果需要同时管理多台服务器，希望通过移动端处理运维工作，或者网站业务对攻击统计、拦截记录、监控报表、防篡改和企业协同告警有明确需求，专业版通常比社区版更合适。</p><h2>企业版：面向组织协作与企业级 AI 治理</h2><p>1Panel 企业版当前官网标价为 <strong>￥3 万 / 套</strong>。官网明确写明，企业版包含专业版全部功能，但<strong>不含短信能力</strong>；节点数量在申请许可证时按需确定。</p><p>企业版的差异不只是管理更多服务器，而是把 AI 使用、组织权限和基础资源纳入同一套企业级管理体系：</p><ul><li><strong>AI 门户：</strong>为企业内部用户提供自助入口，可申请 API Key、查看用量、访问技能市场和 MCP 市场。</li><li><strong>AI 网关：</strong>统一管理模型账号、调用凭证、访问配额和请求转发，并提供模型代理、智能路由、内容合规与用量统计等能力。该功能在<a href=\"/docs/v2/user_manual/ai/gateway/\">官方文档</a>中明确属于企业版。</li><li><strong>Skills Hub：</strong>在组织内部导入、审核、发布、安装和维护智能体 Skill，保留版本与风险检查信息。<a href=\"/docs/v2/user_manual/ai/skills_hub/\">Skills Hub 文档</a>明确该功能仅在企业版中可用。</li><li><strong>多用户管理：</strong>创建用户与角色，按节点分配查看和管理权限，适合多岗位协作和最小权限控制。<a href=\"/docs/v2/user_manual/enterprise/user_management/\">用户管理文档</a>明确该功能需要企业版许可证。</li><li><strong>KVM 虚拟机管理：</strong>通过 Web 界面管理基于 KVM/libvirt 的虚拟机、ISO、模板、网络和存储池；具体环境前提与能力范围可查看<a href=\"/docs/v2/user_manual/enterprise/vm/\">虚拟机文档</a>。</li><li><strong>安全运维报表：</strong>汇总系统、模型、智能体、网站、安全和运维侧的关键状态，沉淀风险概览与巡检报表。</li><li><strong>企业级交付：</strong>适配纯离线环境，并提供 5x8 线上企业级支持服务。</li></ul><p><a href=\"/enterprise.html\">1Panel 企业版页面</a>将这些能力概括为从底层硬件到智能体（Metal-to-Agent）的统一管理：应用层部署 AI 编程、AI 助理和智能体平台，治理层衔接 AI 门户、AI 网关、Skills Hub 与 MCP 市场，模型层统一管理本地模型，基础设施层则覆盖虚拟机及其镜像、模板、网络和存储池。</p><h2>核心差异一览</h2><table><thead><tr><th>对比项</th><th>社区版</th><th>专业版</th><th>企业版</th></tr></thead><tbody><tr><td>当前官网价格</td><td>¥ 0</td><td>¥ 1500 / 套</td><td>￥3 万 / 套</td></tr><tr><td>基础运维能力</td><td>支持</td><td>包含社区版全部功能</td><td>包含专业版全部功能（不含短信）</td></tr><tr><td>AI 智能体管理</td><td>限 5 个</td><td>不限制</td><td>不限制</td></tr><tr><td>模型账号与 Ollama</td><td>支持</td><td>支持</td><td>支持</td></tr><tr><td>vLLM 与模型下载器</td><td>不支持</td><td>支持</td><td>支持</td></tr><tr><td>多机管理</td><td>不支持</td><td>支持</td><td>支持，节点数按需授权</td></tr><tr><td>WAF</td><td>基础防护</td><td>基础防护 + 报表、记录与增强规则</td><td>基础防护 + 报表、记录与增强规则</td></tr><tr><td>网站监控与防篡改</td><td>不支持</td><td>支持</td><td>支持</td></tr><tr><td>品牌与界面定制</td><td>不支持商业版增强项</td><td>支持自定义 LOGO、水印、主题配色</td><td>支持</td></tr><tr><td>AI 门户、AI 网关、Skills Hub</td><td>不支持</td><td>不支持</td><td>支持</td></tr><tr><td>多用户与角色权限</td><td>不支持</td><td>不支持</td><td>支持</td></tr><tr><td>KVM 虚拟机管理</td><td>不支持</td><td>不支持</td><td>支持</td></tr><tr><td>纯离线环境适配</td><td>不支持企业版离线能力</td><td>不支持企业版离线能力</td><td>支持</td></tr><tr><td>支持方式</td><td>社区论坛支持</td><td>社区论坛支持</td><td>企业级支持服务（5x8 线上）</td></tr></tbody></table><h2>如何选择适合自己的版本？</h2><h3>以下情况可以优先选择社区版</h3><ul><li>个人、家庭或小型团队管理单台 Linux 服务器；</li><li>主要使用网站、数据库、容器、文件、监控和计划任务等核心运维功能；</li><li>AI 智能体数量不超过 5 个，模型侧以模型账号或 Ollama 为主；</li><li>可以通过官方文档、社区论坛和 GitHub 自主解决问题。</li></ul><h3>以下情况更适合专业版</h3><ul><li>需要统一管理多台服务器，或使用数据库主从复制；</li><li>需要移动端 App、网站监控、防篡改和更完整的 WAF 能力；</li><li>需要自定义 LOGO、水印、主题配色，或使用企业微信、钉钉、飞书、短信告警；</li><li>需要使用 vLLM、模型下载器，且暂时不需要多用户、企业级 AI 治理和纯离线部署。</li></ul><h3>以下情况建议评估企业版</h3><ul><li>企业内部有多个角色共同使用 1Panel，需要按用户、角色和节点分配权限；</li><li>需要通过 AI 门户、AI 网关、Skills Hub 和 MCP 市场统一管理企业 AI 能力；</li><li>需要 KVM 虚拟机管理、安全运维报表或纯离线环境适配；</li><li>需要按需授权多节点，并获得 5x8 线上企业级支持服务。</li></ul><h2>写在最后</h2><p>如果需求集中在单机运维和基础 AI，社区版已经能够覆盖大量实际场景；当服务器数量、网站安全和运维协作复杂度提升时，专业版提供了更完整的商业增强能力；当需求进一步扩展到组织级权限、AI 统一治理、虚拟化资源、纯离线环境和原厂支持时，企业版才体现出其完整价值。</p><p>版本能力会随产品迭代调整。选型前建议同时查看 <a href=\"/versions.html\">1Panel 版本对比</a>、<a href=\"/docs/v2/\">官方文档的版本功能表</a>和具体功能文档；如需评估企业版，可前往 <a href=\"/enterprise.html\">1Panel 企业版</a>页面申请试用。</p>",
+    "keywords": [
+      "1Panel 版本对比",
+      "1Panel 社区版",
+      "1Panel 专业版",
+      "1Panel 企业版",
+      "1Panel 社区版和专业版区别",
+      "1Panel 专业版和企业版区别",
+      "1Panel 价格",
+      "Linux 服务器面板",
+      "1Panel WAF",
+      "1Panel 多机管理",
+      "1Panel AI 网关",
+      "1Panel Skills Hub",
+      "1Panel 多用户管理",
+      "1Panel KVM 虚拟机"
+    ]
+  },
+  {
     "id": "deepseek-ai-general-appliance",
     "title": "1Panel AI 通用一体机：DeepSeek 私有化部署首选",
     "description": "1Panel AI 通用一体机以超融合架构整合高性能算力、DeepSeek V4 Flash 模型服务、AI 应用与统一运维，为企业提供开箱即用、纯内网运行的 AI 私有化部署方案。",
