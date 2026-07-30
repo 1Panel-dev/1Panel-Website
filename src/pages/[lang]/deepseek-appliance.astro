@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Statistics from '../../components/Statistics.astro';
+import AIGeneralAppliancePage from '../../components/AIGeneralAppliancePage.astro';
+import { NON_DEFAULT_LOCALES, SUPPORTED_LOCALES } from '../../i18n/config';
+import { getTranslations, t, getBasePath } from '../../i18n/utils';
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.params;
+const translations = getTranslations(lang ?? 'en');
+const basePath = getBasePath(lang);
+const title = t(translations, 'aiAppliance.metaTitle');
+const description = t(translations, 'aiAppliance.metaDescription');
+const canonicalUrl = new URL(`/${lang}/deepseek-appliance`, Astro.site).href;
+---
+
+<Layout
+  title={title}
+  description={description}
+  lang={lang}
+  basePath={basePath}
+  canonicalUrl={canonicalUrl}
+  keywords="AI Appliance, On-Premises AI, DeepSeek Deployment, Private AI, AI Infrastructure, Turnkey AI"
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header lang={lang} basePath={basePath} translations={translations} />
+    <AIGeneralAppliancePage translations={translations} lang={lang} basePath={basePath} />
+    <Footer lang={lang} basePath={basePath} translations={translations} />
+  </Fragment>
+</Layout>

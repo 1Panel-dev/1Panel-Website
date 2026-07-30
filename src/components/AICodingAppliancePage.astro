@@ -1,0 +1,371 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  partner: string;
+  hardware: string;
+  hardwareDetail: string;
+}
+
+const {
+  partner,
+  hardware,
+  hardwareDetail,
+} = Astro.props;
+
+const strengths = [
+  {
+    title: "Secure",
+    description: "Fully air-gapped operation ensures data never leaves the domain, eliminating code leakage risks.",
+    icon: "carbon:security",
+    tone: "text-emerald-600",
+    iconBg: "bg-emerald-50",
+    border: "hover:border-emerald-100",
+  },
+  {
+    title: "Efficient",
+    description: "Purpose-built for 10-20 person tech teams, driving development productivity with token autonomy and unlocking innovation potential.",
+    icon: "carbon:flash",
+    tone: "text-blue-600",
+    iconBg: "bg-blue-50",
+    border: "hover:border-blue-100",
+  },
+  {
+    title: "Effortless",
+    description: "Out-of-the-box ready with a graphical interface — even non-technical members can operate and maintain it efficiently.",
+    icon: "carbon:user-follow",
+    tone: "text-amber-600",
+    iconBg: "bg-amber-50",
+    border: "hover:border-amber-100",
+  },
+];
+
+const securityPoints = [
+  "100% air-gapped private deployment;",
+  "Core data and code never leave the domain;",
+  "Compliant with enterprise security audit standards.",
+];
+
+const operationPoints = [
+  "Out-of-the-box, deployment in minutes;",
+  "Fully graphical interface, easy to manage;",
+  "Say goodbye to token anxiety.",
+];
+
+const architectureTiles = [
+  "AI Agents",
+  "Model Deploy",
+  "Dev Tools",
+  "Resource Monitor",
+  "Seat Mgmt",
+  "Model Ops",
+  "DevOps Tools",
+  "Quick Deploy",
+  "Usage Stats",
+  "Model Bench",
+  "Runtimes",
+  "WAF & Backup",
+];
+
+const architectureModules = ["AI Gateway", "Model Mgmt", "Dev Store", "Ops Mgmt"];
+const hardwareBadges = ["Intel Arc Pro B70", "NVIDIA RTX Pro 5000"];
+
+const benchmarkHighlights = [
+  { label: "SWE-bench Verified", value: "77.2" },
+  { label: "SWE-bench Pro", value: "53.5" },
+  { label: "Terminal-Bench 2.0", value: "59.3" },
+  { label: "LiveCodeBench v6", value: "83.9" },
+];
+
+const benchmarkRows = [
+  {
+    metric: "SWE-bench Verified",
+    qwen35: "76.2",
+    claude: "80.9",
+    qwen36: "77.2",
+  },
+  {
+    metric: "SWE-bench Pro",
+    qwen35: "50.9",
+    claude: "57.1",
+    qwen36: "53.5",
+  },
+  {
+    metric: "SWE-bench Multilingual",
+    qwen35: "69.3",
+    claude: "77.5",
+    qwen36: "71.3",
+  },
+  {
+    metric: "Terminal-Bench 2.0",
+    qwen35: "52.5",
+    claude: "59.3",
+    qwen36: "59.3",
+  },
+  {
+    metric: "SkillsBench Avg5",
+    qwen35: "30.0",
+    claude: "45.3",
+    qwen36: "48.2",
+  },
+  {
+    metric: "QwenWebBench",
+    qwen35: "1186",
+    claude: "1536",
+    qwen36: "1487",
+  },
+  {
+    metric: "NL2Repo",
+    qwen35: "32.2",
+    claude: "43.2",
+    qwen36: "36.2",
+  },
+  {
+    metric: "Claw-Eval Avg",
+    qwen35: "70.7",
+    claude: "76.6",
+    qwen36: "72.4",
+  },
+  {
+    metric: "Claw-Eval Pass^3",
+    qwen35: "48.1",
+    claude: "59.6",
+    qwen36: "60.6",
+  },
+  {
+    metric: "QwenClawBench",
+    qwen35: "51.8",
+    claude: "52.3",
+    qwen36: "53.4",
+  },
+];
+---
+
+<main class="relative z-10 bg-white text-gray-800">
+  <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-24 pb-14 lg:pt-28 lg:pb-16">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+    <div class="relative z-10 container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="fade-in-up inline-flex items-center px-4 py-2 mb-6 rounded-full border border-blue-100 bg-white text-blue-800 shadow-sm text-sm font-semibold">
+          Crafted by FIT2CLOUD
+        </div>
+        <h1 class="fade-in-up text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-normal mb-8" style="animation-delay: 0.2s;">
+          <span class="block text-gray-950 mb-4">1Panel AI Coding Appliance</span>
+        </h1>
+        <p class="fade-in-up text-xl sm:text-2xl text-gray-600 mb-10 leading-relaxed" style="animation-delay: 0.4s;">
+          Effortlessly meet air-gapped AI coding needs for 10-20 people — say goodbye to token anxiety!
+        </p>
+        <div class="fade-in-up flex flex-col sm:flex-row gap-4 justify-center" style="animation-delay: 0.5s;">
+          <a href="#contact" class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center">
+            Inquire via WeChat
+            <Icon name="carbon:arrow-down" class="ml-2 h-5 w-5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-white border-t border-gray-100">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="section-title text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+          The <span class="text-1panel-gradient">coding productivity revolution</span> for air-gapped environments
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {
+          strengths.map((item, index) => (
+            <article class={`fade-in-up rounded-lg bg-white border border-gray-100 p-6 lg:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.border} flex flex-col`} style={`animation-delay: ${index * 0.05}s;`}>
+              <div class="flex items-center gap-3 mb-4">
+                <span aria-hidden="true" class={`flex-shrink-0 w-11 h-11 rounded-lg ${item.iconBg} ${item.tone} flex items-center justify-center`}>
+                  <Icon name={item.icon} class="h-5 w-5" />
+                </span>
+                <h3 class="text-lg font-bold text-gray-900">{item.title}</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed flex-1">{item.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-gradient-to-b from-gray-50 to-white">
+    <div class="container-custom">
+      <div class="text-center mb-11">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+          From compute infrastructure to <span class="text-1panel-gradient">application development</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          From compute infrastructure and model capabilities to the DevOps toolchain — one-stop air-gapped AI coding.
+        </p>
+      </div>
+
+      <div class="overflow-hidden rounded-lg border border-blue-100 bg-white shadow-2xl shadow-blue-100/50">
+        <div class="grid grid-cols-1 gap-8 p-6 sm:p-8 lg:grid-cols-[280px_minmax(0,1fr)_280px] lg:gap-0 lg:p-9">
+
+          <div class="flex flex-col lg:pr-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 text-1panel">
+                <Icon name="carbon:security" class="h-5 w-5" />
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">Security & Compliance</h3>
+            </div>
+            <ul class="space-y-4">
+              {securityPoints.map((point) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+                    <Icon name="carbon:checkmark" class="h-3.5 w-3.5" />
+                  </span>
+                  <span class="text-gray-600 leading-relaxed">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="flex flex-col items-center border-y border-gray-100 py-8 lg:border-x lg:border-y-0 lg:px-8 lg:py-0">
+            <div class="w-full rounded-lg border border-gray-100 bg-gray-50/80 px-4 py-5 sm:px-6">
+              <div class="grid grid-cols-4 gap-1.5 sm:gap-2 w-full mb-5">
+                {architectureTiles.map((tile) => (
+                  <span class="min-h-10 rounded-md border border-gray-200 bg-white px-1 py-2 text-center text-[11px] font-medium leading-snug text-gray-800 shadow-sm sm:text-xs">{tile}</span>
+                ))}
+              </div>
+
+              <div class="grid grid-cols-4 gap-1.5 sm:gap-2 w-full mb-5">
+                {architectureModules.map((module) => (
+                  <span class="rounded-md bg-blue-50 px-1 py-3 text-center text-xs font-bold leading-snug text-1panel ring-1 ring-blue-100 sm:text-sm">{module}</span>
+                ))}
+              </div>
+
+              <div class="w-full rounded-md bg-white py-3 mb-3 text-center shadow-sm ring-1 ring-gray-100">
+                <span class="text-base sm:text-lg font-bold text-1panel">1Panel Enterprise</span>
+              </div>
+
+              <div class="w-full py-3 px-4 mb-3 bg-emerald-50/80 rounded-md border border-emerald-100 flex items-center justify-center gap-2.5">
+                <div class="w-7 h-7 rounded-md bg-white flex items-center justify-center flex-shrink-0 text-emerald-600 shadow-sm">
+                  <Icon name="carbon:machine-learning-model" class="h-4 w-4" />
+                </div>
+                <span class="text-sm font-bold text-emerald-700">Qwen3.6-27B</span>
+              </div>
+
+              <div class="w-full py-3 px-4 bg-blue-50/70 rounded-md border border-blue-100">
+                <div class="flex items-center justify-center gap-2 sm:gap-3 mb-2 flex-wrap">
+                  {hardwareBadges.map((badge) => (
+                    <span class="rounded-md border border-blue-200 bg-white px-3 py-1.5 text-[11px] font-medium text-blue-700 shadow-sm sm:text-xs">{badge}</span>
+                  ))}
+                </div>
+                <p class="text-sm font-bold text-center text-blue-600">High-Performance Compute Base</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col lg:pl-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-11 h-11 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0 text-amber-600">
+                <Icon name="carbon:flash" class="h-5 w-5" />
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">Efficient Operations</h3>
+            </div>
+            <ul class="space-y-4">
+              {operationPoints.map((point) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+                    <Icon name="carbon:checkmark" class="h-3.5 w-3.5" />
+                  </span>
+                  <span class="text-gray-600 leading-relaxed">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="bg-1panel-gradient py-7 text-center">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">Hardware-Software Synergy · Full-Stack Empowerment</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capability" class="pt-20 pb-8 lg:pt-32 lg:pb-10 bg-white border-t border-gray-100">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="section-title text-4xl lg:text-5xl font-bold text-gray-800 mb-6">AI Coding Capabilities</h2>
+        <p class="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Qwen3.6-27B outperforms Qwen3.5-397B-A17B across multiple dimensions, approaching Claude 4.5 Opus.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {
+          benchmarkHighlights.map((item, index) => (
+            <article class="fade-in-up rounded-lg border border-blue-100 bg-gradient-to-b from-white to-blue-50/40 p-5 text-center shadow-sm" style={`animation-delay: ${index * 0.04}s;`}>
+              <div class="text-3xl font-bold text-1panel mb-2">{item.value}</div>
+              <div class="text-sm font-medium text-gray-600">{item.label}</div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="rounded-lg border border-gray-100 bg-white shadow-xl shadow-gray-100/80 overflow-x-auto">
+        <table class="min-w-[760px] w-full border-collapse text-left">
+          <thead>
+            <tr class="bg-gray-50 text-sm text-gray-500">
+              <th class="px-5 py-4 font-semibold">Coding Agent</th>
+              <th class="px-5 py-4 font-semibold text-center">Qwen3.5-397B-A17B</th>
+              <th class="px-5 py-4 font-semibold text-center">Claude 4.5 Opus</th>
+              <th class="px-5 py-4 font-semibold text-center text-1panel bg-blue-50/70">Qwen3.6-27B</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              benchmarkRows.map((row) => (
+                <tr class="border-t border-gray-100 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-50/70">
+                  <td class="px-5 py-4 font-medium text-gray-900">{row.metric}</td>
+                  <td class="px-5 py-4 text-center">{row.qwen35}</td>
+                  <td class="px-5 py-4 text-center">{row.claude}</td>
+                  <td class="px-5 py-4 text-center font-semibold text-gray-900 bg-blue-50/30">{row.qwen36}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="pt-4 pb-20 lg:pt-6 lg:pb-32 bg-gradient-to-b from-white to-blue-50/60">
+    <div class="container-custom">
+      <div class="overflow-hidden rounded-lg border border-blue-100 bg-white p-8 shadow-2xl shadow-blue-100/60 flex flex-col md:flex-row gap-8 md:gap-0 md:items-center md:justify-center">
+        <div class="flex flex-col items-center md:items-end md:pr-12 flex-1 md:max-w-[420px]">
+          <div class="mb-5 flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+              <Icon name="carbon:purchase" class="h-6 w-6" />
+            </div>
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Limited-Time Offer</h2>
+          </div>
+          <div class="flex flex-wrap items-end justify-center md:justify-end gap-3 mb-5">
+            <span class="text-5xl font-bold text-gray-900">¥119K</span>
+            <span class="pb-2 text-lg text-gray-500">Includes 1-year hardware & software maintenance</span>
+          </div>
+          <p class="text-lg text-gray-600 leading-relaxed text-center md:text-right">
+            Scan the WeChat QR code to inquire about detailed performance specs and purchasing information for the AI Coding Appliance.
+          </p>
+        </div>
+
+        <div class="hidden md:block h-36 w-px bg-gray-200 mx-12"></div>
+
+        <div class="flex flex-col items-center flex-1 md:max-w-[320px]">
+          <img
+            src="/images/wecom-qrcode.png"
+            alt="WeChat QR Code Inquiry"
+            class="w-36 h-36 rounded-lg border border-blue-100 shadow-sm bg-white p-2 mb-3"
+            loading="lazy"
+          />
+          <p class="text-base font-semibold text-gray-800 text-center">Scan QR to get official benchmark data</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,238 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/skills-hub.html", siteUrl);
+const trialUrl = "mailto:sales@lxware.hk?subject=1Panel Enterprise Trial";
+
+const skillsKeywords = [
+  "Unified Management",
+  "Security Audit",
+  "Skill Archiving",
+  "Risk Assessment",
+  "Version Management",
+  "Governable",
+];
+
+const capabilityCards = [
+  {
+    icon: "carbon:headset",
+    title: "Unified Skill Management",
+    advantage:
+      "Centrally publish, discover, upload, import, manage, and maintain reusable Skills within the organization.",
+    benefit:
+      "Helps organizations build reusable AI skill assets, avoiding scattered management, version chaos, and redundant development.",
+  },
+  {
+    icon: "carbon:network-4",
+    title: "Multiple Import Methods",
+    advantage:
+      "Supports uploading skill packages and importing via repository or URL.",
+    benefit:
+      "Increases skill onboarding flexibility, making it easy for teams to quickly adopt and update existing skill assets.",
+  },
+  {
+    icon: "carbon:user-role",
+    title: "Custom Agent Support",
+    advantage:
+      "Install skills for different agent scenarios, reusing different versions of skills across the organization.",
+    benefit:
+      "Extends skill applicability, enabling teams to maintain skill reuse, version control, and unified management across diverse agent scenarios.",
+  },
+  {
+    icon: "carbon:cloud-offline",
+    title: "Version Management & Download",
+    advantage:
+      "Supports skill package version management and downloading for traceability, migration, backup, and reuse.",
+    benefit:
+      "Gives teams clear visibility into skill version provenance and change status, reducing upgrade and collaboration costs.",
+  },
+  {
+    icon: "carbon:security",
+    title: "Risk Level Assessment",
+    advantage:
+      "Conducts risk level assessment on skill packages, identifying potential security risks across versions.",
+    benefit:
+      "Helps administrators proactively detect high-risk skill versions, reducing the impact of unsafe skills.",
+  },
+  {
+    icon: "carbon:report",
+    title: "Security Audit",
+    advantage:
+      "Supports skill package security auditing, tracking version changes and usage to ensure auditability and governance.",
+    benefit:
+      "Enhances enterprise security and compliance control over skill version workflows and usage, meeting organizational governance requirements.",
+  },
+];
+
+const pageTitle = "1Panel Skills Hub - Enterprise Skills & Version Management";
+const pageDescription =
+  "1Panel Skills Hub enables publishing, discovering, managing, and maintaining reusable Skills within the organization, covering version management, risk assessment, and security auditing to ensure auditability and governance.";
+const skillsHubSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel Skills Hub",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "Skills management",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  url: pageUrl,
+  featureList: [
+    "Unified Skill Management",
+    "Multiple Import Methods",
+    "Custom Agent Support",
+    "Version Management & Download",
+    "Risk Level Assessment",
+    "Security Audit",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "FIT2CLOUD Hangzhou",
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel Skills Hub"
+  schemaName="1Panel Skills Hub"
+  description={pageDescription}
+  canonical="/skills-hub.html"
+  image="/images/enterprise-skills-hub.png"
+  imageWidth={3432}
+  imageHeight={2172}
+  imageAlt="1Panel Skills Hub"
+  keywords={[
+    "1Panel Skills Hub",
+    "Skills",
+    "Skill Package",
+    "Skill Archiving",
+    "Unified Management",
+    "Version Management",
+    "Security Audit",
+    "Risk Level Assessment",
+    "Auditable",
+    "Governable",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel Skills Hub", url: pageUrl },
+    ]),
+    skillsHubSchema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a href="/enterprise.html" class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50" style="animation-delay: 0.05s;">
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              Back to Enterprise
+            </a>
+            <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
+              1Panel Skills Hub
+            </h1>
+            <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
+              Publish, discover, manage, and maintain reusable Skills within your organization, covering version management, risk assessment, and security auditing.
+            </p>
+            <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
+              {skillsKeywords.map((keyword) => (
+                <span class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <a href={trialUrl} class="btn-primary fade-in-up mt-7 inline-flex items-center justify-center px-9 py-4 text-base" style="animation-delay: 0.32s;">
+              Request a Trial
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+
+          <div class="fade-in-up mt-8" style="animation-delay: 0.35s;">
+            <div class="relative overflow-hidden rounded-lg shadow-2xl shadow-blue-100/70">
+              <div class="relative overflow-hidden rounded-lg bg-gray-50">
+                <img
+                  src="/images/enterprise-skills-hub.png"
+                  alt="1Panel Skills Hub Features"
+                  class="h-auto w-full object-cover"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              Unified Management, Version Control
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              Centered on skill package publishing, discovery, import, version management, downloading, and auditing to help organizations build reusable skill assets.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {capabilityCards.map((capability, index) => (
+              <article
+                class="fade-in-up rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name={capability.icon} class="h-6 w-6" />
+                </span>
+                <h3 class="text-xl font-bold text-gray-900">{capability.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  <span class="font-semibold text-gray-800">Function: </span>{capability.advantage}
+                </p>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  <span class="font-semibold text-gray-800">Value: </span>{capability.benefit}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  Enterprise Skills Asset Management
+                </h2>
+                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                  1Panel Skills Hub helps enterprises build reusable skill assets through skill package upload, repository or URL import, custom agent installation, version management, skill package download, risk level assessment, and security auditing, ensuring skill version workflows and usage are auditable, governable, and secure.
+                </p>
+              </div>
+              <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+                Learn About Enterprise
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>

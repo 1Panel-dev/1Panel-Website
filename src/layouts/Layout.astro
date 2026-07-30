@@ -18,9 +18,12 @@ export interface Props {
   ogImageUrl?: string;
   /** Load homepage-only GitHub/download counters */
   enableHomepageStats?: boolean;
+  /** Extra structured data (schema.org JSON-LD) */
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 import { publicAsset } from '../lib/asset';
+import { SITE_URL, createOrganizationSchema, createWebPageSchema, createWebsiteSchema } from '../lib/seo';
 import Statistics from '../components/Statistics.astro';
 import LanguageModal from '../components/LanguageModal.astro';
 
@@ -42,9 +45,25 @@ const {
   keywords = "1Panel,Linux,server,github,panel,docker,container,website,database,management,wordpress,php",
   ogImageUrl,
   enableHomepageStats = false,
+  structuredData = [],
 } = Astro.props;
 const defaultOgImage = `${siteOrigin}/images/overview-full.png`;
 const resolvedOgImage = ogImageUrl ?? defaultOgImage;
+const extraStructuredData = Array.isArray(structuredData)
+  ? structuredData
+  : [structuredData];
+const structuredDataItems = [
+  createOrganizationSchema(),
+  createWebPageSchema({
+    title,
+    description,
+    url: canonicalUrl ?? siteOrigin,
+    image: resolvedOgImage,
+    keywords,
+  }),
+  ...(canonicalUrl === siteOrigin + '/' || canonicalUrl === siteOrigin ? [createWebsiteSchema()] : []),
+  ...extraStructuredData.filter(Boolean),
+];
 const interPreloadHrefs = [
   interLatinHref,
   ...(lang === 'tr' ? [interLatinExtHref] : []),
@@ -95,6 +114,9 @@ const htmlLang =
   
   {interPreloadHrefs.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
   <Statistics />
+  {structuredDataItems.map((item) => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)} />
+  ))}
   <slot name="head" />
 </head>
 <body class="bg-dark-900 text-gray-100 antialiased">

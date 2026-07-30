@@ -53,7 +53,7 @@ Example pages:
 - [GitHub Repository](https://github.com/1Panel-dev/1Panel) - source code, releases, and issue tracking.
 - [GitHub Discussions](https://github.com/1Panel-dev/1Panel/discussions) - community support and product discussion.
 - [GitHub Issues](https://github.com/1Panel-dev/1Panel/issues) - bug reports and feature requests.
-- Pro trial and sales email: `hi@lxware.hk`
+- Pro trial and sales email: `sales@lxware.hk`
 
 ## Languages and URL Patterns
 

@@ -1,0 +1,406 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Statistics from "../../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  createFAQPageSchema,
+  toAbsoluteUrl,
+  withBasePath,
+} from "../../lib/seo";
+import "../../styles/global.css";
+import { NON_DEFAULT_LOCALES } from '../../i18n/config';
+import { getTranslations, t, getBasePath } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.params;
+const translations = getTranslations(lang ?? 'en');
+const enFallback = getTranslations('en');
+const basePath = getBasePath(lang);
+function tt(p) {
+  const val = t(translations, p);
+  return val !== p ? val : t(enFallback, p);
+}
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const siteBase = import.meta.env.BASE_URL;
+const pageUrl = toAbsoluteUrl("/virtual-machine.html", siteUrl, siteBase);
+const homeUrl = toAbsoluteUrl("/", siteUrl, siteBase);
+const enterprisePageUrl = toAbsoluteUrl("/enterprise.html", siteUrl, siteBase);
+const enterprisePath = withBasePath("/enterprise.html", siteBase);
+const articlePath = withBasePath(
+  "/blog/kvm-web-ui-virtual-machine-management.html",
+  siteBase,
+);
+const overviewImagePath = withBasePath("/images/virtual-machine/overview.webp", siteBase);
+const trialUrl = "mailto:sales@lxware.hk?subject=1Panel Enterprise Trial";
+
+const searchIntentKeywords = [
+  "kvm web management tool",
+  "kvm web management interface",
+  "kvm web panel tool",
+  "kvm web management",
+];
+
+const vmKeywords = [
+  "Resource Overview",
+  "VM Lifecycle",
+  "Images & Templates",
+  "VNC Console",
+  "Network Management",
+  "Storage Pools",
+];
+
+const overviewHighlights = [
+  {
+    icon: "carbon:virtual-machine",
+    title: "Running Status Overview",
+    description:
+      "Aggregates started, stopped, creating, and error states to quickly grasp the overall VM health.",
+  },
+  {
+    icon: "carbon:chart-line-data",
+    title: "Resource Allocation Overview",
+    description:
+      "Centralized view of CPU, memory allocation, and storage usage to understand resource configuration and remaining capacity.",
+  },
+  {
+    icon: "carbon:clean",
+    title: "Risk Alerts & Orphan Data Cleanup",
+    description:
+      "Displays runtime environment and capacity risks, and supports scanning and cleaning orphan VM data.",
+  },
+  {
+    icon: "carbon:storage-pool",
+    title: "Storage Pool Overview",
+    description:
+      "Displays storage pool paths, usage rates, available capacity, and associated VMs for quick disk space awareness.",
+  },
+];
+
+const primaryFeature = {
+  icon: "carbon:virtual-machine",
+  title: "VM Lifecycle Management",
+  description:
+    "Supports both card and list views for centralized visibility of VM status, CPU, memory, disk, network, storage pool, and disk paths, along with creation, operation, and daily maintenance.",
+  points: [
+    "Multiple Creation Methods",
+    "Lifecycle Operations",
+    "Console & Monitoring",
+    "Snapshots & Templates",
+  ],
+};
+
+const resourceFeatures = [
+  {
+    icon: "carbon:image-reference",
+    title: "ISO Image Management",
+    description:
+      "Centrally maintain ISO image names, types, file paths, sizes, and status, supporting server selection, local upload, or remote download.",
+    points: ["Image Status Mgmt", "Image Path Info", "Local Image Upload", "Remote Image Download"],
+  },
+  {
+    icon: "carbon:copy-file",
+    title: "VM Template Reuse",
+    description:
+      "Convert existing VMs into templates, recording source VM, resource configuration, storage pool, disk path, and template size for rapid new VM creation.",
+    points: ["Source VM", "Resource Specs", "Template Capacity", "Create from Template"],
+  },
+  {
+    icon: "carbon:network-4",
+    title: "Virtual Network Management",
+    description:
+      "Supports creating and maintaining NAT and bridged networks, viewing CIDR, gateway, DHCP address ranges, associated VMs, and used IPs, with running status and auto-start management.",
+    points: ["Network Mode Mgmt", "Gateway Address Assignment", "VM Association", "Address Usage"],
+  },
+  {
+    icon: "carbon:storage-pool",
+    title: "Storage Pool Management",
+    description:
+      "Centrally manage local directory storage pools, viewing paths, running status, capacity, available space, and associated VMs, with auto-start configuration.",
+    points: ["Local Directory Storage", "Capacity Overview", "VM Association", "Auto-Start on Boot"],
+  },
+];
+
+const managementFeatures = [primaryFeature, ...resourceFeatures];
+
+const faqItems = [
+  {
+    question: "What is a KVM Web Management Tool?",
+    answer:
+      "A KVM web management tool provides a browser-based VM management interface, allowing administrators to view VM status, execute lifecycle operations, and maintain consoles and related resources, reducing dependence on the command line for daily operations.",
+  },
+  {
+    question: "What can 1Panel's KVM web management interface do?",
+    answer:
+      "1Panel Enterprise supports VM creation, start, stop, restart, pause, resume, force shutdown, and deletion, and provides VNC console, performance monitoring, snapshots & templates, as well as ISO image, network, and storage pool management.",
+  },
+  {
+    question: "What scenarios are KVM web panel tools suitable for?",
+    answer:
+      "They are suitable for server ops scenarios where teams want to maintain KVM/QEMU virtual machines through a visual interface. For teams already using 1Panel to manage websites, databases, containers, and server systems, they can continue to maintain VMs and associated resources from a unified entry point.",
+  },
+  {
+    question: "How to choose between 1Panel KVM web management and common alternatives?",
+    answer:
+      "Cockpit, WebVirtCloud, Kimchi, Proxmox VE, and 1Panel each have different product positioning and use cases. 1Panel Enterprise is better suited for enterprise teams looking to integrate KVM VM management into their existing 1Panel server operations workflow.",
+  },
+];
+
+const pageTitle = "KVM Web Management Tool - 1Panel Enterprise VM Management";
+const pageDescription =
+  "1Panel Enterprise provides a web management tool and visual interface for KVM/QEMU, supporting VM lifecycle, VNC console, performance monitoring, images, templates, network, and storage pool management.";
+const virtualMachineSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel KVM Web VM Management",
+  alternateName: [
+    "1Panel Enterprise VM Management",
+    "1Panel KVM Web Management Tool",
+    "1Panel KVM Web Management Interface",
+  ],
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "Virtual machine management",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  keywords: [
+    ...searchIntentKeywords,
+    "KVM Web UI",
+    "KVM VM Management",
+    "QEMU VM Management",
+  ].join(","),
+  url: pageUrl,
+  softwareRequirements: "1Panel Enterprise",
+  audience: {
+    "@type": "BusinessAudience",
+    audienceType: "Enterprise ops and infrastructure management teams",
+  },
+  featureList: [
+    "VM Resource Overview",
+    "VM Lifecycle Management",
+    "VNC Console",
+    "Performance Monitoring",
+    "Snapshots & Templates",
+    "ISO Image Management",
+    "NAT & Bridged Networks",
+    "Storage Pool Management",
+    "Orphan Data Cleanup",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "FIT2CLOUD Hangzhou",
+  },
+  isPartOf: {
+    "@id": `${enterprisePageUrl}#product`,
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel KVM Web VM Management"
+  schemaName="1Panel KVM Web VM Management"
+  description={pageDescription}
+  canonical="/virtual-machine.html"
+  image="/images/virtual-machine/overview.webp"
+  imageWidth={1918}
+  imageHeight={1214}
+  imageAlt="1Panel Enterprise KVM Web VM Management Overview"
+  modifiedTime="2026-07-14"
+  keywords={[
+    ...searchIntentKeywords,
+    "KVM Web UI",
+    "KVM VM Management",
+    "QEMU VM Management",
+    "1Panel VM Management",
+    "VM Management",
+    "VM Lifecycle",
+    "VNC Console",
+    "VM Monitoring",
+    "VM Snapshots",
+    "VM Templates",
+    "ISO Images",
+    "VM Networks",
+    "VM Storage Pools",
+    "Orphan Data Cleanup",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel", url: homeUrl },
+      { name: "1Panel VM Management", url: pageUrl },
+    ]),
+    virtualMachineSchema,
+    createFAQPageSchema({ url: pageUrl, items: faqItems }),
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header lang={lang} basePath={basePath} translations={translations} />
+    <main class="relative z-10 bg-white text-gray-800">
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a href={enterprisePath} class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50" style="animation-delay: 0.05s;">
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              Back to Enterprise
+            </a>
+            <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
+              VM Management
+            </h1>
+            <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
+              KVM Web UI VM management platform — centrally manage VMs, images, templates, networks, and storage pools, from resource overview to runtime operations in one place.
+            </p>
+            <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
+              {vmKeywords.map((keyword) => (
+                <span class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <a href={trialUrl} class="btn-primary fade-in-up mt-7 inline-flex items-center justify-center px-9 py-4 text-base" style="animation-delay: 0.32s;">
+              Request a Trial
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+
+          <div class="fade-in-up mt-8" style="animation-delay: 0.35s;">
+            <div class="relative overflow-hidden rounded-lg shadow-2xl shadow-blue-100/70">
+              <div class="relative overflow-hidden rounded-lg bg-gray-50">
+                <img
+                  src={overviewImagePath}
+                  alt="1Panel VM Running Status & Resource Overview"
+                  class="h-auto w-full object-cover"
+                  width="1918"
+                  height="1214"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              Running Status & Resource Usage at a Glance
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              From VM running status and resource allocation to storage pool capacity and risk alerts, centrally presenting the key status of your virtualization environment.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {overviewHighlights.map((item, index) => (
+              <article
+                class="fade-in-up rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name={item.icon} class="h-6 w-6" />
+                </span>
+                <h3 class="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-50 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              From VMs to Associated Resources, Unified Maintenance
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              Centered on the images, templates, network, and storage resources needed for VM operation, providing a clear and consistent management entry point.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
+            {managementFeatures.map((feature, index) => (
+              <article
+                class={`fade-in-up flex h-full flex-col rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""}`}
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name={feature.icon} class="h-6 w-6" />
+                </span>
+                <h3 class="text-xl font-bold text-gray-900">{feature.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">{feature.description}</p>
+                <div class="mt-auto grid grid-cols-2 gap-2 pt-5">
+                  {feature.points.map((point) => (
+                    <span class="flex min-h-8 items-center justify-center rounded-md bg-blue-50 px-3 py-1.5 text-center text-xs font-semibold text-1panel">{point}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-50 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              KVM Web Management FAQ
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              Learn about the capabilities of KVM web management tools and the use cases best suited for 1Panel Enterprise.
+            </p>
+          </div>
+
+          <div class="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2">
+            {faqItems.map((item, index) => (
+              <article
+                class="fade-in-up rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-blue-100 hover:shadow-lg"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <h3 class="text-xl font-bold leading-snug text-gray-900">{item.question}</h3>
+                <p class="mt-4 text-sm leading-relaxed text-gray-600">{item.answer}</p>
+              </article>
+            ))}
+          </div>
+
+          <p class="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-gray-600">
+            To learn more about the positioning of different KVM Web UI solutions, see
+            <a href={articlePath} class="font-semibold text-1panel hover:underline">1Panel Enterprise KVM VM Management Updates</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="bg-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  Centralized VM Management for Enterprise Servers
+                </h2>
+                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                  1Panel VM Management consolidates resource overview, lifecycle operations, VNC console, performance monitoring, snapshots & templates, as well as ISO images, network, and storage pool management into a unified interface, helping administrators maintain VMs and their associated resources with greater clarity.
+                </p>
+              </div>
+              <a href={enterprisePath} class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+                Learn About Enterprise
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <Footer lang={lang} basePath={basePath} translations={translations} />
+  </Fragment>
+</Layout>

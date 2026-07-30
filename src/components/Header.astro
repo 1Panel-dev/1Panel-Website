@@ -75,8 +75,49 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
           <span>{t(translations, 'header.pricing')}</span>
           <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
         </a>
-        <a href={`${prefix}/blog`} class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
-          <span>{t(translations, 'header.blog')}</span>
+        <!-- Enterprise Dropdown -->
+        <div class="relative" id="enterprise-dropdown-desktop">
+          <button type="button" data-enterprise-trigger class="group relative inline-flex h-10 items-center gap-1 rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30" aria-haspopup="true" aria-expanded="false">
+            <span>{t(translations, 'header.enterprise')}</span>
+            <Icon name="tabler:chevron-down" data-enterprise-chevron class="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200" />
+            <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
+          </button>
+          <div data-enterprise-menu class="pointer-events-none invisible fixed z-[9999]" style="top: 0; left: 0;">
+            <div class="w-56 overflow-hidden rounded-2xl border border-gray-200 bg-white p-1.5 shadow-[0_22px_56px_-28px_rgba(15,23,42,0.3)]" role="menu">
+              <a href={`${prefix}/enterprise`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+                <Icon name="carbon:enterprise" class="h-4 w-4 shrink-0 text-gray-400" />
+                <span>{t(translations, 'header.enterpriseOverview')}</span>
+              </a>
+              <div class="my-1 h-px bg-gray-100"></div>
+              <a href={`${prefix}/ai-portal`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+                <Icon name="carbon:application-web" class="h-4 w-4 shrink-0 text-gray-400" />
+                <span>{t(translations, 'header.aiPortal')}</span>
+              </a>
+              <a href={`${prefix}/ai-gateway`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+                <Icon name="carbon:gateway" class="h-4 w-4 shrink-0 text-gray-400" />
+                <span>{t(translations, 'header.aiGateway')}</span>
+              </a>
+              <a href={`${prefix}/skills-hub`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+                <Icon name="carbon:headset" class="h-4 w-4 shrink-0 text-gray-400" />
+                <span>{t(translations, 'header.skillsHub')}</span>
+              </a>
+              <a href={`${prefix}/user-management`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+                <Icon name="carbon:user-multiple" class="h-4 w-4 shrink-0 text-gray-400" />
+                <span>{t(translations, 'header.userManagement')}</span>
+              </a>
+              <a href={`${prefix}/virtual-machine`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+                <Icon name="carbon:virtual-machine" class="h-4 w-4 shrink-0 text-gray-400" />
+                <span>{t(translations, 'header.vmManagement')}</span>
+              </a>
+              <a href={`${prefix}/security-ops-report`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+                <Icon name="carbon:report" class="h-4 w-4 shrink-0 text-gray-400" />
+                <span>{t(translations, 'header.securityOpsReport')}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href={`${prefix}/deepseek-appliance`} class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
+          <span>{t(translations, 'header.aiAppliances')}</span>
           <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
         </a>
         <a href="https://1panel.pro/docs/" target="_blank" class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
@@ -108,7 +149,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
           <Icon name="carbon:demo" class="h-5 w-5" />
           {t(translations, 'header.demo')}
         </a>
-        <a href="mailto:hi@lxware.hk?subject=1Panel Pro: 30-Day Free Trial Request" target="_blank" class="free-trial-button btn-primary inline-flex h-11 min-w-[132px] items-center justify-center gap-2 whitespace-nowrap rounded-full !px-4 !py-2.5 text-sm !font-medium shadow-[0_18px_44px_-28px_rgba(0,94,235,0.65)] transition-all duration-200 hover:!scale-100 hover:shadow-[0_24px_48px_-28px_rgba(0,94,235,0.45)]">
+        <a href="mailto:sales@lxware.hk?subject=1Panel Pro: 30-Day Free Trial Request" target="_blank" class="free-trial-button btn-primary inline-flex h-11 min-w-[132px] items-center justify-center gap-2 whitespace-nowrap rounded-full !px-4 !py-2.5 text-sm !font-medium shadow-[0_18px_44px_-28px_rgba(0,94,235,0.65)] transition-all duration-200 hover:!scale-100 hover:shadow-[0_24px_48px_-28px_rgba(0,94,235,0.45)]">
           <Icon name="carbon:email" class="h-5 w-5" />
           {t(translations, 'header.freeTrial')}
         </a>
@@ -152,11 +193,41 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
           >
             {t(translations, 'header.pricing')}
           </a>
+          <!-- Mobile Enterprise accordion -->
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition list-none">
+              <span>{t(translations, 'header.enterprise')}</span>
+              <Icon name="tabler:chevron-down" class="h-4 w-4 shrink-0 text-gray-400 transition group-open:rotate-180" />
+            </summary>
+            <div class="ml-3 mt-1 flex flex-col gap-1 border-l-2 border-gray-100 pl-3">
+              <a href={`${prefix}/enterprise`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+                {t(translations, 'header.enterpriseOverview')}
+              </a>
+              <a href={`${prefix}/ai-portal`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+                {t(translations, 'header.aiPortal')}
+              </a>
+              <a href={`${prefix}/ai-gateway`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+                {t(translations, 'header.aiGateway')}
+              </a>
+              <a href={`${prefix}/skills-hub`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+                {t(translations, 'header.skillsHub')}
+              </a>
+              <a href={`${prefix}/user-management`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+                {t(translations, 'header.userManagement')}
+              </a>
+              <a href={`${prefix}/virtual-machine`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+                {t(translations, 'header.vmManagement')}
+              </a>
+              <a href={`${prefix}/security-ops-report`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+                {t(translations, 'header.securityOpsReport')}
+              </a>
+            </div>
+          </details>
           <a
-            href={`${prefix}/blog`}
+            href={`${prefix}/deepseek-appliance`}
             class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"
           >
-            {t(translations, 'header.blog')}
+            {t(translations, 'header.aiAppliances')}
           </a>
           <a
             href="https://github.com/1Panel-dev/1Panel/discussions"
@@ -205,7 +276,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
             {t(translations, 'header.demo')}
           </a>
           <a
-            href="mailto:hi@lxware.hk"
+            href="mailto:sales@lxware.hk"
             target="_blank"
             class="btn-primary text-base px-4 py-3 rounded-lg flex items-center justify-center font-semibold"
           >
@@ -358,6 +429,132 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
       window.addEventListener('scroll', () => {
         if (desktopLangTrigger.getAttribute('aria-expanded') === 'true') {
           updateLangMenuPosition();
+        }
+      }, true);
+    }
+
+    // Enterprise dropdown behavior
+    const enterpriseDropdown = document.getElementById('enterprise-dropdown-desktop');
+    const enterpriseTrigger = enterpriseDropdown?.querySelector('[data-enterprise-trigger]');
+    const enterpriseMenu = enterpriseDropdown?.querySelector('[data-enterprise-menu]');
+    const enterpriseChevron = enterpriseDropdown?.querySelector('[data-enterprise-chevron]');
+
+    if (enterpriseDropdown && enterpriseTrigger) {
+      if (enterpriseMenu instanceof HTMLElement && enterpriseMenu.parentElement !== document.body) {
+        document.body.appendChild(enterpriseMenu);
+      }
+
+      let enterpriseCloseTimer = null;
+
+      const updateEnterpriseMenuPosition = () => {
+        if (!(enterpriseTrigger instanceof HTMLElement) || !(enterpriseMenu instanceof HTMLElement)) return;
+
+        const rect = enterpriseTrigger.getBoundingClientRect();
+        const menuWidth = enterpriseMenu.offsetWidth || 224;
+        const viewportPadding = 16;
+        const left = Math.min(
+          Math.max(viewportPadding, rect.right - menuWidth),
+          window.innerWidth - menuWidth - viewportPadding
+        );
+        const top = rect.bottom + 8;
+
+        enterpriseMenu.style.left = `${left}px`;
+        enterpriseMenu.style.top = `${top}px`;
+      };
+
+      const setEnterpriseExpanded = (expanded) => {
+        enterpriseTrigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        if (!(enterpriseMenu instanceof HTMLElement)) return;
+
+        enterpriseMenu.classList.toggle('pointer-events-none', !expanded);
+        enterpriseMenu.classList.toggle('invisible', !expanded);
+        enterpriseMenu.classList.toggle('pointer-events-auto', expanded);
+        enterpriseMenu.classList.toggle('visible', expanded);
+
+        if (enterpriseChevron instanceof HTMLElement) {
+          enterpriseChevron.classList.toggle('rotate-180', expanded);
+        }
+      };
+
+      const clearEnterpriseCloseTimer = () => {
+        if (enterpriseCloseTimer) {
+          window.clearTimeout(enterpriseCloseTimer);
+          enterpriseCloseTimer = null;
+        }
+      };
+
+      const openEnterpriseMenu = () => {
+        clearEnterpriseCloseTimer();
+        updateEnterpriseMenuPosition();
+        setEnterpriseExpanded(true);
+      };
+
+      const closeEnterpriseMenu = () => {
+        clearEnterpriseCloseTimer();
+        setEnterpriseExpanded(false);
+      };
+
+      const scheduleEnterpriseClose = () => {
+        clearEnterpriseCloseTimer();
+        enterpriseCloseTimer = window.setTimeout(() => {
+          closeEnterpriseMenu();
+        }, 80);
+      };
+
+      enterpriseDropdown.addEventListener('mouseenter', openEnterpriseMenu);
+      enterpriseDropdown.addEventListener('mouseleave', scheduleEnterpriseClose);
+      enterpriseDropdown.addEventListener('focusin', openEnterpriseMenu);
+      enterpriseDropdown.addEventListener('focusout', (event) => {
+        const nextTarget = event.relatedTarget;
+        if (nextTarget instanceof Node && (enterpriseDropdown.contains(nextTarget) || (enterpriseMenu instanceof HTMLElement && enterpriseMenu.contains(nextTarget)))) return;
+        scheduleEnterpriseClose();
+      });
+      enterpriseDropdown.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeEnterpriseMenu();
+          const activeElement = document.activeElement;
+          if (activeElement instanceof HTMLElement && enterpriseDropdown.contains(activeElement)) {
+            activeElement.blur();
+          }
+        }
+      });
+      enterpriseTrigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isExpanded = enterpriseTrigger.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          closeEnterpriseMenu();
+        } else {
+          openEnterpriseMenu();
+        }
+      });
+      if (enterpriseMenu instanceof HTMLElement) {
+        enterpriseMenu.addEventListener('mouseenter', openEnterpriseMenu);
+        enterpriseMenu.addEventListener('mouseleave', scheduleEnterpriseClose);
+        enterpriseMenu.addEventListener('focusout', (event) => {
+          const nextTarget = event.relatedTarget;
+          if (nextTarget instanceof Node && (enterpriseMenu.contains(nextTarget) || enterpriseDropdown.contains(nextTarget))) return;
+          scheduleEnterpriseClose();
+        });
+        enterpriseMenu.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeEnterpriseMenu();
+            if (enterpriseTrigger instanceof HTMLElement) {
+              enterpriseTrigger.focus();
+            }
+          }
+        });
+      }
+      document.addEventListener('pointerdown', (event) => {
+        const target = event.target;
+        if (!(target instanceof Node)) return;
+        if (enterpriseDropdown.contains(target)) return;
+        if (enterpriseMenu instanceof HTMLElement && enterpriseMenu.contains(target)) return;
+        closeEnterpriseMenu();
+      });
+      window.addEventListener('resize', updateEnterpriseMenuPosition);
+      window.addEventListener('scroll', () => {
+        if (enterpriseTrigger.getAttribute('aria-expanded') === 'true') {
+          updateEnterpriseMenuPosition();
         }
       }, true);
     }

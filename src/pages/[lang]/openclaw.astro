@@ -1,0 +1,157 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Statistics from '../../components/Statistics.astro';
+import { Icon } from 'astro-icon/components';
+import { NON_DEFAULT_LOCALES } from '../../i18n/config';
+import { getTranslations, t } from '../../i18n/utils';
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.params;
+const translations = getTranslations(lang ?? 'en');
+const enFallback = getTranslations('en');
+function tt(path: string): string {
+  const val = t(translations, path);
+  return val !== path ? val : t(enFallback, path);
+}
+
+const basePath = '../';
+const pageTitle = tt('aiAssistantAppliance.pageTitle');
+const pageDescription = tt('aiAssistantAppliance.pageDescription');
+const canonicalUrl = new URL(`/${lang}/openclaw`, Astro.site).href;
+const salesMailto = 'mailto:sales@lxware.hk?subject=' + encodeURIComponent('1Panel AI Assistant Appliance Demo');
+
+const pageKeywords = [
+  "1Panel AI Assistant Appliance",
+  "GB10 Appliance",
+  "AI Appliance",
+  "Local AI Assistant",
+  "On-Premises AI Deployment",
+  "Team-Level AI Deployment",
+  "FusionXpark",
+  "OpenClaw",
+  "Hermes",
+  "QwenPaw",
+];
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle={pageTitle}
+  schemaName="1Panel AI Assistant Appliance (GB10 Edition)"
+  description={pageDescription}
+  lang={lang}
+  basePath={basePath}
+  canonicalUrl={canonicalUrl}
+  image="/images/fusionxpark.png"
+  imageAlt="1Panel AI Assistant Appliance Product Image"
+  keywords={pageKeywords}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header lang={lang} basePath={basePath} translations={translations} />
+    <main class="relative z-10">
+    <section id="heroSection" class="relative min-h-[80vh] flex items-center overflow-hidden bg-gray-50">
+      <div class="relative z-10 container-custom pt-28 pb-20 lg:pt-32 lg:pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="text-center lg:text-left">
+            <div class="fade-in-up inline-flex items-center px-4 py-2 mb-6 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+              {tt('aiAssistantAppliance.badge')}
+            </div>
+            <h1 class="fade-in-up text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8" style="animation-delay: 0.2s;">
+              <span class="block text-gray-800 mb-4">{tt('aiAssistantAppliance.heroTitleLine1')}</span>
+              <span class="block text-1panel-gradient mb-2 leading-light">{tt('aiAssistantAppliance.heroTitleLine2')}</span>
+            </h1>
+            <p class="fade-in-up text-xl sm:text-2xl text-gray-500 mb-10 leading-relaxed" style="animation-delay: 0.4s;">
+              {tt('aiAssistantAppliance.heroDescription')}
+            </p>
+            <div class="fade-in-up flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" style="animation-delay: 0.5s;">
+              <a href={salesMailto} class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center">
+                {tt('enterpriseShared.bookDemo')}
+              </a>
+              <a href="https://www.bilibili.com/video/BV1scwxzvEsv/" target="_blank" class="btn-secondary text-lg px-8 py-4 inline-flex items-center justify-center">
+                {tt('enterpriseShared.watchVideo')}
+              </a>
+            </div>
+          </div>
+          <div class="fade-in-up flex justify-center lg:justify-end" style="animation-delay: 0.3s;">
+            <div class="w-full max-w-md lg:max-w-lg">
+              <img
+                src="/images/fusionxpark.png"
+                alt="FusionXpark Product Image"
+                class="mx-auto max-h-[460px] w-auto max-w-full object-contain"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-gradient-to-b from-gray-50 to-white">
+      <div class="container-custom">
+        <div class="soft-hard-section rounded-3xl bg-white border border-gray-100 shadow-sm shadow-gray-200/60 overflow-hidden">
+          <div class="px-6 sm:px-10 pt-10 pb-8 text-center border-b border-gray-100">
+            <h2 class="section-title text-4xl lg:text-5xl font-bold text-gray-800 mb-6">{tt('aiAssistantAppliance.sectionTitle')}</h2>
+            <p class="section-subtitle text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">{tt('aiAssistantAppliance.sectionDescription')}</p>
+          </div>
+
+          <div class="p-6 sm:p-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              <div class="soft-hard-card rounded-xl bg-gray-50/80 border border-gray-100 p-5 transition-all duration-200 hover:border-indigo-100 hover:shadow-md">
+                <div class="w-11 h-11 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold text-base mb-3">Mgmt</div>
+                <h3 class="text-base font-bold text-gray-900 mb-1.5">1Panel Enterprise</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">1Panel provides an intuitive Web management interface, making it easy to deploy and manage AI agents and models.</p>
+              </div>
+              <div class="soft-hard-card rounded-xl bg-gray-50/80 border border-gray-100 p-5 transition-all duration-200 hover:border-indigo-100 hover:shadow-md">
+                <div class="w-11 h-11 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold text-base mb-3">Model</div>
+                <h3 class="text-base font-bold text-gray-900 mb-1.5">Local AI Models</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">Runs Qwen3.6-35B-A3B-FP8 multimodal model on vLLM — high intelligence density with efficient concurrency.</p>
+              </div>
+              <div class="soft-hard-card rounded-xl bg-gray-50/80 border border-gray-100 p-5 transition-all duration-200 hover:border-indigo-100 hover:shadow-md">
+                <div class="w-11 h-11 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold text-base mb-3">Smart</div>
+                <h3 class="text-base font-bold text-gray-900 mb-1.5">AI Assistants That Deliver</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">Supports running multiple OpenClaw, Hermes, and QwenPaw instances simultaneously, integrates with mainstream Chinese messaging apps, and comes with built-in Skills.</p>
+              </div>
+            </div>
+
+            <div class="mt-6 rounded-xl bg-gradient-to-r from-gray-50 to-indigo-50/40 border border-gray-100 border-t-2 border-t-indigo-200 p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg shrink-0">HW</div>
+              <div class="min-w-0">
+                <h3 class="text-base font-bold text-gray-900 mb-1">FusionXpark Hardware</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-16 lg:py-24">
+      <div class="container-custom">
+        <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+          <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                {tt('aiAssistantAppliance.heroTitleLine1')}
+              </h2>
+              <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                {tt('aiAssistantAppliance.pageDescription')}
+              </p>
+            </div>
+            <a href={salesMailto} class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+              {tt('enterpriseShared.contactSales')}
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+    <Footer lang={lang} basePath={basePath} translations={translations} />
+  </Fragment>
+</Layout>

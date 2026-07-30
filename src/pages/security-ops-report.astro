@@ -1,0 +1,264 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/security-ops-report.html", siteUrl);
+const trialUrl = "mailto:sales@lxware.hk?subject=1Panel Enterprise Trial";
+
+const reportKeywords = [
+  "Risk Overview",
+  "Ops Status",
+  "Report Archiving",
+  "Security Inspection",
+  "Action Items",
+];
+
+const capabilityCards = [
+  {
+    icon: "carbon:report",
+    title: "Risk Overview",
+    advantage:
+      "Aggregates key status from system, security, website, and operations perspectives, presenting risk items that need attention.",
+    benefit:
+      "Helps administrators quickly understand overall security and operations status, prioritizing high-risk issues.",
+  },
+  {
+    icon: "carbon:application",
+    title: "Host Running Status",
+    advantage:
+      "Displays host running status in report format for easy server health monitoring.",
+    benefit:
+      "Reduces daily inspection costs and helps administrators detect host anomalies promptly.",
+  },
+  {
+    icon: "carbon:security",
+    title: "Login & Security Config",
+    advantage:
+      "Summarizes login-related status and security configurations to help administrators verify security policies.",
+    benefit:
+      "Enhances account access and system login security, reducing risks from misconfigurations.",
+  },
+  {
+    icon: "carbon:gateway",
+    title: "Website Protection",
+    advantage:
+      "Displays website protection status to help administrators monitor website-side security.",
+    benefit:
+      "Facilitates timely identification of pending website security items, improving website operation security.",
+  },
+  {
+    icon: "carbon:chart-line-data",
+    title: "Running Resources",
+    advantage:
+      "Aggregates resource running status into viewable and trackable report data.",
+    benefit:
+      "Helps administrators understand resource usage, providing a basis for optimization and troubleshooting.",
+  },
+  {
+    icon: "carbon:settings",
+    title: "Scheduled Tasks",
+    advantage:
+      "Displays scheduled task execution status, helping administrators monitor automation task health.",
+    benefit:
+      "Reduces the chance of ignored task anomalies, improving operational stability.",
+  },
+  {
+    icon: "carbon:network-4",
+    title: "Alert Notifications",
+    advantage:
+      "Summarizes alert notification configuration and status for unified visibility into alerting capabilities.",
+    benefit:
+      "Helps administrators promptly detect alert pipeline issues, ensuring anomalies are perceived in time.",
+  },
+  {
+    icon: "carbon:cloud-offline",
+    title: "Export History",
+    advantage:
+      "Supports viewing report export history for traceability and archiving of security ops records.",
+    benefit:
+      "Enables organizations to retain ops reports for internal review, audit, and management needs.",
+  },
+  {
+    icon: "carbon:settings",
+    title: "Report Settings",
+    advantage:
+      "Supports configuration management of security ops report capabilities.",
+    benefit:
+      "Increases report flexibility, allowing adjustments based on actual enterprise scenarios.",
+  },
+];
+
+const pageTitle = "Security Ops Report - 1Panel Security Inspection & Ops Reports";
+const pageDescription =
+  "Security Ops Reports consolidate key status from system, model, agent, website, security, and operations perspectives into reports, helping administrators identify items requiring attention.";
+const securityOpsReportSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel Security Ops Report",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "Security operations report",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  url: pageUrl,
+  featureList: [
+    "Risk Overview",
+    "Host Running Status",
+    "Login & Security Config",
+    "Website Protection",
+    "Running Resources",
+    "Scheduled Tasks",
+    "Alert Notifications",
+    "Export History",
+    "Report Settings",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "FIT2CLOUD Hangzhou",
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel Security Ops Report"
+  schemaName="1Panel Security Ops Report"
+  description={pageDescription}
+  canonical="/security-ops-report.html"
+  image="/images/enterprise-security-ops-report.png"
+  imageWidth={3432}
+  imageHeight={2172}
+  imageAlt="1Panel Security Ops Report"
+  keywords={[
+    "1Panel Security Ops Report",
+    "Security Ops Report",
+    "Risk Overview",
+    "Ops Status",
+    "Report Archiving",
+    "Security Inspection",
+    "Action Items",
+    "Host Running",
+    "Website Protection",
+    "Alert Notifications",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel Security Ops Report", url: pageUrl },
+    ]),
+    securityOpsReportSchema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a href="/enterprise.html" class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50" style="animation-delay: 0.05s;">
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              Back to Enterprise
+            </a>
+            <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
+              Security Ops Report
+            </h1>
+            <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
+              Consolidate key status from system, model, agent, website, security, and operations perspectives into reports, helping administrators identify action items.
+            </p>
+            <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
+              {reportKeywords.map((keyword) => (
+                <span class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <a href={trialUrl} class="btn-primary fade-in-up mt-7 inline-flex items-center justify-center px-9 py-4 text-base" style="animation-delay: 0.32s;">
+              Request a Trial
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+
+          <div class="fade-in-up mt-8" style="animation-delay: 0.35s;">
+            <div class="relative overflow-hidden rounded-lg shadow-2xl shadow-blue-100/70">
+              <div class="relative overflow-hidden rounded-lg bg-gray-50">
+                <img
+                  src="/images/enterprise-security-ops-report.png"
+                  alt="1Panel Security Ops Report Features"
+                  class="h-auto w-full object-cover"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              Risk Overview, Ops Status
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              Centered on overview, host running, login & security config, website protection, running resources, scheduled tasks, alert notifications, export history, and settings to build security ops reports.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {capabilityCards.map((capability, index) => (
+              <article
+                class="fade-in-up rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <span class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name={capability.icon} class="h-6 w-6" />
+                </span>
+                <h3 class="text-xl font-bold text-gray-900">{capability.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  <span class="font-semibold text-gray-800">Function: </span>{capability.advantage}
+                </p>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  <span class="font-semibold text-gray-800">Value: </span>{capability.benefit}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  Security Inspection & Report Archiving for Administrators
+                </h2>
+                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                  The Security Ops Report consolidates key status from system, model, agent, website, security, and operations perspectives in 1Panel into unified reports. Through risk overview, host running, login & security config, website protection, running resources, scheduled tasks, alert notifications, export history, and settings, it helps administrators quickly identify action items and improve daily security inspection and ops management efficiency.
+                </p>
+              </div>
+              <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+                Learn About Enterprise
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>

@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import AIGeneralAppliancePage from "../components/AIGeneralAppliancePage.astro";
+import { getTranslations, getBasePath } from "../i18n/utils";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const lang = 'en';
+const translations = getTranslations(lang);
+const basePath = getBasePath(undefined);
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/deepseek-appliance.html", siteUrl);
+const pageTitle = "1Panel AI General Appliance: Premier Choice for On-Premises DeepSeek Deployment";
+const pageDescription =
+  "1Panel AI General Appliance integrates compute power, model services, and AI applications with a hyper-converged approach, delivering turnkey AI infrastructure that turns AI into enterprise productivity.";
+const pageKeywords = [
+  "AI Appliance",
+  "1Panel AI Appliance",
+  "Hyper-Converged AI",
+  "On-Premises AI",
+  "DeepSeek On-Premises",
+  "DeepSeek Appliance",
+  "Enterprise AI Infrastructure",
+  "Air-Gapped AI",
+];
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle={pageTitle}
+  schemaName={pageTitle}
+  description={pageDescription}
+  canonical="/deepseek-appliance.html"
+  keywords={pageKeywords}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel", url: toAbsoluteUrl("/", siteUrl) },
+      { name: pageTitle, url: pageUrl },
+    ]),
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <AIGeneralAppliancePage translations={translations} lang={lang} basePath={basePath} />
+    <Footer />
+  </Fragment>
+</Layout>

@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Statistics from '../../components/Statistics.astro';
+import AICodingAppliancePage from '../../components/AICodingAppliancePage.astro';
+import { NON_DEFAULT_LOCALES } from '../../i18n/config';
+import { getTranslations, t } from '../../i18n/utils';
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.params;
+const translations = getTranslations(lang ?? 'en');
+const enFallback = getTranslations('en');
+function tt(path: string): string {
+  const val = t(translations, path);
+  return val !== path ? val : t(enFallback, path);
+}
+
+const pageTitle = tt('aiCodingAppliance.pageTitle');
+const pageDescription = tt('aiCodingAppliance.pageDescription');
+const canonicalUrl = new URL(`/${lang}/aicoding`, Astro.site).href;
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle={pageTitle}
+  schemaName="1Panel AI Coding Appliance"
+  description={pageDescription}
+  lang={lang}
+  canonicalUrl={canonicalUrl}
+  image="/images/aicoding-b70.png"
+  imageAlt="1Panel AI Coding Appliance Product Image"
+  keywords="AI Coding Appliance, Air-Gapped AI, B70 Appliance, Private AI Coding, Enterprise Code Security"
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header lang={lang} basePath="../" translations={translations} />
+    <AICodingAppliancePage
+      partner={tt('aiCodingAppliance.partner')}
+      hardware={tt('aiCodingAppliance.hardware')}
+      hardwareDetail={tt('aiCodingAppliance.hardwareDetail')}
+    />
+    <Footer lang={lang} basePath="../" translations={translations} />
+  </Fragment>
+</Layout>
