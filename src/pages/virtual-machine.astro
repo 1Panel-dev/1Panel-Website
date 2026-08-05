@@ -23,6 +23,10 @@ const articlePath = withBasePath(
   "/blog/kvm-web-ui-virtual-machine-management.html",
   siteBase,
 );
+const comparisonArticlePath = withBasePath(
+  "/blog/cockpit-vs-1panel-kvm-web-management.html",
+  siteBase,
+);
 const overviewImagePath = withBasePath("/images/virtual-machine/overview.webp", siteBase);
 const trialUrl = "https://jsj.top/f/umuYtv";
 
@@ -198,7 +202,7 @@ const virtualMachineSchema = {
   imageWidth={1918}
   imageHeight={1214}
   imageAlt="1Panel 企业版 KVM Web 虚拟机管理概览"
-  modifiedTime="2026-07-14"
+  modifiedTime="2026-08-05"
   keywords={[
     ...searchIntentKeywords,
     "KVM Web UI",
@@ -358,8 +362,10 @@ const virtualMachineSchema = {
           </div>
 
           <p class="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-gray-600">
-            如需进一步了解不同 KVM Web UI 方案的定位，可查看
-            <a href={articlePath} class="font-semibold text-1panel hover:underline">1Panel 企业版 KVM 虚拟机管理产品动态</a>。
+            如需了解 1Panel 的功能背景，可查看
+            <a href={articlePath} class="font-semibold text-1panel hover:underline">1Panel 企业版 KVM 虚拟机管理产品动态</a>；
+            如需比较 Cockpit 与 1Panel 企业版，可查看
+            <a href={comparisonArticlePath} class="font-semibold text-1panel hover:underline">KVM Web 管理工具对比</a>。
           </p>
         </div>
       </section>
