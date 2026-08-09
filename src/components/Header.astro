@@ -226,41 +226,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
           >
             {t(translations, 'header.docs')}
           </a>
-            href="https://github.com/1Panel-dev/1Panel/discussions"
-            target="_blank"
-            class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"
-          >
-            {t(translations, 'header.discussions')}
-          </a>
-          <a
-            href="https://1panel.pro/docs/"
-            target="_blank"
-            class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"
-          >
-            {t(translations, 'header.docs')}
-          </a>
         </nav>
-
-        {(
-          <div class="pt-5 border-t border-gray-100 mt-5">
-            <div class="mb-2 text-gray-500 text-[15px] font-medium flex items-center gap-1">
-              <Icon name="carbon:earth" class="w-4 h-4" />
-              {getLocaleLabel(currentLocale)}
-            </div>
-            <div class="flex flex-wrap gap-2">
-              {mobileLocaleMenuItems.map((item) => (
-                <a
-                  href={item.href}
-                  {...(item.internal ? { 'data-locale-link': true, 'data-locale': item.code } : { target: '_blank', rel: 'noopener noreferrer' })}
-                  class="py-1 px-3 text-[15px] text-blue-600 font-medium bg-blue-50 rounded hover:bg-blue-100 transition"
-                  style="min-width:72px;text-align:center;"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
 
         <div class="flex flex-col gap-3 pt-8 mt-auto">
           <a
