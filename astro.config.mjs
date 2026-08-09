@@ -7,7 +7,6 @@ import icon from 'astro-icon';
 
 export default defineConfig({
   site: 'https://1panel.pro',
-  // base: './',
   integrations: [
     tailwind(),
     react(),
@@ -25,7 +24,7 @@ export default defineConfig({
         if (url === '/' || segments.length === 0) {
           priority = 1.0;
           changefreq = 'daily';
-        } else if (last === 'pricing' || last === 'enterprise') {
+        } else if (last === 'pro-edition' || last === 'enterprise-edition') {
           priority = 0.9;
           changefreq = 'weekly';
         } else if (
@@ -34,8 +33,7 @@ export default defineConfig({
           last === 'skills-hub' ||
           last === 'user-management' ||
           last === 'virtual-machine' ||
-          last === 'security-ops-report' ||
-          last === 'aicoding'
+          last === 'security-ops-report'
         ) {
           priority = 0.9;
           changefreq = 'weekly';
@@ -58,9 +56,6 @@ export default defineConfig({
         } else if (segments[0] === 'apps') {
           priority = 0.6;
           changefreq = 'monthly';
-        } else if (last === 'openclaw' || last === 'deepseek-appliance') {
-          priority = 0.7;
-          changefreq = 'monthly';
         }
 
         item.priority = priority;
@@ -74,7 +69,6 @@ export default defineConfig({
   trailingSlash: 'never',
   build: {
     assets: 'assets',
-    // assetsPrefix: './',
     format: 'file'
   },
   server: {

@@ -121,5 +121,5 @@ Mit 1Panel ist Ollama auf dem VPS kein manuelles Großprojekt mehr — zentrale 
 ## Loslegen
 
 - [1Panel kostenlos installieren →](https://1panel.pro/de#quickstart) — ca. 2 Minuten
-- [OSS vs. Pro](https://1panel.pro/de/pricing) — Pro ab 80 $/Jahr
+- [OSS vs. Pro](https://1panel.pro/de/pro-edition) — Pro ab 80 $/Jahr
 - [1Panel vs. cPanel](https://1panel.pro/de/1panel-vs-cpanel)

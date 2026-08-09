@@ -42,51 +42,9 @@ const lxwareUrl = 'https://lxware.hk';
         {t(translations, 'pricing.title')}
         <span class="text-1panel-gradient">{t(translations, 'pricing.titleHighlight')}</span>
       </h2>
-      <p class="fade-in-up text-xl text-gray-600 max-w-3xl mx-auto" style="animation-delay: 0.2s;">
+      <p class="fade-in-up text-lg lg:text-xl text-gray-600 whitespace-nowrap mx-auto" style="animation-delay: 0.2s;">
         {t(translations, 'pricing.subtitle')}
       </p>
-    </div>
-
-    <!-- Social proof bar -->
-    <div
-      class="max-w-5xl mx-auto mb-10 rounded-xl border border-blue-100 bg-gradient-to-r from-blue-50 via-white to-blue-50 px-4 py-4 sm:px-8 sm:py-5 shadow-sm"
-    >
-      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm sm:text-[13.5px] text-gray-600">
-        <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.installNum')}</span>
-          <span>{tr('pricing.proof.installLabel')}</span>
-        </div>
-        <span class="hidden sm:inline text-blue-200" aria-hidden="true">·</span>
-        <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.teamsNum')}</span>
-          <span>{tr('pricing.proof.teamsLabel')}</span>
-        </div>
-        <span class="hidden sm:inline text-blue-200" aria-hidden="true">·</span>
-        <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.ratingNum')}</span>
-          <span>{tr('pricing.proof.ratingLabel')}</span>
-        </div>
-        <span class="hidden sm:inline text-blue-200" aria-hidden="true">·</span>
-        <div class="flex items-center gap-2">
-          <span class="font-mono font-semibold text-1panel tabular-nums">{tr('pricing.proof.trialNum')}</span>
-          <span>{tr('pricing.proof.trialLabel')}</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Trial banner -->
-    <div
-      class="max-w-5xl mx-auto mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl border border-gray-200 bg-gray-100/80 px-4 py-4 sm:px-6"
-    >
-      <p class="text-sm sm:text-[15px] text-gray-800 text-left leading-relaxed flex-1">
-        {tr('pricing.trialBanner.text')}
-      </p>
-      <a
-        href={trialMailto}
-        class="shrink-0 inline-flex justify-center items-center px-5 py-2.5 rounded-lg bg-1panel text-white font-semibold text-sm hover:opacity-90 transition-opacity"
-      >
-        {tr('pricing.trialBanner.cta')}
-      </a>
     </div>
 
     <!-- Plan cards: OSS | Subscription (featured) | Perpetual -->
@@ -260,48 +218,8 @@ const lxwareUrl = 'https://lxware.hk';
       </div>
     </div>
 
-    <!-- Pro value highlights -->
-    <div
-      class="max-w-6xl mx-auto mb-14 rounded-2xl border border-gray-200 bg-gray-50 px-5 py-8 sm:px-8"
-    >
-      <h3 class="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
-        <span aria-hidden="true">⚡</span>
-        {tr('pricing.proValueTitle')}
-      </h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3">
-        <div class="flex gap-3 rounded-xl bg-white/60 border border-gray-100 p-4">
-          <span class="text-xl shrink-0" aria-hidden="true">🖥</span>
-          <div>
-            <strong class="block text-gray-900 text-sm">{tr('pricing.proValueNodeTitle')}</strong>
-            <span class="text-xs text-gray-600 leading-relaxed">{tr('pricing.proValueNodeDesc')}</span>
-          </div>
-        </div>
-        <div class="flex gap-3 rounded-xl bg-white/60 border border-gray-100 p-4">
-          <span class="text-xl shrink-0" aria-hidden="true">🔒</span>
-          <div>
-            <strong class="block text-gray-900 text-sm">{tr('pricing.proValueSecTitle')}</strong>
-            <span class="text-xs text-gray-600 leading-relaxed">{tr('pricing.proValueSecDesc')}</span>
-          </div>
-        </div>
-        <div class="flex gap-3 rounded-xl bg-white/60 border border-gray-100 p-4">
-          <span class="text-xl shrink-0" aria-hidden="true">📱</span>
-          <div>
-            <strong class="block text-gray-900 text-sm">{tr('pricing.proValueMobileTitle')}</strong>
-            <span class="text-xs text-gray-600 leading-relaxed">{tr('pricing.proValueMobileDesc')}</span>
-          </div>
-        </div>
-        <div class="flex gap-3 rounded-xl bg-white/60 border border-gray-100 p-4">
-          <span class="text-xl shrink-0" aria-hidden="true">🎨</span>
-          <div>
-            <strong class="block text-gray-900 text-sm">{tr('pricing.proValueWhiteLabelTitle')}</strong>
-            <span class="text-xs text-gray-600 leading-relaxed">{tr('pricing.proValueWhiteLabelDesc')}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Comparison table (differences only) -->
-    <div class="mt-4 mb-16">
+    <div class="mt-20 mb-16">
       <div class="text-center mb-8 max-w-3xl mx-auto">
         <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">{tr('pricing.compareTitle')}</h3>
         <p class="text-sm sm:text-base text-gray-600 leading-relaxed">{tr('pricing.compareIntro')}</p>

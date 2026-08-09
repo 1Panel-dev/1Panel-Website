@@ -99,6 +99,6 @@ Pronto para migrar do cPanel?
 
 - [Instale 1Panel gratis ->](https://1panel.pro/#quickstart) - leva cerca de 2 minutos
 
-- [Compare OSS vs Pro](https://1panel.pro/pricing) - Pro a partir de $80/ano
+- [Compare OSS vs Pro](https://1panel.pro/pro-edition) - Pro a partir de $80/ano
 
 - [Comparacao completa cPanel vs 1Panel](https://1panel.pro/1panel-vs-cpanel)

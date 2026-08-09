@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "Startseite",
-    "pricing": "Preise",
+    "pricing": "Pro Edition",
     "blog": "Blog",
     "appStore": "App-Store",
     "discussions": "Diskussionen",
@@ -152,9 +152,9 @@
     "privacyPolicy": "Datenschutz"
   },
   "pricing": {
-    "title": "Einfache",
-    "titleHighlight": "Preise",
-    "subtitle": "Wählen Sie den passenden Plan. Starten Sie kostenlos und erweitern Sie bei Bedarf.",
+    "title": "1Panel",
+    "titleHighlight": "Pro Edition",
+    "subtitle": "30 Tage kostenlos testen. Abonnement ab 80 $/Jahr. Oder unbefristete Lizenz für 200 $.",
     "ossEdition": "OSS-Edition",
     "freeToUse": "Kostenlos nutzbar",
     "openSource": "Open Source",
@@ -166,8 +166,8 @@
     "perpetualLicense": "Dauerlizenz (V2)",
     "subscriptionLicense": "Abonnement",
     "mostPopular": "Am beliebtesten",
-    "metaTitle": "1Panel Preise — Kostenlose Stufe · Pro ab 80 $/Jahr",
-    "metaDescription": "1Panel OSS bleibt für immer kostenlos: vollständiges Open-Source-VPS-Panel. Pro ergänzt Multi-Node-Verwaltung, OpenClaw-Agents, erweiterte WAF und Prioritätssupport ab 80 $ pro Jahr und Node. OSS und Pro vergleichen und auf Linux bereitstellen.",
+    "metaTitle": "1Panel Pro Edition — 30 Tage kostenlos · Abonnement ab 80 $/Jahr · Unbefristet 200 $",
+    "metaDescription": "1Panel Pro Edition schaltet Multi-Node-Management, KI-Agenten, erweiterte WAF, White-Label und Priority-Support frei. Starten Sie mit einer 30-tägigen kostenlosen Testversion, abonnieren Sie ab 80 $/Jahr oder kaufen Sie eine unbefristete Lizenz für 200 $. Enterprise Edition ergänzt AI Portal, AI Gateway, Skills Hub, VM-Management und Security Ops Reports.",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

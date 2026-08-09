@@ -12,7 +12,7 @@ const translations = getTranslations(lang);
 const basePath = getBasePath(undefined);
 const title = t(translations, 'pricing.metaTitle');
 const description = t(translations, 'pricing.metaDescription');
-const canonicalUrl = new URL('/pricing', Astro.site).href;
+const canonicalUrl = new URL('/pro-edition', Astro.site).href;
 
 const pricingFaqJsonLd = {
   '@context': 'https://schema.org',
@@ -76,10 +76,10 @@ const pricingFaqJsonLd = {
       <link
         rel="alternate"
         hreflang={loc}
-        href={new URL(loc === 'en' ? '/pricing' : `/${loc}/pricing`, Astro.site).href}
+        href={new URL(loc === 'en' ? '/pro-edition' : `/${loc}/pro-edition`, Astro.site).href}
       />
     ))}
-    <link rel="alternate" hreflang="x-default" href={new URL('/pricing', Astro.site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/pro-edition', Astro.site).href} />
     <script type="application/ld+json" set:html={JSON.stringify(pricingFaqJsonLd)} />
   </Fragment>
   <Fragment slot="main">

@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "首頁",
-    "pricing": "定價",
+    "pricing": "專業版",
     "blog": "網誌",
     "appStore": "應用商店",
     "discussions": "討論",
@@ -152,9 +152,9 @@
     "privacyPolicy": "隱私政策"
   },
   "pricing": {
-    "title": "簡單",
-    "titleHighlight": "定價",
-    "subtitle": "選擇最適合你的方案，先免費開始，再按業務成長升級。",
+    "title": "1Panel",
+    "titleHighlight": "專業版",
+    "subtitle": "免費試用 30 天。訂閱版每年 80 美元起，或購買 200 美元永久授權。",
     "ossEdition": "OSS 版",
     "freeToUse": "免費使用",
     "openSource": "開源",
@@ -166,8 +166,8 @@
     "perpetualLicense": "永久授權（V2）",
     "subscriptionLicense": "訂閱授權",
     "mostPopular": "最受歡迎",
-    "metaTitle": "1Panel 定價 — 免費方案 · Pro 每年 $80 起",
-    "metaDescription": "1Panel OSS 永久免費：完整開源 VPS 控制面板。Pro 提供多節點管理、OpenClaw 代理、進階 WAF 與優先支援，每節點每年 $80 起。比較 OSS 與 Pro，並在 Linux 伺服器上部署。",
+    "metaTitle": "1Panel 專業版 — 免費試用 30 天 · 訂閱 80 美元/年起 · 永久授權 200 美元",
+    "metaDescription": "1Panel 專業版解鎖多節點管理、AI 智能體、進階 WAF、白標支援與優先技術支援。免費試用 30 天，訂閱版 80 美元/年起，或購買 200 美元永久授權。企業版另提供 AI Portal、AI Gateway、Skills Hub、虛擬機管理與安全運維報告。",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

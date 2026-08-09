@@ -99,6 +99,6 @@ cPanel 在傳統代管環境仍然是知名產品，但現時很多團隊更重�
 
 - [免費安裝 1Panel →](https://1panel.pro/#quickstart) — 約 2 分鐘即可完成
 
-- [比較 OSS 與 Pro 方案](https://1panel.pro/pricing) — Pro 由 $80/年起
+- [比較 OSS 與 Pro 方案](https://1panel.pro/pro-edition) — Pro 由 $80/年起
 
 - [查看完整 cPanel vs 1Panel 對比](https://1panel.pro/1panel-vs-cpanel)

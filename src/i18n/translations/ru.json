@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "Главная",
-    "pricing": "Цены",
+    "pricing": "Pro Edition",
     "blog": "Блог",
     "appStore": "Магазин приложений",
     "discussions": "Обсуждения",
@@ -152,9 +152,9 @@
     "privacyPolicy": "Политика конфиденциальности"
   },
   "pricing": {
-    "title": "Простые",
-    "titleHighlight": "цены",
-    "subtitle": "Выберите подходящий план. Начните бесплатно и расширяйте по мере роста.",
+    "title": "1Panel",
+    "titleHighlight": "Pro Edition",
+    "subtitle": "Бесплатно 30 дней. Подписка от $80/год. Или бессрочная лицензия за $200.",
     "ossEdition": "Редакция OSS",
     "freeToUse": "Бесплатное использование",
     "openSource": "Открытый код",
@@ -166,8 +166,8 @@
     "perpetualLicense": "Бессрочная лицензия (V2)",
     "subscriptionLicense": "Подписка",
     "mostPopular": "Популярный выбор",
-    "metaTitle": "Цены 1Panel — бесплатный уровень · Pro от $80/год",
-    "metaDescription": "1Panel OSS навсегда бесплатен: полноценная open-source панель для VPS. Pro добавляет управление несколькими узлами, агентов OpenClaw, расширенный WAF и приоритетную поддержку от $80 в год за узел. Сравните OSS и Pro и разверните на Linux.",
+    "metaTitle": "1Panel Pro Edition — Бесплатно 30 дней · Подписка от $80/год · Бессрочная $200",
+    "metaDescription": "1Panel Pro Edition открывает мульти-нодовое управление, ИИ-агентов, расширенный WAF, white-label и приоритетную поддержку. Начните с бесплатной 30-дневной пробной версии, подпишитесь от $80/год или купите бессрочную лицензию за $200. Enterprise Edition добавляет AI Portal, AI Gateway, Skills Hub, управление ВМ и отчёты по безопасности.",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

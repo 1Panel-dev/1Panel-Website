@@ -95,6 +95,6 @@ Für diese Gruppe ist 1Panel 2026 eine der praktikabelsten Alternativen.
 
 - [1Panel kostenlos installieren →](https://1panel.pro/de#quickstart) — etwa 2 Minuten
 
-- [OSS vs. Pro vergleichen](https://1panel.pro/de/pricing) — Pro ab 80 $/Jahr
+- [OSS vs. Pro vergleichen](https://1panel.pro/de/pro-edition) — Pro ab 80 $/Jahr
 
 - [cPanel vs. 1Panel (Vergleich)](https://1panel.pro/de/1panel-vs-cpanel)

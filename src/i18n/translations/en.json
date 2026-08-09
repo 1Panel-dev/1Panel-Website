@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "Home",
-    "pricing": "Pricing",
+    "pricing": "Pro Edition",
     "blog": "Blog",
     "appStore": "App Store",
     "discussions": "Discussions",
@@ -152,9 +152,9 @@
     "privacyPolicy": "Privacy Policy"
   },
   "pricing": {
-    "title": "Simple",
-    "titleHighlight": "Pricing",
-    "subtitle": "Start free. Upgrade when you're ready. No surprises.",
+    "title": "1Panel",
+    "titleHighlight": "Pro Edition",
+    "subtitle": "Start free for 30 days. Subscription from $80/year. Or buy Perpetual License for $200.",
     "ossEdition": "OSS Edition",
     "freeToUse": "Free to Use",
     "openSource": "Open-source",
@@ -166,8 +166,8 @@
     "perpetualLicense": "Perpetual License (V2)",
     "subscriptionLicense": "Subscription",
     "mostPopular": "Most Popular",
-    "metaTitle": "1Panel Pricing — Free tier available · Pro from $80/yr · Enterprise Edition",
-    "metaDescription": "1Panel OSS is free forever: full open-source Linux server management panel. Pro adds multi-node management, AI agents, advanced WAF, and priority support from $80/year. Enterprise Edition adds AI Portal, AI Gateway, Skills Hub, VM management, and security ops reports. Compare plans and deploy on your Linux server.",
+    "metaTitle": "1Panel Pro Edition — Free 30-day trial · Subscription from $80/yr · Perpetual $200",
+    "metaDescription": "1Panel Pro Edition unlocks multi-node management, AI agents, advanced WAF, white-label, and priority support. Start with a free 30-day trial, subscribe from $80/year, or buy a Perpetual License for $200. Enterprise Edition adds AI Portal, AI Gateway, Skills Hub, VM management, and security ops reports.",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

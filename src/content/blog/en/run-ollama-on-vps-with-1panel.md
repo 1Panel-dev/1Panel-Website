@@ -135,6 +135,6 @@ Ready to run your own private AI lab?
 
 - [Install 1Panel free →](https://1panel.pro/#quickstart) — takes about 2 minutes
 
-- [Compare OSS vs Pro plans](https://1panel.pro/pricing) — Pro starts at $80/year
+- [Compare OSS vs Pro plans](https://1panel.pro/pro-edition) — Pro starts at $80/year
 
 - [See how 1Panel compares to cPanel](https://1panel.pro/1panel-vs-cpanel)

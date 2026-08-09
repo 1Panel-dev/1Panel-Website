@@ -99,6 +99,6 @@ cPanel에서 전환할 준비가 되었나요?
 
 - [1Panel 무료 설치 →](https://1panel.pro/#quickstart) — 약 2분 소요
 
-- [OSS vs Pro 플랜 비교](https://1panel.pro/pricing) — Pro는 연 $80부터
+- [OSS vs Pro 플랜 비교](https://1panel.pro/pro-edition) — Pro는 연 $80부터
 
 - [cPanel vs 1Panel 전체 비교](https://1panel.pro/1panel-vs-cpanel)

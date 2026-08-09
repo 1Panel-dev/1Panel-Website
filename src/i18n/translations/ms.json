@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "Laman Utama",
-    "pricing": "Harga",
+    "pricing": "Pro Edition",
     "blog": "Blog",
     "appStore": "App Store",
     "discussions": "Perbincangan",
@@ -152,9 +152,9 @@
     "privacyPolicy": "Dasar privasi"
   },
   "pricing": {
-    "title": "Harga",
-    "titleHighlight": "mudah",
-    "subtitle": "Pilih pelan yang sesuai. Mula percuma dan naik taraf mengikut keperluan.",
+    "title": "1Panel",
+    "titleHighlight": "Pro Edition",
+    "subtitle": "Cuba percuma 30 hari. Langganan dari $80/tahun. Atau lesen kekal $200.",
     "ossEdition": "Edisi OSS",
     "freeToUse": "Percuma",
     "openSource": "Sumber terbuka",
@@ -166,8 +166,8 @@
     "perpetualLicense": "Lesen kekal (V2)",
     "subscriptionLicense": "Langganan",
     "mostPopular": "Paling popular",
-    "metaTitle": "Harga 1Panel — Percuma tersedia · Pro dari $80/tahun",
-    "metaDescription": "1Panel OSS percuma selama-lamanya: panel VPS sumber terbuka penuh. Pro menambah pengurusan multi-nod, ejen OpenClaw, WAF lanjutan dan sokongan keutamaan dari $80/tahun setiap nod. Bandingkan OSS vs Pro dan laksana pada pelayan Linux anda.",
+    "metaTitle": "1Panel Pro Edition — Cuba percuma 30 hari · Langganan dari $80/tahun · Lesen kekal $200",
+    "metaDescription": "1Panel Pro Edition membuka pengurusan multi-nod, ejen AI, WAF lanjutan, white-label, dan sokongan keutamaan. Mulakan dengan percubaan percuma 30 hari, langgan dari $80/tahun, atau beli Lesen Kekal pada $200. Enterprise Edition menambah AI Portal, AI Gateway, Skills Hub, pengurusan VM, dan laporan operasi keselamatan.",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

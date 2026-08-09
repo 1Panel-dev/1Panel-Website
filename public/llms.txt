@@ -10,7 +10,7 @@ This file describes the international `1panel.pro` website. For installation, co
 - [Features](https://1panel.pro/#features) - AI management, efficient visual operations, quick site deployment, and enterprise security & backup.
 - [App Store Preview](https://1panel.pro/#appstore) - curated open-source apps available through 1Panel.
 - [Quick Start](https://1panel.pro/#quickstart) - the 3-step install flow shown on the homepage.
-- [Pricing](https://1panel.pro/pricing) - OSS vs Pro plans (subscription and perpetual), feature matrix, licensing FAQ, and trial details. Enterprise Edition is sold separately — see the Enterprise section below.
+- [Pro Edition](https://1panel.pro/pro-edition) - OSS vs Pro plans (subscription and perpetual), feature matrix, licensing FAQ, and trial details. Enterprise Edition is sold separately — see the Enterprise section below.
 - [Documentation](https://1panel.pro/docs/) - canonical product documentation.
 - [Online Installation Guide](https://1panel.pro/docs/v2/installation/online_installation/) - the main install guide for new servers.
 - [Demo](https://demo.1panel.pro/) - live product demo.
@@ -19,18 +19,13 @@ This file describes the international `1panel.pro` website. For installation, co
 
 The Enterprise Edition extends 1Panel with organization-wide AI governance, multi-user management, virtual machine management, and security operations reporting. It is designed for teams that need centralized control over AI applications, model access, and infrastructure.
 
-- [Enterprise Overview](https://1panel.pro/enterprise) - full architecture overview: application layer, governance layer, model layer, and infrastructure layer. Enterprise-only capability matrix and comparison with OSS/Pro.
+- [Enterprise Overview](https://1panel.pro/enterprise-edition) - full architecture overview: application layer, governance layer, model layer, and infrastructure layer. Enterprise-only capability matrix and comparison with OSS/Pro.
 - [AI Portal](https://1panel.pro/ai-portal) - self-service portal for internal users: API Key management, model hub, skill marketplace, and MCP marketplace.
 - [AI Gateway](https://1panel.pro/ai-gateway) - unified access point for internal AI applications and model calls: model proxy, intelligent routing, seat management, usage analytics, and content compliance.
 - [Skills Hub](https://1panel.pro/skills-hub) - unified skill management with security audit, skill archiving, risk assessment, and version management.
 - [User Management](https://1panel.pro/user-management) - centralized user accounts, role-based permission assignment, multi-role collaboration, and enterprise access control.
 - [Virtual Machine Management](https://1panel.pro/virtual-machine) - KVM web UI for VM lifecycle, images, templates, networking, storage pools, console access, monitoring, and snapshots.
 - [Security Ops Report](https://1panel.pro/security-ops-report) - risk overview, operations status, report archiving, security inspection, and action items.
-
-## AI Appliance
-
-- [AI Coding Appliance](https://1panel.pro/aicoding) - air-gapped AI coding appliance for 10-20 person engineering teams, powered by Intel Arc Pro B70. Enables private AI coding in fully isolated environments with vLLM inference.
-- [OpenClaw](https://1panel.pro/openclaw) - personal AI assistant deployment and management.
 
 ## Product and Comparison Pages
 
@@ -82,18 +77,17 @@ Example pages:
 - Default language: English.
 - Localized site variants exist for `de`, `ja`, `pt`, `ko`, `es`, `ms`, `tr`, `ru`, and `zh-hant`.
 - Simplified Chinese official site: [1panel.cn](https://1panel.cn/)
-- Main English routes: `/`, `/pricing`, `/enterprise`, `/ai-portal`, `/ai-gateway`, `/skills-hub`, `/user-management`, `/virtual-machine`, `/security-ops-report`, `/aicoding`, `/blog`, `/1panel-vs-cpanel`, `/1panel-vs-webmin`, `/1panel-vs-plesk`
+- Main English routes: `/`, `/pro-edition`, `/enterprise-edition`, `/ai-portal`, `/ai-gateway`, `/skills-hub`, `/user-management`, `/virtual-machine`, `/security-ops-report`, `/blog`, `/1panel-vs-cpanel`, `/1panel-vs-webmin`, `/1panel-vs-plesk`
 - Localized home pages: `/{lang}`
-- Localized subpages: `/{lang}/pricing`, `/{lang}/blog`, `/{lang}/ai-portal`, `/{lang}/ai-gateway`, `/{lang}/skills-hub`, `/{lang}/user-management`, `/{lang}/virtual-machine`, `/{lang}/security-ops-report`, `/{lang}/1panel-vs-cpanel`, `/{lang}/1panel-vs-webmin`, `/{lang}/1panel-vs-plesk`
+- Localized subpages: `/{lang}/pro-edition`, `/{lang}/blog`, `/{lang}/ai-portal`, `/{lang}/ai-gateway`, `/{lang}/skills-hub`, `/{lang}/user-management`, `/{lang}/virtual-machine`, `/{lang}/security-ops-report`, `/{lang}/1panel-vs-cpanel`, `/{lang}/1panel-vs-webmin`, `/{lang}/1panel-vs-plesk`
 - Blog posts: `/blog/{slug}`
 - App detail pages: `/apps/{app}`
 
 ## Notes for LLMs
 
 - Prefer documentation for setup, configuration, administration, and troubleshooting.
-- Prefer pricing for plan limits, Pro-only capabilities, trials, and licensing questions.
-- Prefer the Enterprise section (`/enterprise` and sub-pages) for AI Portal, AI Gateway, Skills Hub, user management, VM management, and security ops report questions.
+- Prefer `/pro-edition` for plan limits, Pro-only capabilities, trials, and licensing questions.
+- Prefer the Enterprise section (`/enterprise-edition` and sub-pages) for AI Portal, AI Gateway, Skills Hub, user management, VM management, and security ops report questions.
 - Prefer app detail pages for app-specific deployment or integration questions.
 - Prefer the blog for tutorials, release notes, and example workflows.
 - Prefer comparison pages when the user is evaluating 1Panel against cPanel, Webmin, or Plesk.
-- The `/aicoding` page covers the air-gapped AI coding appliance product — use it for questions about private, offline AI coding environments.

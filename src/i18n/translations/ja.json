@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "ホーム",
-    "pricing": "料金",
+    "pricing": "Pro Edition",
     "blog": "ブログ",
     "appStore": "アプリストア",
     "discussions": "ディスカッション",
@@ -152,9 +152,9 @@
     "privacyPolicy": "プライバシーポリシー"
   },
   "pricing": {
-    "title": "シンプルな",
-    "titleHighlight": "料金",
-    "subtitle": "ニーズに合ったプランを選択。無料で始めて、成長に合わせてアップグレード。",
+    "title": "1Panel",
+    "titleHighlight": "Pro Edition",
+    "subtitle": "30日間無料トライアル。サブスクリプションは年額 80 ドルから。永久ライセンスは 200 ドル。",
     "ossEdition": "OSSエディション",
     "freeToUse": "無料で利用",
     "openSource": "オープンソース",
@@ -166,8 +166,8 @@
     "perpetualLicense": "永続ライセンス (V2)",
     "subscriptionLicense": "サブスクリプション",
     "mostPopular": "最も人気",
-    "metaTitle": "1Panel 料金 — 無料プランあり · Pro は年額 $80〜",
-    "metaDescription": "1Panel OSS は永久無料のオープンソース VPS パネル。Pro はマルチノード管理、OpenClaw エージェント、高度な WAF、優先サポートをノードあたり年額 $80〜で提供。OSS と Pro を比較し、Linux サーバーで始められます。",
+    "metaTitle": "1Panel Pro Edition — 30日間無料 · 年額 80 ドル〜 · 永久ライセンス 200 ドル",
+    "metaDescription": "1Panel Pro Edition はマルチノード管理、AIエージェント、高機能 WAF、ホワイトラベル、優先サポートを解放します。30日間の無料トライアルから始めて、年額 80 ドルのサブスクリプション、または 200 ドルの永久ライセンスを選択できます。Enterprise Edition は AI Portal、AI Gateway、Skills Hub、VM 管理、セキュリティ運用レポートを追加します。",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

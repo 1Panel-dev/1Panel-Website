@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "홈",
-    "pricing": "요금",
+    "pricing": "Pro Edition",
     "blog": "블로그",
     "appStore": "앱 스토어",
     "discussions": "토론",
@@ -152,9 +152,9 @@
     "privacyPolicy": "개인정보처리방침"
   },
   "pricing": {
-    "title": "간단한",
-    "titleHighlight": "요금",
-    "subtitle": "필요에 맞는 플랜을 선택하세요. 무료로 시작하고 성장에 맞춰 업그레이드하세요.",
+    "title": "1Panel",
+    "titleHighlight": "Pro Edition",
+    "subtitle": "30일 무료 체험. 구독형은 연 80달러부터. 영구 라이선스는 200달러.",
     "ossEdition": "OSS 에디션",
     "freeToUse": "무료 사용",
     "openSource": "오픈 소스",
@@ -166,8 +166,8 @@
     "perpetualLicense": "영구 라이선스 (V2)",
     "subscriptionLicense": "구독 라이선스",
     "mostPopular": "가장 인기",
-    "metaTitle": "1Panel 요금 — 무료 플랜 · Pro 연 $80부터",
-    "metaDescription": "1Panel OSS는 영구 무료 오픈소스 VPS 패널입니다. Pro는 멀티 노드 관리, OpenClaw 에이전트, 고급 WAF, 우선 지원을 노드당 연 $80부터 제공합니다. OSS와 Pro를 비교해 Linux 서버에 배포하세요.",
+    "metaTitle": "1Panel Pro Edition — 30일 무료 체험 · 구독 연 80달러부터 · 영구 라이선스 200달러",
+    "metaDescription": "1Panel Pro Edition은 멀티 노드 관리, AI 에이전트, 고급 WAF, 화이트 라벨, 우선 지원을 제공합니다. 30일 무료 체험으로 시작하고, 연 80달러 구독 또는 200달러 영구 라이선스를 구매하세요. Enterprise Edition은 AI Portal, AI Gateway, Skills Hub, VM 관리, 보안 운영 보고서를 추가로 제공합니다.",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

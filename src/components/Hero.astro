@@ -104,14 +104,6 @@ const prefix = !lang || lang === 'en' ? '' : `/${lang}`;
         {t(translations, 'hero.subtitle')}
         </p>
 
-        <div class="fade-in-up mb-8" style="animation-delay: 0.45s;">
-          <div class="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-sm text-blue-900">
-            <Icon name="carbon:currency-dollar" class="w-4 h-4" />
-            <span>{t(translations, 'hero.pricingBannerText')}</span>
-            <a href={`${prefix}/pricing`} class="font-semibold underline underline-offset-2 hover:text-blue-700">{t(translations, 'hero.pricingBannerLink')}</a>
-          </div>
-        </div>
-
         <!-- Statistics -->
         <div
           class="fade-in-up grid grid-cols-2 gap-6 mb-8"

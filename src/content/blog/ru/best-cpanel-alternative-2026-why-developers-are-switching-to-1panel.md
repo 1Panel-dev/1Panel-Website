@@ -99,6 +99,6 @@ Gotovy pereyti s cPanel?
 
 - [Ustanovit 1Panel besplatno ->](https://1panel.pro/#quickstart) - okolo 2 minut
 
-- [Sravnit OSS i Pro plany](https://1panel.pro/pricing) - Pro ot $80/god
+- [Sravnit OSS i Pro plany](https://1panel.pro/pro-edition) - Pro ot $80/god
 
 - [Polnoe sravnenie cPanel i 1Panel](https://1panel.pro/1panel-vs-cpanel)

@@ -6,7 +6,7 @@
   },
   "header": {
     "home": "Ana Sayfa",
-    "pricing": "Fiyatlandırma",
+    "pricing": "Pro Edition",
     "blog": "Blog",
     "appStore": "Uygulama Mağazası",
     "discussions": "Tartışmalar",
@@ -152,9 +152,9 @@
     "privacyPolicy": "Gizlilik politikası"
   },
   "pricing": {
-    "title": "Basit",
-    "titleHighlight": "fiyatlandırma",
-    "subtitle": "İhtiyacınıza uygun planı seçin. Ücretsiz başlayın, büyüdükçe yükseltin.",
+    "title": "1Panel",
+    "titleHighlight": "Pro Edition",
+    "subtitle": "30 gün ücretsiz deneyin. Yıllık 80 $’dan abonelik. Veya 200 $ kalıcı lisans.",
     "ossEdition": "OSS sürümü",
     "freeToUse": "Ücretsiz kullanım",
     "openSource": "Açık kaynak",
@@ -166,8 +166,8 @@
     "perpetualLicense": "Süresiz lisans (V2)",
     "subscriptionLicense": "Abonelik lisansı",
     "mostPopular": "En popüler",
-    "metaTitle": "1Panel Fiyatlandırma — Ücretsiz sürüm · Pro yıllık 80 $'dan",
-    "metaDescription": "1Panel OSS sonsuza kadar ücretsiz: tam açık kaynak VPS paneli. Pro, çoklu düğüm yönetimi, OpenClaw ajanları, gelişmiş WAF ve öncelikli desteği düğüm başına yıllık 80 $'dan sunar. OSS ile Pro'yu karşılaştırın ve Linux sunucunuza kurun.",
+    "metaTitle": "1Panel Pro Edition — 30 gün ücretsiz · Yıllık 80 $’dan abonelik · Kalıcı 200 $",
+    "metaDescription": "1Panel Pro Edition çoklu düğüm yönetimi, yapay zeka ajanları, gelişmiş WAF, beyaz etiket ve öncelikli destek sunar. 30 günlük ücretsiz denemeyle başlayın, yıllık 80 $’dan abone olun veya 200 $ karşılığında Kalıcı Lisans satın alın. Enterprise Edition, AI Portal, AI Gateway, Skills Hub, VM yönetimi ve güvenlik operasyon raporlarını ekler.",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",

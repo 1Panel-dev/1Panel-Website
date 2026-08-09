@@ -99,6 +99,6 @@ Para esos equipos, 1Panel es una de las alternativas más prácticas en 2026.
 
 - [Instala 1Panel gratis →](https://1panel.pro/#quickstart) — tarda unos 2 minutos
 
-- [Compara planes OSS vs Pro](https://1panel.pro/pricing) — Pro desde $80/año
+- [Compara planes OSS vs Pro](https://1panel.pro/pro-edition) — Pro desde $80/año
 
 - [Comparativa completa cPanel vs 1Panel](https://1panel.pro/1panel-vs-cpanel)

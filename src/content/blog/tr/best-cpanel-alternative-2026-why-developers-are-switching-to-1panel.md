@@ -99,6 +99,6 @@ cPanel'den gecmeye hazir misiniz?
 
 - [1Panel'i ucretsiz kurun ->](https://1panel.pro/#quickstart) - yaklasik 2 dakika
 
-- [OSS ve Pro planlarini karsilastirin](https://1panel.pro/pricing) - Pro yillik $80'dan baslar
+- [OSS ve Pro planlarini karsilastirin](https://1panel.pro/pro-edition) - Pro yillik $80'dan baslar
 
 - [Tam cPanel vs 1Panel karsilastirmasi](https://1panel.pro/1panel-vs-cpanel)

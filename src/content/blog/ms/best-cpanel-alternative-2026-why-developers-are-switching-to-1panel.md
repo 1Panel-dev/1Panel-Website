@@ -99,6 +99,6 @@ Sedia untuk beralih dari cPanel?
 
 - [Pasang 1Panel percuma →](https://1panel.pro/#quickstart) — sekitar 2 minit
 
-- [Bandingkan pelan OSS vs Pro](https://1panel.pro/pricing) — Pro bermula dari $80/tahun
+- [Bandingkan pelan OSS vs Pro](https://1panel.pro/pro-edition) — Pro bermula dari $80/tahun
 
 - [Perbandingan penuh cPanel vs 1Panel](https://1panel.pro/1panel-vs-cpanel)

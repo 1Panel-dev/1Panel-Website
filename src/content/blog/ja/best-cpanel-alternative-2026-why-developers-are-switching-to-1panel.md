@@ -99,6 +99,6 @@ cPanel から切り替える準備はできていますか？
 
 - [1Panel を無料でインストール →](https://1panel.pro/#quickstart) — 約 2 分で開始
 
-- [OSS と Pro プランを比較](https://1panel.pro/pricing) — Pro は年額 $80 から
+- [OSS と Pro プランを比較](https://1panel.pro/pro-edition) — Pro は年額 $80 から
 
 - [cPanel と 1Panel の詳細比較](https://1panel.pro/1panel-vs-cpanel)
