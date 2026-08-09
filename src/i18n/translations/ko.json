@@ -64,46 +64,24 @@
   "features": {
     "title": "강력한",
     "titleHighlight": "기능",
-    "subtitle": "포괄적인 VPS 관리 기능으로 운영을 간단하고 효율적으로",
-    "openclaw": {
-      "title": "원클릭 OpenClaw 배포",
-      "desc": "OpenClaw 에이전트 배포, Ollama를 통한 로컬 LLM 호스팅, GPU 사용량 모니터링을 하나의 통합 워크스페이스에서 수행할 수 있습니다.",
-      "openclawAgents": "OpenClaw 에이전트 관리",
-      "localLLMs": "로컬 LLM 관리",
-      "mcpServers": "MCP 서버 관리",
-      "gpuMonitoring": "GPU 모니터링"
-    },
-    "efficient": {
-      "title": "효율적인 관리",
-      "desc": "사용자 친화적인 웹 GUI를 통해 1Panel로 Linux 서버를 손쉽게 관리할 수 있습니다. 호스트 모니터링, 파일 관리, DB 관리, 컨테이너 관리, LLM 관리를 제공합니다.",
-      "monitoring": "실시간 시스템 모니터링",
-      "files": "웹 파일 관리자",
-      "database": "데이터베이스 시각적 관리",
-      "containers": "Docker 관리"
-    },
-    "website": {
-      "title": "빠른 웹사이트 배포",
-      "desc": "WordPress와의 긴밀한 통합으로 도메인 바인딩 및 SSL 인증서 구성을 원클릭으로 완료할 수 있습니다.",
-      "wordpress": "원클릭 WordPress 배포",
-      "ssl": "자동 SSL 인증서 신청",
-      "domain": "도메인 관리 및 설정",
-      "multisite": "다중 사이트 관리"
-    },
-    "appStore": {
-      "title": "앱",
-      "desc": "1Panel은 다양한 고품질 오픈 소스 도구와 앱을 선별하여 설치 및 업데이트를 쉽게 합니다.",
-      "curated": "엄선된 오픈 소스 앱",
-      "install": "원클릭 설치 및 배포",
-      "updates": "자동 업데이트 관리",
-      "management": "데이터 백업 및 복구"
-    },
-    "backup": {
-      "title": "예약 백업",
-      "desc": "다양한 클라우드 스토리지로 예약된 데이터 백업 및 복구 기능을 지원하여 데이터가 손실되지 않도록 합니다."
-    },
-    "secure": {
-      "title": "안전하고 신뢰할 수 있는",
-      "desc": "취약점 노출을 줄이고, 바이러스 방어, 방화벽, 로그 감사를 제공하여 시스템 보안을 보장합니다."
+    "subtitle": "1Panel은 현대적인 오픈소스 Linux 서버 운영 및 유지보수 관리 패널이며, 경량 AI 관리 플랫폼입니다.",
+    "cards": {
+      "ai": {
+        "title": "AI 관리",
+        "desc": "기반 하드웨어부터 에이전트(Metal-to-Agent)까지 통합 관리하는 플랫폼을 제공하며, AI Portal, AI Gateway, Skills Hub를 통합하고 에이전트와 모델의 중앙 집중식 관리를 지원합니다."
+      },
+      "ops": {
+        "title": "효율적인 시각적 운영",
+        "desc": "깔끔한 웹 그래픽 인터페이스로 호스트 모니터링, 파일 관리, 데이터베이스 관리, 컨테이너 관리를 손쉽게 처리해 Linux 서버 관리를 단순화합니다."
+      },
+      "site": {
+        "title": "빠른 사이트 배포",
+        "desc": "WordPress, Halo 등 주요 사이트 빌더와 깊이 통합. 원클릭 도메인 바인딩과 SSL 인증서 설정으로 사이트 구축의 진입 장벽을 크게 낮춥니다."
+      },
+      "security": {
+        "title": "엔터프라이즈 보안 및 백업",
+        "desc": "내장된 WAF 방화벽과 로그 감사 기능으로 서버의 모든 계층을 보호합니다. 원클릭 백업 및 복원은 다양한 클라우드 스토리지와 연동되어 데이터를 안전하게 보관합니다."
+      }
     }
   },
   "appStore": {

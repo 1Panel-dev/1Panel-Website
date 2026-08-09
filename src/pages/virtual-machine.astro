@@ -1,9 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Statistics from "../components/Statistics.astro";
-import { Icon } from "astro-icon/components";
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Statistics from '../components/Statistics.astro';
+import { Icon } from 'astro-icon/components';
 import {
   SITE_URL,
   createBreadcrumbSchema,
@@ -11,7 +11,7 @@ import {
   toAbsoluteUrl,
   withBasePath,
 } from "../lib/seo";
-import "../styles/global.css";
+import '../styles/global.css';
 
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const siteBase = import.meta.env.BASE_URL;

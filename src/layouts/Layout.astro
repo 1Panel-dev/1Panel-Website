@@ -34,15 +34,15 @@ const interLatinExtHref = publicAsset('fonts/inter-latin-ext.woff2');
 const interCyrillicHref = publicAsset('fonts/inter-cyrillic.woff2');
 const {
   title,
-  description = "1Panel is a modern open-source VPS control panel — deploy Ollama, run local LLMs, manage MCP servers, and monitor GPUs. One-click WordPress, Docker, SSL. Free forever. The cPanel alternative built for the AI era.",
-  ogDescription = "The modern cPanel alternative. Deploy Ollama, run DeepSeek or Qwen locally, manage Docker, SSL, and websites — all from a clean web dashboard. Free and open source.",
+  description = "1Panel is a modern, open-source Linux server management panel and a lightweight AI management platform. Deploy Ollama, run local LLMs, manage Docker containers, websites, databases, files, SSL, and backups. Enterprise Edition adds AI Portal, AI Gateway, Skills Hub, VM management, and security ops reports. Free and open source.",
+  ogDescription = "The premier Linux server management panel. Deploy Ollama, run DeepSeek or Qwen locally, manage Docker, SSL, and websites — all from a clean web dashboard. Enterprise Edition available with AI governance, VM management, and security ops. Free and open source.",
   lang = "en",
   basePath = "./",
   ogType = 'website',
   canonicalUrl,
   articlePublishedTime,
   articleModifiedTime,
-  keywords = "1Panel,Linux,server,github,panel,docker,container,website,database,management,wordpress,php",
+  keywords = "1Panel,Linux server management,server panel,open source,cPanel alternative,Docker,container,website,database,management,wordpress,AI Portal,AI Gateway,Enterprise Edition,VM management,KVM,security ops",
   ogImageUrl,
   enableHomepageStats = false,
   structuredData = [],
@@ -93,7 +93,7 @@ const htmlLang =
   <meta name="generator" content={Astro.generator} />
   {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
   <meta name="robots" content="index, follow" />
-  
+
   <!-- SEO Meta Tags -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={ogDescription || description} />
@@ -106,12 +106,12 @@ const htmlLang =
   <meta name="twitter:image" content={resolvedOgImage} />
   {articlePublishedTime && <meta property="article:published_time" content={articlePublishedTime} />}
   {articleModifiedTime && <meta property="article:modified_time" content={articleModifiedTime} />}
-  
+
   <!-- Keywords -->
   <meta name="keywords" content={keywords} />
-  
+
   <title>{title}</title>
-  
+
   {interPreloadHrefs.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
   <Statistics />
   {structuredDataItems.map((item) => (
@@ -122,7 +122,7 @@ const htmlLang =
 <body class="bg-dark-900 text-gray-100 antialiased">
   <!-- Background particles -->
   <div id="particles-background" class="fixed inset-0 z-0"></div>
-  
+
   <!-- Main content -->
   <div class="relative z-10">
     <slot name="main" />
@@ -130,7 +130,7 @@ const htmlLang =
 
   <!-- Global language prompt (deduped) -->
   <LanguageModal />
-  
+
   <!-- Global scripts -->
   <script is:inline define:vars={{ enableHomepageStats }}>
     // 获取 Stars 数量和下载量并在获取后再执行动画
@@ -157,7 +157,7 @@ const htmlLang =
       } catch (error) {
         console.error("Failed to fetch download count:", error);
       }
-      
+
       const starsEl = document.getElementById("stars-count");
       if (starsEl) {
         starsEl.dataset.target = `${starsCount}`;
@@ -242,7 +242,7 @@ const htmlLang =
       if (!container) return;
 
       const particleCount = 50;
-      
+
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'absolute w-1 h-1 bg-blue-500 rounded-full opacity-20 particles';

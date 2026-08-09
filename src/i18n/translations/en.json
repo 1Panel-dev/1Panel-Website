@@ -1,7 +1,7 @@
 {
   "meta": {
-    "defaultTitle": "1Panel: Open-Source VPS Control Panel | cPanel Alternative",
-    "defaultDescription": "1Panel is an open-source VPS control panel. Deploy Ollama, manage Docker, one-click WordPress & OpenClaw. The modern cPanel alternative built for the AI era.",
+    "defaultTitle": "1Panel: The Premier Linux Server Management Panel | cPanel Alternative",
+    "defaultDescription": "1Panel is an open-source Linux Server Management Panel. Deploy Ollama, manage Docker, one-click WordPress & OpenClaw. The modern cPanel alternative built for the AI era.",
     "ogDescription": "The modern cPanel alternative. Deploy Ollama, run DeepSeek or Qwen locally, manage Docker, SSL, and websites — all from a clean web dashboard. Free and open source."
   },
   "header": {
@@ -14,7 +14,7 @@
     "demo": "Demo",
     "github": "GitHub",
     "freeTrial": "Free Trial",
-    "enterprise": "Enterprise",
+    "enterprise": "Enterprise Edition",
     "versions": "Versions",
     "enterpriseOverview": "Overview",
     "aiPortal": "AI Portal",
@@ -37,11 +37,11 @@
     "fallbackToEnglish": "This article is not yet available in your selected language. Showing the English version."
   },
   "hero": {
-    "title1": "The Modern Open-Source",
-    "title2": "VPS Control Panel",
+    "title1": "The Premier",
+    "title2": "Linux Server Management Panel",
     "badgePowerful": "Powerful",
     "badgeOpenSource": "Open Source",
-    "subtitle": "1Panel is a modern, open-source VPS control panel — and the cPanel alternative built for the AI era. Deploy local LLMs, manage Docker containers, and host agents and websites from one clean dashboard.",
+    "subtitle": "1Panel features an intuitive web interface to effortlessly manage Linux server. From AI agents and LLMs to websites, databases, containers, files, and cron jobs, everything is right at your fingertips.",
     "pricingBannerText": "Free OSS forever. Pro plans from $80/year.",
     "pricingBannerLink": "See pricing",
     "githubStars": "GitHub Stars",
@@ -52,51 +52,36 @@
     "playVideo": "Play video",
     "dashboardAlt": "1Panel Modern Interface",
     "scrollDown": "Scroll Down",
-    "typewriter": ["OpenClaw Agents", "Local LLMs", "Websites", "Databases", "Files", "Scheduled Tasks"]
+    "typewriter": [
+      "OpenClaw Agents",
+      "Local LLMs",
+      "Websites",
+      "Databases",
+      "Files",
+      "Scheduled Tasks"
+    ]
   },
   "features": {
     "title": "Powerful",
     "titleHighlight": "Features",
-    "subtitle": "Comprehensive VPS management features, making operations simple and efficient",
-    "openclaw": {
-      "title": "One-Click OpenClaw Deployment",
-      "desc": "Seamlessly deploy OpenClaw agents, host local LLMs via Ollama, and monitor GPU utilization—all within a unified workspace.",
-      "openclawAgents": "OpenClaw Agents Management",
-      "localLLMs": "Local LLMs Management",
-      "mcpServers": "MCP Servers Management",
-      "gpuMonitoring": "GPU Monitoring"
-    },
-    "efficient": {
-      "title": "Efficient Management",
-      "desc": "Through a user-friendly web graphical interface, 1Panel enables users to effortlessly manage their Linux servers. Key features include host monitoring, file management, database administration, container management, LLMs management.",
-      "monitoring": "Real-time System Monitoring",
-      "files": "Web File Manager",
-      "database": "Database Visual Management",
-      "containers": "Docker Management"
-    },
-    "website": {
-      "title": "Rapid Website Deployment",
-      "desc": "With deep integration of the popular open-source website building software WordPress, 1Panel streamlines the process of domain binding and SSL certificate configuration, all achievable with just one click.",
-      "wordpress": "One-click WordPress Deployment",
-      "ssl": "Automatic SSL Certificate Application",
-      "domain": "Domain Management and Configuration",
-      "multisite": "Multi-site Management"
-    },
-    "appStore": {
-      "title": "App Store",
-      "desc": "1Panel curates a wide range of high-quality open-source tools and applications, facilitating easy installation and updates for its users.",
-      "curated": "Curated Open-source Applications",
-      "install": "One-click Installation and Deployment",
-      "updates": "Automatic Update Management",
-      "management": "Data Backup and Recovery"
-    },
-    "backup": {
-      "title": "Scheduled Backup",
-      "desc": "Support data backup to various cloud storage media scheduledly, and support recovery function, ensuring data is never lost."
-    },
-    "secure": {
-      "title": "Secure and Reliable",
-      "desc": "1Panel effectively reduces vulnerability exposure, provides virus protection, firewall, and log audit functions, ensuring system security."
+    "subtitle": "1Panel is a modern, open-source Linux server management panel, and a lightweight AI management platform.",
+    "cards": {
+      "ai": {
+        "title": "AI Management",
+        "desc": "Provides a unified management platform from underlying hardware to agents (Metal-to-Agent), integrating AI Portal, AI Gateway, and Skills Hub, with centralized management for agents and models."
+      },
+      "ops": {
+        "title": "Efficient Visual Operations",
+        "desc": "A clean web graphical interface for effortless host monitoring, file management, database management, and container management — simplifying Linux server administration."
+      },
+      "site": {
+        "title": "Quick Site Deployment",
+        "desc": "Deep integration with WordPress and other mainstream site builders. One-click domain binding and SSL certificate setup — dramatically lowering the bar to launching a website."
+      },
+      "security": {
+        "title": "Enterprise Security & Backup",
+        "desc": "Built-in WAF firewall and log audit capabilities protect every layer of your server. One-click backup and recovery integrate with multiple cloud storage targets — keeping your data safe, always."
+      }
     }
   },
   "appStore": {
@@ -181,8 +166,8 @@
     "perpetualLicense": "Perpetual License (V2)",
     "subscriptionLicense": "Subscription",
     "mostPopular": "Most Popular",
-    "metaTitle": "1Panel Pricing — Free tier available · Pro from $80/yr",
-    "metaDescription": "1Panel OSS is free forever: full open-source VPS control panel. Pro adds multi-node management, OpenClaw agents, advanced WAF, and priority support from $80/year per node. Compare OSS vs Pro and deploy on your Linux server.",
+    "metaTitle": "1Panel Pricing — Free tier available · Pro from $80/yr · Enterprise Edition",
+    "metaDescription": "1Panel OSS is free forever: full open-source Linux server management panel. Pro adds multi-node management, AI agents, advanced WAF, and priority support from $80/year. Enterprise Edition adds AI Portal, AI Gateway, Skills Hub, VM management, and security ops reports. Compare plans and deploy on your Linux server.",
     "bestValueLongTerm": "Best Value Long-Term",
     "ossCardDesc": "Open-source, forever free",
     "subscriptionCardDesc": "Best for individuals & growing teams",
@@ -406,8 +391,30 @@
     "operationPoint1": "Ready out of the box — deploy in minutes;",
     "operationPoint2": "Fully graphical interface for easy management;",
     "operationPoint3": "Say goodbye to token anxiety for good.",
-    "architectureTiles": ["AI Agents", "Model Deploy", "AI Knowledge Base", "Resource Monitor", "Seat Management", "Model Maintenance", "AI Workflows", "VM Management", "Usage Stats", "Model Benchmark", "AI Coding", "WAF & Backup", "Smart Routing", "Model Download", "AI Office", "Ops Reports"],
-    "architectureModules": ["AI Gateway", "Model Mgmt", "AI Apps", "Ops Mgmt"],
+    "architectureTiles": [
+      "AI Agents",
+      "Model Deploy",
+      "AI Knowledge Base",
+      "Resource Monitor",
+      "Seat Management",
+      "Model Maintenance",
+      "AI Workflows",
+      "VM Management",
+      "Usage Stats",
+      "Model Benchmark",
+      "AI Coding",
+      "WAF & Backup",
+      "Smart Routing",
+      "Model Download",
+      "AI Office",
+      "Ops Reports"
+    ],
+    "architectureModules": [
+      "AI Gateway",
+      "Model Mgmt",
+      "AI Apps",
+      "Ops Mgmt"
+    ],
     "panelEnterprise": "1Panel Enterprise",
     "panelModel": "DeepSeek V4 Flash",
     "panelGpu": "4 × NVIDIA RTX Pro 5000",

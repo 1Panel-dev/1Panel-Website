@@ -14,7 +14,7 @@
     "demo": "Demo",
     "github": "GitHub",
     "freeTrial": "Teste gratuito",
-    "enterprise": "Enterprise",
+    "enterprise": "Enterprise Edition",
     "versions": "Versões",
     "enterpriseOverview": "Visão Geral",
     "aiPortal": "Portal de IA",
@@ -63,47 +63,25 @@
   },
   "features": {
     "title": "Recursos",
-    "titleHighlight": "poderosos",
-    "subtitle": "Recursos abrangentes de gerenciamento de VPS, tornando as operações simples e eficientes",
-    "openclaw": {
-      "title": "Implantação OpenClaw em um clique",
-      "desc": "Implante agentes OpenClaw, hospede LLMs locais via Ollama e monitore o uso da GPU — tudo em um workspace unificado.",
-      "openclawAgents": "Gerenciamento de agentes OpenClaw",
-      "localLLMs": "Gerenciamento de LLMs locais",
-      "mcpServers": "Gerenciamento de servidores MCP",
-      "gpuMonitoring": "Monitoramento de GPU"
-    },
-    "efficient": {
-      "title": "Gerenciamento eficiente",
-      "desc": "Por meio de uma interface web gráfica amigável, o 1Panel permite gerenciar servidores Linux com facilidade. Recursos incluem monitoramento de host, gerenciamento de arquivos, administração de banco de dados, gerenciamento de contêineres e LLMs.",
-      "monitoring": "Monitoramento do sistema em tempo real",
-      "files": "Gerenciador de arquivos web",
-      "database": "Gerenciamento visual de banco de dados",
-      "containers": "Gerenciamento Docker"
-    },
-    "website": {
-      "title": "Implantação rápida de sites",
-      "desc": "Com integração profunda do WordPress, o 1Panel simplifica a vinculação de domínios e a configuração de certificados SSL, tudo com um clique.",
-      "wordpress": "Implantação WordPress em um clique",
-      "ssl": "Aplicação automática de certificado SSL",
-      "domain": "Gerenciamento e configuração de domínio",
-      "multisite": "Gerenciamento multi-site"
-    },
-    "appStore": {
-      "title": "Loja de",
-      "desc": "O 1Panel reúne ferramentas e aplicativos de código aberto de alta qualidade, facilitando instalação e atualizações.",
-      "curated": "Aplicativos open-source curados",
-      "install": "Instalação e implantação em um clique",
-      "updates": "Gerenciamento automático de atualizações",
-      "management": "Backup e recuperação de dados"
-    },
-    "backup": {
-      "title": "Backup agendado",
-      "desc": "Suporte a backup de dados em vários armazenamentos em nuvem de forma agendada e função de recuperação, garantindo que os dados nunca se percam."
-    },
-    "secure": {
-      "title": "Seguro e confiável",
-      "desc": "O 1Panel reduz a exposição a vulnerabilidades, oferece proteção contra vírus, firewall e auditoria de logs, garantindo a segurança do sistema."
+    "titleHighlight": "Poderosos",
+    "subtitle": "1Panel é um painel moderno e de código aberto para administração de servidores Linux, e uma plataforma leve de gestão de IA.",
+    "cards": {
+      "ai": {
+        "title": "Gestão de IA",
+        "desc": "Plataforma unificada que vai do hardware subjacente até os agentes (Metal-to-Agent), integrando AI Portal, AI Gateway e Skills Hub, com gestão centralizada de agentes e modelos."
+      },
+      "ops": {
+        "title": "Operações visuais eficientes",
+        "desc": "Interface web limpa para monitorização de hosts, gestão de arquivos, bases de dados e contentores — simplificando a administração de servidores Linux."
+      },
+      "site": {
+        "title": "Implantação rápida de sites",
+        "desc": "Integração profunda com WordPress, Halo e outros construtores de sites. Associação de domínio e SSL com um clique — reduzindo a barreira de entrada."
+      },
+      "security": {
+        "title": "Segurança empresarial e backups",
+        "desc": "WAF integrado e auditoria de logs protegem cada camada do servidor. Backup e restauração com um clique, integrados a múltiplos armazenamentos em nuvem — dados sempre protegidos."
+      }
     }
   },
   "appStore": {

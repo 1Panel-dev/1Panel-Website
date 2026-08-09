@@ -14,7 +14,7 @@
     "demo": "Demo",
     "github": "GitHub",
     "freeTrial": "Ücretsiz deneme sürümü",
-    "enterprise": "Enterprise",
+    "enterprise": "Enterprise Edition",
     "versions": "Sürümler",
     "enterpriseOverview": "Genel Bakış",
     "aiPortal": "AI Portalı",
@@ -63,47 +63,25 @@
   },
   "features": {
     "title": "Güçlü",
-    "titleHighlight": "özellikler",
-    "subtitle": "Kapsamlı VPS yönetim özellikleriyle işlemleri basit ve verimli hale getirir",
-    "openclaw": {
-      "title": "Tek tıkla OpenClaw dağıtımı",
-      "desc": "OpenClaw ajanlarını dağıtın, Ollama ile yerel LLM'leri barındırın ve GPU kullanımını izleyin—hepsi tek bir çalışma alanında.",
-      "openclawAgents": "OpenClaw ajan yönetimi",
-      "localLLMs": "Yerel LLM yönetimi",
-      "mcpServers": "MCP sunucu yönetimi",
-      "gpuMonitoring": "GPU izleme"
-    },
-    "efficient": {
-      "title": "Verimli yönetim",
-      "desc": "Kullanıcı dostu web arayüzüyle 1Panel, Linux sunucularını kolayca yönetmenizi sağlar: ana bilgisayar izleme, dosya yönetimi, veritabanı yönetimi, konteyner ve LLM yönetimi.",
-      "monitoring": "Gerçek zamanlı sistem izleme",
-      "files": "Web dosya yöneticisi",
-      "database": "Görsel veritabanı yönetimi",
-      "containers": "Docker yönetimi"
-    },
-    "website": {
-      "title": "Hızlı web sitesi dağıtımı",
-      "desc": "WordPress ile derin entegrasyon sayesinde 1Panel, alan adı bağlama ve SSL sertifikası yapılandırmasını tek tıkla tamamlamanızı sağlar.",
-      "wordpress": "Tek tıkla WordPress dağıtımı",
-      "ssl": "Otomatik SSL sertifikası başvurusu",
-      "domain": "Alan adı yönetimi ve yapılandırma",
-      "multisite": "Çoklu site yönetimi"
-    },
-    "appStore": {
-      "title": "Uygulama",
-      "desc": "1Panel, yüksek kaliteli açık kaynak araçlar ve uygulamalar sunar; kurulum ve güncellemeler kolaydır.",
-      "curated": "Seçilmiş açık kaynak uygulamalar",
-      "install": "Tek tıkla kurulum ve dağıtım",
-      "updates": "Otomatik güncelleme yönetimi",
-      "management": "Veri yedekleme ve kurtarma"
-    },
-    "backup": {
-      "title": "Zamanlanmış yedekleme",
-      "desc": "Verilerin çeşitli bulut depolama ortamlarına zamanlanmış yedeklenmesi ve kurtarma işlevi desteği; verilerin kaybolmamasını sağlar."
-    },
-    "secure": {
-      "title": "Güvenli ve güvenilir",
-      "desc": "1Panel güvenlik açığı maruziyetini azaltır; virüs koruması, güvenlik duvarı ve log denetimi sunar."
+    "titleHighlight": "Özellikler",
+    "subtitle": "1Panel, modern ve açık kaynaklı bir Linux sunucu yönetim paneli ve hafif bir AI yönetim platformudur.",
+    "cards": {
+      "ai": {
+        "title": "AI Yönetimi",
+        "desc": "Temel donanımdan aracılara (Metal-to-Agent) kadar uçtan uca birleşik bir yönetim platformu sunar; AI Portal, AI Gateway ve Skills Hub'ı birleştirir, aracılar ve modeller için merkezi yönetim sağlar."
+      },
+      "ops": {
+        "title": "Verimli Görsel Operasyonlar",
+        "desc": "Sunucu izleme, dosya yönetimi, veritabanı yönetimi ve konteyner yönetimi için sade bir web grafik arayüzü — Linux sunucu yönetimini kolaylaştırır."
+      },
+      "site": {
+        "title": "Hızlı Site Kurulumu",
+        "desc": "WordPress, Halo ve diğer popüler site oluşturucularla derin entegrasyon. Tek tıkla alan adı bağlama ve SSL sertifikası kurulumu — site kurma eşiğini büyük ölçüde düşürür."
+      },
+      "security": {
+        "title": "Kurumsal Güvenlik ve Yedekleme",
+        "desc": "Yerleşik WAF güvenlik duvarı ve log denetimi sunucunuzun her katmanını korur. Tek tıkla yedekleme ve geri yükleme birçok bulut depolama ile entegredir — verileriniz her zaman güvende."
+      }
     }
   },
   "appStore": {

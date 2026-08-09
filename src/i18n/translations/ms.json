@@ -14,7 +14,7 @@
     "demo": "Demo",
     "github": "GitHub",
     "freeTrial": "Percobaan percuma",
-    "enterprise": "Enterprise",
+    "enterprise": "Enterprise Edition",
     "versions": "Versi",
     "enterpriseOverview": "Gambaran",
     "aiPortal": "Portal AI",
@@ -63,47 +63,25 @@
   },
   "features": {
     "title": "Ciri",
-    "titleHighlight": "berkuasa",
-    "subtitle": "Ciri pengurusan VPS yang menyeluruh, menjadikan operasi mudah dan cekap",
-    "openclaw": {
-      "title": "Penempatan OpenClaw satu klik",
-      "desc": "Jalankan agen OpenClaw, hos LLM tempatan melalui Ollama, dan pantau penggunaan GPU—semua dalam satu ruang kerja.",
-      "openclawAgents": "Pengurusan Agen OpenClaw",
-      "localLLMs": "Pengurusan LLM Tempatan",
-      "mcpServers": "Pengurusan Pelayan MCP",
-      "gpuMonitoring": "Pemantauan GPU"
-    },
-    "efficient": {
-      "title": "Pengurusan cekap",
-      "desc": "Melalui antara muka web grafik yang mesra pengguna, 1Panel membolehkan pengurusan pelayan Linux dengan mudah. Ciri termasuk pemantauan hos, pengurusan fail, pentadbiran pangkalan data, pengurusan kontena, pengurusan LLM.",
-      "monitoring": "Pemantauan sistem masa nyata",
-      "files": "Pengurus fail web",
-      "database": "Pengurusan pangkalan data visual",
-      "containers": "Pengurusan Docker"
-    },
-    "website": {
-      "title": "Penempatan laman web pantas",
-      "desc": "Dengan integrasi mendalam WordPress, 1Panel memudahkan pengikatan domain dan konfigurasi sijil SSL, semuanya dengan satu klik.",
-      "wordpress": "Penempatan WordPress satu klik",
-      "ssl": "Permohonan sijil SSL automatik",
-      "domain": "Pengurusan dan konfigurasi domain",
-      "multisite": "Pengurusan pelbagai laman"
-    },
-    "appStore": {
-      "title": "App",
-      "desc": "1Panel menyediakan pelbagai alat dan aplikasi sumber terbuka berkualiti tinggi, memudahkan pemasangan dan kemas kini.",
-      "curated": "Aplikasi sumber terbuka terpilih",
-      "install": "Pemasangan dan penempatan satu klik",
-      "updates": "Pengurusan kemas kini automatik",
-      "management": "Sandaran dan pemulihan data"
-    },
-    "backup": {
-      "title": "Sandaran berjadual",
-      "desc": "Sokongan sandaran data ke pelbagai media storan awan secara berjadual dan fungsi pemulihan, memastikan data tidak hilang."
-    },
-    "secure": {
-      "title": "Selamat dan boleh dipercayai",
-      "desc": "1Panel mengurangkan pendedahan kerentanan, menyediakan perlindungan virus, firewall, dan audit log, memastikan keselamatan sistem."
+    "titleHighlight": "Yang Berkuasa",
+    "subtitle": "1Panel ialah panel pengurusan pelayan Linux moden dan sumber terbuka, dan juga platform pengurusan AI yang ringan.",
+    "cards": {
+      "ai": {
+        "title": "Pengurusan AI",
+        "desc": "Menyediakan platform pengurusan bersatu daripada perkakasan asas hingga ejen (Metal-to-Agent), menyepadukan AI Portal, AI Gateway dan Skills Hub, dengan pengurusan berpusat untuk ejen dan model."
+      },
+      "ops": {
+        "title": "Operasi Visual Yang Cekap",
+        "desc": "Antara muka web yang kemas untuk pemantauan hos, pengurusan fail, pangkalan data dan kontena — memudahkan pentadbiran pelayan Linux."
+      },
+      "site": {
+        "title": "Pembangunan Tapak Pantas",
+        "desc": "Integrasi mendalam dengan WordPress, Halo dan pembina tapak popular lain. Pengikatan domain dan persediaan SSL satu klik — menurunkan halangan pelancaran laman web."
+      },
+      "security": {
+        "title": "Keselamatan Perusahaan & Sandaran",
+        "desc": "WAF terbina dalam dan audit log melindungi setiap lapisan pelayan anda. Sandaran dan pemulihan satu klik disepadukan dengan pelbagai storan awan — data anda sentiasa selamat."
+      }
     }
   },
   "appStore": {

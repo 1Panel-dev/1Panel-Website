@@ -62,48 +62,26 @@
     ]
   },
   "features": {
-    "title": "強大",
-    "titleHighlight": "功能",
-    "subtitle": "完整的 VPS 管理功能，令日常維運更簡單、更高效",
-    "openclaw": {
-      "title": "一鍵部署 OpenClaw",
-      "desc": "可快速部署 OpenClaw Agents、透過 Ollama 託管本地 LLM，並監控 GPU 使用率，全部集中在同一工作區。",
-      "openclawAgents": "OpenClaw Agents 管理",
-      "localLLMs": "本地 LLM 管理",
-      "mcpServers": "MCP 伺服器管理",
-      "gpuMonitoring": "GPU 監控"
-    },
-    "efficient": {
-      "title": "高效率管理",
-      "desc": "透過直觀的 Web 圖形介面，1Panel 可輕鬆管理 Linux 伺服器，包括主機監控、檔案管理、資料庫管理、容器管理與 LLM 管理。",
-      "monitoring": "即時系統監控",
-      "files": "Web 檔案管理器",
-      "database": "資料庫可視化管理",
-      "containers": "Docker 管理"
-    },
-    "website": {
-      "title": "快速部署網站",
-      "desc": "深度整合 WordPress 等主流開源建站工具，網域綁定與 SSL 證書設定都可一鍵完成。",
-      "wordpress": "一鍵部署 WordPress",
-      "ssl": "自動申請 SSL 證書",
-      "domain": "域名管理與設定",
-      "multisite": "多站點管理"
-    },
-    "appStore": {
-      "title": "應用商店",
-      "desc": "1Panel 精選大量高品質開源工具與應用，支援快速安裝與更新。",
-      "curated": "精選開源應用",
-      "install": "一鍵安裝與部署",
-      "updates": "自動更新管理",
-      "management": "資料備份與還原"
-    },
-    "backup": {
-      "title": "排程備份",
-      "desc": "支援將資料定期備份到多種雲端儲存，並提供還原功能，保障資料安全。"
-    },
-    "secure": {
-      "title": "安全可靠",
-      "desc": "1Panel 可有效降低漏洞暴露風險，提供病毒防護、防火牆與日誌審核等能力，全面強化系統安全。"
+    "title": "強大的",
+    "titleHighlight": "功能特性",
+    "subtitle": "1Panel 是一款現代化的開源 Linux 伺服器運維管理面板，也是輕量級的 AI 管理平台。",
+    "cards": {
+      "ai": {
+        "title": "AI 管理",
+        "desc": "提供從底層硬體到智慧體（Metal-to-Agent）的統一管理平台，整合 AI 入口、AI 閘道、Skills Hub，並支援對智慧體與模型的集中化管理。"
+      },
+      "ops": {
+        "title": "高效可視化運維",
+        "desc": "透過 Web 圖形介面，輕鬆實現主機監控、檔案管理、資料庫管理、容器管理等功能，讓 Linux 伺服器管理化繁為簡。"
+      },
+      "site": {
+        "title": "快速建站部署",
+        "desc": "深度整合 WordPress 與 Halo 等主流建站程式，一鍵完成網域綁定、SSL 憑證配置，大幅降低建站門檻。"
+      },
+      "security": {
+        "title": "企業級安全與備份",
+        "desc": "提供 WAF 防火牆、日誌稽核等安全功能，全方位保障伺服器安全；支援一鍵備份與復原，並可對接多種雲端儲存，確保資料安全永不遺失。"
+      }
     }
   },
   "appStore": {

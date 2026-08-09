@@ -14,7 +14,7 @@
     "demo": "Demo",
     "github": "GitHub",
     "freeTrial": "Kostenlose Testversion",
-    "enterprise": "Enterprise",
+    "enterprise": "Enterprise Edition",
     "versions": "Versionen",
     "enterpriseOverview": "Übersicht",
     "aiPortal": "AI Portal",
@@ -64,46 +64,24 @@
   "features": {
     "title": "Leistungsstarke",
     "titleHighlight": "Funktionen",
-    "subtitle": "Umfassende VPS-Verwaltung — einfach und effizient",
-    "openclaw": {
-      "title": "OpenClaw mit einem Klick bereitstellen",
-      "desc": "OpenClaw-Agents nahtlos bereitstellen, lokale LLMs über Ollama hosten und GPU-Auslastung überwachen — alles in einer einheitlichen Umgebung.",
-      "openclawAgents": "OpenClaw-Agents-Verwaltung",
-      "localLLMs": "Lokale LLMs-Verwaltung",
-      "mcpServers": "MCP-Server-Verwaltung",
-      "gpuMonitoring": "GPU-Überwachung"
-    },
-    "efficient": {
-      "title": "Effiziente Verwaltung",
-      "desc": "Über eine benutzerfreundliche Web-Oberfläche verwaltet 1Panel Linux-Server mühelos: Host-Überwachung, Dateien, Datenbanken, Container und LLMs.",
-      "monitoring": "Echtzeit-Systemüberwachung",
-      "files": "Web-Dateimanager",
-      "database": "Visuelle Datenbankverwaltung",
-      "containers": "Docker-Verwaltung"
-    },
-    "website": {
-      "title": "Schnelle Website-Bereitstellung",
-      "desc": "Durch tiefe Integration von WordPress vereinfacht 1Panel Domain-Bindung und SSL-Zertifikate — alles mit einem Klick.",
-      "wordpress": "WordPress mit einem Klick",
-      "ssl": "Automatische SSL-Zertifikatsanforderung",
-      "domain": "Domain-Verwaltung und -Konfiguration",
-      "multisite": "Multi-Site-Verwaltung"
-    },
-    "appStore": {
-      "title": "App-Store",
-      "desc": "1Panel kuratiert hochwertige Open-Source-Tools und Anwendungen mit einfacher Installation und Updates.",
-      "curated": "Kuratierte Open-Source-Apps",
-      "install": "Installation und Bereitstellung mit einem Klick",
-      "updates": "Automatisches Update-Management",
-      "management": "Datensicherung und Wiederherstellung"
-    },
-    "backup": {
-      "title": "Geplante Sicherung",
-      "desc": "Daten regelmäßig in verschiedene Cloud-Speicher sichern und bei Bedarf wiederherstellen — damit nichts verloren geht."
-    },
-    "secure": {
-      "title": "Sicher und zuverlässig",
-      "desc": "1Panel reduziert die Angriffsfläche, bietet Virenschutz, Firewall und Protokollprüfung für mehr Systemsicherheit."
+    "subtitle": "1Panel ist ein modernes, quelloffenes Verwaltungspanel für Linux-Server-Betrieb und -Wartung sowie eine schlanke KI-Verwaltungsplattform.",
+    "cards": {
+      "ai": {
+        "title": "KI-Verwaltung",
+        "desc": "Bietet eine einheitliche Verwaltungsplattform von der zugrunde liegenden Hardware bis zu Agenten (Metal-to-Agent) mit KI-Portal, KI-Gateway und Skills Hub sowie zentralisierter Verwaltung von Agenten und Modellen."
+      },
+      "ops": {
+        "title": "Effiziente visuelle Verwaltung",
+        "desc": "Übersichtliche Web-GUI für müheloses Host-Monitoring, Datei-, Datenbank- und Container-Management — Linux-Server-Verwaltung leicht gemacht."
+      },
+      "site": {
+        "title": "Schnelle Website-Bereitstellung",
+        "desc": "Tiefe Integration mit WordPress, Halo und anderen gängigen Website-Baukästen. Domain-Bindung und SSL-Konfiguration mit einem Klick — der Einstieg wird deutlich leichter."
+      },
+      "security": {
+        "title": "Unternehmens­sicherheit & Backup",
+        "desc": "Integrierte WAF-Firewall und Log-Audit schützen jede Schicht Ihres Servers. Ein-Klick-Backup und Wiederherstellung mit Anbindung an diverse Cloud-Speicher — Ihre Daten bleiben sicher."
+      }
     }
   },
   "appStore": {

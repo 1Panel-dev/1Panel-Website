@@ -8,7 +8,68 @@ import icon from 'astro-icon';
 export default defineConfig({
   site: 'https://1panel.pro',
   // base: './',
-  integrations: [tailwind(), react(), icon(), sitemap()],
+  integrations: [
+    tailwind(),
+    react(),
+    icon(),
+    sitemap({
+      filter: (page) => !page.includes('/404'),
+      serialize(item) {
+        const url = item.url.replace('https://1panel.pro', '');
+        const segments = url.split('/').filter(Boolean);
+        const last = segments[segments.length - 1] || '';
+
+        let priority = 0.5;
+        let changefreq = 'monthly';
+
+        if (url === '/' || segments.length === 0) {
+          priority = 1.0;
+          changefreq = 'daily';
+        } else if (last === 'pricing' || last === 'enterprise') {
+          priority = 0.9;
+          changefreq = 'weekly';
+        } else if (
+          last === 'ai-portal' ||
+          last === 'ai-gateway' ||
+          last === 'skills-hub' ||
+          last === 'user-management' ||
+          last === 'virtual-machine' ||
+          last === 'security-ops-report' ||
+          last === 'aicoding'
+        ) {
+          priority = 0.9;
+          changefreq = 'weekly';
+        } else if (last === 'blog' || (segments.length >= 2 && segments[0] === 'blog' && segments[1] !== 'blog')) {
+          // Blog index or individual blog post
+          if (segments.length === 1 && segments[0] === 'blog') {
+            priority = 0.8;
+            changefreq = 'weekly';
+          } else {
+            priority = 0.7;
+            changefreq = 'monthly';
+          }
+        } else if (
+          last === '1panel-vs-cpanel' ||
+          last === '1panel-vs-plesk' ||
+          last === '1panel-vs-webmin'
+        ) {
+          priority = 0.8;
+          changefreq = 'monthly';
+        } else if (segments[0] === 'apps') {
+          priority = 0.6;
+          changefreq = 'monthly';
+        } else if (last === 'openclaw' || last === 'deepseek-appliance') {
+          priority = 0.7;
+          changefreq = 'monthly';
+        }
+
+        item.priority = priority;
+        item.changefreq = changefreq;
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
+  ],
   output: 'static',
   trailingSlash: 'never',
   build: {

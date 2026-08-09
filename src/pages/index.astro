@@ -26,16 +26,50 @@ const softwareJsonLd = {
   operatingSystem: 'Linux',
   description,
   url: canonicalUrl,
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-    description: 'Open-source edition',
-  },
+  softwareVersion: 'V2',
+  featureList: [
+    'AI model deployment with Ollama',
+    'Docker container management',
+    'One-click website deployment (WordPress, PHP runtime)',
+    'Database management (MySQL, PostgreSQL, Redis, MongoDB)',
+    'File management with online editor',
+    'SSL certificate management',
+    'Backup and restore',
+    'AI Portal — self-service API Key management',
+    'AI Gateway — unified model access and routing',
+    'Skills Hub — reusable skill marketplace',
+    'VM management — KVM web UI',
+    'Security ops reports — audit and compliance',
+  ],
+  offers: [
+    {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Open-source edition — free forever',
+    },
+    {
+      '@type': 'Offer',
+      price: '80',
+      priceCurrency: 'USD',
+      description: 'Pro Edition subscription — per year',
+    },
+    {
+      '@type': 'Offer',
+      price: '200',
+      priceCurrency: 'USD',
+      description: 'Pro Edition perpetual license — one-time payment',
+    },
+  ],
   publisher: {
     '@type': 'Organization',
-    name: 'LXware',
-    url: 'https://1panel.pro',
+    name: 'FIT2CLOUD',
+    url: 'https://www.fit2cloud.com/',
+  },
+  author: {
+    '@type': 'Organization',
+    name: 'FIT2CLOUD',
+    url: 'https://www.fit2cloud.com/',
   },
 };
 ---

@@ -1,8 +1,8 @@
 ---
-import AppStoreAppPage from "../../components/apps/AppStoreAppPage.astro";
-import { DEFAULT_LOCALE } from "../../i18n/config";
-import { getTranslations } from "../../i18n/utils";
-import { getAppStoreAppStaticParams, type AppStoreAppItem } from "../../lib/app-store-detail";
+import AppStoreAppPage from '../../components/apps/AppStoreAppPage.astro';
+import { DEFAULT_LOCALE } from '../../i18n/config';
+import { getTranslations } from '../../i18n/utils';
+import { getAppStoreAppStaticParams, type AppStoreAppItem } from '../../lib/app-store-detail';
 
 export function getStaticPaths() {
   return getAppStoreAppStaticParams();

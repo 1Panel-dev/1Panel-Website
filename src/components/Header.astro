@@ -48,7 +48,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
 
 <header class="sticky top-0 left-0 right-0 z-[110] bg-dark-200/80 backdrop-blur-md border-b border-gray-200">
   <nav class="container-custom">
-    <div 
+    <div
       class="grid h-16 w-full grid-cols-[auto_1fr] items-center gap-4 lg:h-20 lg:grid-cols-[auto_1fr_auto] lg:gap-6"
     >
       <!-- Left: Logo -->
@@ -116,10 +116,6 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
             </div>
           </div>
         </div>
-        <a href={`${prefix}/deepseek-appliance`} class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
-          <span>{t(translations, 'header.aiAppliances')}</span>
-          <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
-        </a>
         <a href="https://1panel.pro/docs/" target="_blank" class="group relative inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30">
           <span>{t(translations, 'header.docs')}</span>
           <span class="pointer-events-none absolute inset-x-4 bottom-1 h-px origin-left scale-x-0 bg-gray-900 transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
@@ -168,7 +164,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
       style="touch-action:manipulation; min-height: 100vh; height: 100vh;"
     >
       <div class="relative w-full max-w-[440px] mx-auto flex flex-col min-h-screen px-5 pt-8 pb-8"
-           style="height: 100vh; min-height: 100vh; box-sizing: border-box;">
+        style="height: 100vh; min-height: 100vh; box-sizing: border-box;">
         <button
           type="button"
           class="absolute top-3 right-3 rounded-full p-3 bg-gray-100 hover:bg-gray-200 transition"
@@ -224,12 +220,12 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
             </div>
           </details>
           <a
-            href={`${prefix}/deepseek-appliance`}
+            href={`${prefix}/docs`}
+            target="_blank"
             class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"
           >
-            {t(translations, 'header.aiAppliances')}
+            {t(translations, 'header.docs')}
           </a>
-          <a
             href="https://github.com/1Panel-dev/1Panel/discussions"
             target="_blank"
             class="block rounded-lg px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition"

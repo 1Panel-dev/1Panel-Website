@@ -1,5 +1,5 @@
 ---
-// Features section for 1Panel website
+// Features section for 1Panel website — compact 4-card layout
 import { Icon } from 'astro-icon/components'
 import { t, getTranslations } from '../i18n/utils';
 import type { TranslationDict } from '../i18n/utils';
@@ -12,12 +12,32 @@ interface Props {
 
 const { basePath = './', translations: rawTranslations } = Astro.props;
 const translations = rawTranslations && Object.keys(rawTranslations || {}).length > 0 ? rawTranslations! : getTranslations('en');
+
+// 4 feature cards in 2x2 grid
+const cards = [
+  {
+    key: 'ai',
+    icon: 'carbon:ai',
+  },
+  {
+    key: 'ops',
+    icon: 'mdi:chart-bar',
+  },
+  {
+    key: 'site',
+    icon: 'mdi:rocket-launch',
+  },
+  {
+    key: 'security',
+    icon: 'carbon:security',
+  },
+] as const;
 ---
 
 <section id="features" class="section-padding bg-gradient-to-br from-gray-50 to-white">
   <div class="container-custom">
     <!-- Section Header -->
-    <div class="text-center mb-20">
+    <div class="text-center mb-16">
       <h2 class="fade-in-up text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
         {t(translations, 'features.title')}
         <span class="text-1panel-gradient">{t(translations, 'features.titleHighlight')}</span>
@@ -27,356 +47,25 @@ const translations = rawTranslations && Object.keys(rawTranslations || {}).lengt
       </p>
     </div>
 
-    <!-- Feature 1: AI-Powered Management -->
-    <div class="mb-32">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-        <!-- Image Carousel -->
-        <div class="fade-in-left order-1 lg:order-1 lg:col-span-3">
-          <div class="relative group">
-            <div class="relative bg-white rounded-lg shadow-2xl overflow-hidden transform group-hover:scale-105 transition-transform duration-700">
-              <!-- Carousel Container -->
-              <div class="carousel-container relative overflow-hidden" style="min-height: 400px;">
-                <!-- Image 1: OpenClaw -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="openclaw">
-                  <img 
-                    src={`${basePath}images/feature-ai-agents.png`} 
-                    alt="1Panel GPU Monitoring" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>                  
-                <!-- Image 2: Local LLMs -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500" data-feature="local-llms">
-                  <img 
-                    src={`${basePath}images/f13.png`} 
-                    alt="1Panel LLM Management" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 3: MCP Servers -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="mcp-servers">
-                  <img 
-                    src={`${basePath}images/f14.png`} 
-                    alt="1Panel MCP Server Management" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 4: GPU Monitoring -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="gpu-monitoring">
-                  <img 
-                    src={`${basePath}images/f15.png`} 
-                    alt="1Panel GPU Monitoring" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>              
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+    <!-- 4 Feature Cards in 2x2 Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {cards.map((card, index) => (
+        <div class="fade-in-up card group hover:scale-105 transition-transform duration-300" style={`animation-delay: ${0.1 + index * 0.1}s;`}>
+          <div class="flex items-start space-x-4">
+            <div class="w-16 h-16 rounded-xl flex items-center justify-center bg-1panel-gradient group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+              <Icon name={card.icon} class="w-8 h-8 text-white" />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                {t(translations, `features.cards.${card.key}.title`)}
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                {t(translations, `features.cards.${card.key}.desc`)}
+              </p>
             </div>
           </div>
         </div>
-        <!-- Content -->
-        <div class="fade-in-right order-2 lg:order-2 lg:col-span-2">
-          <div class="flex items-center mb-6">
-            <h3 class="text-3xl font-bold text-gray-800">{t(translations, 'features.openclaw.title')}</h3>
-          </div>
-          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-            {t(translations, 'features.openclaw.desc')}
-          </p>
-          <div class="grid grid-cols-1 gap-4">
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="openclaw">
-              <Icon name="mdi:gpu" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.openclaw.openclawAgents')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer active" data-feature="local-llms">
-              <Icon name="carbon:ai" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.openclaw.localLLMs')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="mcp-servers">
-              <Icon name="codicon:mcp" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.openclaw.mcpServers')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="gpu-monitoring">
-              <Icon name="mdi:gpu" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.openclaw.gpuMonitoring')}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>    
-
-    <!-- Feature 2: High Efficiency Management -->
-    <div class="mb-32">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-        <!-- Content -->
-        <div class="fade-in-left order-2 lg:order-1 lg:col-span-2">
-          <div class="flex items-center mb-6">
-            <h3 class="text-3xl font-bold text-gray-800">{t(translations, 'features.efficient.title')}</h3>
-          </div>
-          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-            {t(translations, 'features.efficient.desc')}
-          </p>
-          <div class="grid grid-cols-1 gap-4">
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer active" data-feature="monitoring">
-              <Icon name="mdi:chart-multiline" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.efficient.monitoring')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="files">
-              <Icon name="carbon:volume-file-storage" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.efficient.files')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="database">
-              <Icon name="carbon:db2-database" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.efficient.database')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="containers">
-              <Icon name="mdi:docker" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.efficient.containers')}</span>
-            </div>
-          </div>
-        </div>
-        <!-- Image Carousel -->
-        <div class="fade-in-right order-1 lg:order-2 lg:col-span-3">
-          <div class="relative group">
-            <div class="relative bg-white rounded-lg shadow-2xl overflow-hidden transform group-hover:scale-105 transition-transform duration-700">
-              <!-- Carousel Container -->
-              <div class="carousel-container relative overflow-hidden" style="min-height: 400px;">
-                <!-- Image 1: System Monitoring -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500" data-feature="monitoring">
-                  <img 
-                    src={`${basePath}images/f1.png`} 
-                    alt="1Panel system monitoring dashboard" 
-                    class="w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 2: File Management -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="files">
-                  <img 
-                    src={`${basePath}images/f2.png`} 
-                    alt="1Panel web file manager interface" 
-                    class="w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 3: Database Management -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="database">
-                  <img 
-                    src={`${basePath}images/f3.png`} 
-                    alt="1Panel database management interface" 
-                    class="w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 4: Container Management -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="containers">
-                  <img 
-                    src={`${basePath}images/f4.png`} 
-                    alt="1Panel Docker container management interface" 
-                    class="w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              
-              <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 3: Quick Website Deployment -->
-    <div class="mb-32">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-        <!-- Image Carousel -->
-        <div class="fade-in-left order-2 lg:order-1 lg:col-span-3">
-          <div class="relative group">
-            <div class="relative bg-white rounded-lg shadow-2xl overflow-hidden transform group-hover:scale-105 transition-transform duration-700">
-              <!-- Carousel Container -->
-              <div class="carousel-container relative overflow-hidden" style="min-height: 400px;">
-                <!-- Image 1: WordPress Deployment -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500" data-feature="wordpress">
-                  <img 
-                    src={`${basePath}images/f5.png`} 
-                    alt="1Panel one-click WordPress deployment interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 2: SSL Certificate -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="ssl">
-                  <img 
-                    src={`${basePath}images/f6.png`} 
-                    alt="1Panel SSL certificate management interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 3: Domain Management -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="domain">
-                  <img 
-                    src={`${basePath}images/f7.png`} 
-                    alt="1Panel website and domain management interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 4: Multi-site Management -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="multisite">
-                  <img 
-                    src={`${basePath}images/f8.png`} 
-                    alt="1Panel multi-site management interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            </div>
-          </div>
-        </div>
-        <!-- Content -->
-        <div class="fade-in-right order-1 lg:order-2 lg:col-span-2">
-          <div class="flex items-center mb-6">
-            <h3 class="text-3xl font-bold text-gray-800">{t(translations, 'features.website.title')}</h3>
-          </div>
-          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-            {t(translations, 'features.website.desc')}
-          </p>
-          <div class="grid grid-cols-1 gap-4">
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer active" data-feature="wordpress">
-              <Icon name="mdi:wordpress" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.website.wordpress')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="ssl">
-              <Icon name="carbon:security" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.website.ssl')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="domain">
-              <Icon name="carbon:dns-services" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.website.domain')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="multisite">
-              <Icon name="carbon:web-services-service" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.website.multisite')}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feature 4: App Store -->
-    <div class="mb-32">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-        <!-- Content -->
-        <div class="fade-in-left order-2 lg:order-1 lg:col-span-2">
-          <div class="flex items-center mb-6">
-            <h3 class="text-3xl font-bold text-gray-800">{t(translations, 'features.appStore.title')}</h3>
-          </div>
-          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-            {t(translations, 'features.appStore.desc')}
-          </p>
-          <div class="grid grid-cols-1 gap-4">
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer active" data-feature="store">
-              <Icon name="carbon:application" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.appStore.curated')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="install">
-              <Icon name="carbon:deploy" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.appStore.install')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="updates">
-              <Icon name="carbon:update-now" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.appStore.updates')}</span>
-            </div>
-            <div class="feature-item flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-1panel transition-all duration-300 cursor-pointer" data-feature="management">
-              <Icon name="carbon:data-backup" class="w-5 h-5 mr-3 text-1panel" />
-              <span class="text-gray-700 font-medium">{t(translations, 'features.appStore.management')}</span>
-            </div>
-          </div>
-        </div>
-        <!-- Image Carousel -->
-        <div class="fade-in-right order-1 lg:order-2 lg:col-span-3">
-          <div class="relative group">
-            <div class="relative bg-white rounded-lg shadow-2xl overflow-hidden transform group-hover:scale-105 transition-transform duration-700">
-              <!-- Carousel Container -->
-              <div class="carousel-container relative overflow-hidden" style="min-height: 400px;">
-                <!-- Image 1: App Store Overview -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500" data-feature="store">
-                  <img 
-                    src={`${basePath}images/f9.png`} 
-                    alt="1Panel app marketplace interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 2: App Installation -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="install">
-                  <img 
-                    src={`${basePath}images/f10.png`} 
-                    alt="1Panel one-click app installation interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 3: App Updates -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="updates">
-                  <img 
-                    src={`${basePath}images/f11.png`} 
-                    alt="1Panel app update management interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-                <!-- Image 4: App Management -->
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0" data-feature="management">
-                  <img 
-                    src={`${basePath}images/f12.png`} 
-                    alt="1Panel application lifecycle management interface" 
-                    class="w-full h-full object-fill"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Additional Features Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-      <!-- Backup & Recovery -->
-      <div class="fade-in-up card group hover:scale-105 transition-transform duration-300" style="animation-delay: 0.8s;">
-        <div class="flex items-start space-x-4">
-          <div class="w-16 h-16 rounded-xl flex items-center justify-center bg-1panel-gradient group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">{t(translations, 'features.backup.title')}</h3>
-            <p class="text-gray-600 leading-relaxed">{t(translations, 'features.backup.desc')}</p>
-          </div>
-        </div>
-      </div>
-      <div class="fade-in-up card group hover:scale-105 transition-transform duration-300" style="animation-delay: 1s;">
-        <div class="flex items-start space-x-4">
-          <div class="w-16 h-16 rounded-xl flex items-center justify-center bg-1panel-gradient group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">{t(translations, 'features.secure.title')}</h3>
-            <p class="text-gray-600 leading-relaxed">{t(translations, 'features.secure.desc')}</p>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
@@ -396,144 +85,4 @@ const translations = rawTranslations && Object.keys(rawTranslations || {}).lengt
   .animate-pulse {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-
-  /* Feature item active state */
-  .feature-item.active {
-    background-color: #f0f7ff;
-    border-color: #005eeb;
-    box-shadow: 0 4px 12px rgba(0, 94, 235, 0.15);
-  }
-
-  .feature-item.active span {
-    color: #005eeb;
-    font-weight: 600;
-  }
-
-  .feature-item:hover {
-    transform: translateY(-2px);
-  }
 </style>
-
-<script>
-  // Intersection Observer for animation triggers
-  document.addEventListener('DOMContentLoaded', function() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    // Observe all animated elements
-    document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Feature Carousel Functionality
-    class FeatureCarousel {
-      private container: Element;
-      private slides: NodeListOf<HTMLElement>;
-      private currentIndex: number;
-      private autoPlayInterval: number | null;
-      private autoPlayDelay: number;
-      private featureItems: NodeListOf<HTMLElement>;
-      private carouselId: string;
-
-      constructor(container: Element) {
-        this.container = container;
-        this.slides = container.querySelectorAll('.carousel-slide') as NodeListOf<HTMLElement>;
-        
-        // Generate unique ID for this carousel
-        this.carouselId = 'carousel-' + Math.random().toString(36).substr(2, 9);
-        this.container.setAttribute('data-carousel-id', this.carouselId);
-        
-        // Find feature items in the same feature section
-        const featureSection = this.container.closest('.mb-32');
-        this.featureItems = featureSection?.querySelectorAll('.feature-item') || document.querySelectorAll('');
-        
-        this.currentIndex = 0;
-        this.autoPlayInterval = null;
-        this.autoPlayDelay = 4000; // 4 seconds
-        
-        this.init();
-      }
-
-      init() {
-        // Add click event listeners to feature items
-        this.featureItems.forEach((item: HTMLElement, index: number) => {
-          item.addEventListener('click', () => {
-            this.goToSlide(index);
-            this.updateFeatureItems(index);
-            this.resetAutoPlay();
-          });
-        });
-
-        // Start auto-play
-        this.startAutoPlay();
-
-        // Pause auto-play on hover
-        this.container.addEventListener('mouseenter', () => {
-          this.stopAutoPlay();
-        });
-
-        this.container.addEventListener('mouseleave', () => {
-          this.startAutoPlay();
-        });
-      }
-
-      goToSlide(index: number) {
-        // Hide all slides
-        this.slides.forEach((slide: HTMLElement) => {
-          slide.style.opacity = '0';
-        });
-
-        // Show target slide
-        this.slides[index].style.opacity = '1';
-        
-        this.currentIndex = index;
-      }
-
-      updateFeatureItems(activeIndex: number) {
-        // Remove active class from all feature items in this section
-        this.featureItems.forEach((item: HTMLElement) => {
-          item.classList.remove('active');
-        });
-
-        // Add active class to target feature item
-        if (this.featureItems[activeIndex]) {
-          this.featureItems[activeIndex].classList.add('active');
-        }
-      }
-
-      nextSlide() {
-        const nextIndex = (this.currentIndex + 1) % this.slides.length;
-        this.goToSlide(nextIndex);
-        this.updateFeatureItems(nextIndex);
-      }
-
-      startAutoPlay() {
-        this.autoPlayInterval = window.setInterval(() => {
-          this.nextSlide();
-        }, this.autoPlayDelay);
-      }
-
-      stopAutoPlay() {
-        if (this.autoPlayInterval) {
-          clearInterval(this.autoPlayInterval);
-          this.autoPlayInterval = null;
-        }
-      }
-
-      resetAutoPlay() {
-        this.stopAutoPlay();
-        this.startAutoPlay();
-      }
-    }
-
-    // Initialize all carousels
-    document.querySelectorAll('.carousel-container').forEach(container => {
-      new FeatureCarousel(container);
-    });
-  });
-</script>

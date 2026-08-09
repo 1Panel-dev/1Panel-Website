@@ -108,8 +108,8 @@ const prefix = !lang || lang === DEFAULT_LOCALE ? '' : `/${lang}`;
 
     <div id="side-bar" class="fixed bottom-8 right-8 z-20 flex flex-col items-end space-y-4 md:space-y-6">
       <!-- 联系我们按钮 -->
-      <a 
-        href="mailto:sales@lxware.hk" 
+      <a
+        href="mailto:sales@lxware.hk"
         class="contact-us-button flex items-center gap-2 px-5 py-3 bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-xl border-2 border-white/10 hover:shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/40 backdrop-blur"
         style="backdrop-filter: blur(6px);"
         aria-label="Contact Us"
@@ -119,8 +119,8 @@ const prefix = !lang || lang === DEFAULT_LOCALE ? '' : `/${lang}`;
       </a>
 
       <!-- 回到顶部按钮 -->
-      <button 
-        id="back-to-top" 
+      <button
+        id="back-to-top"
         class="flex items-center justify-center px-5 py-3 bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-xl border-2 border-white/10 hover:shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/40 backdrop-blur opacity-0 invisible z-50"
         style="backdrop-filter: blur(6px);"
         aria-label="Back to top"
@@ -135,7 +135,7 @@ const prefix = !lang || lang === DEFAULT_LOCALE ? '' : `/${lang}`;
   document.addEventListener('DOMContentLoaded', () => {
     // Back to top button functionality
     const backToTopBtn = document.getElementById('back-to-top');
-    
+
     if (backToTopBtn) {
       // Show/hide button based on scroll position
       window.addEventListener('scroll', () => {

@@ -7,12 +7,13 @@ export const ORGANIZATION_ALTERNATE_NAME = "FIT2CLOUD";
 export const ORGANIZATION_URL = "https://www.fit2cloud.com/";
 export const GITHUB_URL = "https://github.com/1Panel-dev/1Panel";
 export const DEFAULT_DESCRIPTION =
-  "1Panel is a modern open-source VPS control panel — deploy Ollama, run local LLMs, manage MCP servers, and monitor GPUs. One-click WordPress, Docker, SSL. Free forever.";
+  "1Panel is a modern, open-source Linux server management panel and a lightweight AI management platform. Deploy Ollama, run local LLMs, manage Docker containers, websites, databases, files, SSL, and backups. Enterprise Edition adds AI Portal, AI Gateway, Skills Hub, VM management, and security ops reports. Free and open source.";
 export const DEFAULT_KEYWORDS = [
   "1Panel",
-  "Linux panel",
-  "server management",
+  "Linux server management",
+  "server management panel",
   "open source panel",
+  "cPanel alternative",
   "Docker management",
   "container management",
   "website deployment",
@@ -22,8 +23,15 @@ export const DEFAULT_KEYWORDS = [
   "AI Portal",
   "AI Gateway",
   "API Key management",
+  "Skills Hub",
   "local AI deployment",
   "AI appliance",
+  "Enterprise Edition",
+  "VM management",
+  "KVM web UI",
+  "security ops report",
+  "user management",
+  "air-gapped AI coding",
 ];
 export const DEFAULT_OG_IMAGE = "/images/overview-full.png";
 const DEFAULT_BASE_PATH = import.meta.env.BASE_URL ?? "/";

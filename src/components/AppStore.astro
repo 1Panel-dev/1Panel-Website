@@ -72,7 +72,7 @@ try {
 
   // Extract all categories
   const categoryMap = new Map<string, App[]>();
-  
+
   allApps.forEach(app => {
     if (app.additionalProperties.tags && app.additionalProperties.tags.length > 0) {
       app.additionalProperties.tags.forEach((tag: string) => {
@@ -91,7 +91,7 @@ try {
       const sortedApps = apps.sort((a, b) => {
         const aRecommend = a.additionalProperties?.recommend || 0;
         const bRecommend = b.additionalProperties?.recommend || 0;
-        
+
         // If both have recommend > 0, sort by recommend (ascending)
         if (aRecommend > 0 && bRecommend > 0) {
           return aRecommend - bRecommend;
@@ -106,7 +106,7 @@ try {
         // If both have recommend === 0, maintain original order
         return 0;
       });
-      
+
       return {
         key,
         name: getCategoryDisplayName(key),
@@ -122,7 +122,7 @@ try {
   const sortedAllApps = allApps.sort((a, b) => {
     const aRecommend = a.additionalProperties?.recommend || 0;
     const bRecommend = b.additionalProperties?.recommend || 0;
-    
+
     // If both have recommend > 0, sort by recommend (ascending)
     if (aRecommend > 0 && bRecommend > 0) {
       return aRecommend - bRecommend;
@@ -137,7 +137,7 @@ try {
     // If both have recommend === 0, maintain original order
     return 0;
   });
-  
+
   defaultCategory.apps = sortedAllApps.slice(0, 9);
   defaultCategory.totalApps = allApps.length;
   categories.unshift(defaultCategory);
@@ -190,12 +190,12 @@ function formatDownloads(downloads: number): string {
       <p class="fade-in-up text-xl text-gray-600 max-w-3xl mx-auto mb-8" style="animation-delay: 0.2s;">
         {t(translations, 'appStore.subtitle')}
       </p>
-      
+
       <!-- Category Tabs -->
       {categories.length > 1 && (
         <div class="fade-in-up flex flex-wrap justify-center gap-2 mb-8" style="animation-delay: 0.4s;">
           {categories.map((category: Category, index: number) => (
-            <button 
+            <button
               class={`category-tab px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                 index === 0 ? 'active' : ''
               }`}
@@ -212,7 +212,7 @@ function formatDownloads(downloads: number): string {
     <!-- Apps Container -->
     <div id="apps-container">
       {categories.map((category: Category, categoryIndex: number) => (
-        <div 
+        <div
           class={`category-content ${categoryIndex === 0 ? 'active' : 'hidden'}`}
           data-category={category.key}
         >
@@ -228,25 +228,25 @@ function formatDownloads(downloads: number): string {
                 <div class="flex items-start space-x-4">
                   <!-- App Icon -->
                   <div class="flex-shrink-0">
-                    <img 
-                      src={getAppIcon(app, basePath)} 
+                    <img
+                      src={getAppIcon(app, basePath)}
                       alt={app.name}
                       class="w-16 h-16 rounded-xl object-cover group-hover:scale-110 transition-transform duration-300"
                       loading="lazy"
                       onerror={`this.src='${basePath}images/default-app-icon.png'`}
                     />
                   </div>
-                  
+
                   <!-- App Info -->
                   <div class="flex-1 min-w-0">
                     <div class="flex items-start justify-between mb-2">
                       <h3 class="text-lg font-semibold text-gray-800 truncate pr-2">{app.name}</h3>
                     </div>
-                    
+
                     <p class="text-sm text-gray-600 mb-3 line-clamp-2">
                       {app.additionalProperties?.description?.en || app.additionalProperties?.shortDescEn || 'No description available'}
                     </p>
-                    
+
                     <!-- Tags -->
                     {app.additionalProperties?.tags && app.additionalProperties.tags.length > 0 && (
                       <div class="flex flex-wrap gap-1 mb-3">
@@ -262,18 +262,18 @@ function formatDownloads(downloads: number): string {
               </a>
             ))}
           </div>
-          
+
           <!-- Category Stats and View All Button -->
           <div class="text-center mt-8">
             <p class="text-sm text-gray-500 mb-4">
               {getCategoryDisplayNameFromTranslations(translations, category.key)} • {category.totalApps} {t(translations, 'appStore.appsTotal')}
               {category.key !== 'all' && ` • ${t(translations, 'appStore.sortedByRecommendation')}`}
             </p>
-            
+
             <!-- View All Button -->
-            <a 
-              href="https://demo.1panel.pro/apps/all" 
-              target="_blank" 
+            <a
+              href="https://demo.1panel.pro/apps/all"
+              target="_blank"
               class="inline-flex items-center px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium transition-all duration-300 hover:border-gray-400 hover:bg-gray-50 shadow-sm hover:shadow-md group"
             >
               <span>{t(translations, 'appStore.viewAllApps')}</span>
@@ -308,20 +308,20 @@ function formatDownloads(downloads: number): string {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .category-tab {
     background: rgba(229, 231, 235, 0.8);
     color: #6b7280;
     border: 1px solid rgba(209, 213, 219, 0.5);
   }
-  
+
   .category-tab:hover {
     background: rgba(0, 94, 235, 0.1);
     color: #005eeb;
     border-color: rgba(0, 94, 235, 0.3);
     transform: translateY(-2px);
   }
-  
+
   .category-tab.active {
     background: linear-gradient(135deg, #005eeb 0%, #0066ff 100%);
     color: white;
@@ -329,20 +329,20 @@ function formatDownloads(downloads: number): string {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px -3px rgba(0, 94, 235, 0.3);
   }
-  
+
   .category-content {
     transition: all 0.3s ease-in-out;
   }
-  
+
   .category-content.hidden {
     display: none;
   }
-  
+
   .category-content.active {
     display: block;
     animation: fadeInUp 0.5s ease-out;
   }
-  
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -360,19 +360,19 @@ function formatDownloads(downloads: number): string {
   document.addEventListener('DOMContentLoaded', function() {
     const categoryTabs = document.querySelectorAll('.category-tab');
     const categoryContents = document.querySelectorAll('.category-content');
-    
+
     categoryTabs.forEach(tab => {
       tab.addEventListener('click', (event) => {
         const target = event.currentTarget as HTMLElement;
         const targetCategory = target.getAttribute('data-category');
-        
+
         // Remove all active states
         categoryTabs.forEach(t => t.classList.remove('active'));
         categoryContents.forEach(c => {
           c.classList.remove('active');
           c.classList.add('hidden');
         });
-        
+
         // Add current selected state
         target.classList.add('active');
         const targetContent = document.querySelector(`[data-category="${targetCategory}"].category-content`);
@@ -383,4 +383,4 @@ function formatDownloads(downloads: number): string {
       });
     });
   });
-</script> 
+</script>

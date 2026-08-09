@@ -10,9 +10,7 @@ interface Props {
   translations?: TranslationDict;
 }
 
-const { lang: rawLang, translations: rawTranslations } = Astro.props;
-const lang = rawLang ?? DEFAULT_LOCALE;
-const prefix = !lang || lang === DEFAULT_LOCALE ? '' : `/${lang}`;
+const { translations: rawTranslations } = Astro.props;
 const translations =
   rawTranslations && Object.keys(rawTranslations || {}).length > 0
     ? rawTranslations!
@@ -35,9 +33,6 @@ const subBuyUrl =
   'https://www.lxware.hk/products/1panel-pro-edition-subscription-license';
 const perpBuyUrl = 'https://www.lxware.hk/products/1panel-professional-edition';
 const lxwareUrl = 'https://lxware.hk';
-const enterpriseMail =
-  'mailto:sales@lxware.hk?subject=' +
-  encodeURIComponent('1Panel Enterprise / Volume Pricing');
 ---
 
 <section id="pricing" class="section-padding bg-gradient-to-br from-gray-50 to-white">
@@ -260,67 +255,6 @@ const enterpriseMail =
                 `<a href="${lxwareUrl}" class="text-1panel hover:underline" target="_blank" rel="noopener noreferrer">LXware</a>`,
               )}
             />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Enterprise Edition Card -->
-    <div class="max-w-7xl mx-auto mt-10 mb-10">
-      <div class="text-center mb-8">
-        <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
-          {tr('pricing.enterpriseEdition')}
-        </h3>
-        <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          {tr('pricing.enterpriseCardDesc')}
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-        <!-- Enterprise card -->
-        <div class="lg:col-span-3 fade-in-up rounded-xl border-2 border-indigo-200 bg-gradient-to-b from-indigo-50/50 to-white shadow-lg flex flex-col lg:flex-row overflow-hidden">
-          <div class="p-6 lg:p-8 lg:w-[40%] flex flex-col justify-center bg-indigo-50/30">
-            <div class="flex items-center gap-2 text-indigo-600 text-sm font-semibold mb-2">
-              <Icon name="carbon:enterprise" class="w-5 h-5 shrink-0" />
-              <span>{tr('pricing.enterpriseEdition')}</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-2">{tr('pricing.enterpriseCardTitle')}</h3>
-            <p class="text-sm text-gray-600 mb-6">{tr('pricing.enterpriseCardDesc')}</p>
-            <div class="flex flex-wrap gap-3">
-              <a
-                href={`${prefix || ''}/enterprise`}
-                class="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors text-sm"
-              >
-                {tr('pricing.enterpriseCardAction')}
-                <Icon name="carbon:arrow-right" class="ml-2 h-4 w-4" />
-              </a>
-              <a
-                href={enterpriseMail}
-                class="inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors text-sm"
-              >
-                {tr('pricing.enterpriseCta')}
-              </a>
-            </div>
-          </div>
-          <div class="p-6 lg:p-8 lg:w-[60%] border-t lg:border-t-0 lg:border-l border-indigo-100">
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[
-                { icon: 'carbon:application-web', key: 'enterpriseFeature1' },
-                { icon: 'carbon:gateway', key: 'enterpriseFeature2' },
-                { icon: 'carbon:skill-level', key: 'enterpriseFeature3' },
-                { icon: 'carbon:user-multiple', key: 'enterpriseFeature4' },
-                { icon: 'carbon:virtual-machine', key: 'enterpriseFeature5' },
-                { icon: 'carbon:report', key: 'enterpriseFeature6' },
-                { icon: 'carbon:cloud-services', key: 'enterpriseFeature7' },
-                { icon: 'carbon:security', key: 'enterpriseFeature8' },
-                { icon: 'carbon:headset', key: 'enterpriseFeature9' },
-              ].map(({ icon, key }) => (
-                <li class="flex items-start gap-2 text-sm text-gray-700">
-                  <Icon name={icon} class="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
-                  <span>{tr(`pricing.${key}`)}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
