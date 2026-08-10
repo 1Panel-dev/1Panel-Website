@@ -13,7 +13,6 @@
     "docs": "文件",
     "demo": "示範",
     "github": "GitHub",
-    "freeTrial": "免費試用",
     "enterprise": "企業版",
     "versions": "版本",
     "enterpriseOverview": "總覽",
@@ -33,11 +32,11 @@
     "fallbackToEnglish": "此文章尚未提供你所選語言，已顯示英文版本。"
   },
   "hero": {
-    "title1": "現代化開源",
-    "title2": "VPS 控制面板",
+    "title1": "頂級",
+    "title2": "Linux 伺服器管理面板",
     "badgePowerful": "強大",
     "badgeOpenSource": "開源",
-    "subtitle": "1Panel 是為 AI 時代設計的現代化開源 VPS 控制面板，可在同一控制台管理本地 LLM、Docker 容器與網站。",
+    "subtitle": "1Panel 提供直觀的網頁介面，讓您輕鬆管理 Linux 伺服器。從 AI 代理與 LLM 到網站、資料庫、容器、檔案與定時任務，一切盡在掌握。",
     "pricingBannerText": "OSS 永久免費，Pro 方案 $80/年 起。",
     "pricingBannerLink": "查看定價",
     "githubStars": "GitHub 星數",

@@ -13,7 +13,6 @@
     "docs": "ドキュメント",
     "demo": "デモ",
     "github": "GitHub",
-    "freeTrial": "無料試用",
     "enterprise": "エンタープライズ エディション",
     "versions": "バージョン",
     "enterpriseOverview": "概要",
@@ -33,11 +32,11 @@
     "fallbackToEnglish": "この言語の記事はまだありません。英語版を表示しています。"
   },
   "hero": {
-    "title1": "モダンなオープンソース",
-    "title2": "VPSコントロールパネル",
+    "title1": "最高級の",
+    "title2": "Linuxサーバー管理パネル",
     "badgePowerful": "高機能",
     "badgeOpenSource": "オープンソース",
-    "subtitle": "1Panelは、AI時代向けに設計されたモダンなオープンソースVPSコントロールパネルです。ローカルLLM、Docker、Webサイト運用を1つの画面で管理できます。",
+    "subtitle": "1Panelは直感的なWebインターフェースでLinuxサーバーを簡単に管理できます。AIエージェントやLLMから、Webサイト、データベース、コンテナ、ファイル、cronジョブまで、すべてが手元に揃います。",
     "pricingBannerText": "OSSはずっと無料。Proは年$80から。",
     "pricingBannerLink": "料金を見る",
     "githubStars": "GitHubスター",

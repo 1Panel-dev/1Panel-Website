@@ -13,7 +13,6 @@
     "docs": "Dokumentation",
     "demo": "Demo",
     "github": "GitHub",
-    "freeTrial": "Kostenlose Testversion",
     "enterprise": "Enterprise-Edition",
     "versions": "Versionen",
     "enterpriseOverview": "Übersicht",
@@ -33,11 +32,11 @@
     "fallbackToEnglish": "Dieser Artikel ist in Ihrer gewählten Sprache noch nicht verfügbar. Es wird die englische Version angezeigt."
   },
   "hero": {
-    "title1": "Das moderne Open-Source",
-    "title2": "VPS-Kontrollpanel",
+    "title1": "Die führende",
+    "title2": "Linux-Server-Verwaltungsplattform",
     "badgePowerful": "Leistungsstark",
     "badgeOpenSource": "Open Source",
-    "subtitle": "1Panel ist ein modernes Open-Source-VPS-Kontrollpanel — die cPanel-Alternative für die KI-Ära. Lokale LLMs bereitstellen, Docker-Container verwalten und Websites aus einem übersichtlichen Dashboard heraus hosten.",
+    "subtitle": "1Panel bietet eine intuitive Weboberfläche, um Linux-Server mühelos zu verwalten. Von KI-Agenten und LLMs über Websites, Datenbanken, Container, Dateien und Cron-Jobs – alles ist direkt zur Hand.",
     "pricingBannerText": "OSS für immer kostenlos. Pro-Pläne ab 80 $/Jahr.",
     "pricingBannerLink": "Preise ansehen",
     "githubStars": "GitHub-Sterne",

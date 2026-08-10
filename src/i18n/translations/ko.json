@@ -13,7 +13,6 @@
     "docs": "문서",
     "demo": "데모",
     "github": "GitHub",
-    "freeTrial": "무료 평가판",
     "enterprise": "엔터프라이즈 에디션",
     "versions": "버전",
     "enterpriseOverview": "개요",
@@ -33,11 +32,11 @@
     "fallbackToEnglish": "선택한 언어로 된 글이 아직 없습니다. 영어 버전을 표시합니다."
   },
   "hero": {
-    "title1": "현대적인 오픈소스",
-    "title2": "VPS 제어판",
+    "title1": "최고의",
+    "title2": "Linux 서버 관리 패널",
     "badgePowerful": "강력한",
     "badgeOpenSource": "오픈 소스",
-    "subtitle": "1Panel은 AI 시대를 위해 설계된 현대적인 오픈소스 VPS 제어판입니다. 로컬 LLM, Docker 컨테이너, 웹사이트 운영을 하나의 대시보드에서 관리하세요.",
+    "subtitle": "1Panel은 직관적인 웹 인터페이스로 Linux 서버를 손쉽게 관리할 수 있습니다. AI 에이전트와 LLM부터 웹사이트, 데이터베이스, 컨테이너, 파일, cron 작업까지 모든 것이 손끝에 있습니다.",
     "pricingBannerText": "OSS는 영원히 무료. Pro는 연 $80부터.",
     "pricingBannerLink": "요금제 보기",
     "githubStars": "GitHub 스타",
