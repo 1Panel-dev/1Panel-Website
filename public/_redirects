@@ -7,5 +7,9 @@
 /sitemap.xml /sitemap-index.xml 301
 /sitemap /sitemap-index.xml 301
 
+# Localized enterprise-edition redirects to the English-only page
+/:lang/enterprise-edition /enterprise-edition 301
+/:lang/enterprise-edition.html /enterprise-edition 301
+
 # Cloudflare Pages fallback for unknown routes
 /* /404.html 404

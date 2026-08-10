@@ -1,0 +1,12 @@
+---
+// enterprise-edition 页面只有英文版（src/pages/enterprise-edition.astro），
+// 内容为硬编码英文，未做本地化。非英文 locale 访问 /<lang>/enterprise-edition
+// 时直接重定向到英文版，避免 404。
+import { NON_DEFAULT_LOCALES } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+return Astro.redirect('/enterprise-edition');
+---

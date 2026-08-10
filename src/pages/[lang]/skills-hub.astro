@@ -11,6 +11,18 @@ import {
 } from "../../lib/seo";
 import '../../styles/global.css';
 
+import { NON_DEFAULT_LOCALES } from '../../i18n/config';
+import { getTranslations, t, getBasePath } from '../../i18n/utils';
+
+const { lang } = Astro.params;
+const translations = getTranslations(lang ?? 'en');
+const enFallback = getTranslations('en');
+const basePath = getBasePath(lang);
+function tt(p) {
+  const val = t(translations, p);
+  return val !== p ? val : t(enFallback, p);
+}
+
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/skills-hub.html", siteUrl);
 const trialUrl = "mailto:sales@lxware.hk?subject=1Panel Enterprise Trial";
@@ -75,9 +87,8 @@ const capabilityCards = [
   },
 ];
 
-const pageTitle = "1Panel Skills Hub - Enterprise Skills & Version Management";
-const pageDescription =
-  "1Panel Skills Hub enables publishing, discovering, managing, and maintaining reusable Skills within the organization, covering version management, risk assessment, and security auditing to ensure auditability and governance.";
+const pageTitle = tt('skillsHub.pageTitle');
+const pageDescription = tt('skillsHub.pageDescription');
 const skillsHubSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -102,20 +113,8 @@ const skillsHubSchema = {
   },
 };
 
-import { NON_DEFAULT_LOCALES } from '../../i18n/config';
-import { getTranslations, t, getBasePath } from '../../i18n/utils';
-
 export function getStaticPaths() {
   return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
-}
-
-const { lang } = Astro.params;
-const translations = getTranslations(lang ?? 'en');
-const enFallback = getTranslations('en');
-const basePath = getBasePath(lang);
-function tt(p) {
-  const val = t(translations, p);
-  return val !== p ? val : t(enFallback, p);
 }
 ---
 

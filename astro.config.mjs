@@ -12,7 +12,12 @@ export default defineConfig({
     react(),
     icon(),
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => {
+        if (page.includes('/404')) return false;
+        // 排除本地化 enterprise-edition 重定向页（只有英文版，非英文 locale 302 到英文版）
+        if (/\/[a-z]{2}(-[a-z]{2})?\/enterprise-edition$/.test(page.replace('https://1panel.pro', ''))) return false;
+        return true;
+      },
       serialize(item) {
         const url = item.url.replace('https://1panel.pro', '');
         const segments = url.split('/').filter(Boolean);

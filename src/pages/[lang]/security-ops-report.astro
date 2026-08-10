@@ -11,6 +11,18 @@ import {
 } from "../../lib/seo";
 import '../../styles/global.css';
 
+import { NON_DEFAULT_LOCALES } from '../../i18n/config';
+import { getTranslations, t, getBasePath } from '../../i18n/utils';
+
+const { lang } = Astro.params;
+const translations = getTranslations(lang ?? 'en');
+const enFallback = getTranslations('en');
+const basePath = getBasePath(lang);
+function tt(p) {
+  const val = t(translations, p);
+  return val !== p ? val : t(enFallback, p);
+}
+
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/security-ops-report.html", siteUrl);
 const trialUrl = "mailto:sales@lxware.hk?subject=1Panel Enterprise Trial";
@@ -98,9 +110,8 @@ const capabilityCards = [
   },
 ];
 
-const pageTitle = "Security Ops Report - 1Panel Security Inspection & Ops Reports";
-const pageDescription =
-  "Security Ops Reports consolidate key status from system, model, agent, website, security, and operations perspectives into reports, helping administrators identify items requiring attention.";
+const pageTitle = tt('securityOpsReport.pageTitle');
+const pageDescription = tt('securityOpsReport.pageDescription');
 const securityOpsReportSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -128,20 +139,8 @@ const securityOpsReportSchema = {
   },
 };
 
-import { NON_DEFAULT_LOCALES } from '../../i18n/config';
-import { getTranslations, t, getBasePath } from '../../i18n/utils';
-
 export function getStaticPaths() {
   return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
-}
-
-const { lang } = Astro.params;
-const translations = getTranslations(lang ?? 'en');
-const enFallback = getTranslations('en');
-const basePath = getBasePath(lang);
-function tt(p) {
-  const val = t(translations, p);
-  return val !== p ? val : t(enFallback, p);
 }
 ---
 

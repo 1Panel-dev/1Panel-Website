@@ -11,6 +11,18 @@ import {
 } from "../../lib/seo";
 import '../../styles/global.css';
 
+import { NON_DEFAULT_LOCALES } from '../../i18n/config';
+import { getTranslations, t, getBasePath } from '../../i18n/utils';
+
+const { lang } = Astro.params;
+const translations = getTranslations(lang ?? 'en');
+const enFallback = getTranslations('en');
+const basePath = getBasePath(lang);
+function tt(p) {
+  const val = t(translations, p);
+  return val !== p ? val : t(enFallback, p);
+}
+
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/user-management.html", siteUrl);
 const trialUrl = "mailto:sales@lxware.hk?subject=1Panel Enterprise Trial";
@@ -68,9 +80,8 @@ const capabilityCards = [
   },
 ];
 
-const pageTitle = "User Management - 1Panel Multi-User & Permission Management";
-const pageDescription =
-  "User Management supports cross-department and internal multi-role usage scenarios, providing user and permission management.";
+const pageTitle = tt('userManagement.pageTitle');
+const pageDescription = tt('userManagement.pageDescription');
 const userManagementSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -95,20 +106,8 @@ const userManagementSchema = {
   },
 };
 
-import { NON_DEFAULT_LOCALES } from '../../i18n/config';
-import { getTranslations, t, getBasePath } from '../../i18n/utils';
-
 export function getStaticPaths() {
   return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
-}
-
-const { lang } = Astro.params;
-const translations = getTranslations(lang ?? 'en');
-const enFallback = getTranslations('en');
-const basePath = getBasePath(lang);
-function tt(p) {
-  const val = t(translations, p);
-  return val !== p ? val : t(enFallback, p);
 }
 ---
 
