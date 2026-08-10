@@ -7,7 +7,6 @@ import '../styles/global.css';
 
 const siteUrl = (import.meta.env.SITE ?? 'https://1panel.pro').replace(/\/$/, '');
 const canonicalUrl = new URL('/enterprise-edition', siteUrl).href;
-const contactUrl = 'mailto:sales@lxware.hk';
 
 const layerTabs = [
   {
@@ -193,8 +192,8 @@ const pageDescription =
             <p class="mx-auto mt-4 max-w-3xl px-2 text-base leading-relaxed text-gray-600 sm:text-lg">
               1Panel Enterprise is a lightweight AI management platform that helps organizations build a dedicated AI environment, balancing rapid AI deployment with enterprise-grade security governance.
             </p>
-            <a href={contactUrl} target="_blank" rel="noopener noreferrer" class="btn-primary mt-7 inline-flex items-center justify-center px-9 py-4 text-base">
-              Request a Trial
+            <a href="mailto:sales@lxware.hk?subject=1Panel Enterprise Inquiry" target="_blank" rel="noopener noreferrer" class="btn-primary mt-7 inline-flex items-center justify-center px-9 py-4 text-base">
+              Contact Sales
               <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
             </a>
           </div>
@@ -507,14 +506,6 @@ const pageDescription =
               >
                 Contact Sales
                 <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
-              </a>
-              <a
-                href={contactUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-secondary inline-flex items-center justify-center px-6 py-3 text-base"
-              >
-                Request a Trial
               </a>
             </div>
           </div>
