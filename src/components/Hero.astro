@@ -164,18 +164,18 @@ const prefix = !lang || lang === 'en' ? '' : `/${lang}`;
             <a
               href="https://demo.1panel.pro/"
               target="_blank"
-              class="try-demo-button btn-primary text-lg px-8 py-4 group inline-flex items-center justify-center"
+              class="try-demo-button btn-primary text-lg px-8 py-4 gap-2 group inline-flex items-center justify-center"
             >
+              <Icon name="carbon:demo" class="w-5 h-5" />
               {t(translations, 'hero.demo')}
-              <Icon name="carbon:demo" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
             <a
               href="https://1panel.pro/docs/v2/installation/online_installation/"
               target="_blank"
-              class="quick-start-button btn-secondary text-lg px-8 py-4 group inline-flex items-center justify-center"
+              class="quick-start-button btn-secondary text-lg px-8 py-4 gap-2 group inline-flex items-center justify-center"
             >
+              <Icon name="carbon:rocket" class="w-5 h-5" />
               {t(translations, 'hero.installNow')}
-              <Icon name="carbon:rocket" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
         </div>
