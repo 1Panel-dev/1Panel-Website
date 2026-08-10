@@ -84,7 +84,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
           </button>
           <div data-enterprise-menu class="pointer-events-none invisible fixed z-[9999]" style="top: 0; left: 0;">
             <div class="w-56 overflow-hidden rounded-2xl border border-gray-200 bg-white p-1.5 shadow-[0_22px_56px_-28px_rgba(15,23,42,0.3)]" role="menu">
-              <a href={`${prefix}/enterprise-edition`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
+              <a href="/enterprise-edition" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
                 <Icon name="carbon:enterprise" class="h-4 w-4 shrink-0 text-gray-400" />
                 <span>{t(translations, 'header.enterpriseOverview')}</span>
               </a>
@@ -196,7 +196,7 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
               <Icon name="tabler:chevron-down" class="h-4 w-4 shrink-0 text-gray-400 transition group-open:rotate-180" />
             </summary>
             <div class="ml-3 mt-1 flex flex-col gap-1 border-l-2 border-gray-100 pl-3">
-              <a href={`${prefix}/enterprise-edition`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
+              <a href="/enterprise-edition" class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
                 {t(translations, 'header.enterpriseOverview')}
               </a>
               <a href={`${prefix}/ai-portal`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
