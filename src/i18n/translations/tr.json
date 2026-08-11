@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI Yönetimi",
-        "desc": "Temel donanımdan aracılara (Metal-to-Agent) kadar uçtan uca birleşik bir yönetim platformu sunar; AI Portal, AI Gateway ve Skills Hub'ı birleştirir, aracılar ve modeller için merkezi yönetim sağlar."
+        "desc": "Bare metal’den aracılara kadar birleşik AI yönetimi. Modellerinizi ve aracılarınızı merkezi olarak yönetmek için AI Portalları, Ağ Geçitlerini ve Skills Hub’ları entegre edin."
       },
       "ops": {
         "title": "Verimli Görsel Operasyonlar",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "Hızlı Site Kurulumu",
-        "desc": "WordPress, Halo ve diğer popüler site oluşturucularla derin entegrasyon. Tek tıkla alan adı bağlama ve SSL sertifikası kurulumu — site kurma eşiğini büyük ölçüde düşürür."
+        "desc": "WordPress ve diğer popüler site oluşturucularla derin entegrasyon. Tek tıkla alan adı bağlama ve SSL sertifikası kurulumu — bir web sitesi başlatmak her zamankinden daha kolay."
       },
       "security": {
         "title": "Kurumsal Güvenlik ve Yedekleme",
@@ -106,14 +106,14 @@
     "title": "Hızlı",
     "titleHighlight": "Başla",
     "subtitle": "Linux sunucunuza tek tıkla 1Panel kurulumu",
-    "step1Title": "Linux sunucusu hazırlayın",
+    "step1Title": "Linux sunucunuzu hazırlayın",
     "step1Desc1": "CentOS, Ubuntu, Debian ve diğer yaygın dağıtımları destekleyen bir Linux sunucunuz olduğundan emin olun.",
     "step1Desc2": "x86_64, aarch64, armv7l, ppc64le, s390x gibi çeşitli mimariler desteklenir.",
     "step2Title": "Kurulum betiğini çalıştırın",
     "step2Desc": "Root kullanıcı olarak tek tıkla kurulum betiğini çalıştırarak 1Panel otomatik indirilir ve kurulur.",
     "copy": "Kopyala",
     "copied": "Kopyalandı",
-    "step3Title": "Yönetim paneline erişin",
+    "step3Title": "Panelinize erişin",
     "step3Desc": "Kurulumdan sonra tarayıcıdan betiğin verdiği adrese giderek 1Panel'i kullanmaya başlayın.",
     "needHelp": "Yardım mı lazım?",
     "viewDocs": "Dökümanlara bak",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "LXware, FIT2CLOUD'ın açık kaynak projeleri olan 1Panel ve JumpServer'ın küresel pazardaki ticari operasyonlarından sorumludur.",
+    "companyDesc": "1Panel, FIT2CLOUD'un açık kaynak projesidir ve LXware tarafından ticari olarak desteklenmektedir.",
     "resources": "Kaynaklar",
     "blog": "Blog",
     "documentation": "Dökümanlar",

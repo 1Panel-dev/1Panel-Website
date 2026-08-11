@@ -36,7 +36,7 @@
     "title2": "Linux Server Management Panel",
     "badgePowerful": "Powerful",
     "badgeOpenSource": "Open Source",
-    "subtitle": "1Panel features an intuitive web interface to effortlessly manage Linux server. From AI agents and LLMs to websites, databases, containers, files, and cron jobs, everything is right at your fingertips.",
+    "subtitle": "1Panel features an intuitive web interface to effortlessly manage Linux servers. From AI agents and LLMs to websites, databases, containers, files, and cron jobs, everything is right at your fingertips.",
     "pricingBannerText": "Free OSS forever. Pro plans from $80/year.",
     "pricingBannerLink": "See pricing",
     "githubStars": "GitHub Stars",
@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI Management",
-        "desc": "Provides a unified management platform from underlying hardware to agents (Metal-to-Agent), integrating AI Portal, AI Gateway, and Skills Hub, with centralized management for agents and models."
+        "desc": "Unified AI management from bare metal to agents. Integrate AI Portals, Gateways, and Skills Hubs to centrally manage your models and agents."
       },
       "ops": {
         "title": "Efficient Visual Operations",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "Quick Site Deployment",
-        "desc": "Deep integration with WordPress and other mainstream site builders. One-click domain binding and SSL certificate setup — dramatically lowering the bar to launching a website."
+        "desc": "Deep integration with WordPress and other mainstream site builders. One-click domain binding and SSL certificate setup — making it easier than ever to launch a website."
       },
       "security": {
         "title": "Enterprise Security & Backup",
@@ -106,14 +106,14 @@
     "title": "Quick",
     "titleHighlight": "Start",
     "subtitle": "One-click installation of 1Panel on your Linux server",
-    "step1Title": "Prepare Linux Server",
+    "step1Title": "Prepare Your Linux Server",
     "step1Desc1": "Ensure you have a Linux server running, supporting CentOS, Ubuntu, Debian, and other mainstream distributions.",
     "step1Desc2": "Supports various server architectures: x86_64, aarch64, armv7l, ppc64le, s390x.",
-    "step2Title": "Run Installation Script",
+    "step2Title": "Run the Installation Script",
     "step2Desc": "Run the one-click installation script as the root user to automatically download and install 1Panel.",
     "copy": "Copy",
     "copied": "Copied",
-    "step3Title": "Access Management Panel",
+    "step3Title": "Access Your Dashboard",
     "step3Desc": "After installation, access the address provided by the installation script through a browser to start using 1Panel.",
     "needHelp": "Need Help?",
     "viewDocs": "View Documentation",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "LWware is responsible for the commercial operation of FIT2CLOUD's open-source projects 1Panel and JumpServer in the global market.",
+    "companyDesc": "1Panel is an open-source project by FIT2CLOUD, commercially supported by LXware.",
     "resources": "Resources",
     "blog": "Blog",
     "documentation": "Docs",

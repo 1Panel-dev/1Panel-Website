@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "Pengurusan AI",
-        "desc": "Menyediakan platform pengurusan bersatu daripada perkakasan asas hingga ejen (Metal-to-Agent), menyepadukan AI Portal, AI Gateway dan Skills Hub, dengan pengurusan berpusat untuk ejen dan model."
+        "desc": "Pengurusan AI bersatu daripada logam kosong kepada ejen. Integrasikan Portal AI, Gerbang dan Hab Kemahiran untuk menguruskan model dan ejen anda secara berpusat."
       },
       "ops": {
         "title": "Operasi Visual Yang Cekap",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "Pembangunan Tapak Pantas",
-        "desc": "Integrasi mendalam dengan WordPress, Halo dan pembina tapak popular lain. Pengikatan domain dan persediaan SSL satu klik — menurunkan halangan pelancaran laman web."
+        "desc": "Integrasi mendalam dengan WordPress dan pembina tapak popular lain. Pengikatan domain dan persediaan SSL satu klik — melancarkan laman web kini lebih mudah daripada sebelumnya."
       },
       "security": {
         "title": "Keselamatan Perusahaan & Sandaran",
@@ -106,14 +106,14 @@
     "title": "Permulaan",
     "titleHighlight": "Mula",
     "subtitle": "Pemasangan 1Panel satu klik pada pelayan Linux anda",
-    "step1Title": "Sediakan pelayan Linux",
+    "step1Title": "Sediakan pelayan Linux anda",
     "step1Desc1": "Pastikan anda mempunyai pelayan Linux yang menyokong CentOS, Ubuntu, Debian dan edaran arus perdana lain.",
     "step1Desc2": "Menyokong pelbagai seni bina: x86_64, aarch64, armv7l, ppc64le, s390x.",
     "step2Title": "Jalankan skrip pemasangan",
     "step2Desc": "Jalankan skrip pemasangan satu klik sebagai root untuk memuat turun dan memasang 1Panel secara automatik.",
     "copy": "Salin",
     "copied": "Disalin",
-    "step3Title": "Akses panel pengurusan",
+    "step3Title": "Akses papan pemuka anda",
     "step3Desc": "Selepas pemasangan, akses alamat yang diberikan oleh skrip melalui pelayar untuk mula menggunakan 1Panel.",
     "needHelp": "Perlukan bantuan?",
     "viewDocs": "Lihat dokumentasi",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "LXware bertanggungjawab terhadap operasi komersial projek sumber terbuka FIT2CLOUD, 1Panel dan JumpServer, di pasaran global.",
+    "companyDesc": "1Panel ialah projek sumber terbuka oleh FIT2CLOUD, disokong secara komersial oleh LXware.",
     "resources": "Sumber",
     "blog": "Blog",
     "documentation": "Dokumentasi",

@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI 管理",
-        "desc": "基盤ハードウェアからエージェント（Metal-to-Agent）までを統合管理するプラットフォームを提供。AI ポータル、AI ゲートウェイ、Skills Hub を統合し、エージェントとモデルを一元管理できます。"
+        "desc": "ベアメタルからエージェントまでの統合 AI 管理。AI ポータル、AI ゲートウェイ、Skills Hub を統合し、モデルとエージェントを一元管理します。"
       },
       "ops": {
         "title": "効率的なビジュアル運用",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "クイックサイト展開",
-        "desc": "WordPress、Halo などの主要なサイトビルダーと深く統合。ドメインのバインドと SSL 証明書の設定をワンクリックで完了し、サイト構築のハードルを大幅に下げます。"
+        "desc": "WordPress、Halo などの主要なサイトビルダーと深く統合。ドメインのバインドと SSL 証明書の設定をワンクリックで完了し、Web サイトの立ち上げがかつてないほど簡単になります。"
       },
       "security": {
         "title": "エンタープライズセキュリティとバックアップ",
@@ -106,14 +106,14 @@
     "title": "クイック",
     "titleHighlight": "はじめる",
     "subtitle": "Linuxサーバーに1Panelをワンクリックでインストール",
-    "step1Title": "Linuxサーバーを準備",
+    "step1Title": "Linuxサーバーを準備しましょう",
     "step1Desc1": "CentOS、Ubuntu、Debianなどメジャーなディストリビューションを実行しているLinuxサーバーを用意してください。",
     "step1Desc2": "x86_64、aarch64、armv7l、ppc64le、s390xなどのアーキテクチャに対応しています。",
-    "step2Title": "インストールスクリプトを実行",
+    "step2Title": "インストールスクリプトを実行しましょう",
     "step2Desc": "rootユーザーでワンクリックインストールスクリプトを実行し、1Panelを自動でダウンロード・インストールします。",
     "copy": "コピー",
     "copied": "コピーしました",
-    "step3Title": "管理パネルにアクセス",
+    "step3Title": "ダッシュボードにアクセスしましょう",
     "step3Desc": "インストール後、ブラウザでスクリプトが表示するアドレスにアクセスして1Panelを利用開始できます。",
     "needHelp": "ヘルプが必要？",
     "viewDocs": "ドキュメントを見る",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "LXwareは、FIT2CLOUDのオープンソースプロジェクトである1PanelとJumpServerのグローバル市場における商業運営を担当しています。",
+    "companyDesc": "1Panel は FIT2CLOUD のオープンソースプロジェクトであり、LXware が商用サポートを提供しています。",
     "resources": "リソース",
     "blog": "ブログ",
     "documentation": "ドキュメント",

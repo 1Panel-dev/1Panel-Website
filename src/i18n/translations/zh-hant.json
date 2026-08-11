@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI 管理",
-        "desc": "提供從底層硬體到智慧體（Metal-to-Agent）的統一管理平台，整合 AI 入口、AI 閘道、Skills Hub，並支援對智慧體與模型的集中化管理。"
+        "desc": "從裸機（Bare Metal）到智慧體（Agent）的統一 AI 管理。整合 AI 入口、AI 閘道與 Skills Hub，集中管理您的模型與智慧體。"
       },
       "ops": {
         "title": "高效可視化運維",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "快速建站部署",
-        "desc": "深度整合 WordPress 與 Halo 等主流建站程式，一鍵完成網域綁定、SSL 憑證配置，大幅降低建站門檻。"
+        "desc": "深度整合 WordPress 與 Halo 等主流建站程式，一鍵完成網域綁定、SSL 憑證配置，讓建站比以往任何時候都更簡單。"
       },
       "security": {
         "title": "企業級安全與備份",
@@ -106,14 +106,14 @@
     "title": "快速",
     "titleHighlight": "開始",
     "subtitle": "在 Linux 伺服器上一鍵安裝 1Panel",
-    "step1Title": "準備 Linux 伺服器",
+    "step1Title": "準備您的 Linux 伺服器",
     "step1Desc1": "請先準備一台 Linux 伺服器，支援 CentOS、Ubuntu、Debian 等主流發行版。",
     "step1Desc2": "支援多種架構：x86_64、aarch64、armv7l、ppc64le、s390x。",
     "step2Title": "執行安裝腳本",
     "step2Desc": "以 root 使用者執行一鍵安裝腳本，自動下載並安裝 1Panel。",
     "copy": "複製",
     "copied": "已複製",
-    "step3Title": "進入管理面板",
+    "step3Title": "進入您的儀表板",
     "step3Desc": "安裝完成後，使用瀏覽器開啟安裝腳本提供的網址，即可開始使用 1Panel。",
     "needHelp": "需要協助？",
     "viewDocs": "查看文件",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "LXware 負責 FIT2CLOUD 開源項目 1Panel 與 JumpServer 在全球市場的商業營運。",
+    "companyDesc": "1Panel 是 FIT2CLOUD 的開源項目，由 LXware 提供商業支援。",
     "resources": "資源",
     "blog": "網誌",
     "documentation": "文件",

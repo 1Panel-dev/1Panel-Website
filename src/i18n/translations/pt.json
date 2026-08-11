@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "Gestão de IA",
-        "desc": "Plataforma unificada que vai do hardware subjacente até os agentes (Metal-to-Agent), integrando AI Portal, AI Gateway e Skills Hub, com gestão centralizada de agentes e modelos."
+        "desc": "Gestão unificada de IA do bare metal aos agentes. Integre portais, gateways e hubs de skills de IA para gerenciar centralmente seus modelos e agentes."
       },
       "ops": {
         "title": "Operações visuais eficientes",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "Implantação rápida de sites",
-        "desc": "Integração profunda com WordPress, Halo e outros construtores de sites. Associação de domínio e SSL com um clique — reduzindo a barreira de entrada."
+        "desc": "Integração profunda com WordPress e outros construtores de sites populares. Associação de domínio e SSL com um clique — agora é mais fácil do que nunca publicar um site."
       },
       "security": {
         "title": "Segurança empresarial e backups",
@@ -106,14 +106,14 @@
     "title": "Início",
     "titleHighlight": "Começar",
     "subtitle": "Instalação do 1Panel no seu servidor Linux em um clique",
-    "step1Title": "Preparar servidor Linux",
+    "step1Title": "Prepare o seu servidor Linux",
     "step1Desc1": "Certifique-se de ter um servidor Linux com CentOS, Ubuntu, Debian ou outras distribuições principais.",
     "step1Desc2": "Suporta várias arquiteturas: x86_64, aarch64, armv7l, ppc64le, s390x.",
-    "step2Title": "Executar script de instalação",
+    "step2Title": "Execute o script de instalação",
     "step2Desc": "Execute o script de instalação como root para baixar e instalar o 1Panel automaticamente.",
     "copy": "Copiar",
     "copied": "Copiado",
-    "step3Title": "Acessar o painel",
+    "step3Title": "Acesse o seu painel",
     "step3Desc": "Após a instalação, acesse pelo navegador o endereço indicado pelo script para começar a usar o 1Panel.",
     "needHelp": "Precisa de ajuda?",
     "viewDocs": "Ver documentação",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "A LXware é responsável pela operação comercial dos projetos de código aberto da FIT2CLOUD, 1Panel e JumpServer, no mercado global.",
+    "companyDesc": "O 1Panel é um projeto de código aberto da FIT2CLOUD, com suporte comercial da LXware.",
     "resources": "Recursos",
     "blog": "Blog",
     "documentation": "Documentação",

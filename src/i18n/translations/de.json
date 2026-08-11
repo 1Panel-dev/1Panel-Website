@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "KI-Verwaltung",
-        "desc": "Bietet eine einheitliche Verwaltungsplattform von der zugrunde liegenden Hardware bis zu Agenten (Metal-to-Agent) mit KI-Portal, KI-Gateway und Skills Hub sowie zentralisierter Verwaltung von Agenten und Modellen."
+        "desc": "Unified AI-Verwaltung von Bare Metal bis zu Agenten. Integrieren Sie AI-Portale, Gateways und Skills Hubs, um Ihre Modelle und Agenten zentral zu verwalten."
       },
       "ops": {
         "title": "Effiziente visuelle Verwaltung",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "Schnelle Website-Bereitstellung",
-        "desc": "Tiefe Integration mit WordPress, Halo und anderen gängigen Website-Baukästen. Domain-Bindung und SSL-Konfiguration mit einem Klick — der Einstieg wird deutlich leichter."
+        "desc": "Tiefe Integration mit WordPress, Halo und anderen gängigen Website-Baukästen. Domain-Bindung und SSL-Konfiguration mit einem Klick — der Einstieg ist so einfach wie nie zuvor."
       },
       "security": {
         "title": "Unternehmens­sicherheit & Backup",
@@ -106,14 +106,14 @@
     "title": "Schnell",
     "titleHighlight": "Loslegen",
     "subtitle": "1Panel mit einem Klick auf Ihrem Linux-Server installieren",
-    "step1Title": "Linux-Server vorbereiten",
+    "step1Title": "Bereiten Sie Ihren Linux-Server vor",
     "step1Desc1": "Sie benötigen einen Linux-Server mit CentOS, Ubuntu, Debian oder anderen gängigen Distributionen.",
     "step1Desc2": "Unterstützte Architekturen: x86_64, aarch64, armv7l, ppc64le, s390x.",
-    "step2Title": "Installationsskript ausführen",
+    "step2Title": "Führen Sie das Installationsskript aus",
     "step2Desc": "Führen Sie das Ein-Klick-Installationsskript als root aus, um 1Panel automatisch herunterzuladen und zu installieren.",
     "copy": "Kopieren",
     "copied": "Kopiert",
-    "step3Title": "Verwaltungsoberfläche öffnen",
+    "step3Title": "Greifen Sie auf Ihr Dashboard zu",
     "step3Desc": "Nach der Installation rufen Sie die im Skript angegebene Adresse im Browser auf, um 1Panel zu nutzen.",
     "needHelp": "Hilfe benötigt?",
     "viewDocs": "Dokumentation",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "LXware ist für den kommerziellen Betrieb der FIT2CLOUD-Open-Source-Projekte 1Panel und JumpServer auf dem Weltmarkt verantwortlich.",
+    "companyDesc": "1Panel ist ein Open-Source-Projekt von FIT2CLOUD, kommerziell unterstützt von LXware.",
     "resources": "Ressourcen",
     "blog": "Blog",
     "documentation": "Dokumentation",

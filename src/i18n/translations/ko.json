@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI 관리",
-        "desc": "기반 하드웨어부터 에이전트(Metal-to-Agent)까지 통합 관리하는 플랫폼을 제공하며, AI Portal, AI Gateway, Skills Hub를 통합하고 에이전트와 모델의 중앙 집중식 관리를 지원합니다."
+        "desc": "베어메탈부터 에이전트까지 통합 AI 관리를 제공합니다. AI 포털, 게이트웨이, 스킬 허브를 통합하여 모델과 에이전트를 중앙에서 관리하세요."
       },
       "ops": {
         "title": "효율적인 시각적 운영",
@@ -71,7 +71,7 @@
       },
       "site": {
         "title": "빠른 사이트 배포",
-        "desc": "WordPress, Halo 등 주요 사이트 빌더와 깊이 통합. 원클릭 도메인 바인딩과 SSL 인증서 설정으로 사이트 구축의 진입 장벽을 크게 낮춥니다."
+        "desc": "WordPress, Halo 등 주요 사이트 빌더와 깊이 통합. 원클릭 도메인 바인딩과 SSL 인증서 설정으로 웹사이트를 그 어느 때보다 쉽게 시작할 수 있습니다."
       },
       "security": {
         "title": "엔터프라이즈 보안 및 백업",
@@ -106,14 +106,14 @@
     "title": "빠른",
     "titleHighlight": "시작하기",
     "subtitle": "Linux 서버에 1Panel 원클릭 설치",
-    "step1Title": "Linux 서버 준비",
+    "step1Title": "Linux 서버를 준비하세요",
     "step1Desc1": "CentOS, Ubuntu, Debian 등 메이저 배포판을 지원하는 Linux 서버를 준비하세요.",
     "step1Desc2": "x86_64, aarch64, armv7l, ppc64le, s390x 등 다양한 서버 아키텍처를 지원합니다.",
-    "step2Title": "설치 스크립트 실행",
+    "step2Title": "설치 스크립트를 실행하세요",
     "step2Desc": "root 사용자로 원클릭 설치 스크립트를 실행하면 1Panel이 자동으로 다운로드 및 설치됩니다.",
     "copy": "복사",
     "copied": "복사됨",
-    "step3Title": "관리 패널 접속",
+    "step3Title": "대시보드에 접속하세요",
     "step3Desc": "설치 후 브라우저에서 스크립트가 안내하는 주소로 접속하여 1Panel을 사용할 수 있습니다.",
     "needHelp": "도움이 필요하신가요?",
     "viewDocs": "문서 보기",
@@ -128,7 +128,7 @@
   },
   "footer": {
     "companyName": "LXware",
-    "companyDesc": "LXware는 FIT2CLOUD의 오픈 소스 프로젝트인 1Panel과 JumpServer의 글로벌 시장 상업 운영을 담당합니다.",
+    "companyDesc": "1Panel은 FIT2CLOUD의 오픈소스 프로젝트이며, LXware가 상용 지원을 제공합니다.",
     "resources": "리소스",
     "blog": "블로그",
     "documentation": "문서",
