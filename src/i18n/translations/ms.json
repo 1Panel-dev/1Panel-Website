@@ -205,7 +205,7 @@
     "faqSectionTitle": "Soalan Lazim",
     "faqSectionSubtitle": "Pelesenan, percubaan, berbilang nod dan pengebilan — dijawab.",
     "proof": {
-      "installNum": "1.5J+",
+      "installNum": "2.5J+",
       "installLabel": "pemasangan disahkan",
       "teamsNum": "500+",
       "teamsLabel": "pasukan Pro di seluruh dunia",
@@ -220,9 +220,9 @@
     },
     "ossBullets": {
       "b1": "Percuma selamanya, tanpa kad kredit",
-      "b2": "1.5J+ pemasangan disahkan",
+      "b2": "2.5J+ pemasangan disahkan",
       "b3": "Pengurusan Docker, laman web & aplikasi penuh",
-      "b4": "165+ apl satu klik",
+      "b4": "185+ apl satu klik",
       "b5": "Ejen OpenClaw (sehingga 5)",
       "b6": "Tembok api WAF asas",
       "b7": "Sokongan forum komuniti"

@@ -205,7 +205,7 @@
     "faqSectionTitle": "常見問題",
     "faqSectionSubtitle": "授權、試用、多節點與帳單 — 為您解答。",
     "proof": {
-      "installNum": "150 萬+",
+      "installNum": "250 萬+",
       "installLabel": "次經認證的安裝",
       "teamsNum": "500+",
       "teamsLabel": "全球 Pro 版團隊",
@@ -220,9 +220,9 @@
     },
     "ossBullets": {
       "b1": "永久免費，無需信用卡",
-      "b2": "150 萬+ 次經認證的安裝",
+      "b2": "250 萬+ 次經認證的安裝",
       "b3": "完整的 Docker、網站與應用程式管理",
-      "b4": "165+ 個一鍵安裝應用程式",
+      "b4": "185+ 個一鍵安裝應用程式",
       "b5": "OpenClaw 代理（最多 5 個）",
       "b6": "基礎 WAF 防火牆",
       "b7": "社群論壇支援"

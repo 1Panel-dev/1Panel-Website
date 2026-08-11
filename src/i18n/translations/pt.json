@@ -205,7 +205,7 @@
     "faqSectionTitle": "Perguntas Frequentes",
     "faqSectionSubtitle": "Licenciamento, testes, multi-nó e faturamento — respondidas.",
     "proof": {
-      "installNum": "1,5 M+",
+      "installNum": "2,5 M+",
       "installLabel": "instalações verificadas",
       "teamsNum": "500+",
       "teamsLabel": "equipes Pro em todo o mundo",
@@ -220,9 +220,9 @@
     },
     "ossBullets": {
       "b1": "Gratuito para sempre, sem cartão de crédito",
-      "b2": "Mais de 1,5 milhões de instalações verificadas",
+      "b2": "Mais de 2,5 milhões de instalações verificadas",
       "b3": "Gestão completa de Docker, sites e apps",
-      "b4": "Mais de 165 apps com um clique",
+      "b4": "Mais de 185 apps com um clique",
       "b5": "Agentes OpenClaw (até 5)",
       "b6": "Firewall WAF básico",
       "b7": "Suporte em fórum comunitário"

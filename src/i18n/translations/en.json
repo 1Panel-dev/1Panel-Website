@@ -205,7 +205,7 @@
     "faqSectionTitle": "Frequently Asked Questions",
     "faqSectionSubtitle": "Licensing, trials, multi-node, and billing — answered.",
     "proof": {
-      "installNum": "1.5M+",
+      "installNum": "2.5M+",
       "installLabel": "verified installations",
       "teamsNum": "500+",
       "teamsLabel": "Pro teams worldwide",
@@ -220,9 +220,9 @@
     },
     "ossBullets": {
       "b1": "Free forever, no credit card",
-      "b2": "1.5M+ verified installations",
+      "b2": "2.5M+ verified installations",
       "b3": "Full Docker, website & app management",
-      "b4": "165+ one-click apps",
+      "b4": "185+ one-click apps",
       "b5": "OpenClaw agents (up to 5)",
       "b6": "Basic WAF firewall",
       "b7": "Community forum support"
