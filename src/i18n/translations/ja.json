@@ -36,7 +36,7 @@
     "title2": "Linuxサーバー管理パネル",
     "badgePowerful": "高機能",
     "badgeOpenSource": "オープンソース",
-    "subtitle": "1Panelは直感的なWebインターフェースでLinuxサーバーを簡単に管理できます。AIエージェントやLLMから、Webサイト、データベース、コンテナ、ファイル、cronジョブまで、すべてが手元に揃います。",
+    "subtitle": "直感的なWebインターフェースでLinuxサーバーを簡単に管理できます。AIエージェントやLLMから、Webサイト、データベース、コンテナまで、すべてが手元に揃います。",
     "pricingBannerText": "OSSはずっと無料。Proは年$80から。",
     "pricingBannerLink": "料金を見る",
     "githubStars": "GitHubスター",
