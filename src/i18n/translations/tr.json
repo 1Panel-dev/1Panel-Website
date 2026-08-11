@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI Yönetimi",
-        "desc": "Bare metal’den aracılara kadar birleşik AI yönetimi. Modellerinizi ve aracılarınızı merkezi olarak yönetmek için AI Portalları, Ağ Geçitlerini ve Skills Hub’ları entegre edin."
+        "desc": "Bare metal’den aracılara kadar birleşik AI yönetimi sunar; AI Self-Service Portal, AI Gateway, Skills Hub ve merkezi Model Yönetimi gibi temel yeteneklerle."
       },
       "ops": {
         "title": "Verimli Görsel Operasyonlar",

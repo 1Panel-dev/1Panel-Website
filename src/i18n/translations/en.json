@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI Management",
-        "desc": "Unified AI management from bare metal to agents. Integrate AI Portals, Gateways, and Skills Hubs to centrally manage your models and agents."
+        "desc": "Deliver unified AI management from bare metal to agents with core capabilities like an AI Self-Service Portal, AI Gateway, Skills Hub, and centralized Model Management."
       },
       "ops": {
         "title": "Efficient Visual Operations",

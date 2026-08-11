@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "Gestão de IA",
-        "desc": "Gestão unificada de IA do bare metal aos agentes. Integre portais, gateways e hubs de skills de IA para gerenciar centralmente seus modelos e agentes."
+        "desc": "Entrega gestão unificada de IA do bare metal aos agentes, com recursos principais como um portal de autoatendimento de IA, gateway de IA, hub de skills e gestão centralizada de modelos."
       },
       "ops": {
         "title": "Operações visuais eficientes",

@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI 管理",
-        "desc": "從裸機（Bare Metal）到智慧體（Agent）的統一 AI 管理。整合 AI 入口、AI 閘道與 Skills Hub，集中管理您的模型與智慧體。"
+        "desc": "從裸機（Bare Metal）到智慧體（Agent）的全方位統一 AI 管理，提供 AI 自助入口、AI 閘道、Skills Hub 與集中式模型管理等核心能力。"
       },
       "ops": {
         "title": "高效可視化運維",

@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "Gestión de IA",
-        "desc": "Gestión unificada de IA desde el metal desnudo hasta los agentes. Integre portales, pasarelas y hubs de skills de IA para centralizar la gestión de sus modelos y agentes."
+        "desc": "Brinda gestión unificada de IA desde el metal desnudo hasta los agentes, con capacidades principales como un portal de autoservicio de IA, puerta de enlace de IA, hub de skills y gestión centralizada de modelos."
       },
       "ops": {
         "title": "Operaciones visuales eficientes",
