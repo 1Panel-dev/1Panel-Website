@@ -1,5 +1,27 @@
 [
   {
+    "id": "ai-gateway-vision-enhancement-guide",
+    "title": "使用1Panel AI网关为DeepSeek V4 Flash补齐多模态能力",
+    "description": "DeepSeek V4 Flash 具备较强的文本推理、代码分析和任务处理能力，但模型接口不支持图片内容。通过 1Panel 企业版 AI 网关的视觉增强功能，先由视觉模型提取截图、图表和文档图片中的信息，再交给 DeepSeek V4 Flash 完成最终分析，无需修改客户端调用地址即可补齐多模态能力。",
+    "date": "2026-08-11",
+    "dateText": "2026年08月11日",
+    "slug": "ai-gateway-vision-enhancement-guide",
+    "path": "/blog/ai-gateway-vision-enhancement-guide.html",
+    "url": "https://1panel.cn/blog/ai-gateway-vision-enhancement-guide.html",
+    "cover": "/images/blog/ai-gateway-vision-enhancement/cover.jpg",
+    "content": "<p>DeepSeek V4 Flash 具备较强的文本推理、代码分析和任务处理能力，可以满足企业在知识问答、研发辅助和智能体等场景的模型调用需求。但当用户向模型发送系统截图、错误界面、图表或文档图片时，由于模型接口本身不支持图片内容，请求可能直接失败，影响实际使用体验。</p><p>针对这一问题，<strong>1Panel 企业版</strong>的 AI 网关提供了<strong>视觉增强</strong>功能。管理员可以配置独立的视觉模型，由视觉模型先提取图片中的文字、界面结构、图表数据和错误信息，再将生成的视觉证据交给 DeepSeek V4 Flash 完成最终分析。这种方式不需要修改客户端调用地址，也不需要将原有应用整体迁移至其他模型，即可为 DeepSeek V4 Flash 补齐图片理解能力。以下就是为 DeepSeek V4 Flash 补齐多模态能力的具体操作方法。</p><h2>一、文本模型无法直接处理图片</h2><p>在没有开启“视觉增强”功能时，从 WorkBuddy 等 AI 办公客户端发送的图片会直接进入 DeepSeek V4 Flash 对应的模型账号。如果上游接口不支持图片内容，请求可能因为格式不兼容而失败。用户不仅无法获得图片分析结果，客户端还可能将接口错误地识别为模型账号或 AI 应用发生异常。</p><h2>二、视觉增强：先理解图片，再交给 DeepSeek 推理</h2><p>开启“视觉增强”功能后，1Panel 企业版 AI 网关会自动识别请求中的图片内容，并且根据管理员配置的视觉模型组选择可用模型。视觉模型负责提取图片中的可观察信息，包括界面布局、错误提示、文字内容、图表数据、状态码和不确定信息等。AI 网关随后使用这些结构化视觉证据替换原始图片，再将请求转发给 DeepSeek V4 Flash。整个处理流程可以分为两个阶段：</p><ul><li><strong>视觉预处理：</strong>由视觉模型读取图片，并生成结构化描述；</li><li><strong>文本生成：</strong>由 DeepSeek V4 Flash 结合用户问题和视觉证据生成最终答案。</li></ul><p>需要说明的是，视觉增强并不会改变 DeepSeek V4 Flash 本身的模型能力，而是通过 AI 网关完成图片到文本证据的转换。</p><figure><img src='/images/blog/ai-gateway-vision-enhancement/image-01.png' alt='1Panel企业版AI网关视觉增强处理流程' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'></figure><p style=\"text-align: center\">▲图1 1Panel企业版AI网关视觉增强处理流程</p><h2>三、配置视觉模型与目标模型</h2><p>使用“视觉增强”功能之前，需要在 1Panel AI 网关账号池中准备两类模型账号。其中，视觉模型账号需要支持图片理解，用于识别图片中的内容；DeepSeek V4 Flash 模型账号则继续负责最终的文本推理和回答。管理员可以通过模型映射统一维护客户端请求模型与真实上游模型之间的对应关系，不需要将模型供应商的 API Key 和接口地址分发给每个客户端。</p><figure><img src='/images/blog/ai-gateway-vision-enhancement/image-02.png' alt='在1Panel企业版AI网关中配置模型账号' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'></figure><p style=\"text-align: center\">▲图2 在1Panel企业版AI网关中配置模型账号</p><p>完成模型账号配置后，需要分别创建视觉模型组和目标模型组。其中，视觉模型组用于选择实际执行图片理解的模型，可以配置多个模型，并且继续使用现有的模型选择和故障切换策略；目标模型组则用于指定哪些文本模型需要启用“视觉增强”功能。将 DeepSeek V4 Flash 加入目标模型组后，只有请求该模型时才会触发视觉预处理，不会影响其他模型的正常调用。</p><figure><img src='/images/blog/ai-gateway-vision-enhancement/image-03.png' alt='在1Panel企业版AI网关中创建视觉模型组和目标模型组' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'></figure><p style=\"text-align: center\">▲图3 在1Panel企业版AI网关中创建视觉模型组和目标模型组</p><h2>四、开启视觉增强功能</h2><p>在 1Panel 企业版中依次选择“AI 网关”→“设置”→“视觉增强”，打开视觉增强开关，并且选择已经创建的视觉模型组和目标模型组。保存配置后，当用户请求 DeepSeek V4 Flash 且请求体中包含图片时，AI 网关会自动执行视觉预处理操作。普通纯文本请求不会调用视觉模型，因此不会产生额外的图片处理开销。</p><p>视觉增强功能支持 1Panel 企业版 AI 网关现有的 OpenAI Chat Completions、OpenAI Responses 和 Anthropic Messages 三种文本接口格式。客户端可以继续使用原有接口，不需要为了视觉增强切换请求协议。</p><figure><img src='/images/blog/ai-gateway-vision-enhancement/image-04.png' alt='在1Panel企业版AI网关中开启视觉增强功能' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'></figure><p style=\"text-align: center\">▲图4 在1Panel企业版AI网关中开启视觉增强功能</p><h2>五、调用链路清晰展示两个处理阶段</h2><p>管理员可以在 1Panel 企业版 AI 网关“用量统计”模块的调用日志中查看视觉增强请求的完整调用链路。调用详情会分别展示“视觉预处理”和“文本生成”两个阶段，包括模型供应商、模型账号、API 类型、请求模型、Token 用量和上游耗时等信息。通过调用链路，管理员可以快速判断请求时间主要消耗在图片理解阶段还是最终文本生成阶段，也可以排查视觉模型账号不可用、请求格式不兼容或上游服务响应过慢等问题。</p><figure><img src='/images/blog/ai-gateway-vision-enhancement/image-05.jpg' alt='在1Panel企业版AI网关中查看调用日志详情' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'></figure><p style=\"text-align: center\">▲图5 在1Panel企业版AI网关中查看调用日志详情</p><h2>六、视觉证据缓存，降低重复图片处理成本</h2><p>在为 DeepSeek V4 Flash 补齐多模态能力的同时，1Panel 企业版 AI 网关还通过缓存机制降低了重复图片的处理成本。</p><p>在多轮对话中，客户端可能会反复携带同一张历史图片。如果每次请求都重新调用视觉模型，不仅会增加响应时间，也会产生额外的 Token 消耗。1Panel AI 网关能够缓存已经生成的视觉证据。相同 API Key 再次请求相同图片时，可以直接复用已有结果，不再重复调用视觉模型。视觉证据首先进入有效期为 1 小时的内存缓存，同时写入 AI 网关的日志数据库。持久化缓存跟随 AI 网关调用日志保留时间自动清理，服务重启后仍可继续复用。视觉缓存不会保存原始图片、Base64 图片数据或 API Key 密钥。</p><h2>总结</h2><p>1Panel 企业版 AI 网关的视觉增强功能兼顾了模型能力、成本与数据安全性。该功能让企业能够继续使用熟悉的 DeepSeek V4 Flash 处理最终任务，同时按需引入视觉模型，避免因为少量图片请求而全面切换模型。通过统一入口、模型组调度、调用链路、用量统计和内容合规能力，1Panel 企业版 AI 网关可以帮助企业在扩展模型能力的同时，持续保证 AI 流量的安全、可控和可观测。</p><h2>了解更多</h2><ul><li><a href='/ai-gateway.html'>1Panel AI 网关</a></li><li><a href='/enterprise.html'>1Panel 企业版</a></li></ul>",
+    "keywords": [
+      "1Panel AI 网关",
+      "AI 网关视觉增强",
+      "DeepSeek V4 Flash",
+      "DeepSeek 多模态",
+      "视觉模型",
+      "模型映射",
+      "1Panel 企业版",
+      "DeepSeek 图片理解"
+    ]
+  },
+  {
     "id": "cockpit-vs-1panel-kvm-web-management",
     "title": "KVM Web 管理工具对比：Cockpit 和 1Panel 企业版怎么选？",
     "description": "Cockpit 和 1Panel 企业版怎么选？本文对比两款 KVM Web 管理工具的产品定位、虚拟机生命周期、快照、镜像、模板、网络、存储、VNC、性能监控和多用户权限，帮助企业运维与开发团队完成 KVM 管理平台选型。",
