@@ -71,72 +71,52 @@ const architectureModules = ["AI网关", "模型管理", "开发者商店", "运
 const hardwareBadges = ["Intel Arc Pro B70", "NVIDIA RTX Pro 5000"];
 
 const benchmarkHighlights = [
-  { label: "SWE-bench Verified", value: "77.2" },
-  { label: "SWE-bench Pro", value: "53.5" },
-  { label: "Terminal-Bench 2.0", value: "59.3" },
-  { label: "LiveCodeBench v6", value: "83.9" },
+  { label: "Terminal Bench 2.1", value: "73.0" },
+  { label: "SWE-bench Pro", value: "61.7" },
+  { label: "DeepSWE 1.1", value: "42.2" },
+  { label: "QwenSWEBench", value: "79.0" },
 ];
 
 const benchmarkRows = [
   {
-    metric: "SWE-bench Verified",
-    qwen35: "76.2",
-    claude: "80.9",
-    qwen36: "77.2",
+    metric: "Agentic terminal coding",
+    subtitle: "Terminal Bench 2.1 (Terminus)",
+    qwen38: "73.0",
+    qwen36: "63.4",
+    qwen37Plus: "64.0",
+    opus: "78.2",
   },
   {
-    metric: "SWE-bench Pro",
-    qwen35: "50.9",
-    claude: "57.1",
+    metric: "Agentic coding",
+    subtitle: "SWE-bench Pro",
+    qwen38: "61.7",
     qwen36: "53.5",
+    qwen37Plus: "57.6",
+    opus: "53.4",
   },
   {
-    metric: "SWE-bench Multilingual",
-    qwen35: "69.3",
-    claude: "77.5",
-    qwen36: "71.3",
-  },
-  {
-    metric: "Terminal-Bench 2.0",
-    qwen35: "52.5",
-    claude: "59.3",
-    qwen36: "59.3",
-  },
-  {
-    metric: "SkillsBench Avg5",
-    qwen35: "30.0",
-    claude: "45.3",
-    qwen36: "48.2",
-  },
-  {
-    metric: "QwenWebBench",
-    qwen35: "1186",
-    claude: "1536",
-    qwen36: "1487",
-  },
-  {
-    metric: "NL2Repo",
-    qwen35: "32.2",
-    claude: "43.2",
+    metric: "Repo-level code generation",
+    subtitle: "NL2Repo-Bench",
+    qwen38: "42.3",
     qwen36: "36.2",
+    qwen37Plus: "41.1",
+    opus: "47.6",
   },
   {
-    metric: "Claw-Eval Avg",
-    qwen35: "70.7",
-    claude: "76.6",
-    qwen36: "72.4",
+    metric: "Agentic coding",
+    subtitle: "DeepSWE 1.1",
+    qwen38: "42.2",
+    qwen36: "13.3",
+    qwen37Plus: "14.2",
+    opus: "--",
   },
   {
-    metric: "Claw-Eval Pass^3",
-    qwen35: "48.1",
-    claude: "59.6",
-    qwen36: "60.6",
-  },
-  {
-    metric: "QwenClawBench",
-    qwen35: "51.8",
-    claude: "52.3",
-    qwen36: "53.4",
+    metric: "Software engineering",
+    subtitle: "QwenSWEBench",
+    qwen38: "79.0",
+    qwen36: "49.3",
+    qwen37Plus: "59.2",
+    opus: "63.8",
   },
 ];
 ---
@@ -147,7 +127,7 @@ const benchmarkRows = [
     <div class="relative z-10 container-custom">
       <div class="max-w-4xl mx-auto text-center">
         <div class="fade-in-up inline-flex items-center px-4 py-2 mb-6 rounded-full border border-blue-100 bg-white text-blue-800 shadow-sm text-sm font-semibold">
-          飞致云匠心出品
+          Qwen3.8-27B 私有化部署首选
         </div>
         <h1 class="fade-in-up text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-normal mb-8" style="animation-delay: 0.2s;">
           <span class="block text-gray-950 mb-4">1Panel AI 编程一体机</span>
@@ -246,7 +226,7 @@ const benchmarkRows = [
                 <div class="w-7 h-7 rounded-md bg-white flex items-center justify-center flex-shrink-0 text-emerald-600 shadow-sm">
                   <Icon name="carbon:machine-learning-model" class="h-4 w-4" />
                 </div>
-                <span class="text-sm font-bold text-emerald-700">Qwen3.6-27B</span>
+                <span class="text-sm font-bold text-emerald-700">Qwen3.8-27B</span>
               </div>
 
               <div class="w-full py-3 px-4 bg-blue-50/70 rounded-md border border-blue-100">
@@ -293,7 +273,7 @@ const benchmarkRows = [
       <div class="text-center mb-12">
         <h2 class="section-title text-4xl lg:text-5xl font-bold text-gray-800 mb-6">AI 编程能力</h2>
         <p class="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Qwen3.6-27B 在多方面领先 Qwen3.5-397B-A17B，接近 Claude 4.5 Opus 的水平。
+          Qwen3.8-27B 在多方面领先参数量更大的Qwen3.7-Plus，接近 Claude Opus 4.6 Max 的水平。
         </p>
       </div>
 
@@ -309,23 +289,28 @@ const benchmarkRows = [
       </div>
 
       <div class="rounded-lg border border-gray-100 bg-white shadow-xl shadow-gray-100/80 overflow-x-auto">
-        <table class="min-w-[760px] w-full border-collapse text-left">
+        <table class="min-w-[860px] w-full border-collapse text-left">
           <thead>
             <tr class="bg-gray-50 text-sm text-gray-500">
-              <th class="px-5 py-4 font-semibold">Coding Agent</th>
-              <th class="px-5 py-4 font-semibold text-center">Qwen3.5-397B-A17B</th>
-              <th class="px-5 py-4 font-semibold text-center">Claude 4.5 Opus</th>
-              <th class="px-5 py-4 font-semibold text-center text-1panel bg-blue-50/70">Qwen3.6-27B</th>
+              <th class="px-5 py-4 font-semibold">Coding</th>
+              <th class="px-5 py-4 font-semibold text-center text-1panel bg-blue-50/70">Qwen3.8-27B</th>
+              <th class="px-5 py-4 font-semibold text-center">Qwen3.6-27B</th>
+              <th class="px-5 py-4 font-semibold text-center">Qwen3.7-Plus</th>
+              <th class="px-5 py-4 font-semibold text-center">Opus4.6 Max</th>
             </tr>
           </thead>
           <tbody>
             {
               benchmarkRows.map((row) => (
                 <tr class="border-t border-gray-100 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-50/70">
-                  <td class="px-5 py-4 font-medium text-gray-900">{row.metric}</td>
-                  <td class="px-5 py-4 text-center">{row.qwen35}</td>
-                  <td class="px-5 py-4 text-center">{row.claude}</td>
-                  <td class="px-5 py-4 text-center font-semibold text-gray-900 bg-blue-50/30">{row.qwen36}</td>
+                  <td class="px-5 py-4">
+                    <div class="font-medium text-gray-900">{row.metric}</div>
+                    <div class="text-xs text-gray-500 mt-0.5">{row.subtitle}</div>
+                  </td>
+                  <td class="px-5 py-4 text-center font-semibold text-gray-900 bg-blue-50/30">{row.qwen38}</td>
+                  <td class={`px-5 py-4 text-center ${row.qwen36 === "--" ? "text-gray-400" : ""}`}>{row.qwen36}</td>
+                  <td class={`px-5 py-4 text-center ${row.qwen37Plus === "--" ? "text-gray-400" : ""}`}>{row.qwen37Plus}</td>
+                  <td class={`px-5 py-4 text-center ${row.opus === "--" ? "text-gray-400" : ""}`}>{row.opus}</td>
                 </tr>
               ))
             }
