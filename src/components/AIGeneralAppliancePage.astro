@@ -72,6 +72,15 @@ const architectureTiles = [
 ];
 
 const architectureModules = ["AI网关", "模型管理", "AI应用", "运维管理"];
+
+const evaluationReportUrl = "/blog/deepseek-v4-flash-private-deployment-report.html";
+
+const evaluationHighlights = [
+  { value: "5 类", label: "业务场景压力测试", desc: "短对话 / 文档问答 / 长文档 / 复杂任务 / 智能体编程" },
+  { value: "1300+", label: "tokens/s 整机吞吐", desc: "128 并发下整机吞吐突破 1300 tokens/s" },
+  { value: "42,087", label: "tokens/s 端到端吞吐", desc: "84K 智能体/编程场景，12 并发" },
+  { value: "100", label: "tokens/s 人均输出", desc: "单并发各场景人均输出速度" },
+];
 ---
 
 <main class="relative z-10 bg-white text-gray-800">
@@ -219,6 +228,38 @@ const architectureModules = ["AI网关", "模型管理", "AI应用", "运维管�
 
         <div class="bg-1panel-gradient py-7 text-center">
           <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">软硬协同 · 全栈赋能</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="benchmark-report" class="section-padding bg-gradient-to-b from-white to-blue-50/60 border-t border-gray-100">
+    <div class="container-custom">
+      <div class="text-center mb-11">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">
+          <span class="text-1panel-gradient">实战评测</span>
+        </h2>
+      </div>
+
+      <div class="overflow-hidden rounded-lg border border-blue-100 bg-white shadow-2xl shadow-blue-100/50">
+        <div class="p-8 lg:p-14 flex flex-col items-center text-center">
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">DeepSeek-V4-Flash 企业私有化部署实测报告</h3>
+          <p class="text-gray-600 leading-relaxed mb-8 max-w-3xl">
+            测试基于 vLLM 推理引擎，开启 FP8 KV-Cache 与 Prefix-Caching，模拟 1-128 并发用户，结合首字延时（TTFT）、输出吞吐 TPS、人均 TPS 三项核心指标，还原企业真实业务场景下的性能表现。
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl">
+            {evaluationHighlights.map((item) => (
+              <div class="rounded-lg border border-gray-100 bg-gray-50/60 p-5">
+                <div class="text-2xl font-bold text-1panel">{item.value}</div>
+                <div class="text-sm font-semibold text-gray-800 mt-1">{item.label}</div>
+                <div class="text-xs text-gray-500 mt-1 leading-relaxed">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+          <a href={evaluationReportUrl} class="btn-primary mt-8 text-base px-6 py-3 inline-flex items-center justify-center">
+            阅读完整评测
+            <Icon name="carbon:arrow-right" class="ml-2 h-4 w-4" />
+          </a>
         </div>
       </div>
     </div>
