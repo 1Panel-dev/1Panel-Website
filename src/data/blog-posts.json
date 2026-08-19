@@ -29,6 +29,30 @@
     ]
   },
   {
+    "id": "01a00b55-ae7a-7479-bb13-90b156dc244b",
+    "title": "操作教程｜通过1Panel应用商店快速安装DeepSeek Harness",
+    "description": "1Panel 应用商店中的 DeepSeek Harness 应用支持一键部署，并集成 Caddy HTTPS 与用户名密码认证。本文介绍 DeepSeek Harness 的应用安装、模型 API Key 配置与首个任务创建流程。",
+    "date": "2026-08-17",
+    "dateText": "2026年08月17日",
+    "slug": "deepseek-harness-1panel-app-store-install-guide",
+    "path": "/blog/deepseek-harness-1panel-app-store-install-guide.html",
+    "url": "https://1panel.cn/blog/deepseek-harness-1panel-app-store-install-guide.html",
+    "cover": "/images/blog/deepseek-harness-1panel-app-store-install-guide/cover.webp",
+    "content": "<p><strong>DeepSeek Harness（简称为DSH）现已上架至1Panel应用商店，用户可以一键部署。</strong>本次1Panel应用商店内置的DeepSeek Harness版本集成了Caddy HTTPS和用户名密码认证的功能，DeepSeek Harness本身只监听容器回环地址。这样一来，所有外部访问请求都将经过Caddy反向代理鉴权，解密之后才会转发至DeepSeek Harness服务，进一步提升了访问的安全性。目前，1Panel应用商店已经上架了超过260款精品软件并且定期更新维护，基本涵盖了大部分用户的装机需求。</p><p>以下是DeepSeek Harness的安装步骤和模型配置方法。本文以1Panel应用商店中DeepSeek Harness 0.1.0-rc.6版本作为示例，后续版本的界面、字段和模型列表可能会有所变化。</p><h2>一、DeepSeek Harness是什么？</h2><p><strong>DeepSeek Harness</strong>（<a href='https://www.deepseek.com/harness/' target='_blank' rel='noopener noreferrer'>https://www.deepseek.com/harness/</a>）是DeepSeek面向开发者推出的一款开源智能体（Agent）运行环境。简单来说，如果把大模型比作Agent的“大脑”，那么Harness就是连接大脑与电脑的“工作台”，负责向模型提供项目文件、工具和运行环境。</p><p>DeepSeek Harness采用插件化架构，可以按照任务组合网页检索、Skills、计划、子Agent和工作流等能力。同时，它还内置了四种运行模式，分别是：</p><ul><li><strong>标准模式：</strong>适合日常开发任务（新手首选）；</li><li><strong>PTC模式：</strong>多步骤复杂工具调用编排；</li><li><strong>极简模式：</strong>仅保留基础命令、编辑工具；</li><li><strong>创造模式：</strong>创建和调试自定义Agent预设。</li></ul><h2>二、在1Panel中安装 DeepSeek Harness</h2><h3>1. 安装 DeepSeek Harness</h3><p>登录1Panel后台，进入“应用商店”页面，搜索“DeepSeek Harness”，点击“安装”按钮即可。注意：通过公网访问时，需要在云安全组和系统防火墙中放行所选的HTTPS端口。</p><figure><img src='/images/blog/deepseek-harness-1panel-app-store-install-guide/image-01.webp' alt='在1Panel应用商店中安装DeepSeek Harness' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'><figcaption>▲图1 在1Panel应用商店中安装DeepSeek Harness</figcaption></figure><p>安装完成后，在浏览器中访问：https://&lt;访问地址&gt;:&lt;HTTPS端口&gt;</p><p>浏览器会先要求输入安装时设置的Web用户名和密码，认证通过后即可进入DeepSeek Harness。</p><p>Caddy使用内部CA自动签发证书，所以浏览器首次访问时，可能会提示证书不受信任，测试环境可选择手动继续访问。注意，请使用强密码，禁止将宿主机根目录、Docker Socket或SSH密钥目录挂载至DeepSeek Harness工作区。</p><h3>2. 配置DeepSeek官方API Key</h3><p>首次打开DeepSeek Harness时，系统会提示添加API Key，按照系统提示配置即可。</p><figure><img src='/images/blog/deepseek-harness-1panel-app-store-install-guide/image-02.webp' alt='在DeepSeek Harness中配置API Key' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'><figcaption>▲图2 在DeepSeek Harness中配置API Key</figcaption></figure><p>您也可以选择其他模型提供方。在DeepSeek Harness中选择“设置”→“模型”，即可选择其他模型提供方。本文以OpenCode Go为例，选择“opencode-go”，填写API Key并添加模型，点击“保存”按钮即可。</p><figure><img src='/images/blog/deepseek-harness-1panel-app-store-install-guide/image-03.webp' alt='以OpenCode Go为例填写API Key并添加模型' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'><figcaption>▲图3 以OpenCode Go为例，填写API Key并添加模型</figcaption></figure><h3>3. 发起首个DeepSeek Harness任务</h3><p>返回DeepSeek Harness首页，在输入框左上角选择工作区，右下角确认模型之后，即可开启对话。首次体验建议使用标准模式，优先使用无敏感信息的测试项目开展对话。</p><figure><img src='/images/blog/deepseek-harness-1panel-app-store-install-guide/image-04.webp' alt='在DeepSeek Harness中开启对话' loading='lazy' sizes='(max-width: 640px) 94vw, (max-width: 768px) 92vw, (max-width: 1024px) 88vw, min(800px, 85vw)'><figcaption>▲图4 开启对话</figcaption></figure><h2>总结</h2><p>总结来说，通过1Panel应用商店，用户可以快速部署DeepSeek Harness，并由Caddy统一提供HTTPS加密和身份认证保护。DeepSeek Harness目前仍处于开发者预览阶段，建议广大用户仅用于测试体验，妥善保管API Key，并在升级前备份重要数据。</p>",
+    "keywords": [
+      "DeepSeek Harness",
+      "DeepSeek Harness 安装",
+      "DeepSeek Harness 部署",
+      "1Panel 应用商店",
+      "1Panel 安装 DeepSeek Harness",
+      "AI Agent",
+      "智能体运行环境",
+      "Caddy HTTPS",
+      "API Key 配置",
+      "OpenCode Go"
+    ]
+  },
+  {
     "id": "ai-gateway-vision-enhancement-guide",
     "title": "使用1Panel AI网关为DeepSeek V4 Flash补齐多模态能力",
     "description": "DeepSeek V4 Flash 具备较强的文本推理、代码分析和任务处理能力，但模型接口不支持图片内容。通过 1Panel 企业版 AI 网关的视觉增强功能，先由视觉模型提取截图、图表和文档图片中的信息，再交给 DeepSeek V4 Flash 完成最终分析，无需修改客户端调用地址即可补齐多模态能力。",
