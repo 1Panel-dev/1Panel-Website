@@ -27,7 +27,6 @@ export const DEFAULT_KEYWORDS = [
   "API Key 管理",
   "本地 AI 部署",
   "私有化 AI 部署",
-  "AI 一体机",
   "AI 助理一体机",
   "AI 编程一体机",
 ];

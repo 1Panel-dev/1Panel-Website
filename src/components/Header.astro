@@ -12,7 +12,7 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
   class="sticky top-0 left-0 right-0 z-50 bg-dark-200 border-b border-gray-200"
 >
   <nav class="container-custom">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-16 gap-6">
       <!-- Logo -->
       <div class="flex items-center space-x-3">
         <a href="/">
@@ -20,8 +20,8 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
         </a>
       </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-6 text-[15px] xl:gap-7">
+      <!-- Desktop Navigation (菜单在 logo 与右侧按钮之间居中) -->
+      <div class="hidden lg:flex flex-1 items-center justify-center gap-6 text-[15px] xl:gap-7">
         <a
           href="/"
           class="relative inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
@@ -110,54 +110,13 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
             </div>
           </div>
         </div>
-        <div id="ai-appliance-dropdown-container" class="relative">
-          <button
-            id="ai-appliance-dropdown-trigger"
-            type="button"
-            class="relative inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
-            aria-expanded="false"
-            aria-controls="ai-appliance-dropdown"
-          >
-            <span class="nav-link-label" data-text="AI 一体机">
-              <span class="nav-link-content">
-                <span>AI 一体机</span>
-                <Icon
-                  id="ai-appliance-dropdown-icon"
-                  name="carbon:chevron-down"
-                  class="w-4 h-4 transition-transform duration-200"
-                />
-              </span>
-            </span>
-          </button>
-          <div
-            id="ai-appliance-dropdown"
-            class="absolute left-1/2 top-full z-[9999] hidden w-80 -translate-x-1/2 pt-5"
-          >
-            <div class="rounded-lg border border-gray-100 bg-white py-2 shadow-xl shadow-gray-900/10">
-              <a
-                href="/deepseek-appliance.html"
-                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
-              >
-                <Icon name="carbon:ai" class="h-5 w-5 flex-shrink-0" />
-                1Panel AI 通用一体机
-              </a>
-              <a
-                href="/aicoding.html"
-                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
-              >
-                <Icon name="carbon:code" class="h-5 w-5 flex-shrink-0" />
-                1Panel AI 编程一体机
-              </a>
-              <a
-                href="/openclaw.html"
-                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
-              >
-                <Icon name="carbon:chat-bot" class="h-5 w-5 flex-shrink-0" />
-                1Panel AI 助理一体机
-              </a>
-            </div>
-          </div>
-        </div>
+        <a
+          href="/ai-appliance.html"
+          class="relative inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
+        >
+          <span class="nav-link-label" data-text="AI 一体机">AI 一体机</span>
+          <span class="ml-1.5 inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">NEW</span>
+        </a>
         <a
           href="https://apps.fit2cloud.com/1panel"
           target="_blank"
@@ -189,6 +148,14 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
           >
             <div class="rounded-lg border border-gray-100 bg-white py-2 shadow-xl shadow-gray-900/10">
               <a
+                href="https://demo.1panel.cn/"
+                target="_blank"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+              >
+                <Icon name="carbon:screen" class="h-5 w-5 flex-shrink-0" />
+                在线体验
+              </a>
+              <a
                 href="https://1panel.cn/docs"
                 target="_blank"
                 class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
@@ -214,30 +181,26 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Action Buttons (靠右) -->
+      <div class="hidden lg:flex items-center gap-3">
         <a
-          href="https://demo.1panel.cn/"
+          href="https://1panel.cn/docs/v2/installation/enterprise_installation/"
           target="_blank"
-          class="inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
-          ><span class="nav-link-label" data-text="在线体验">在线体验</span></a
+          class="btn-secondary inline-flex items-center whitespace-nowrap !rounded-md !px-4 !py-2 !text-sm !shadow-sm"
         >
-        <div class="flex items-center gap-3">
-          <a
-            href="https://1panel.cn/docs/v2/installation/enterprise_installation/"
-            target="_blank"
-            class="btn-secondary inline-flex items-center whitespace-nowrap !rounded-md !px-4 !py-2 !text-sm !shadow-sm"
-          >
-            <Icon name="carbon:download" class="w-4 h-4 mr-1.5" />
-            免费安装
-          </a>
-          <a
-            href="https://github.com/1Panel-dev/1Panel"
-            target="_blank"
-            class="btn-primary inline-flex items-center whitespace-nowrap !rounded-md !px-4 !py-2 !text-sm !shadow-md"
-          >
-            <Icon name="carbon:logo-github" class="w-4 h-4 mr-1.5" />
-            代码仓库
-          </a>
-        </div>
+          <Icon name="carbon:download" class="w-4 h-4 mr-1.5" />
+          免费安装
+        </a>
+        <a
+          href="https://github.com/1Panel-dev/1Panel"
+          target="_blank"
+          class="btn-primary inline-flex items-center whitespace-nowrap !rounded-md !px-4 !py-2 !text-sm !shadow-md"
+        >
+          <Icon name="carbon:logo-github" class="w-4 h-4 mr-1.5" />
+          代码仓库
+        </a>
       </div>
 
       <!-- Mobile menu button -->
@@ -329,32 +292,13 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
             </a>
           </div>
         </div>
-        <div class="space-y-3">
-          <div class="text-sm font-semibold text-gray-900">AI 一体机</div>
-          <div class="flex flex-col space-y-3 pl-3 border-l border-gray-200">
-            <a
-              href="/openclaw.html"
-              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
-            >
-              <Icon name="carbon:chat-bot" class="h-5 w-5 flex-shrink-0" />
-              1Panel AI 助理一体机
-            </a>
-            <a
-              href="/aicoding.html"
-              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
-            >
-              <Icon name="carbon:code" class="h-5 w-5 flex-shrink-0" />
-              1Panel AI 编程一体机
-            </a>
-            <a
-              href="/deepseek-appliance.html"
-              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
-            >
-              <Icon name="carbon:ai" class="h-5 w-5 flex-shrink-0" />
-              1Panel AI 通用一体机
-            </a>
-          </div>
-        </div>
+        <a
+          href="/ai-appliance.html"
+          class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 inline-flex items-center"
+        >
+          AI 一体机
+          <span class="ml-1.5 inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">NEW</span>
+        </a>
         <a
           href="#appstore"
           target="_blank"
@@ -364,6 +308,14 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
         <div class="space-y-3">
           <div class="text-sm font-semibold text-gray-900">帮助与支持</div>
           <div class="flex flex-col space-y-3 pl-3 border-l border-gray-200">
+            <a
+              href="https://demo.1panel.cn/"
+              target="_blank"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+            >
+              <Icon name="carbon:screen" class="h-5 w-5 flex-shrink-0" />
+              在线体验
+            </a>
             <a
               href="https://1panel.cn/docs"
               target="_blank"
@@ -444,16 +396,6 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
     const enterpriseDropdownIcon = document.getElementById(
       "enterprise-dropdown-icon"
     );
-    const aiDropdownContainer = document.getElementById(
-      "ai-appliance-dropdown-container"
-    );
-    const aiDropdownTrigger = document.getElementById(
-      "ai-appliance-dropdown-trigger"
-    );
-    const aiDropdown = document.getElementById("ai-appliance-dropdown");
-    const aiDropdownIcon = document.getElementById(
-      "ai-appliance-dropdown-icon"
-    );
     const supportDropdownContainer = document.getElementById(
       "support-dropdown-container"
     );
@@ -524,12 +466,6 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
       enterpriseDropdownTrigger,
       enterpriseDropdown,
       enterpriseDropdownIcon
-    );
-    setupDropdown(
-      aiDropdownContainer,
-      aiDropdownTrigger,
-      aiDropdown,
-      aiDropdownIcon
     );
     setupDropdown(
       supportDropdownContainer,

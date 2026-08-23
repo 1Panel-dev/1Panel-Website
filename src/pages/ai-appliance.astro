@@ -1,0 +1,615 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import blogData from "../data/blog-posts.json";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const siteBase = import.meta.env.BASE_URL;
+const pageUrl = toAbsoluteUrl("/ai-appliance.html", siteUrl, siteBase);
+const pageTitle = "1Panel AI 一体机 - Qwen 和 DeepSeek 私有化部署的首选";
+const pageDescription =
+  "1Panel AI 一体机以“超融合”理念整合底层算力、模型服务和 AI 应用，让 AI 高效转化为企业生产力。";
+const pageKeywords = [
+  "1Panel AI 一体机",
+  "AI 一体机",
+  "1Panel",
+  "AI 私有化部署",
+  "DeepSeek V4 Flash 私有化部署",
+  "Qwen3.8-27B 私有化部署",
+  "MiniMax H3 私有化部署",
+  "纯内网 AI",
+  "企业 AI 基础设施",
+];
+
+const architectureTiles = [
+  "统一接入", "模型部署", "AI 知识库", "资源监控",
+  "席位管理", "模型维护", "AI 工作流", "虚机管理",
+  "用量统计", "模型升级", "AI 视频", "WAF防火墙",
+  "智能路由", "模型测试", "AI 编程", "备份和恢复",
+  "合规审计", "模型下载", "AI 办公", "运维报表",
+];
+const architectureModules = ["AI 网关", "模型管理", "AI 应用", "运维管理"];
+
+const strengths = [
+  {
+    title: "省心：极简运维，开箱即用",
+    description:
+      "搭载图形化运维界面，将复杂的模型部署与管理封装为可视化流程。非技术人员也能快速完成环境搭建与模型上线，告别命令行操作，让团队聚焦业务创新。",
+    icon: "carbon:user-follow",
+    tone: "text-amber-600",
+    iconBg: "bg-amber-50",
+    border: "hover:border-amber-100",
+  },
+  {
+    title: "安全：内网运行，数据不出域",
+    description:
+      "支持纯内网部署架构。确保推理结果与业务代码等核心资产始终运行在企业自有环境中，从根源上杜绝数据和代码外泄风险，满足严苛的数据合规标准。",
+    icon: "carbon:security",
+    tone: "text-emerald-600",
+    iconBg: "bg-emerald-50",
+    border: "hover:border-emerald-100",
+  },
+  {
+    title: "高效：卡模匹配，深度优化",
+    description:
+      "聚焦精选算力（GB10 和 RTX Pro 5000）和开源模型（Qwen 27B/35B、DeepSeek V4 Flash、MiniMax H3），在推理框架进行深度适配，优化首字延时和输出吞吐，在部署成本和使用体验上取得平衡。",
+    icon: "carbon:flash",
+    tone: "text-blue-600",
+    iconBg: "bg-blue-50",
+    border: "hover:border-blue-100",
+  },
+  {
+    title: "全能：一站式覆盖多元 AI 场景",
+    description:
+      "作为企业 AI 能力中枢，全面满足多样化需求：支持 AI 知识库、AI 工作流、AI 视频制作、AI 编程、AI 办公，一台设备即可满足绝大多数 AI 应用需求。",
+    icon: "carbon:ibm-watson-machine-learning",
+    tone: "text-violet-600",
+    iconBg: "bg-violet-50",
+    border: "hover:border-violet-100",
+  },
+];
+
+const securityPoints = [
+  "100% 纯内网私有化部署；",
+  "核心数据与代码不出域；",
+  "符合企业级安全审计标准。",
+];
+const operationPoints = [
+  "开箱即用，分钟级部署；",
+  "全图形化界面，易于管理；",
+  "一机覆盖多模型与多场景。",
+];
+
+const pricingPlans = [
+  {
+    id: "方案一",
+    title: "1Panel AI 一体机（方案一）",
+    gpuType: "NVIDIA GB10",
+    compute: "GB10 × 1",
+    vram: "合计 128G 共享显存",
+    models: ["Qwen3.6-35B-A3B", "MiniMax H3"],
+    scenes: ["知识库问答", "AI 工作流应用", "AI 视频制作"],
+    software: ["1Panel 企业版（含 AI 网关）", "MaxKB 专业版"],
+    chassis: "桌面小盒子",
+    accent: "blue",
+  },
+  {
+    id: "方案二",
+    title: "1Panel AI 一体机（方案二）",
+    gpuType: "NVIDIA RTX Pro 5000",
+    compute: "RTX Pro 5000 × 1",
+    vram: "合计 72G 显存",
+    models: ["Qwen3.8-27B"],
+    scenes: ["知识库问答", "AI 工作流应用", "AI 编程", "AI 办公"],
+    software: ["1Panel 企业版（含 AI 网关）", "MaxKB 专业版"],
+    chassis: "旗舰工作站",
+    accent: "blue",
+  },
+  {
+    id: "方案三",
+    title: "1Panel AI 一体机（方案三）",
+    gpuType: "NVIDIA RTX Pro 5000",
+    compute: "RTX Pro 5000 × 2",
+    vram: "合计 144G 显存",
+    models: ["Qwen3.8-27B"],
+    scenes: ["知识库问答", "AI 工作流应用", "AI 编程", "AI 办公"],
+    software: ["1Panel 企业版（含 AI 网关）", "MaxKB 专业版"],
+    chassis: "旗舰工作站",
+    accent: "blue",
+  },
+  {
+    id: "方案四",
+    title: "1Panel AI 一体机（方案四）",
+    gpuType: "NVIDIA GB10",
+    compute: "GB10 × 2",
+    vram: "合计 256G 共享显存",
+    models: ["Qwen3.8-27B"],
+    scenes: ["知识库问答", "AI 工作流应用", "AI 编程", "AI 办公"],
+    software: ["1Panel 企业版", "MaxKB 专业版"],
+    chassis: "桌面小盒子",
+    accent: "blue",
+  },
+  {
+    id: "方案五",
+    title: "1Panel AI 一体机（方案五）",
+    gpuType: "NVIDIA RTX Pro 5000",
+    compute: "RTX Pro 5000 × 4",
+    vram: "合计 288G 显存",
+    models: ["DeepSeek V4 Flash"],
+    scenes: ["知识库问答", "AI 工作流应用", "AI 编程", "AI 办公"],
+    software: ["1Panel 企业版（含 AI 网关）", "MaxKB 企业版"],
+    chassis: "旗舰工作站",
+    accent: "blue",
+  },
+  {
+    id: "方案六",
+    title: "1Panel AI 一体机（方案六）",
+    gpuType: "NVIDIA RTX Pro 5000",
+    compute: "RTX Pro 5000 × 4",
+    vram: "合计 288G 显存",
+    models: ["DeepSeek V4 Flash"],
+    scenes: ["知识库问答", "AI 工作流应用", "AI 编程", "AI 办公"],
+    software: ["1Panel 企业版", "MaxKB 企业版"],
+    chassis: "超聚变 Tokenbox（半人高液冷工作站）",
+    accent: "blue",
+  },
+];
+
+const accentMap = {
+  blue: {
+    band: "from-blue-500 to-blue-600",
+    chip: "bg-blue-100 text-1panel",
+    ring: "ring-blue-100",
+    text: "text-1panel",
+    sceneBg: "bg-blue-50",
+    sceneText: "text-blue-700",
+    vramBg: "bg-blue-600",
+    vramText: "text-white",
+    chassisBg: "bg-blue-50/70 border-blue-100",
+  },
+  violet: {
+    band: "from-violet-500 to-violet-600",
+    chip: "bg-violet-100 text-violet-700",
+    ring: "ring-violet-100",
+    text: "text-violet-700",
+    sceneBg: "bg-violet-50",
+    sceneText: "text-violet-700",
+    vramBg: "bg-violet-600",
+    vramText: "text-white",
+    chassisBg: "bg-violet-50/70 border-violet-100",
+  },
+  indigo: {
+    band: "from-indigo-500 to-indigo-600",
+    chip: "bg-indigo-100 text-indigo-700",
+    ring: "ring-indigo-100",
+    text: "text-indigo-700",
+    sceneBg: "bg-indigo-50",
+    sceneText: "text-indigo-700",
+    vramBg: "bg-indigo-600",
+    vramText: "text-white",
+    chassisBg: "bg-indigo-50/70 border-indigo-100",
+  },
+};
+
+const featuredSlugs = [
+  "qwen3-8-27b-private-deployment",
+  "deepseek-v4-flash-private-deployment-report",
+  "minimax-h3-video-generation-deployment",
+];
+
+const featuredPosts = (blogData as Array<{
+  id: string;
+  title: string;
+  slug: string;
+  date: string;
+  cover: string;
+  description: string;
+}>)
+  .filter((post) => featuredSlugs.includes(post.slug))
+  .sort((a, b) => featuredSlugs.indexOf(a.slug) - featuredSlugs.indexOf(b.slug));
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel AI 一体机",
+  alternateName: ["AI 一体机", "1Panel AI Appliance"],
+  description: pageDescription,
+  category: "AI infrastructure appliance",
+  brand: {
+    "@type": "Brand",
+    name: "FIT2CLOUD 飞致云",
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+  audience: {
+    "@type": "BusinessAudience",
+    audienceType: "需要私有化部署 DeepSeek / Qwen / MiniMax H3 的企业 AI 团队、研发团队与运维团队",
+  },
+  url: pageUrl,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle={pageTitle}
+  schemaName="1Panel AI 一体机"
+  description={pageDescription}
+  canonical="/ai-appliance.html"
+  image="/images/overview-full.png"
+  imageAlt="1Panel AI 一体机产品示意图"
+  keywords={pageKeywords}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl, siteBase) },
+      { name: "1Panel AI 一体机", url: pageUrl },
+    ]),
+    productSchema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-24 pb-14 lg:pt-28 lg:pb-16">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="relative z-10 container-custom">
+          <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center px-4 py-2 mb-6 rounded-full border border-blue-100 bg-white text-blue-800 shadow-sm text-sm font-semibold">
+              飞致云匠心出品
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-normal mb-8">
+              <span class="block text-gray-950">1Panel AI 一体机</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-600 mb-10 leading-relaxed">
+              以“<span class="text-1panel font-semibold">超融合</span>”理念整合底层算力、模型服务和 AI 应用，让 AI 高效转化为企业生产力。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#pricing" class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center">
+                <Icon name="carbon:qr-code" class="mr-2 h-5 w-5" />
+                微信扫码咨询
+              </a>
+              <a href="#benchmark" class="btn-secondary text-lg px-8 py-4 inline-flex items-center justify-center">
+                查看实战测评
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding bg-white border-t border-gray-100">
+        <div class="container-custom">
+          <div class="text-center mb-12">
+            <h2 class="section-title text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+              从算力底座到 <span class="text-1panel-gradient">AI 应用落地</span>
+            </h2>
+            <p class="section-subtitle text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              高效运维、安全合规，精心挑选的算力、模型、软件和应用，让 AI 高效转化为企业生产力。
+            </p>
+          </div>
+
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-white shadow-2xl shadow-blue-100/50">
+            <div class="grid grid-cols-1 gap-8 p-6 sm:p-8 lg:grid-cols-[220px_minmax(0,1.4fr)_220px] lg:gap-0 lg:p-9">
+              <div class="flex flex-col lg:pr-8">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 text-1panel">
+                    <Icon name="carbon:security" class="h-5 w-5" />
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">安全合规</h3>
+                </div>
+                <ul class="space-y-4">
+                  {securityPoints.map((point) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+                        <Icon name="carbon:checkmark" class="h-3.5 w-3.5" />
+                      </span>
+                      <span class="text-gray-600 leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="flex flex-col items-center border-y border-gray-100 py-8 lg:border-x lg:border-y-0 lg:px-6 lg:py-0">
+                <div class="w-full rounded-lg border border-gray-100 bg-gray-50/80 px-4 py-5 sm:px-6">
+                  <div class="grid grid-cols-4 gap-1.5 sm:gap-2 w-full mb-5">
+                    {architectureTiles.map((tile) => (
+                      <span class="flex min-h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-1 py-2 text-center text-[11px] font-medium leading-snug text-gray-800 shadow-sm sm:text-xs">{tile}</span>
+                    ))}
+                  </div>
+
+                  <div class="grid grid-cols-4 gap-1.5 sm:gap-2 w-full mb-5">
+                    {architectureModules.map((module) => (
+                      <span class="rounded-md bg-blue-50 px-1 py-3 text-center text-xs font-bold leading-snug text-1panel ring-1 ring-blue-100 sm:text-sm">{module}</span>
+                    ))}
+                  </div>
+
+                  <div class="w-full rounded-md bg-white py-3 mb-3 text-center shadow-sm ring-1 ring-gray-100">
+                    <span class="text-base sm:text-lg font-bold text-1panel">1Panel 企业版 + MaxKB 专业版/企业版</span>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+                    <div class="flex items-center justify-center rounded-md border border-blue-100 bg-blue-50/70 px-2 py-2">
+                      <span class="text-[11px] sm:text-sm font-bold text-1panel text-center leading-tight">DeepSeek V4 Flash</span>
+                    </div>
+                    <div class="flex items-center justify-center rounded-md border border-blue-100 bg-blue-50/70 px-2 py-2">
+                      <span class="text-[11px] sm:text-sm font-bold text-1panel text-center leading-tight">Qwen3.8-27B</span>
+                    </div>
+                    <div class="flex items-center justify-center rounded-md border border-blue-100 bg-blue-50/70 px-2 py-2">
+                      <span class="text-[11px] sm:text-sm font-bold text-1panel text-center leading-tight">MiniMax H3</span>
+                    </div>
+                  </div>
+
+                  <div class="w-full py-3 px-4 bg-blue-50/70 rounded-md border border-blue-100">
+                    <div class="flex flex-wrap items-center justify-center gap-2 mb-2">
+                      <span class="rounded-md border border-blue-200 bg-white px-3 py-1.5 text-[11px] font-medium text-blue-700 shadow-sm sm:text-xs">NVIDIA RTX Pro 5000</span>
+                      <span class="rounded-md border border-blue-200 bg-white px-3 py-1.5 text-[11px] font-medium text-blue-700 shadow-sm sm:text-xs">NVIDIA GB10</span>
+                    </div>
+                    <p class="text-sm font-bold text-center text-blue-600">精选算力</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col lg:pl-8">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-11 h-11 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0 text-amber-600">
+                    <Icon name="carbon:flash" class="h-5 w-5" />
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">高效运维</h3>
+                </div>
+                <ul class="space-y-4">
+                  {operationPoints.map((point) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+                        <Icon name="carbon:checkmark" class="h-3.5 w-3.5" />
+                      </span>
+                      <span class="text-gray-600 leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-1panel-gradient py-7 text-center">
+              <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">软硬协同 · 全栈赋能</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding bg-gradient-to-b from-gray-50 to-white">
+        <div class="container-custom">
+          <div class="text-center mb-11">
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+              四大 <span class="text-1panel-gradient">核心价值</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              1Panel AI 一体机以省心、安全、高效、全能四大核心价值，助力企业在智能化浪潮中抢占先机。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {strengths.map((item, index) => (
+              <article class={`fade-in-up rounded-lg bg-white border border-gray-100 p-6 lg:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.border} flex flex-col`} style={`animation-delay: ${index * 0.05}s;`}>
+                <div class="flex items-center gap-3 mb-4">
+                  <span aria-hidden="true" class={`flex-shrink-0 w-11 h-11 rounded-lg ${item.iconBg} ${item.tone} flex items-center justify-center`}>
+                    <Icon name={item.icon} class="h-5 w-5" />
+                  </span>
+                  <h3 class="text-lg font-bold text-gray-900">{item.title}</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed flex-1">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section-padding bg-white border-t border-gray-100">
+        <div class="container-custom">
+          <div class="text-center mb-12 lg:mb-16">
+            <h2 class="section-title text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+              <span class="text-1panel-gradient">方案与报价</span>
+            </h2>
+            <p class="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              1Panel 一体机提供六大预制方案，全面满足不同企业、不同场景的 AI 落地需求。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {pricingPlans.map((plan) => {
+              const c = accentMap[plan.accent];
+              return (
+                <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <div class="flex flex-1 flex-col p-6">
+                    <div class="mb-4 flex items-start justify-between gap-2">
+                      <div class="flex items-center gap-2">
+                        <span class={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-bold ${c.vramBg} ${c.vramText}`}>{plan.id}</span>
+                      </div>
+                      <span class="text-[11px] font-medium uppercase tracking-wider text-gray-400">{plan.gpuType}</span>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug mb-4 min-h-[3rem]">{plan.title}</h3>
+
+                    <div class={`flex items-center justify-between rounded-xl ${c.chassisBg} border px-4 py-3 mb-4`}>
+                      <div class="flex items-center gap-2">
+                        <svg viewBox="0 0 32 32" fill="currentColor" class={`h-5 w-5 flex-shrink-0 ${c.text}`} aria-hidden="true">
+                          <rect x="9" y="9" width="14" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="13" y="13" width="6" height="6" fill="currentColor"/>
+                          <rect x="3" y="11" width="4" height="2" fill="currentColor"/><rect x="3" y="15" width="4" height="2" fill="currentColor"/><rect x="3" y="19" width="4" height="2" fill="currentColor"/>
+                          <rect x="25" y="11" width="4" height="2" fill="currentColor"/><rect x="25" y="15" width="4" height="2" fill="currentColor"/><rect x="25" y="19" width="4" height="2" fill="currentColor"/>
+                          <rect x="11" y="3" width="2" height="4" fill="currentColor"/><rect x="15" y="3" width="2" height="4" fill="currentColor"/><rect x="19" y="3" width="2" height="4" fill="currentColor"/>
+                          <rect x="11" y="25" width="2" height="4" fill="currentColor"/><rect x="15" y="25" width="2" height="4" fill="currentColor"/><rect x="19" y="25" width="2" height="4" fill="currentColor"/>
+                        </svg>
+                        <span class="text-sm font-bold text-gray-900">{plan.compute}</span>
+                      </div>
+                      <span class={`rounded-md px-2 py-0.5 text-[11px] font-bold ${c.vramBg} ${c.vramText}`}>{plan.vram}</span>
+                    </div>
+
+                    <div class="mb-4">
+                      <div class="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+                        <svg viewBox="0 0 32 32" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                          <rect x="16" y="6" width="10" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="6" y="12" width="10" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <circle cx="21" cy="13" r="1.5" fill="currentColor"/><circle cx="21" cy="17" r="1.5" fill="currentColor"/>
+                          <circle cx="11" cy="19" r="1.5" fill="currentColor"/><circle cx="11" cy="23" r="1.5" fill="currentColor"/>
+                        </svg>
+                        <span>预置模型</span>
+                      </div>
+                      <div class="flex flex-wrap gap-1.5">
+                        {plan.models.map((m) => (
+                          <span class={`rounded-md px-2 py-1 text-xs font-semibold ${c.sceneBg} ${c.sceneText}`}>{m}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <div class="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+                        <svg viewBox="0 0 32 32" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                          <rect x="4" y="6" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="15" y="6" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="4" y="17" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="15" y="17" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="6" y="8" width="2" height="2" fill="currentColor"/><rect x="17" y="8" width="2" height="2" fill="currentColor"/>
+                          <rect x="6" y="19" width="2" height="2" fill="currentColor"/><rect x="17" y="19" width="2" height="2" fill="currentColor"/>
+                        </svg>
+                        <span>适用场景</span>
+                      </div>
+                      <div class="flex flex-wrap gap-1.5">
+                        {plan.scenes.map((s) => (
+                          <span class={`rounded-full px-2 py-0.5 text-[11px] font-medium ${c.sceneBg} ${c.sceneText}`}>{s}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="mb-4">
+                      <div class="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+                        <svg viewBox="0 0 32 32" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                          <rect x="4" y="6" width="24" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="8" y="10" width="4" height="4" fill="currentColor"/>
+                          <rect x="14" y="10" width="12" height="2" fill="currentColor"/>
+                          <rect x="14" y="14" width="8" height="2" fill="currentColor"/>
+                          <rect x="8" y="18" width="16" height="2" fill="currentColor"/>
+                          <rect x="8" y="22" width="10" height="2" fill="currentColor"/>
+                        </svg>
+                        <span>预装软件</span>
+                      </div>
+                      <ul class="space-y-1.5">
+                        {plan.software.map((s) => (
+                          <li class="flex items-start gap-1.5 text-xs text-gray-700 leading-relaxed">
+                            <svg viewBox="0 0 32 32" fill="currentColor" class={`h-3.5 w-3.5 flex-shrink-0 mt-0.5 ${c.text}`} aria-hidden="true">
+                              <path d="M16 4l10 6v12l-10 6L6 22V10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                              <path d="M11 16l3.5 3.5L21 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>{s}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div class={`mt-auto flex items-center gap-2 rounded-lg border ${c.chassisBg} px-3 py-2.5`}>
+                      <svg viewBox="0 0 32 32" fill="currentColor" class={`h-4 w-4 flex-shrink-0 ${c.text}`} aria-hidden="true">
+                        <rect x="5" y="5" width="22" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <rect x="5" y="13" width="22" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <rect x="5" y="21" width="22" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="9" cy="8" r="1" fill="currentColor"/><circle cx="9" cy="16" r="1" fill="currentColor"/><circle cx="9" cy="24" r="1" fill="currentColor"/>
+                        <rect x="13" y="7" width="10" height="2" fill="currentColor"/><rect x="13" y="15" width="10" height="2" fill="currentColor"/><rect x="13" y="23" width="10" height="2" fill="currentColor"/>
+                      </svg>
+                      <span class="text-xs font-semibold text-gray-800">{plan.chassis}</span>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div class="rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-md sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto]">
+              <div>
+                <span class="inline-block bg-blue-100 text-1panel text-xs font-semibold px-3 py-1 rounded-full mb-3">限时特价</span>
+                <h3 class="text-2xl font-bold text-gray-900 lg:text-3xl">获取详细的方案材料与报价</h3>
+                <p class="mt-3 max-w-2xl text-base leading-relaxed text-gray-600">
+                  微信扫码联系飞致云团队，获取详细方案 PPT、实测报告和价格。
+                </p>
+              </div>
+              <div class="flex flex-col items-center justify-center rounded-xl bg-white p-4 shadow-sm">
+                <img
+                  src="/images/wecom-qrcode.png"
+                  alt="微信扫码咨询 1Panel AI 一体机"
+                  class="h-36 w-36 rounded-md border border-gray-200 bg-white p-2"
+                  loading="lazy"
+                />
+                <div class="mt-3 text-center text-sm font-semibold text-gray-800">微信扫码咨询</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="benchmark" class="section-padding bg-gradient-to-b from-white to-blue-50/60 border-t border-gray-100">
+        <div class="container-custom">
+          <div class="text-center mb-11">
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">
+              <span class="text-1panel-gradient">实战测评</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mt-6">
+              用真实业务场景验证 1Panel AI 一体机的落地效果。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+            {featuredPosts.map((post) => (
+              <a
+                href={`/blog/${post.slug}.html`}
+                class="group flex flex-col rounded-lg overflow-hidden bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-gray-100"
+              >
+                <div class="relative aspect-[16/9] overflow-hidden bg-gray-50">
+                  <img
+                    src={post.cover}
+                    alt={post.title}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex flex-1 flex-col p-6">
+                  <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+                    <Icon name="carbon:calendar" class="h-4 w-4" />
+                    <time>{post.date}</time>
+                  </div>
+                  <h3 class="text-lg font-bold text-gray-900 leading-snug group-hover:text-1panel">
+                    {post.title}
+                  </h3>
+                  <p class="mt-3 text-sm leading-relaxed text-gray-600 line-clamp-4">
+                    {post.description}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="text-center">
+            <a href="/blog.html" class="btn-primary inline-flex items-center justify-center px-7 py-3 text-base">
+              查看全部产品动态
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>
