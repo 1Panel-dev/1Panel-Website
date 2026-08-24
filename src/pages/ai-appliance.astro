@@ -112,7 +112,7 @@ const pricingPlans = [
     scenes: ["知识库问答", "AI 工作流", "AI 编程", "AI 办公"],
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 专业版"],
     chassis: "旗舰工作站",
-    accent: "blue",
+    accent: "emerald",
   },
   {
     id: "方案三",
@@ -124,7 +124,7 @@ const pricingPlans = [
     scenes: ["知识库问答", "AI 工作流应用", "AI 编程", "AI 办公"],
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 专业版"],
     chassis: "旗舰工作站",
-    accent: "blue",
+    accent: "teal",
   },
   {
     id: "方案四",
@@ -136,7 +136,7 @@ const pricingPlans = [
     scenes: ["知识库问答", "AI 工作流", "AI 编程", "AI 办公"],
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 专业版"],
     chassis: "桌面小盒子",
-    accent: "blue",
+    accent: "indigo",
   },
   {
     id: "方案五",
@@ -148,7 +148,7 @@ const pricingPlans = [
     scenes: ["知识库问答", "AI 工作流", "AI 编程", "AI 办公"],
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 企业版"],
     chassis: "旗舰工作站",
-    accent: "blue",
+    accent: "violet",
   },
   {
     id: "方案六",
@@ -160,7 +160,7 @@ const pricingPlans = [
     scenes: ["知识库问答", "AI 工作流", "AI 编程", "AI 办公"],
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 企业版"],
     chassis: "超聚变 Tokenbox（半人高液冷工作站）",
-    accent: "blue",
+    accent: "rose",
   },
 ];
 
@@ -176,16 +176,27 @@ const accentMap = {
     vramText: "text-white",
     chassisBg: "bg-blue-50/70 border-blue-100",
   },
-  violet: {
-    band: "from-violet-500 to-violet-600",
-    chip: "bg-violet-100 text-violet-700",
-    ring: "ring-violet-100",
-    text: "text-violet-700",
-    sceneBg: "bg-violet-50",
-    sceneText: "text-violet-700",
-    vramBg: "bg-violet-600",
+  emerald: {
+    band: "from-emerald-500 to-emerald-600",
+    chip: "bg-emerald-100 text-emerald-700",
+    ring: "ring-emerald-100",
+    text: "text-emerald-700",
+    sceneBg: "bg-emerald-50",
+    sceneText: "text-emerald-700",
+    vramBg: "bg-emerald-600",
     vramText: "text-white",
-    chassisBg: "bg-violet-50/70 border-violet-100",
+    chassisBg: "bg-emerald-50/70 border-emerald-100",
+  },
+  teal: {
+    band: "from-teal-500 to-teal-600",
+    chip: "bg-teal-100 text-teal-700",
+    ring: "ring-teal-100",
+    text: "text-teal-700",
+    sceneBg: "bg-teal-50",
+    sceneText: "text-teal-700",
+    vramBg: "bg-teal-600",
+    vramText: "text-white",
+    chassisBg: "bg-teal-50/70 border-teal-100",
   },
   indigo: {
     band: "from-indigo-500 to-indigo-600",
@@ -197,6 +208,28 @@ const accentMap = {
     vramBg: "bg-indigo-600",
     vramText: "text-white",
     chassisBg: "bg-indigo-50/70 border-indigo-100",
+  },
+  violet: {
+    band: "from-violet-500 to-violet-600",
+    chip: "bg-violet-100 text-violet-700",
+    ring: "ring-violet-100",
+    text: "text-violet-700",
+    sceneBg: "bg-violet-50",
+    sceneText: "text-violet-700",
+    vramBg: "bg-violet-600",
+    vramText: "text-white",
+    chassisBg: "bg-violet-50/70 border-violet-100",
+  },
+  rose: {
+    band: "from-rose-500 to-rose-600",
+    chip: "bg-rose-100 text-rose-700",
+    ring: "ring-rose-100",
+    text: "text-rose-700",
+    sceneBg: "bg-rose-50",
+    sceneText: "text-rose-700",
+    vramBg: "bg-rose-600",
+    vramText: "text-white",
+    chassisBg: "bg-rose-50/70 border-rose-100",
   },
 };
 
@@ -478,25 +511,6 @@ const productSchema = {
                     <div class="mb-4">
                       <div class="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                         <svg viewBox="0 0 32 32" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
-                          <rect x="4" y="6" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
-                          <rect x="15" y="6" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
-                          <rect x="4" y="17" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
-                          <rect x="15" y="17" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
-                          <rect x="6" y="8" width="2" height="2" fill="currentColor"/><rect x="17" y="8" width="2" height="2" fill="currentColor"/>
-                          <rect x="6" y="19" width="2" height="2" fill="currentColor"/><rect x="17" y="19" width="2" height="2" fill="currentColor"/>
-                        </svg>
-                        <span>适用场景</span>
-                      </div>
-                      <div class="flex flex-wrap gap-1.5">
-                        {plan.scenes.map((s) => (
-                          <span class={`rounded-full px-2 py-0.5 text-[11px] font-medium ${c.sceneBg} ${c.sceneText}`}>{s}</span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div class="mb-4">
-                      <div class="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
-                        <svg viewBox="0 0 32 32" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
                           <rect x="4" y="6" width="24" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
                           <rect x="8" y="10" width="4" height="4" fill="currentColor"/>
                           <rect x="14" y="10" width="12" height="2" fill="currentColor"/>
@@ -517,6 +531,25 @@ const productSchema = {
                           </li>
                         ))}
                       </ul>
+                    </div>
+
+                    <div class="mb-4">
+                      <div class="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+                        <svg viewBox="0 0 32 32" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                          <rect x="4" y="6" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="15" y="6" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="4" y="17" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="15" y="17" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>
+                          <rect x="6" y="8" width="2" height="2" fill="currentColor"/><rect x="17" y="8" width="2" height="2" fill="currentColor"/>
+                          <rect x="6" y="19" width="2" height="2" fill="currentColor"/><rect x="17" y="19" width="2" height="2" fill="currentColor"/>
+                        </svg>
+                        <span>适用场景</span>
+                      </div>
+                      <div class="flex flex-wrap gap-1.5">
+                        {plan.scenes.map((s) => (
+                          <span class={`rounded-full px-2 py-0.5 text-[11px] font-medium ${c.sceneBg} ${c.sceneText}`}>{s}</span>
+                        ))}
+                      </div>
                     </div>
 
                     <div class={`mt-auto flex items-center gap-2 rounded-lg border ${c.chassisBg} px-3 py-2.5`}>
