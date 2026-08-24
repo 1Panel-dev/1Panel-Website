@@ -304,6 +304,7 @@ const productSchema = {
         <div class="relative z-10 container-custom">
           <div class="max-w-4xl mx-auto text-center">
             <div class="inline-flex items-center px-4 py-2 mb-6 rounded-full border border-blue-100 bg-white text-blue-800 shadow-sm text-sm font-semibold">
+              <Icon name="carbon:recommend" class="w-4 h-4 mr-1" aria-hidden="true" />
               飞致云匠心出品
             </div>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-normal mb-8">
@@ -313,7 +314,7 @@ const productSchema = {
               以“<span class="text-1panel font-semibold">超融合</span>”理念整合底层算力、模型服务和 AI 应用，让 AI 高效转化为企业生产力。
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#pricing" class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center">
+              <a href="#pricing-contact" class="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center">
                 <Icon name="carbon:qr-code" class="mr-2 h-5 w-5" />
                 微信扫码咨询
               </a>
@@ -464,14 +465,23 @@ const productSchema = {
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {pricingPlans.map((plan) => {
+            {pricingPlans.map((plan, index) => {
               const c = accentMap[plan.accent];
               return (
-                <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <article
+                  aria-labelledby={`pricing-plan-${index + 1}-title`}
+                  class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
                   <div class="flex flex-1 flex-col p-6">
                     <div class="mb-4 flex items-start justify-between gap-2">
                       <div class="flex items-center gap-2">
-                        <span class={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-bold ${c.vramBg} ${c.vramText}`}>{plan.id}</span>
+                        <h3
+                          id={`pricing-plan-${index + 1}-title`}
+                          aria-label={plan.title}
+                          class={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-bold ${c.vramBg} ${c.vramText}`}
+                        >
+                          {plan.id}
+                        </h3>
                       </div>
                       <span class="text-[11px] font-medium uppercase tracking-wider text-gray-400">{plan.gpuType}</span>
                     </div>
@@ -568,7 +578,7 @@ const productSchema = {
             })}
           </div>
 
-          <div class="rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-md sm:p-8 lg:p-10">
+          <div id="pricing-contact" class="scroll-mt-28 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-md sm:p-8 lg:p-10">
             <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto]">
               <div>
                 <span class="inline-block bg-blue-100 text-1panel text-xs font-semibold px-3 py-1 rounded-full mb-3">限时特价</span>
@@ -619,7 +629,7 @@ const productSchema = {
                 <div class="flex flex-1 flex-col p-6">
                   <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
                     <Icon name="carbon:calendar" class="h-4 w-4" />
-                    <time>{post.date}</time>
+                    <time datetime={post.date}>{post.date}</time>
                   </div>
                   <h3 class="text-lg font-bold text-gray-900 leading-snug group-hover:text-1panel">
                     {post.title}

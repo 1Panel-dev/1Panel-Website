@@ -150,8 +150,6 @@ const structuredDataItems = [
   
   <title>{title}</title>
   
-  <link rel="stylesheet" is:inline href={withBasePath("/lib/asciinema-player.css", siteBase)}>
-  <script is:inline src={withBasePath("/lib/asciinema-player.min.js", siteBase)}></script>
   {
     structuredDataItems.map((item) => (
       <script type="application/ld+json" set:html={JSON.stringify(item)} />
