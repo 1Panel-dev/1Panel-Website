@@ -1,0 +1,63 @@
+---
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import BaoTaComparison from './baota/App';
+import WebminComparison from './webmin/App';
+import CPanelHome from './cpanel/HomeApp';
+import CPanelComparison from './cpanel/ComparisonApp';
+import CPanelCost from './cpanel/CostApp';
+
+interface Props {
+  app:
+    | 'baota'
+    | 'webmin'
+    | 'cpanel-home'
+    | 'cpanel-comparison'
+    | 'cpanel-cost';
+}
+
+const { app } = Astro.props;
+const apps = {
+  baota: BaoTaComparison,
+  webmin: WebminComparison,
+  'cpanel-home': CPanelHome,
+  'cpanel-comparison': CPanelComparison,
+  'cpanel-cost': CPanelCost,
+};
+const html = renderToString(React.createElement(apps[app]));
+---
+
+<div data-comparison-app={app} data-comparison-state="ssr" set:html={html}></div>
+
+<script>
+  import React from 'react';
+  import { hydrateRoot } from 'react-dom/client';
+
+  const loaders = {
+    baota: () => import('./baota/App'),
+    webmin: () => import('./webmin/App'),
+    'cpanel-home': () => import('./cpanel/HomeApp'),
+    'cpanel-comparison': () => import('./cpanel/ComparisonApp'),
+    'cpanel-cost': () => import('./cpanel/CostApp'),
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-comparison-app]').forEach(async (root) => {
+    const app = root.dataset.comparisonApp as keyof typeof loaders;
+
+    try {
+      const module = await loaders[app]();
+      hydrateRoot(root, React.createElement(module.default), {
+        onRecoverableError(error) {
+          console.error(`[comparison:${app}] React hydration recovered from an error`, error);
+        },
+      });
+
+      requestAnimationFrame(() => {
+        root.dataset.comparisonState = 'hydrated';
+      });
+    } catch (error) {
+      root.dataset.comparisonState = 'error';
+      console.error(`[comparison:${app}] React hydration failed`, error);
+    }
+  });
+</script>
