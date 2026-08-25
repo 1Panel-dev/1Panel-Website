@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building, Code, Users, Server, Smartphone, Globe } from 'lucide-react';
+import { Building, Code, Users, Server, Smartphone, Globe } from '../../ui/icons';
 
 const UseCases: React.FC = () => {
   const onePanelColorClasses = {

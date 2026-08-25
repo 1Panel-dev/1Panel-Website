@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from '../ui/motion'
 import Layout from './components/Layout'
 
 interface PageShellProps {

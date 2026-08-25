@@ -1,4 +1,4 @@
-import { Cpu, Shield, Zap, Container, Code, Server } from 'lucide-react'
+import { Cpu, Shield, Zap, Container, Code, Server } from '../../ui/icons'
 
 const TechArchitecture = () => {
   const architectureFeatures = [

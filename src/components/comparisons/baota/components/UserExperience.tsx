@@ -1,4 +1,4 @@
-import { Palette, Zap, BookOpen, Smile, Clock, MousePointer } from 'lucide-react'
+import { Palette, Zap, BookOpen, Smile, Clock, MousePointer } from '../../ui/icons'
 
 const UserExperience = () => {
   const uxMetrics = [

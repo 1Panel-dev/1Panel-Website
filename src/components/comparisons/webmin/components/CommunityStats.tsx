@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, GitFork, Users, Download, Calendar, TrendingUp } from 'lucide-react';
+import { Star, GitFork, Users, Download, Calendar, TrendingUp } from '../../ui/icons';
 
 const CommunityStats: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from '../../ui/motion'
 import {
   Star,
   Zap,
@@ -9,7 +9,7 @@ import {
   HardDrive,
   Monitor,
   Container
-} from 'lucide-react'
+} from '../../ui/icons'
 import type { ComparisonData } from '../types'
 import comparisonDataSource from '../data/panel_comparison_complete.json'
 

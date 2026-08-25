@@ -1,4 +1,4 @@
-import { Check, X, Database, FileText, Shield, Cloud, Package } from 'lucide-react'
+import { Check, X, Database, FileText, Shield, Cloud, Package } from '../../ui/icons'
 
 const FeatureComparison = () => {
   const featureCategories = [

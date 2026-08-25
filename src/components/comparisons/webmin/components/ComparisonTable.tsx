@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star } from 'lucide-react';
+import { Star } from '../../ui/icons';
 
 const ComparisonTable: React.FC = () => {
   const comparisonData = [

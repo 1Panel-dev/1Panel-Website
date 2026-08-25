@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, Star } from 'lucide-react';
+import { ArrowRight, Github, Star } from '../../ui/icons';
 
 const HeroSection: React.FC = () => {
   return (

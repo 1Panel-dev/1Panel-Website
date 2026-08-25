@@ -1,4 +1,4 @@
-import { CheckCircle, XCircle, Star, Calendar, Code, Users } from 'lucide-react'
+import { CheckCircle, XCircle, Star, Calendar, Code, Users } from '../../ui/icons'
 
 const ProductOverview = () => {
   const comparisonData = [

@@ -1,12 +1,12 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from '../../ui/motion'
 import {
   TrendingDown,
   CheckCircle,
   Target,
   Building,
   Users
-} from 'lucide-react'
+} from '../../ui/icons'
 import type { CostData } from '../types'
 
 interface CostAnalysisPageProps {
