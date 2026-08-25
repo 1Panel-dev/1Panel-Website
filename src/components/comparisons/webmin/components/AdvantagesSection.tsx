@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Zap, Shield, Smartphone, Rocket, Users } from 'lucide-react';
+import { Container, Zap, Shield, Smartphone, Rocket, Users } from '../../ui/icons';
 
 const AdvantagesSection: React.FC = () => {
   const advantages = [

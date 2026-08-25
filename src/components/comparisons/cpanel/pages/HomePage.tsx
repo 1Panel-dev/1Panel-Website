@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from '../../ui/motion'
 import {
   Shield,
   Zap,
@@ -12,7 +12,7 @@ import {
   ArrowRight,
   CheckCircle,
   TrendingUp
-} from 'lucide-react'
+} from '../../ui/icons'
 
 const HomePage: React.FC = () => {
   const features = [

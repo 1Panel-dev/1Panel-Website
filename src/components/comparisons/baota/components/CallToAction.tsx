@@ -1,4 +1,4 @@
-import { ArrowRight, Download, Github, BookOpen, Users } from 'lucide-react'
+import { ArrowRight, Download, Github, BookOpen, Users } from '../../ui/icons'
 
 const CallToAction = () => {
   const quickActions = [

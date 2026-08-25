@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cloud, Container, Server, Settings } from 'lucide-react';
+import { Cloud, Container, Server, Settings } from '../../ui/icons';
 
 const ProductOverview: React.FC = () => {
   return (

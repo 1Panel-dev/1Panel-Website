@@ -1,4 +1,4 @@
-import { Crown, Zap, Shield, Container, Code, Cloud, Star } from 'lucide-react'
+import { Crown, Zap, Shield, Container, Code, Cloud, Star } from '../../ui/icons'
 
 const UniqueAdvantages = () => {
   const advantages = [

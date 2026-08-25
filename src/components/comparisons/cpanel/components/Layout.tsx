@@ -1,9 +1,9 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from '../../ui/motion'
 
 import {
   ChevronRight
-} from 'lucide-react'
+} from '../../ui/icons'
 
 interface LayoutProps {
   children: React.ReactNode

@@ -1,4 +1,4 @@
-import { ArrowRight, Shield, Cpu, Code, Users } from 'lucide-react'
+import { ArrowRight, Shield, Cpu, Code, Users } from '../../ui/icons'
 
 const Hero = () => {
   const highlights = [
