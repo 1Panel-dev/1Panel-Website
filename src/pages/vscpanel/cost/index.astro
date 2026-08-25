@@ -1,0 +1,11 @@
+---
+import ComparisonShell from '../../../components/comparisons/ComparisonShell.astro';
+import ReactComparisonIsland from '../../../components/comparisons/ReactComparisonIsland.astro';
+import { getCpanelSeo } from '../../../lib/comparisonSeo';
+
+const seo = getCpanelSeo('cost');
+---
+
+<ComparisonShell seo={seo}>
+  <ReactComparisonIsland app="cpanel-cost" />
+</ComparisonShell>

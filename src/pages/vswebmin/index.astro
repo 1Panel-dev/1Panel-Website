@@ -1,0 +1,9 @@
+---
+import ComparisonShell from '../../components/comparisons/ComparisonShell.astro';
+import ReactComparisonIsland from '../../components/comparisons/ReactComparisonIsland.astro';
+import { webminSeo } from '../../lib/comparisonSeo';
+---
+
+<ComparisonShell seo={webminSeo}>
+  <ReactComparisonIsland app="webmin" />
+</ComparisonShell>
