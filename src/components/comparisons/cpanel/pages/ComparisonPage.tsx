@@ -20,7 +20,7 @@ interface ComparisonPageProps {
 const ComparisonPage: React.FC<ComparisonPageProps> = ({ embedded = false }) => {
   const comparisonData = comparisonDataSource as ComparisonData
   const TitleTag = embedded ? 'h2' : 'h1'
-  const costHref = embedded ? '#cost' : '/vscpanel/cost'
+  const costHref = embedded ? '#cost' : '/vscpanel/cost.html'
 
   // 功能对比表格数据
   const featureComparisons = [

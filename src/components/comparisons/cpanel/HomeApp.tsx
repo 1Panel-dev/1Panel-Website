@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage'
 
 function HomeApp() {
   return (
-    <PageShell currentPath="/vscpanel" singlePage>
+    <PageShell currentPath="/vscpanel.html" singlePage>
       <HomePage />
       <ComparisonPage embedded />
       <CostAnalysisPage embedded />
