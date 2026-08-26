@@ -99,8 +99,8 @@ const enterpriseOnlyCapabilities = [
     href: "/user-management.html",
     tag: "组织协作",
     description:
-      "面向部门和企业内部多角色使用场景，支持用户与权限管理，让 AI 能力在团队内有序开放。",
-    points: ["用户管理", "权限分配", "多角色协作"],
+      "面向部门和企业内部多角色使用场景，支持用户、权限与认证管理，可接入 AD/LDAP、OIDC 和 SAML2。",
+    points: ["用户管理", "权限分配", "认证管理"],
   },
   {
     icon: "carbon:virtual-machine",
@@ -145,7 +145,7 @@ const layerClassMap = {
 
 const pageTitle = "1Panel 企业版 - 轻量级 AI 管理平台";
 const pageDescription =
-  "1Panel 企业版是从底层硬件、虚拟机等基础资源到智能体（Metal-to-Agent）的统一管理平台，覆盖企业级 AI 治理与基础设施管理。";
+  "1Panel 企业版是从底层硬件、虚拟机等基础资源到智能体（Metal-to-Agent）的统一管理平台，覆盖企业级 AI 治理、用户与认证管理及基础设施管理。";
 const enterpriseSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -170,6 +170,10 @@ const enterpriseSchema = {
     "AI 网关",
     "Skills Hub",
     "多用户管理",
+    "认证管理",
+    "AD/LDAP",
+    "OIDC",
+    "SAML2",
     "KVM Web 虚拟机管理",
     "安全运维报表",
     "多节点纳管",
@@ -199,7 +203,7 @@ const enterpriseSchema = {
   canonical="/enterprise.html"
   image="/images/overview-full.png"
   imageAlt="1Panel 企业版介绍"
-  modifiedTime="2026-07-14"
+  modifiedTime="2026-08-26"
   keywords={[
     "1Panel 企业版",
     "1Panel AI 门户",
@@ -212,6 +216,10 @@ const enterpriseSchema = {
     "私有化 AI 部署",
     "AI 应用部署",
     "多用户管理",
+    "认证管理",
+    "AD/LDAP",
+    "OIDC",
+    "SAML2",
     "虚拟机管理",
     "KVM Web 管理",
     "KVM 虚拟机管理",

@@ -17,6 +17,7 @@ const trialUrl = "https://jsj.top/f/umuYtv";
 
 const userManagementKeywords = [
   "用户管理",
+  "认证管理",
   "权限分配",
   "多角色协作",
   "企业级访问控制",
@@ -68,16 +69,75 @@ const capabilityCards = [
   },
 ];
 
-const pageTitle = "用户管理 - 1Panel 多用户与权限管理";
+const authenticationProviders = [
+  {
+    icon: "carbon:directory-domain",
+    title: "AD/LDAP",
+    description:
+      "对接企业目录服务，将已有组织身份体系接入 1Panel。",
+    capabilities: [
+      "兼容 Active Directory、OpenLDAP 等服务",
+      "支持用户导入及手动、定时同步",
+      "支持连接与登录测试，可预设节点和角色",
+    ],
+  },
+  {
+    icon: "carbon:cloud-services",
+    title: "OIDC",
+    description:
+      "使用 OpenID Connect 接入企业身份提供方，实现单点登录。",
+    capabilities: [
+      "支持标准 Discovery 与兼容模式",
+      "支持用户名 Claim 映射和首次登录创建用户",
+      "提供配置测试与浏览器测试登录",
+    ],
+  },
+  {
+    icon: "carbon:enterprise",
+    title: "SAML2",
+    description:
+      "通过 SAML2 接入企业身份提供方，完成身份联合登录。",
+    capabilities: [
+      "支持通过 Metadata URL 或 XML 配置 IdP",
+      "支持用户属性映射和默认节点、角色分配",
+      "提供配置测试与浏览器测试登录",
+    ],
+  },
+];
+
+const authenticationFlow = [
+  {
+    step: "01",
+    title: "接入认证源",
+    description: "配置目录服务或企业身份提供方",
+  },
+  {
+    step: "02",
+    title: "验证配置",
+    description: "执行连接、配置或测试登录",
+  },
+  {
+    step: "03",
+    title: "映射用户",
+    description: "将外部身份映射为 1Panel 用户",
+  },
+  {
+    step: "04",
+    title: "承接权限",
+    description: "为新用户分配默认节点和角色",
+  },
+];
+
+const pageTitle = "1Panel 用户与认证管理 - AD/LDAP、OIDC、SAML2";
 const pageDescription =
-  "用户管理面向部门和企业内部多角色使用场景，支持用户与权限管理。";
+  "1Panel 企业版用户管理面向部门和企业内部多角色使用场景，支持用户、角色权限与认证管理，可接入 AD/LDAP、OIDC 和 SAML2。";
 const userManagementSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "@id": `${pageUrl}#product`,
-  name: "1Panel 用户管理",
+  name: "1Panel 用户与认证管理",
   applicationCategory: "DeveloperApplication",
-  applicationSubCategory: "User and permission management",
+  applicationSubCategory: "User, authentication and permission management",
   operatingSystem: "Linux",
   description: pageDescription,
   url: pageUrl,
@@ -88,6 +148,10 @@ const userManagementSchema = {
     "角色权限管理",
     "企业级访问控制",
     "协作使用",
+    "认证管理",
+    "AD/LDAP",
+    "OIDC",
+    "SAML2",
   ],
   publisher: {
     "@type": "Organization",
@@ -98,14 +162,15 @@ const userManagementSchema = {
 
 <Layout
   title={pageTitle}
-  socialTitle="1Panel 用户管理"
-  schemaName="1Panel 用户管理"
+  socialTitle="1Panel 用户与认证管理"
+  schemaName="1Panel 用户与认证管理"
   description={pageDescription}
   canonical="/user-management.html"
   image="/images/enterprise-user-management.png"
-  imageWidth={3432}
-  imageHeight={2172}
-  imageAlt="1Panel 用户管理"
+  imageWidth={3426}
+  imageHeight={1808}
+  imageAlt="1Panel 企业版用户与认证管理界面"
+  modifiedTime="2026-08-26"
   keywords={[
     "1Panel 用户管理",
     "用户管理",
@@ -115,11 +180,15 @@ const userManagementSchema = {
     "企业级访问控制",
     "协作使用",
     "多用户管理",
+    "认证管理",
+    "AD/LDAP 认证",
+    "OIDC 单点登录",
+    "SAML2 身份认证",
   ]}
   structuredData={[
     createBreadcrumbSchema([
       { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
-      { name: "1Panel 用户管理", url: pageUrl },
+      { name: "1Panel 用户与认证管理", url: pageUrl },
     ]),
     userManagementSchema,
   ]}
@@ -140,7 +209,7 @@ const userManagementSchema = {
               用户管理
             </h1>
             <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
-              面向部门和企业内部多角色使用场景，支持用户与权限管理。
+              面向部门和企业内部多角色使用场景，支持用户、权限与认证管理。
             </p>
             <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
               {userManagementKeywords.map((keyword) => (
@@ -203,6 +272,80 @@ const userManagementSchema = {
         </div>
       </section>
 
+      <section id="authentication-management" class="bg-gray-50 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span class="inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+              企业版功能
+            </span>
+            <h2 class="mt-5 text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              认证管理，统一接入企业身份源
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              认证管理作为用户管理的子菜单，集中配置 AD/LDAP、OIDC 和 SAML2，帮助企业复用现有身份体系登录 1Panel。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+            {authenticationProviders.map((provider, index) => (
+              <article
+                class="fade-in-up flex h-full flex-col rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl sm:p-7"
+                style={`animation-delay: ${index * 0.08}s;`}
+              >
+                <div class="flex items-center gap-4">
+                  <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                    <Icon name={provider.icon} class="h-6 w-6" />
+                  </span>
+                  <h3 class="text-2xl font-bold text-gray-900">{provider.title}</h3>
+                </div>
+                <p class="mt-5 text-base leading-relaxed text-gray-600">
+                  {provider.description}
+                </p>
+                <ul class="mt-6 space-y-3 border-t border-gray-100 pt-5">
+                  {provider.capabilities.map((capability) => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed text-gray-600">
+                      <Icon name="carbon:checkmark-filled" class="mt-0.5 h-4 w-4 shrink-0 text-1panel" />
+                      <span>{capability}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8 overflow-hidden rounded-lg border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+              {authenticationFlow.map((item, index) => (
+                <div class="relative flex gap-4 lg:block lg:px-3">
+                  <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-1panel">
+                    {item.step}
+                  </span>
+                  <div class="lg:mt-4">
+                    <h3 class="text-base font-bold text-gray-900">{item.title}</h3>
+                    <p class="mt-1 text-sm leading-relaxed text-gray-600">{item.description}</p>
+                  </div>
+                  {index < authenticationFlow.length - 1 && (
+                    <Icon name="carbon:arrow-right" class="absolute right-0 top-3 hidden h-5 w-5 text-blue-200 lg:block" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-5 flex items-start gap-4 rounded-lg border border-blue-100 bg-blue-50/70 p-5 sm:items-center sm:p-6">
+            <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white text-1panel shadow-sm">
+              <Icon name="carbon:user-certification" class="h-6 w-6" />
+            </span>
+            <div>
+              <h3 class="text-lg font-bold text-gray-900">身份认证与权限管理协同</h3>
+              <p class="mt-1 text-sm leading-relaxed text-gray-600 sm:text-base">
+                外部认证源负责确认用户身份，新用户可预设默认节点和角色；后续资源访问仍由 1Panel 的角色与权限体系统一控制。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="bg-white py-16 lg:py-24">
         <div class="container-custom">
           <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
@@ -212,7 +355,7 @@ const userManagementSchema = {
                   面向企业团队的多用户与权限管理
                 </h2>
                 <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
-                  用户管理面向部门和企业内部多角色使用场景，提供用户管理、权限分配和协作使用能力。通过集中管理用户账号、配置角色权限和控制不同成员的操作范围，帮助企业提升 1Panel 在团队协作场景下的安全性、规范性和管理效率。
+                  用户管理面向部门和企业内部多角色使用场景，提供用户管理、权限分配、认证管理和协作使用能力。通过集中管理用户账号、对接企业身份源、配置角色权限和控制不同成员的操作范围，帮助企业提升 1Panel 在团队协作场景下的安全性、规范性和管理效率。
                 </p>
               </div>
               <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
