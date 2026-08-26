@@ -48,7 +48,7 @@ const baotaFaqItems = [
   },
 ]
 
-const baotaCanonical = '/vsbt'
+const baotaCanonical = '/vsbt.html'
 const baotaImage = '/images/comparisons/baota/server-dashboard.png'
 
 export const baotaSeo: ComparisonSeoConfig = {
@@ -161,7 +161,7 @@ export const baotaSeo: ComparisonSeoConfig = {
   ],
 }
 
-const cpanelBase = '/vscpanel'
+const cpanelBase = '/vscpanel.html'
 const cpanelImage = '/images/comparisons/cpanel/server-dashboard.png'
 
 const cpanelRouteMeta = {
@@ -195,7 +195,7 @@ const cpanelRouteMeta = {
       'Docker 管理面板对比',
       '服务器面板功能对比',
     ],
-    canonical: '/vscpanel/comparison',
+    canonical: '/vscpanel/comparison.html',
     pageName: '功能对比',
     ogType: 'article' as const,
   },
@@ -211,7 +211,7 @@ const cpanelRouteMeta = {
       '开源面板 vs 商业面板',
       'cPanel 替代品价格',
     ],
-    canonical: '/vscpanel/cost',
+    canonical: '/vscpanel/cost.html',
     pageName: '成本分析',
     ogType: 'article' as const,
   },
@@ -354,7 +354,7 @@ export function getCpanelSeo(page: CPanelSeoPage): ComparisonSeoConfig {
   }
 }
 
-const webminCanonical = '/vswebmin'
+const webminCanonical = '/vswebmin.html'
 const webminImage = '/images/comparisons/webmin/hero-dashboard.png'
 const webminDescription =
   '1Panel VS Webmin 对比分析，聚焦 Linux 服务器管理、Docker 容器支持、系统运维效率、用户体验与开源替代方案，帮助你判断 Webmin 是否适合当前业务。'

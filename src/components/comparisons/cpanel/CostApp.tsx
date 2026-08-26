@@ -3,7 +3,7 @@ import CostAnalysisPage from './pages/CostAnalysisPage'
 
 function CostApp() {
   return (
-    <PageShell currentPath="/vscpanel/cost">
+    <PageShell currentPath="/vscpanel/cost.html">
       <CostAnalysisPage />
     </PageShell>
   )

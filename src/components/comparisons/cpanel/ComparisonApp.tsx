@@ -3,7 +3,7 @@ import ComparisonPage from './pages/ComparisonPage'
 
 function ComparisonApp() {
   return (
-    <PageShell currentPath="/vscpanel/comparison">
+    <PageShell currentPath="/vscpanel/comparison.html">
       <ComparisonPage />
     </PageShell>
   )
