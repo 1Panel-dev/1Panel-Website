@@ -579,22 +579,45 @@ const productSchema = {
           </div>
 
           <div id="pricing-contact" class="scroll-mt-28 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-md sm:p-8 lg:p-10">
-            <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto]">
-              <div>
-                <span class="inline-block bg-blue-100 text-1panel text-xs font-semibold px-3 py-1 rounded-full mb-3">限时特价</span>
-                <h3 class="text-2xl font-bold text-gray-900 lg:text-3xl">获取详细的方案材料与报价</h3>
-                <p class="mt-3 max-w-2xl text-base leading-relaxed text-gray-600">
-                  微信扫码联系飞致云团队，获取详细方案 PPT、实测报告和价格。
+            <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
+              <!-- 左侧：扫码咨询 -->
+              <div class="flex flex-col items-center justify-center py-10">
+                <div class="flex flex-col items-center rounded-xl bg-white p-5 shadow-sm border border-gray-100">
+                  <img
+                    src="/images/wecom-qrcode.png"
+                    alt="微信扫码咨询 1Panel AI 一体机"
+                    class="h-44 w-44 rounded-md border border-gray-200 bg-white p-2"
+                    loading="lazy"
+                  />
+                  <div class="mt-3 text-center text-base font-semibold text-gray-800">微信扫码咨询</div>
+                </div>
+                <p class="mt-4 text-center text-base leading-relaxed text-gray-600 max-w-xs">
+                  扫码联系飞致云团队<br/>获取详细方案、实测报告
                 </p>
               </div>
-              <div class="flex flex-col items-center justify-center rounded-xl bg-white p-4 shadow-sm">
+
+              <!-- 右侧：促销海报 -->
+              <div class="flex flex-col items-center justify-center py-10">
+                <div class="mb-4 flex flex-col items-center lg:items-start">
+                  <span class="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3" aria-hidden="true">
+                      <path d="M12.5 2.5c.4 1.6-.2 2.9-1.1 4c-1 1.2-2.2 2.3-2.2 4c0 1.5 1 2.5 2 2.5c.5 0 1-.3 1.2-.8c.2-.4.7-.5 1-.2c1 .8 1.6 2 1.6 3.4c0 2.5-2 4.6-4.5 4.6S6 18 6 15.5c0-2.4 1.4-4 2.7-5.5c1-1.1 1.9-2.1 2.3-3.3c.2-.6.4-1.3.5-2c.1-.4.2-.7.4-1.2c.1-.4.5-.6.9-.5c.3.1.6.4.7.5z"/>
+                    </svg>
+                    Limited · 限时促销
+                  </span>
+                  <h3 class="mt-2 text-lg lg:text-xl font-extrabold leading-snug">
+                    <span class="bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-transparent">方案四限时促销中！</span>
+                  </h3>
+                  <p class="mt-1 text-xs text-gray-500 font-medium">
+                    GB10 × 2 · 合计 256G 共享显存
+                  </p>
+                </div>
                 <img
-                  src="/images/wecom-qrcode.png"
-                  alt="微信扫码咨询 1Panel AI 一体机"
-                  class="h-36 w-36 rounded-md border border-gray-200 bg-white p-2"
+                  src="/images/2gb10-promotion.jpg"
+                  alt="1Panel AI 一体机 GB10 促销方案 ¥9.9 万"
+                  class="w-full max-w-md rounded-xl border border-gray-200 shadow-md"
                   loading="lazy"
                 />
-                <div class="mt-3 text-center text-sm font-semibold text-gray-800">微信扫码咨询</div>
               </div>
             </div>
           </div>
