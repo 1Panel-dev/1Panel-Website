@@ -234,6 +234,7 @@ const accentMap = {
 };
 
 const featuredSlugs = [
+  "dual-gb10-deepseek-v4-flash-benchmark",
   "qwen3-8-27b-private-deployment",
   "deepseek-v4-flash-private-deployment-report",
   "minimax-h3-video-generation-deployment",
@@ -635,7 +636,7 @@ const productSchema = {
             </p>
           </div>
 
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
             {featuredPosts.map((post) => (
               <a
                 href={`/blog/${post.slug}.html`}
