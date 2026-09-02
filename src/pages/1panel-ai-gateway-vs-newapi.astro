@@ -418,47 +418,38 @@ const aiGatewaySchema = {
           <div class="mx-auto mb-12 max-w-3xl text-center">
             <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 03</span>
             <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">使用界面对比</h2>
-            <p class="mt-4 text-base leading-relaxed text-gray-600">
-              同样是「模型网关控制台」，1Panel AI 网关强调 <strong class="text-1panel">一屏掌控网关全局</strong>；New API 强调 <strong class="text-gray-700">多级菜单驱动的运营平台</strong>。两套设计语言折射出完全不同的产品定位。
-            </p>
           </div>
           <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <!-- 1Panel AI 网关截图 -->
-            <figure class="flex flex-col overflow-hidden rounded-2xl border border-blue-200 bg-blue-50/40 shadow-sm">
+            <figure class="flex h-full flex-col overflow-hidden rounded-2xl border border-blue-200 bg-blue-50/40 shadow-sm">
               <div class="flex items-center justify-between border-b border-blue-100 bg-white px-5 py-3">
                 <span class="inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">1Panel AI 网关</span>
                 <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">一屏掌控 · 企业治理</span>
               </div>
-              <div class="p-4">
+              <div class="flex flex-1 items-center justify-center p-4 bg-white">
                 <img
                   src="/images/1p-ai-gateway.png"
                   alt="1Panel AI 网关后台控制台界面"
-                  class="w-full rounded-lg border border-gray-200 shadow-sm"
+                  class="mx-auto max-h-[560px] w-auto rounded-lg border border-gray-200 object-contain shadow-sm"
                   loading="lazy"
                 />
               </div>
-              <figcaption class="border-t border-blue-100 bg-white px-5 py-4 text-sm leading-relaxed text-gray-700">
-                <strong class="text-1panel">扁平信息架构：</strong>顶部「网关状态」4 个核心指标卡片 + 「模型账号并发」与「用户组并发」左右并列 + 底部「用量统计」三联指标。核心运营数据 <strong>0 级跳板</strong>可见，无需点击菜单下钻。
-              </figcaption>
             </figure>
 
             <!-- New API 截图 -->
-            <figure class="flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <figure class="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
               <div class="flex items-center justify-between border-b border-gray-100 bg-white px-5 py-3">
                 <span class="inline-flex items-center rounded-full bg-gray-700 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">New API</span>
                 <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">多层菜单 · 运营平台</span>
               </div>
-              <div class="p-4">
+              <div class="flex flex-1 items-center justify-center p-4">
                 <img
                   src="/images/newapi.png"
                   alt="New API 后台数据看板界面"
-                  class="w-full rounded-lg border border-gray-200 shadow-sm"
+                  class="mx-auto max-h-[560px] w-auto rounded-lg border border-gray-200 object-contain shadow-sm"
                   loading="lazy"
                 />
               </div>
-              <figcaption class="border-t border-gray-100 bg-gray-50/60 px-5 py-4 text-sm leading-relaxed text-gray-700">
-                <strong class="text-gray-800">层级信息架构：</strong>左侧多级菜单（聊天 / 控制台 / 钱包管理 / 渠道管理 / 用户管理 / 系统设置），首页展示账户数据 + 模型消耗趋势图 + 系统公告。核心操作需 <strong>多级菜单下钻</strong>。
-              </figcaption>
             </figure>
           </div>
 
