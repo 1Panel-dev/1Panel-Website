@@ -34,13 +34,13 @@ import { Icon } from "astro-icon/components";
   <div class="relative z-10 container-custom py-12 lg:py-16 pb-24 lg:pb-32">
     <div
       id="hero-content"
-      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch min-h-[80vh] pt-8 lg:pt-12"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-stretch lg:min-h-[80vh] pt-8 lg:pt-12"
     >
       
       <!-- Left Content -->
       <div
         id="hero-left"
-        class="flex h-full flex-col transition-all duration-1000"
+        class="transition-all duration-1000 lg:flex lg:h-full lg:flex-col"
       >
         <div class="fade-in-up inline-flex w-fit items-center px-4 py-2 mb-4 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
           <Icon name="carbon:recommend" class="w-4 h-4 mr-1" />
@@ -177,10 +177,10 @@ import { Icon } from "astro-icon/components";
         </div>
       </div>
       <!-- Right Content - Dashboard Preview -->
-      <div id="hero-right" class="flex h-full flex-col transition-all duration-1000">
-        <div class="mb-10">
+      <div id="hero-right" class="hidden transition-all duration-1000 lg:flex lg:h-full lg:flex-col lg:pt-11">
+        <div class="mb-6">
           <a class="flex gap-2 items-center justify-center cursor-pointer hover:scale-105 px-2 py-2 pt-4 rounded-lg bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 border border-blue-200 shadow-sm animate-fade-in-up" href="/ai-appliance.html">
-            <span class="text-blue-800 text-base font-medium animate-bounce">
+            <span class="text-blue-800 text-sm md:text-base font-medium animate-bounce">
               <span class="font-bold mr-1"> 🔥 1Panel AI 一体机：</span>
               <span class="text-blue-700 font-medium">DeepSeek 和 Qwen 等开源模型私有化部署的首选！</span>
             </span>
@@ -230,7 +230,7 @@ import { Icon } from "astro-icon/components";
           <span class="text-sm md:text-base text-gray-800">
             1Panel AI 网关向社区用户开放：<span class="font-bold text-orange-600 underline decoration-orange-400 decoration-2 underline-offset-[6px] group-hover:text-orange-700 group-hover:decoration-orange-600 transition-colors duration-300">10 人及以下团队免费使用</span><span class="font-bold text-orange-600 group-hover:text-orange-700 transition-colors duration-300">！</span>
           </span>
-          <span class="text-orange-500 group-hover:translate-x-1 transition-transform duration-300 text-base" aria-hidden="true">→</span>
+          <span class="text-orange-500 group-hover:translate-x-1 transition-transform duration-300 text-sm md:text-base" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
