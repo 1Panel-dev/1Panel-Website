@@ -1,0 +1,549 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/1panel-ai-gateway-vs-newapi.html", siteUrl);
+const trialUrl = "https://jsj.top/f/umuYtv";
+
+const pageTitle = "1Panel AI 网关 vs New API 对比分析报告 - 1Panel 官网";
+const pageDescription =
+  "从产品定位到 6 项核心能力深度对比 1Panel AI 网关与 New API，看清企业级 AI 治理网关与开源模型聚合网关的本质差异，帮助企业做出更合适的 AI 网关选型。";
+
+const positioning = [
+  {
+    dim: "核心定位",
+    ours:
+      "为企业打造专属的 AI 统一接入与治理平台，提供从统一接入、智能路由到合规审计的全链路管控，强调「治理」",
+    theirs:
+      "下一代 LLM 网关与 AI 资产管理系统，强调「聚合与分发」",
+  },
+  {
+    dim: "目标用户",
+    ours: "中大型企业（CIO / CISO / IT 运维总监）",
+    theirs: "个人开发者、中小团队、API 中转服务商",
+  },
+  {
+    dim: "典型场景",
+    ours:
+      "多部门 Agent 应用、AI 编程管控、全员 AI 办公、知识库 / 工作流",
+    theirs: "API 聚合分发、模型格式转换、个人 / 小团队模型管理",
+  },
+  {
+    dim: "设计理念",
+    ours: "从「模型可用」到「业务好用」的跨越，聚焦企业治理闭环",
+    theirs: "统一 AI 模型聚合中心，支持多格式互转，偏个人 / 团队模型管理",
+  },
+  {
+    dim: "开源属性",
+    ours:
+      "1Panel 开源团队出品，10 人及以内可以免费使用；企业版不限制使用，同时提供原厂技术支持",
+    theirs: "开源项目（AGPLv3），GitHub 47k Stars，社区驱动",
+  },
+];
+
+const capabilities: {
+  id: string;
+  title: string;
+  rows: { dim: string; ours: string; theirs: string; oursWin?: boolean }[];
+  summary?: string;
+}[] = [
+  {
+    id: "smart-routing",
+    title: "智能路由",
+    rows: [
+      {
+        dim: "路由机制",
+        ours:
+          "语义感知智能路由：基于 Embedding 向量化 + 语义相似度计算，自动判断请求复杂度，分流至轻量 / 高性能模型",
+        theirs: "渠道加权随机：基于权重和优先级的通道选择，失败自动重试",
+        oursWin: true,
+      },
+      {
+        dim: "路由精度",
+        ours: "双引擎（样本匹配 + 规则判断），支持阈值动态调整",
+        theirs: "基于权重分配，无内容语义分析能力",
+        oursWin: true,
+      },
+      {
+        dim: "成本效果",
+        ours:
+          "官方宣称 Token 成本降低 40%-70%（简单请求占比 60%-80% 自动走低成本模型）",
+        theirs: "无此能力，模型选择由用户或固定规则决定",
+        oursWin: true,
+      },
+      {
+        dim: "业务侵入性",
+        ours: "零侵入，仅需设置 model=auto",
+        theirs: "需用户手动指定模型或由管理员预设规则",
+        oursWin: true,
+      },
+    ],
+  },
+  {
+    id: "compliance",
+    title: "内容合规与安全治理",
+    rows: [
+      {
+        dim: "安全层级",
+        ours:
+          "三层安全审计体系：① 动态敏感词归一化拦截（谐音 / 拆字 / 拼音识别）② 向量语义级审核（对抗性攻击识别）③ 全量调用内容审计",
+        theirs: "无内置内容安全审核能力",
+        oursWin: true,
+      },
+      {
+        dim: "合规能力",
+        ours:
+          "支持推送至 ES，满足等保合规与企业内部审计要求",
+        theirs: "无此功能",
+        oursWin: true,
+      },
+      {
+        dim: "违规处置",
+        ours: "支持违规调用实时阻断与全流程审计追溯",
+        theirs: "无此功能",
+        oursWin: true,
+      },
+    ],
+    summary: "内容合规是 1Panel AI 网关的独有差异化能力，New API 完全不具备此功能。",
+  },
+  {
+    id: "permission",
+    title: "权限与席位管理",
+    rows: [
+      {
+        dim: "管控体系",
+        ours:
+          "三级继承管控（用户组 → 用户 → API Key），按组织架构配置",
+        theirs: "Token 分组、模型限制、用户管理",
+        oursWin: true,
+      },
+      {
+        dim: "管控粒度",
+        ours:
+          "并发限额、Token 配额、模型白名单、状态总开关、API Key 全生命周期管理（创建 / 冻结 / 重置 / 过期）",
+        theirs: "基本的配额管理和模型限制",
+        oursWin: true,
+      },
+      {
+        dim: "组织适配",
+        ours:
+          "面向企业组织架构设计（部门 / 项目维度），支持独立资源池",
+        theirs: "偏个人或小团队使用",
+        oursWin: true,
+      },
+    ],
+  },
+  {
+    id: "load-control",
+    title: "负载与并发控制",
+    rows: [
+      {
+        dim: "并发控制",
+        ours:
+          "四级并发控制（网关 → 用户组 → API Key → 模型账号）+ 容量感知调度 + 优先级与会话亲和",
+        theirs: "用户级模型限速",
+        oursWin: true,
+      },
+      {
+        dim: "会话亲和",
+        ours:
+          "按 API Key 与客户端 IP 识别会话，多轮对话尽量转发同一模型账号，提高 vLLM Prefix Cache 命中率",
+        theirs: "无此能力",
+        oursWin: true,
+      },
+      {
+        dim: "过载保护",
+        ours: "保留容量有限的短暂等待队列，满载时可短暂等待",
+        theirs: "失败重试机制",
+      },
+    ],
+  },
+  {
+    id: "model-coverage",
+    title: "模型支持范围",
+    rows: [
+      {
+        dim: "协议支持",
+        ours: "OpenAI / Anthropic 格式，Chat Completions ↔ Responses 互转",
+        theirs:
+          "OpenAI / Claude / Gemini / Rerank / Midjourney / Suno / Realtime 等更广泛的格式",
+      },
+      {
+        dim: "模型类型",
+        ours: "聚焦 LLM 对话模型",
+        theirs: "涵盖 LLM、图像生成、音频、视频、Embedding、Rerank 等",
+      },
+      {
+        dim: "本地模型",
+        ours:
+          "深度集成 vLLM、llama.cpp 等本地推理引擎",
+        theirs: "支持自定义上游端点",
+        oursWin: true,
+      },
+    ],
+    summary:
+      "New API 在模型格式覆盖广度上更优；1Panel AI 网关在企业级调度深度上更强。",
+  },
+  {
+    id: "cost-control",
+    title: "用量统计与成本管控",
+    rows: [
+      {
+        dim: "统计维度",
+        ours:
+          "全链路统计（请求量 / Token 消耗 / 缓存利用率），按用户、模型、部门多维度拆解",
+        theirs: "按请求、用量、缓存命中的成本核算",
+        oursWin: true,
+      },
+      {
+        dim: "可视化",
+        ours:
+          "概览仪表盘 + 多维度分布 + 用量排行榜 + 全链路调用日志穿透分析",
+        theirs: "数据仪表盘和统计分析",
+      },
+      {
+        dim: "成本分摊",
+        ours:
+          "支持按部门 / 项目精准分摊，实现 AI 预算可预测、可管控",
+        theirs: "支持内部充值和配额分配（EPay、Stripe）",
+      },
+      {
+        dim: "缓存统计",
+        ours: "缓存命中率统计（案例中达 98%）",
+        theirs:
+          "支持缓存计费统计（OpenAI、Azure、DeepSeek、Claude、Qwen 等）",
+        oursWin: true,
+      },
+    ],
+  },
+];
+
+const summary = [
+  {
+    ours:
+      "是面向企业的「AI 治理基础设施」，核心差异在于语义级智能路由、三层内容合规审计、四级并发控制和企业级组织架构管控，适合有安全合规和精细化治理需求的中大型企业。",
+    theirs:
+      "是面向开发者和小团队的「开源 AI 模型聚合网关」，核心优势在于模型格式覆盖广、免费开源、社区活跃、部署灵活，适合需要快速聚合多模型接口、进行格式转换的个人或中小规模场景。",
+  },
+];
+
+const aiGatewaySchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": pageUrl,
+  headline: "1Panel AI 网关 vs New API 对比分析报告",
+  description: pageDescription,
+  url: pageUrl,
+  datePublished: "2026-09-02",
+  inLanguage: "zh-CN",
+  publisher: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+  about: [
+    { "@type": "SoftwareApplication", name: "1Panel AI 网关" },
+    { "@type": "SoftwareApplication", name: "New API" },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/1panel-ai-gateway-vs-newapi.html"
+  keywords={[
+    "1Panel AI 网关",
+    "New API",
+    "AI 网关对比",
+    "LLM 网关",
+    "AI 模型网关",
+    "AI 网关选型",
+    "企业 AI 治理",
+    "语义级智能路由",
+    "内容合规审计",
+    "1Panel",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel AI 网关", url: toAbsoluteUrl("/ai-gateway.html", siteUrl) },
+      {
+        name: "vs New API",
+        url: pageUrl,
+      },
+    ]),
+    aiGatewaySchema,
+  ]}
+>
+  <Fragment slot="main">
+    <Header />
+    <main class="bg-white text-gray-800">
+      <!-- Hero -->
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white pt-20 pb-12 lg:pt-28 lg:pb-16">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <nav class="mb-6 text-sm text-gray-500" aria-label="breadcrumb">
+            <ol class="flex items-center justify-center gap-1.5">
+              <li><a href="/" class="hover:text-1panel">1Panel 官网</a></li>
+              <li><span class="px-1">/</span></li>
+              <li><a href="/ai-gateway.html" class="hover:text-1panel">1Panel AI 网关</a></li>
+              <li><span class="px-1">/</span></li>
+              <li class="text-gray-700">vs New API</li>
+            </ol>
+          </nav>
+          <div class="mx-auto max-w-4xl text-center">
+            <span class="mb-5 inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+              AI GATEWAY · 产品对比
+            </span>
+            <h1 class="text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl">
+              <span class="block">1Panel AI 网关</span>
+              <span class="mt-2 block">
+                <span class="text-gray-500">vs</span>
+                <span class="ml-3 text-1panel">New API</span>
+              </span>
+            </h1>
+            <p class="mt-6 text-base font-semibold uppercase tracking-wider text-1panel">对比分析报告</p>
+            <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+              企业级 AI 网关与开源模型聚合网关的能力差异对比
+            </p>
+            <div class="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+              <span>对比产品：<strong class="text-gray-800">1Panel AI 网关 / New API</strong></span>
+              <span class="hidden sm:inline">·</span>
+              <span>对比维度：<strong class="text-gray-800">产品定位 + 6 项核心能力</strong></span>
+            </div>
+            <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary mt-8 inline-flex items-center justify-center px-9 py-4 text-base">
+              申请试用 1Panel AI 网关
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一、产品定位差异 -->
+      <section id="positioning" class="scroll-mt-20 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 01</span>
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">产品定位差异</h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              选型的第一步不是比功能，而是对定位：你建的是「企业内部 AI 基础设施」还是「内部 AI 商城」。
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-gray-50 text-xs uppercase tracking-wider text-gray-500">
+                <tr>
+                  <th class="w-[18%] px-6 py-4 font-semibold">维度</th>
+                  <th class="w-[41%] px-6 py-4 font-semibold text-1panel">1Panel AI 网关</th>
+                  <th class="w-[41%] px-6 py-4 font-semibold text-gray-600">New API</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                {positioning.map((row) => (
+                  <tr class="align-top">
+                    <td class="px-6 py-5 font-semibold text-gray-900">{row.dim}</td>
+                    <td class="px-6 py-5 leading-relaxed text-gray-800 bg-blue-50/50">{row.ours}</td>
+                    <td class="px-6 py-5 leading-relaxed text-gray-600">{row.theirs}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、核心能力差异 -->
+      <section id="capabilities" class="scroll-mt-20 bg-gradient-to-b from-gray-50/60 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 02</span>
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">核心能力差异</h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              以下从 6 个维度逐项对比 1Panel AI 网关与 New API 的能力差异。
+            </p>
+          </div>
+
+          <div class="space-y-12">
+            {capabilities.map((cap, idx) => (
+              <article id={cap.id} class="scroll-mt-24">
+                <div class="mb-5 flex items-center gap-3">
+                  <span class="inline-flex h-9 min-w-9 items-center justify-center rounded-md bg-blue-100 px-3 text-sm font-bold text-1panel">2.{idx + 1}</span>
+                  <h3 class="text-xl font-bold text-gray-900 lg:text-2xl">{cap.title}</h3>
+                </div>
+                <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                  <table class="w-full text-left text-sm">
+                    <thead class="bg-gray-50 text-xs uppercase tracking-wider text-gray-500">
+                      <tr>
+                        <th class="w-[18%] px-6 py-4 font-semibold">维度</th>
+                        <th class="w-[41%] px-6 py-4 font-semibold text-1panel">1Panel AI 网关</th>
+                        <th class="w-[41%] px-6 py-4 font-semibold text-gray-600">New API</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                      {cap.rows.map((row) => (
+                        <tr class="align-top">
+                          <td class="px-6 py-5 font-semibold text-gray-900">{row.dim}</td>
+                          <td class={`px-6 py-5 leading-relaxed ${row.oursWin ? "bg-blue-50/50 text-gray-800 font-medium" : "text-gray-800"}`}>
+                            {row.ours}
+                          </td>
+                          <td class="px-6 py-5 leading-relaxed text-gray-600">{row.theirs}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {cap.summary && (
+                  <p class="mt-4 rounded-lg border-l-4 border-1panel bg-blue-50/70 px-5 py-3 text-sm leading-relaxed text-gray-800">
+                    <strong class="text-1panel">总结：</strong>{cap.summary}
+                  </p>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、使用界面对比 -->
+      <section id="ui" class="scroll-mt-20 bg-gradient-to-b from-white to-gray-50/60 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 03</span>
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">使用界面对比</h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              同样是「模型网关控制台」，1Panel AI 网关强调 <strong class="text-1panel">一屏掌控网关全局</strong>；New API 强调 <strong class="text-gray-700">多级菜单驱动的运营平台</strong>。两套设计语言折射出完全不同的产品定位。
+            </p>
+          </div>
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <!-- 1Panel AI 网关截图 -->
+            <figure class="flex flex-col overflow-hidden rounded-2xl border border-blue-200 bg-blue-50/40 shadow-sm">
+              <div class="flex items-center justify-between border-b border-blue-100 bg-white px-5 py-3">
+                <span class="inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">1Panel AI 网关</span>
+                <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">一屏掌控 · 企业治理</span>
+              </div>
+              <div class="p-4">
+                <img
+                  src="/images/1p-ai-gateway.png"
+                  alt="1Panel AI 网关后台控制台界面"
+                  class="w-full rounded-lg border border-gray-200 shadow-sm"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption class="border-t border-blue-100 bg-white px-5 py-4 text-sm leading-relaxed text-gray-700">
+                <strong class="text-1panel">扁平信息架构：</strong>顶部「网关状态」4 个核心指标卡片 + 「模型账号并发」与「用户组并发」左右并列 + 底部「用量统计」三联指标。核心运营数据 <strong>0 级跳板</strong>可见，无需点击菜单下钻。
+              </figcaption>
+            </figure>
+
+            <!-- New API 截图 -->
+            <figure class="flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+              <div class="flex items-center justify-between border-b border-gray-100 bg-white px-5 py-3">
+                <span class="inline-flex items-center rounded-full bg-gray-700 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">New API</span>
+                <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">多层菜单 · 运营平台</span>
+              </div>
+              <div class="p-4">
+                <img
+                  src="/images/newapi.png"
+                  alt="New API 后台数据看板界面"
+                  class="w-full rounded-lg border border-gray-200 shadow-sm"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption class="border-t border-gray-100 bg-gray-50/60 px-5 py-4 text-sm leading-relaxed text-gray-700">
+                <strong class="text-gray-800">层级信息架构：</strong>左侧多级菜单（聊天 / 控制台 / 钱包管理 / 渠道管理 / 用户管理 / 系统设置），首页展示账户数据 + 模型消耗趋势图 + 系统公告。核心操作需 <strong>多级菜单下钻</strong>。
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- 关键差异要点 -->
+          <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
+              <div class="text-xs font-semibold uppercase tracking-wider text-1panel">1Panel AI 网关</div>
+              <div class="mt-2 text-base font-bold text-gray-900">一屏式全局视图</div>
+              <p class="mt-1 text-sm leading-relaxed text-gray-600">网关状态、用户组并发、模型账号并发、用量统计在同一屏呈现，适合运维与治理快速决策。</p>
+            </div>
+            <div class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
+              <div class="text-xs font-semibold uppercase tracking-wider text-gray-700">New API</div>
+              <div class="mt-2 text-base font-bold text-gray-900">数据看板 + 菜单导航</div>
+              <p class="mt-1 text-sm leading-relaxed text-gray-600">账户余额、消耗趋势、模型分析图表丰富，操作分散在多级菜单中，适合渠道运营与计费对账。</p>
+            </div>
+            <div class="rounded-xl border border-blue-100 bg-blue-50/60 p-5 shadow-sm">
+              <div class="text-xs font-semibold uppercase tracking-wider text-1panel">差异本质</div>
+              <div class="mt-2 text-base font-bold text-gray-900">治理 vs 运营</div>
+              <p class="mt-1 text-sm leading-relaxed text-gray-700">前者面向<strong>企业 IT 与合规</strong>，后者面向<strong>渠道分销与个人充值</strong>，设计语言因目标用户而异。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、一句话总结 -->
+      <section id="summary" class="scroll-mt-20 py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 04</span>
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">一句话总结</h2>
+          </div>
+          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <div class="rounded-xl border border-blue-200 bg-blue-50/60 p-7 shadow-sm">
+              <span class="mb-3 inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">1Panel AI 网关</span>
+              <p class="mt-2 text-base leading-relaxed text-gray-800">{summary[0].ours}</p>
+            </div>
+            <div class="rounded-xl border border-gray-200 bg-white p-7 shadow-sm">
+              <span class="mb-3 inline-flex items-center rounded-full bg-gray-700 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">New API</span>
+              <p class="mt-2 text-base leading-relaxed text-gray-700">{summary[0].theirs}</p>
+            </div>
+          </div>
+
+          <div class="mt-12 overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-8 shadow-md lg:p-12">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900 lg:text-3xl">为 AI 网关选型，建议优先评估 4 件事</h3>
+                <ul class="mt-5 space-y-2 text-base leading-relaxed text-gray-700">
+                  <li class="flex items-start gap-2"><span class="mt-2 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-1panel"></span><span>是否需要企业级<strong>语义智能路由</strong>，而非固定规则的渠道切换</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-2 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-1panel"></span><span>是否需要满足<strong>等保合规</strong>与内部<strong>内容审计</strong>的可追溯链路</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-2 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-1panel"></span><span>是否需要按<strong>部门 / 项目</strong>做细粒度权限、预算与并发控制</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-2 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-1panel"></span><span>是否需要<strong>会话亲和</strong>、本地推理引擎（如 vLLM）深度集成等专有调度能力</span></li>
+                </ul>
+              </div>
+              <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center justify-center px-9 py-4 text-base">
+                申请试用
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关对比 -->
+      <section class="border-t border-gray-100 bg-gray-50/40 py-12">
+        <div class="container-custom">
+          <h2 class="text-center text-xl font-bold text-gray-900 mb-7">更多 AI 网关对比</h2>
+          <div class="mx-auto grid max-w-3xl grid-cols-1 gap-4 md:grid-cols-2">
+            <a href="/1panel-ai-gateway-vs-litellm.html" class="group flex items-center justify-between rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+              <div>
+                <div class="text-sm font-semibold uppercase tracking-wider text-1panel">下一篇对比</div>
+                <div class="mt-1 text-base font-bold text-gray-900">1Panel AI 网关 vs LiteLLM <span class="text-1panel group-hover:translate-x-0.5 inline-block transition-transform">→</span></div>
+              </div>
+              <Icon name="carbon:arrow-right" class="h-6 w-6 text-gray-400 group-hover:text-1panel" />
+            </a>
+            <a href="/ai-gateway.html" class="group flex items-center justify-between rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+              <div>
+                <div class="text-sm font-semibold uppercase tracking-wider text-1panel">返回产品主页</div>
+                <div class="mt-1 text-base font-bold text-gray-900">1Panel AI 网关 <span class="text-1panel group-hover:translate-x-0.5 inline-block transition-transform">→</span></div>
+              </div>
+              <Icon name="carbon:arrow-right" class="h-6 w-6 text-gray-400 group-hover:text-1panel" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>
