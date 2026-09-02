@@ -34,15 +34,15 @@ import { Icon } from "astro-icon/components";
   <div class="relative z-10 container-custom py-12 lg:py-16 pb-24 lg:pb-32">
     <div
       id="hero-content"
-      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start min-h-[80vh] pt-8 lg:pt-12"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch min-h-[80vh] pt-8 lg:pt-12"
     >
       
       <!-- Left Content -->
       <div
         id="hero-left"
-        class="transition-all duration-1000"
+        class="flex h-full flex-col transition-all duration-1000"
       >
-        <div class="fade-in-up inline-flex items-center px-4 py-2 mb-4 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+        <div class="fade-in-up inline-flex w-fit items-center px-4 py-2 mb-4 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
           <Icon name="carbon:recommend" class="w-4 h-4 mr-1" />
           <span>飞致云匠心出品</span>
         </div>
@@ -177,7 +177,7 @@ import { Icon } from "astro-icon/components";
         </div>
       </div>
       <!-- Right Content - Dashboard Preview -->
-      <div id="hero-right" class="transition-all duration-1000">
+      <div id="hero-right" class="flex h-full flex-col transition-all duration-1000">
         <div class="mb-10">
           <a class="flex gap-2 items-center justify-center cursor-pointer hover:scale-105 px-2 py-2 pt-4 rounded-lg bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 border border-blue-200 shadow-sm animate-fade-in-up" href="/ai-appliance.html">
             <span class="text-blue-800 text-base font-medium animate-bounce">
@@ -201,7 +201,7 @@ import { Icon } from "astro-icon/components";
                 href="https://www.bilibili.com/video/BV1Mt421n7LZ/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative w-full"
+                class="relative w-full block"
                 style="outline: none;"
                 aria-label="播放视频"
               >
