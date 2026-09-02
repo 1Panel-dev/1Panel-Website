@@ -1,5 +1,6 @@
 ---
 import ContactUs from "./ContactUs.astro";
+import { Icon } from "astro-icon/components";
 // Footer component for 1Panel website
 ---
 
@@ -31,52 +32,136 @@ import ContactUs from "./ContactUs.astro";
 <footer class="bg-dark-900 border-t border-gray-800 py-12">
   <div class="container-custom">
     <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-      <!-- Company Info -->
-      <div class="col-span-1 lg:col-span-2">
-        <div class="flex items-center space-x-3 mb-4">
-          <span class="text-xl font-bold text-white">FIT2CLOUD 飞致云</span>
-        </div>
-        <p class="text-gray-400 mb-6 max-w-md">
-          我们秉持“软件用起来才有价值，才有改进的机会”的核心价值观，向中国数字化团队交付被广泛验证、可信赖的开源软件。
-        </p>
-      </div>
-
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
       <!-- Resources -->
       <div>
         <h4 class="text-lg font-semibold text-white mb-4">常用链接</h4>
         <ul class="space-y-3">
-          <li><a href="https://apps.fit2cloud.com/1panel" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">应用商店</a></li>
-          <li><a href="https://1panel.cn/docs" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">使用文档</a></li>
-          <li><a href="/blog.html" class="text-gray-400 hover:text-white transition-colors duration-300">产品动态</a></li>
-          <li><a href="https://bbs.fit2cloud.com/c/1p/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">社区论坛</a></li>
-          <li><a href="https://edu.fit2cloud.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">培训认证</a></li>
-          <li><a href="https://github.com/1Panel-dev/1Panel" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">GitHub 仓库</a></li>
-          <li><a href="https://1panel.pro" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">English Site</a></li>
+          <li>
+            <a href="https://1panel.cn/docs" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:document" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>使用文档</span>
+            </a>
+          </li>
+          <li>
+            <a href="/blog.html" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:blog" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>产品动态</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://bbs.fit2cloud.com/c/1p/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:forum" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>社区论坛</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://edu.fit2cloud.com/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:education" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>培训认证</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/1Panel-dev/1Panel" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:logo-github" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>GitHub 仓库</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://1panel.pro" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:globe" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>English Site</span>
+            </a>
+          </li>
         </ul>
       </div>
       <div>
         <h4 class="text-lg font-semibold text-white mb-4">产品对比</h4>
         <ul class="space-y-3">
-          <li><a href="/vsbt.html" class="text-gray-400 hover:text-white transition-colors duration-300">1Panel 对比 传统面板</a></li>
-          <li><a href="/vscpanel.html" class="text-gray-400 hover:text-white transition-colors duration-300">1Panel 对比 cPanel</a></li>
-          <li><a href="/vswebmin.html" class="text-gray-400 hover:text-white transition-colors duration-300">1Panel 对比 Webmin</a></li>
-          <li><a href="/1panel-ai-gateway-vs-newapi.html" class="text-gray-400 hover:text-white transition-colors duration-300">1Panel AI 网关 对比 New API</a></li>
-          <li><a href="/1panel-ai-gateway-vs-litellm.html" class="text-gray-400 hover:text-white transition-colors duration-300">1Panel AI 网关 对比 LiteLLM</a></li>
+          <li>
+            <a href="/vsbt.html" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:compare" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>1Panel 对比 传统面板</span>
+            </a>
+          </li>
+          <li>
+            <a href="/vscpanel.html" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:compare" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>1Panel 对比 cPanel</span>
+            </a>
+          </li>
+          <li>
+            <a href="/vswebmin.html" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:compare" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>1Panel 对比 Webmin</span>
+            </a>
+          </li>
+          <li>
+            <a href="/1panel-ai-gateway-vs-newapi.html" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:gateway" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>1Panel AI 网关 对比 New API</span>
+            </a>
+          </li>
+          <li>
+            <a href="/1panel-ai-gateway-vs-litellm.html" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:gateway" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>1Panel AI 网关 对比 LiteLLM</span>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- Quick Links -->
       <div>
         <h4 class="text-lg font-semibold text-white mb-4">友情链接</h4>
         <ul class="space-y-3">
-          <li><a href="https://openclaw.club/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">OpenClaw 俱乐部</a></li>
-          <li><a href="http://awesome.1panel.cn/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">1Panel 玩机指南</a></li>
-          <li><a href="https://jumpserver.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">JumpServer 开源堡垒机</a></li>
-          <li><a href="https://fit2cloud.com/zabbix/index.html" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">Zabbix 信创一体机</a></li>
-          <li><a href="https://www.maxkb.cn/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">MaxKB 开源企业级智能体平台</a></li>
-          <li><a href="https://dataease.cn/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">DataEase 开源 BI 工具</a></li>
-          <li><a href="https://kubepi.org/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">KubePi 官网</a></li>
-          <li><a href="https://fit2cloud.com/about/index.html" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">关于飞致云</a></li>
+          <li>
+            <a href="https://openclaw.club/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:star" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>OpenClaw 俱乐部</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://awesome.1panel.cn/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:bookmark" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>1Panel 玩机指南</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://jumpserver.com/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:security" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>JumpServer 开源堡垒机</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.maxkb.cn/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:chat-bot" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>MaxKB 开源企业级智能体平台</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://dataease.cn/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:chart-bar" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>DataEase 开源 BI 工具</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://kubepi.org/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:network-3" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>KubePi 官网</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Company Info -->
+      <div>
+        <h4 class="text-lg font-semibold text-white mb-4">公司介绍</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://fit2cloud.com/about/index.html" target="_blank" rel="noopener noreferrer" class="group flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+              <Icon name="carbon:information" class="mr-2 h-3.5 w-3.5 flex-shrink-0" />
+              <span>关于飞致云</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
