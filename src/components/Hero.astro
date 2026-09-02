@@ -31,10 +31,10 @@ import { Icon } from "astro-icon/components";
   </div>
 
   <!-- Main Content -->
-  <div class="relative z-10 container-custom py-20">
+  <div class="relative z-10 container-custom py-12 lg:py-16 pb-24 lg:pb-32">
     <div
       id="hero-content"
-      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[80vh]"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start min-h-[80vh] pt-8 lg:pt-12"
     >
       
       <!-- Left Content -->
@@ -175,15 +175,6 @@ import { Icon } from "astro-icon/components";
             </a>
           </div>
         </div>
-
-        <!-- 第二个动态：AI 网关 -->
-        <a class="fade-in-up mt-10 group flex items-center justify-start gap-2.5 cursor-pointer animate-fade-in-up" href="/ai-gateway.html" style="animation-delay: 1s;">
-          <span class="inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-2 py-[3px] text-[10px] font-extrabold tracking-wider leading-none text-white shadow-sm">最新消息</span>
-          <span class="text-sm md:text-base text-gray-800">
-            1Panel AI 网关向社区用户开放：<span class="font-bold text-orange-600 underline decoration-orange-400 decoration-2 underline-offset-[6px] group-hover:text-orange-700 group-hover:decoration-orange-600 transition-colors duration-300">10 人及以下团队免费使用</span><span class="font-bold text-orange-600 group-hover:text-orange-700 transition-colors duration-300">！</span>
-          </span>
-          <span class="text-orange-500 group-hover:translate-x-1 transition-transform duration-300 text-base" aria-hidden="true">→</span>
-        </a>
       </div>
       <!-- Right Content - Dashboard Preview -->
       <div id="hero-right" class="transition-all duration-1000">
@@ -232,6 +223,15 @@ import { Icon } from "astro-icon/components";
             </div>
           </div>
         </div>
+
+        <!-- AI 网关动态条（位于 dashboard 图片下方，居中） -->
+        <a class="fade-in-up mt-6 flex items-center justify-center gap-2.5 cursor-pointer animate-fade-in-up" href="/ai-gateway.html" style="animation-delay: 1s;">
+          <span class="inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-2 py-[3px] text-[10px] font-extrabold tracking-wider leading-none text-white shadow-sm">最新消息</span>
+          <span class="text-sm md:text-base text-gray-800">
+            1Panel AI 网关向社区用户开放：<span class="font-bold text-orange-600 underline decoration-orange-400 decoration-2 underline-offset-[6px] group-hover:text-orange-700 group-hover:decoration-orange-600 transition-colors duration-300">10 人及以下团队免费使用</span><span class="font-bold text-orange-600 group-hover:text-orange-700 transition-colors duration-300">！</span>
+          </span>
+          <span class="text-orange-500 group-hover:translate-x-1 transition-transform duration-300 text-base" aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </div>
