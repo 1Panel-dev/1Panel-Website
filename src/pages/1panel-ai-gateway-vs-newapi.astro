@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
 import { Icon } from "astro-icon/components";
 import {
   SITE_URL,
@@ -13,6 +14,9 @@ import "../styles/global.css";
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/1panel-ai-gateway-vs-newapi.html", siteUrl);
 const trialUrl = "https://jsj.top/f/umuYtv";
+const publishedDate = "2026-09-02";
+const socialImage = "/images/1p-ai-gateway.png";
+const organizationId = `${toAbsoluteUrl("/", siteUrl).replace(/\/$/, "")}/#organization`;
 
 const pageTitle = "1Panel AI 网关 vs New API 对比分析报告 - 1Panel 官网";
 const pageDescription =
@@ -239,15 +243,25 @@ const summary = [
 const aiGatewaySchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": pageUrl,
+  "@id": `${pageUrl}#article`,
   headline: "1Panel AI 网关 vs New API 对比分析报告",
   description: pageDescription,
   url: pageUrl,
-  datePublished: "2026-09-02",
+  image: toAbsoluteUrl(socialImage, siteUrl),
+  datePublished: publishedDate,
+  dateModified: publishedDate,
   inLanguage: "zh-CN",
-  publisher: {
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+  },
+  author: {
     "@type": "Organization",
+    "@id": organizationId,
     name: "杭州飞致云信息科技有限公司",
+  },
+  publisher: {
+    "@id": organizationId,
   },
   about: [
     { "@type": "SoftwareApplication", name: "1Panel AI 网关" },
@@ -258,8 +272,18 @@ const aiGatewaySchema = {
 
 <Layout
   title={pageTitle}
+  socialTitle="1Panel AI 网关 vs New API 对比分析报告"
+  schemaName="1Panel AI 网关 vs New API 对比分析报告"
   description={pageDescription}
   canonical="/1panel-ai-gateway-vs-newapi.html"
+  image={socialImage}
+  imageWidth={2559}
+  imageHeight={1252}
+  imageAlt="1Panel AI 网关 vs New API 对比分析报告"
+  ogType="article"
+  publishedTime={publishedDate}
+  modifiedTime={publishedDate}
+  section="产品对比"
   keywords={[
     "1Panel AI 网关",
     "New API",
@@ -284,6 +308,7 @@ const aiGatewaySchema = {
     aiGatewaySchema,
   ]}
 >
+  <Statistics slot="head" />
   <Fragment slot="main">
     <Header />
     <main class="bg-white text-gray-800">
@@ -292,7 +317,7 @@ const aiGatewaySchema = {
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
         <div class="container-custom">
           <nav class="mb-6 text-sm text-gray-500" aria-label="breadcrumb">
-            <ol class="flex items-center justify-center gap-1.5">
+            <ol class="flex flex-wrap items-center justify-center gap-1.5">
               <li><a href="/" class="hover:text-1panel">1Panel 官网</a></li>
               <li><span class="px-1">/</span></li>
               <li><a href="/ai-gateway.html" class="hover:text-1panel">1Panel AI 网关</a></li>
@@ -301,9 +326,6 @@ const aiGatewaySchema = {
             </ol>
           </nav>
           <div class="mx-auto max-w-4xl text-center">
-            <span class="mb-5 inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
-              AI GATEWAY · 产品对比
-            </span>
             <h1 class="text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl">
               <span class="block">1Panel AI 网关</span>
               <span class="mt-2 block">
@@ -311,7 +333,6 @@ const aiGatewaySchema = {
                 <span class="ml-3 text-1panel">New API</span>
               </span>
             </h1>
-            <p class="mt-6 text-base font-semibold uppercase tracking-wider text-1panel">对比分析报告</p>
             <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl">
               企业级 AI 网关与开源模型聚合网关的能力差异对比
             </p>
@@ -332,25 +353,25 @@ const aiGatewaySchema = {
       <section id="positioning" class="scroll-mt-20 py-16 lg:py-24">
         <div class="container-custom">
           <div class="mx-auto mb-12 max-w-3xl text-center">
-            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 01</span>
             <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">产品定位差异</h2>
             <p class="mt-4 text-base leading-relaxed text-gray-600">
               选型的第一步不是比功能，而是对定位：你建的是「企业内部 AI 基础设施」还是「内部 AI 商城」。
             </p>
           </div>
-          <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-            <table class="w-full text-left text-sm">
+          <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
+            <table class="min-w-[760px] w-full text-left text-sm">
+              <caption class="sr-only">1Panel AI 网关与 New API 产品定位对比</caption>
               <thead class="bg-gray-50 text-xs uppercase tracking-wider text-gray-500">
                 <tr>
-                  <th class="w-[18%] px-6 py-4 font-semibold">维度</th>
-                  <th class="w-[41%] px-6 py-4 font-semibold text-1panel">1Panel AI 网关</th>
-                  <th class="w-[41%] px-6 py-4 font-semibold text-gray-600">New API</th>
+                  <th scope="col" class="w-[18%] px-6 py-4 font-semibold">维度</th>
+                  <th scope="col" class="w-[41%] px-6 py-4 font-semibold text-1panel">1Panel AI 网关</th>
+                  <th scope="col" class="w-[41%] px-6 py-4 font-semibold text-gray-600">New API</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-100">
                 {positioning.map((row) => (
                   <tr class="align-top">
-                    <td class="px-6 py-5 font-semibold text-gray-900">{row.dim}</td>
+                    <th scope="row" class="px-6 py-5 text-left font-semibold text-gray-900">{row.dim}</th>
                     <td class="px-6 py-5 leading-relaxed text-gray-800 bg-blue-50/50">{row.ours}</td>
                     <td class="px-6 py-5 leading-relaxed text-gray-600">{row.theirs}</td>
                   </tr>
@@ -365,7 +386,6 @@ const aiGatewaySchema = {
       <section id="capabilities" class="scroll-mt-20 bg-gradient-to-b from-gray-50/60 to-white py-16 lg:py-24">
         <div class="container-custom">
           <div class="mx-auto mb-12 max-w-3xl text-center">
-            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 02</span>
             <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">核心能力差异</h2>
             <p class="mt-4 text-base leading-relaxed text-gray-600">
               以下从 6 个维度逐项对比 1Panel AI 网关与 New API 的能力差异。
@@ -379,19 +399,20 @@ const aiGatewaySchema = {
                   <span class="inline-flex h-9 min-w-9 items-center justify-center rounded-md bg-blue-100 px-3 text-sm font-bold text-1panel">2.{idx + 1}</span>
                   <h3 class="text-xl font-bold text-gray-900 lg:text-2xl">{cap.title}</h3>
                 </div>
-                <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-                  <table class="w-full text-left text-sm">
+                <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
+                  <table class="min-w-[760px] w-full text-left text-sm">
+                    <caption class="sr-only">1Panel AI 网关与 New API 的{cap.title}对比</caption>
                     <thead class="bg-gray-50 text-xs uppercase tracking-wider text-gray-500">
                       <tr>
-                        <th class="w-[18%] px-6 py-4 font-semibold">维度</th>
-                        <th class="w-[41%] px-6 py-4 font-semibold text-1panel">1Panel AI 网关</th>
-                        <th class="w-[41%] px-6 py-4 font-semibold text-gray-600">New API</th>
+                        <th scope="col" class="w-[18%] px-6 py-4 font-semibold">维度</th>
+                        <th scope="col" class="w-[41%] px-6 py-4 font-semibold text-1panel">1Panel AI 网关</th>
+                        <th scope="col" class="w-[41%] px-6 py-4 font-semibold text-gray-600">New API</th>
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
                       {cap.rows.map((row) => (
                         <tr class="align-top">
-                          <td class="px-6 py-5 font-semibold text-gray-900">{row.dim}</td>
+                          <th scope="row" class="px-6 py-5 text-left font-semibold text-gray-900">{row.dim}</th>
                           <td class={`px-6 py-5 leading-relaxed ${row.oursWin ? "bg-blue-50/50 text-gray-800 font-medium" : "text-gray-800"}`}>
                             {row.ours}
                           </td>
@@ -416,7 +437,6 @@ const aiGatewaySchema = {
       <section id="ui" class="scroll-mt-20 bg-gradient-to-b from-white to-gray-50/60 py-16 lg:py-24">
         <div class="container-custom">
           <div class="mx-auto mb-12 max-w-3xl text-center">
-            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 03</span>
             <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">使用界面对比</h2>
           </div>
           <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -430,6 +450,8 @@ const aiGatewaySchema = {
                 <img
                   src="/images/1p-ai-gateway.png"
                   alt="1Panel AI 网关后台控制台界面"
+                  width="2559"
+                  height="1252"
                   class="mx-auto max-h-[560px] w-auto rounded-lg border border-gray-200 object-contain shadow-sm"
                   loading="lazy"
                 />
@@ -446,6 +468,8 @@ const aiGatewaySchema = {
                 <img
                   src="/images/newapi.png"
                   alt="New API 后台数据看板界面"
+                  width="1438"
+                  height="896"
                   class="mx-auto max-h-[560px] w-auto rounded-lg border border-gray-200 object-contain shadow-sm"
                   loading="lazy"
                 />
@@ -478,7 +502,6 @@ const aiGatewaySchema = {
       <section id="summary" class="scroll-mt-20 py-16 lg:py-24">
         <div class="container-custom">
           <div class="mx-auto mb-12 max-w-3xl text-center">
-            <span class="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-1panel">Part 04</span>
             <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">一句话总结</h2>
           </div>
           <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -533,6 +556,12 @@ const aiGatewaySchema = {
             </a>
           </div>
         </div>
+      </section>
+
+      <section class="border-t border-gray-100 bg-white px-4 py-8 text-center">
+        <p class="mx-auto max-w-5xl text-sm leading-relaxed text-gray-500">
+          注：本对比报告由 1Panel 团队根据公开信息编写，我们尽力使其客观、公正。如果您发现错误或功能缺失，请电邮至 support@fit2cloud.com，我们将持续更新并尽可能做到准确无误。
+        </p>
       </section>
     </main>
     <Footer />
