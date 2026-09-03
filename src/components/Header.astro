@@ -89,10 +89,6 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
                 <span>{t(translations, 'header.enterpriseOverview')}</span>
               </a>
               <div class="my-1 h-px bg-gray-100"></div>
-              <a href={`${prefix}/ai-portal`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
-                <Icon name="carbon:application-web" class="h-4 w-4 shrink-0 text-gray-400" />
-                <span>{t(translations, 'header.aiPortal')}</span>
-              </a>
               <a href={`${prefix}/ai-gateway`} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-medium text-gray-700 transition-colors duration-150 hover:bg-gray-50 hover:text-gray-900 focus-visible:bg-gray-50 focus-visible:text-gray-900 focus-visible:outline-none" role="menuitem">
                 <Icon name="carbon:gateway" class="h-4 w-4 shrink-0 text-gray-400" />
                 <span>{t(translations, 'header.aiGateway')}</span>
@@ -198,9 +194,6 @@ const mobileLocaleMenuItems = desktopLocaleMenuItems.filter((item) => !item.acti
             <div class="ml-3 mt-1 flex flex-col gap-1 border-l-2 border-gray-100 pl-3">
               <a href="/enterprise-edition" class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
                 {t(translations, 'header.enterpriseOverview')}
-              </a>
-              <a href={`${prefix}/ai-portal`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
-                {t(translations, 'header.aiPortal')}
               </a>
               <a href={`${prefix}/ai-gateway`} class="block rounded-lg px-3 py-2 text-[15px] font-medium text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition">
                 {t(translations, 'header.aiGateway')}

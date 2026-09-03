@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "KI-Verwaltung",
-        "desc": "Bereitstellung einer einheitlichen AI-Verwaltung vom Bare Metal bis zu Agenten – mit Kernfunktionen wie einem AI-Self-Service-Portal, AI-Gateway, Skills Hub und zentralisierter Modellverwaltung."
+        "desc": "Bereitstellung einer einheitlichen AI-Verwaltung vom Bare Metal bis zu Agenten – mit Kernfunktionen wie AI-Gateway, Skills Hub und zentralisierter Modellverwaltung."
       },
       "ops": {
         "title": "Effiziente visuelle Verwaltung",
