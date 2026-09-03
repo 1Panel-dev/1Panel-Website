@@ -77,7 +77,7 @@ const capabilityCards = [
 
 const pageTitle = "1Panel AI 网关 - 打造企业专属的 AI 统一接入与治理平台";
 const pageDescription =
-  "1Panel AI 网关为内部 AI 应用和模型调用提供统一接入入口，支持模型代理、席位管理、用量统计、智能路由和内容合规。";
+  "1Panel AI 网关为内部 AI 应用和模型调用提供统一接入入口，支持模型代理、席位管理、用量统计、智能路由和内容合规。现已向社区开放，10 人及以下团队可免费使用，支持 1Panel 应用商店一键安装与 Docker 部署。";
 const aiGatewaySchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -116,6 +116,8 @@ const aiGatewaySchema = {
   keywords={[
     "1Panel AI 网关",
     "AI 网关",
+    "AI 网关免费使用",
+    "AI 网关 Docker 部署",
     "统一接入",
     "模型代理",
     "席位管理",
@@ -156,10 +158,15 @@ const aiGatewaySchema = {
                 </span>
               ))}
             </div>
-            <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary fade-in-up mt-7 inline-flex items-center justify-center px-9 py-4 text-base" style="animation-delay: 0.32s;">
-              申请试用
-              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
-            </a>
+            <div class="fade-in-up mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row" style="animation-delay: 0.32s;">
+              <a href="#free-quick-start" class="btn-primary inline-flex w-full items-center justify-center px-9 py-4 text-base sm:w-auto">
+                立即免费安装
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+              <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-8 py-4 text-base font-semibold text-gray-700 transition-all duration-300 hover:border-gray-400 hover:bg-gray-50 sm:w-auto">
+                申请企业版试用
+              </a>
+            </div>
           </div>
 
           <div class="fade-in-up mt-8" style="animation-delay: 0.35s;">
@@ -173,6 +180,127 @@ const aiGatewaySchema = {
                   class="h-auto w-full object-contain"
                   loading="eager"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 社区开放 · 免费使用 · 快速开始 -->
+      <section id="free-quick-start" class="scroll-mt-28 border-t border-gray-100 bg-gradient-to-b from-amber-50/60 via-white to-white py-16 lg:py-20">
+        <div class="container-custom">
+          <div class="mx-auto max-w-3xl text-center">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-3 py-1 text-[11px] font-extrabold leading-none tracking-wider text-white shadow-sm">
+              <Icon name="carbon:gift" class="h-3.5 w-3.5" />
+              社区开放 · 免费使用
+            </span>
+            <h2 class="mt-5 text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+              1Panel AI 网关已向社区开放
+              <span class="mt-1 block text-orange-600">10 人及以下团队免费使用！</span>
+            </h2>
+          </div>
+
+          <div class="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
+            <!-- 方式一：1Panel 应用商店 -->
+            <div class="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-orange-200 hover:shadow-md lg:p-7">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-orange-50 text-orange-600">
+                    <Icon name="carbon:application" class="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p class="text-xs font-semibold tracking-wider text-gray-400">安装方式一</p>
+                    <h3 class="text-lg font-bold leading-snug text-gray-900">通过 1Panel 应用商店一键安装</h3>
+                  </div>
+                </div>
+              </div>
+
+              <p class="mt-4 text-sm leading-relaxed text-gray-600">
+                通过 1Panel 应用商店，可视化方式，完成安装部署。
+              </p>
+
+              <ol class="mt-5 space-y-3">
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">1</span>
+                  <p class="text-sm leading-relaxed text-gray-600">登录 1Panel 面板，进入 <strong class="font-semibold text-gray-800">应用商店</strong></p>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">2</span>
+                  <p class="text-sm leading-relaxed text-gray-600">搜索 <strong class="font-semibold text-gray-800">1Panel AI 网关</strong>，点击 <strong class="font-semibold text-gray-800">安装</strong></p>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">3</span>
+                  <p class="text-sm leading-relaxed text-gray-600">按向导完成初始化，浏览器访问 <code class="rounded bg-gray-50 px-1.5 py-0.5 font-mono text-[13px] text-gray-800">http://服务器IP:8080</code></p>
+                </li>
+              </ol>
+
+              <div class="mt-6 border-t border-gray-100 pt-4">
+                <a href="https://docs.fit2cloud.com/ai-gateway/quick_start" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-1panel">
+                  查看详情
+                  <Icon name="carbon:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
+              </div>
+            </div>
+
+            <!-- 方式二：docker run -->
+            <div class="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-orange-200 hover:shadow-md lg:p-7">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-orange-50 text-orange-600">
+                    <Icon name="carbon:terminal" class="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p class="text-xs font-semibold tracking-wider text-gray-400">安装方式二</p>
+                    <h3 class="text-lg font-bold leading-snug text-gray-900">使用 docker run 直接运行</h3>
+                  </div>
+                </div>
+              </div>
+
+              <p class="mt-4 text-sm leading-relaxed text-gray-600">
+                官方镜像为 <code class="rounded bg-gray-50 px-1.5 py-0.5 font-mono text-[13px] text-gray-800">1panel/ai-gateway</code>，未指定版本时默认拉取最新版本。
+              </p>
+
+              <div class="relative mt-5 rounded-lg bg-gray-900 px-4 py-3.5">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="font-mono text-[11px] uppercase tracking-wider text-gray-500">Terminal</span>
+                  <button
+                    type="button"
+                    data-copy-target="docker-run-cmd"
+                    aria-label="复制部署命令"
+                    class="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-gray-200 transition-colors duration-200 hover:bg-white/20"
+                  >
+                    <Icon name="carbon:copy" class="h-3.5 w-3.5" />
+                    <span data-copy-label>复制</span>
+                  </button>
+                </div>
+                <pre class="overflow-x-auto"><code id="docker-run-cmd" class="whitespace-pre font-mono text-[13px] leading-relaxed text-gray-100">docker run --pull always -d \
+  --name 1panel-ai-gateway \
+  --restart unless-stopped \
+  -p 8080:8080 \
+  -v /opt/ai-gateway:/opt/ai-gateway \
+  1panel/ai-gateway</code></pre>
+              </div>
+
+              <p class="mt-4 text-sm leading-relaxed text-gray-600">
+                首次启动会在容器日志中输出管理员临时密码：
+              </p>
+              <div class="relative mt-2 rounded-lg bg-gray-900 px-4 py-3">
+                <pre class="overflow-x-auto"><code id="docker-logs-cmd" class="whitespace-pre font-mono text-[13px] leading-relaxed text-gray-100">docker logs 1panel-ai-gateway</code></pre>
+                <button
+                  type="button"
+                  data-copy-target="docker-logs-cmd"
+                  aria-label="复制查看密码命令"
+                  class="absolute right-2 top-2 inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-gray-200 transition-colors duration-200 hover:bg-white/20"
+                >
+                  <Icon name="carbon:copy" class="h-3.5 w-3.5" />
+                </button>
+              </div>
+
+              <div class="mt-6 border-t border-gray-100 pt-4">
+                <a href="https://docs.fit2cloud.com/ai-gateway/quick_start" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-1panel">
+                  查看详情
+                  <Icon name="carbon:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
               </div>
             </div>
           </div>
@@ -208,27 +336,6 @@ const aiGatewaySchema = {
                 </p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section class="bg-white py-16 lg:py-24">
-        <div class="container-custom">
-          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
-            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
-              <div>
-                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
-                  面向内部 AI 应用和模型调用的统一入口
-                </h2>
-                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
-                  1Panel AI 网关通过统一接入、模型代理、席位管理、用量统计、智能路由和内容合规，帮助企业集中管理模型访问、调用链路和使用成本，提升 AI 应用的治理能力与安全可控性。
-                </p>
-              </div>
-              <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
-                了解企业版
-                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -319,16 +426,46 @@ const aiGatewaySchema = {
               </div>
             </a>
           </div>
-
-          <div class="mt-10 text-center">
-            <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center justify-center px-9 py-4 text-base">
-              申请试用 1Panel AI 网关
-              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
-            </a>
-          </div>
         </div>
       </section>
+
     </main>
     <Footer />
   </Fragment>
 </Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-target]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const targetId = button.dataset.copyTarget;
+      if (!targetId) return;
+      const source = document.getElementById(targetId);
+      if (!source) return;
+
+      const text = source.textContent?.trim() ?? "";
+      if (!text) return;
+
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+
+      const label = button.querySelector("[data-copy-label]");
+      if (label) {
+        const original = label.textContent;
+        label.textContent = "已复制";
+        window.setTimeout(() => {
+          label.textContent = original;
+        }, 2000);
+      }
+    });
+  });
+</script>
