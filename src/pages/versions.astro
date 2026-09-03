@@ -56,10 +56,10 @@ const plans = [
     color: "blue",
     features: [
       "社区版全部功能",
+      { label: "vLLM 模型管理", hot: true },
       "多机管理",
       "数据库主从复制",
       "移动端 App",
-      "vLLM 模型管理",
       "WAF 防火墙",
       "网站监控报表",
       "网站防篡改",
@@ -85,8 +85,8 @@ const plans = [
     color: "blue",
     features: [
       "专业版全部功能（不含短信）",
+      { label: "AI 网关", href: "/ai-gateway.html", hot: true },
       { label: "AI 门户", href: "/ai-portal.html" },
-      { label: "AI 网关", href: "/ai-gateway.html" },
       { label: "Skills Hub", href: "/skills-hub.html" },
       { label: "用户与认证管理", href: "/user-management.html" },
       { label: "虚拟机管理（KVM Web UI）", href: virtualMachinePath },
@@ -252,12 +252,21 @@ const versionComparisonSchema = {
                         typeof feature === "string" ? feature : feature.label;
                       const featureHref =
                         typeof feature === "string" ? undefined : feature.href;
+                      const featureHot =
+                        typeof feature === "string" ? false : feature.hot;
                       const content = (
                         <>
                           <span class={`mt-1 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full ${colors.icon} text-white`}>
                             <Icon name="carbon:checkmark" class="h-3 w-3" />
                           </span>
-                          <span>{featureLabel}</span>
+                          <span class="inline-flex items-baseline gap-1.5">
+                            <span>{featureLabel}</span>
+                            {featureHot && (
+                              <span class="inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">
+                                HOT
+                              </span>
+                            )}
+                          </span>
                         </>
                       );
 
