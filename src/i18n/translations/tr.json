@@ -36,7 +36,7 @@
     "title2": "Linux Sunucu Yönetim Paneli",
     "badgePowerful": "Güçlü",
     "badgeOpenSource": "Açık Kaynak",
-    "subtitle": "1Panel, Linux sunucularınızı zahmetsizce yönetmenizi sağlayan sezgisel bir web arayüzü sunar. AI ajanları ve LLM'lerden web siteleri, veritabanları, konteynerler, dosyalar ve cron işlerine kadar her şey parmaklarınızın ucunda.",
+    "subtitle": "Linux sunucularınızı sezgisel bir web arayüzüyle zahmetsizce yönetin. AI ajanları ve LLM'lerden web siteleri, veritabanları ve konteynerlere kadar her şey parmaklarınızın ucunda.",
     "pricingBannerText": "OSS her zaman ücretsiz. Pro planları yıllık $80’dan başlar.",
     "pricingBannerLink": "Fiyatlara göz atın",
     "githubStars": "GitHub yıldızları",
@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI Yönetimi",
-        "desc": "Bare metal’den aracılara kadar birleşik AI yönetimi. Modellerinizi ve aracılarınızı merkezi olarak yönetmek için AI Portalları, Ağ Geçitlerini ve Skills Hub’ları entegre edin."
+        "desc": "Bare metal'den aracılara kadar birleşik AI yönetimi sunar; AI Gateway, Skills Hub ve merkezi Model Yönetimi gibi temel yeteneklerle."
       },
       "ops": {
         "title": "Verimli Görsel Operasyonlar",

@@ -36,7 +36,7 @@
     "title2": "Linuxサーバー管理パネル",
     "badgePowerful": "高機能",
     "badgeOpenSource": "オープンソース",
-    "subtitle": "1Panelは直感的なWebインターフェースでLinuxサーバーを簡単に管理できます。AIエージェントやLLMから、Webサイト、データベース、コンテナ、ファイル、cronジョブまで、すべてが手元に揃います。",
+    "subtitle": "直感的なWebインターフェースでLinuxサーバーを簡単に管理できます。AIエージェントやLLMから、Webサイト、データベース、コンテナまで、すべてが手元に揃います。",
     "pricingBannerText": "OSSはずっと無料。Proは年$80から。",
     "pricingBannerLink": "料金を見る",
     "githubStars": "GitHubスター",
@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI 管理",
-        "desc": "ベアメタルからエージェントまでの統合 AI 管理。AI ポータル、AI ゲートウェイ、Skills Hub を統合し、モデルとエージェントを一元管理します。"
+        "desc": "ベアメタルからエージェントまでの統合 AI 管理を実現。AI ゲートウェイ、Skills Hub、一元化されたモデル管理などの主要機能を備えています。"
       },
       "ops": {
         "title": "効率的なビジュアル運用",

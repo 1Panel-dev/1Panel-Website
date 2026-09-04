@@ -36,7 +36,7 @@
     "title2": "Linux-Server-Verwaltungsplattform",
     "badgePowerful": "Leistungsstark",
     "badgeOpenSource": "Open Source",
-    "subtitle": "1Panel bietet eine intuitive Weboberfläche, um Linux-Server mühelos zu verwalten. Von KI-Agenten und LLMs über Websites, Datenbanken, Container, Dateien und Cron-Jobs – alles ist direkt zur Hand.",
+    "subtitle": "Verwalten Sie Ihre Linux-Server mühelos über eine intuitive Weboberfläche. Von KI-Agenten und LLMs über Websites, Datenbanken und Container – alles ist direkt zur Hand.",
     "pricingBannerText": "OSS für immer kostenlos. Pro-Pläne ab 80 $/Jahr.",
     "pricingBannerLink": "Preise ansehen",
     "githubStars": "GitHub-Sterne",
@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "KI-Verwaltung",
-        "desc": "Unified AI-Verwaltung von Bare Metal bis zu Agenten. Integrieren Sie AI-Portale, Gateways und Skills Hubs, um Ihre Modelle und Agenten zentral zu verwalten."
+        "desc": "Bereitstellung einer einheitlichen AI-Verwaltung vom Bare Metal bis zu Agenten – mit Kernfunktionen wie AI-Gateway, Skills Hub und zentralisierter Modellverwaltung."
       },
       "ops": {
         "title": "Effiziente visuelle Verwaltung",

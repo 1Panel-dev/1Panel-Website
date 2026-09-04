@@ -36,7 +36,7 @@
     "title2": "de gerenciamento de servidores Linux",
     "badgePowerful": "Poderoso",
     "badgeOpenSource": "Código aberto",
-    "subtitle": "1Panel oferece uma interface web intuitiva para gerenciar servidores Linux sem esforço. De agentes de IA e LLMs a sites, bancos de dados, contêineres, arquivos e tarefas agendadas: tudo ao seu alcance.",
+    "subtitle": "Gerencie seus servidores Linux sem esforço com uma interface web intuitiva. De agentes de IA e LLMs a sites, bancos de dados e contêineres: tudo ao seu alcance.",
     "pricingBannerText": "OSS grátis para sempre. Planos Pro a partir de US$ 80/ano.",
     "pricingBannerLink": "Ver preços",
     "githubStars": "Estrelas no GitHub",
@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "Gestão de IA",
-        "desc": "Gestão unificada de IA do bare metal aos agentes. Integre portais, gateways e hubs de skills de IA para gerenciar centralmente seus modelos e agentes."
+        "desc": "Entrega gestão unificada de IA do bare metal aos agentes, com recursos principais como gateway de IA, hub de skills e gestão centralizada de modelos."
       },
       "ops": {
         "title": "Operações visuais eficientes",

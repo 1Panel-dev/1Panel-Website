@@ -36,7 +36,7 @@
     "title2": "Linux 伺服器管理面板",
     "badgePowerful": "強大",
     "badgeOpenSource": "開源",
-    "subtitle": "1Panel 提供直觀的網頁介面，讓您輕鬆管理 Linux 伺服器。從 AI 代理與 LLM 到網站、資料庫、容器、檔案與定時任務，一切盡在掌握。",
+    "subtitle": "透過直觀的網頁介面，輕鬆管理您的 Linux 伺服器。從 AI 代理與 LLM 到網站、資料庫與容器，一切盡在掌握。",
     "pricingBannerText": "OSS 永久免費，Pro 方案 $80/年 起。",
     "pricingBannerLink": "查看定價",
     "githubStars": "GitHub 星數",
@@ -63,7 +63,7 @@
     "cards": {
       "ai": {
         "title": "AI 管理",
-        "desc": "從裸機（Bare Metal）到智慧體（Agent）的統一 AI 管理。整合 AI 入口、AI 閘道與 Skills Hub，集中管理您的模型與智慧體。"
+        "desc": "從裸機（Bare Metal）到智慧體（Agent）的全方位統一 AI 管理，提供 AI 閘道、Skills Hub 與集中式模型管理等核心能力。"
       },
       "ops": {
         "title": "高效可視化運維",
