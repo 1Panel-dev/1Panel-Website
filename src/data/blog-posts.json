@@ -1,5 +1,28 @@
 [
   {
+    "id": 116,
+    "title": "1Panel AI一体机（方案五）模型实测对比：DeepSeek-V4-Flash vs. Qwen3.8-Flash-Next",
+    "description": "在 1Panel AI 一体机（方案五，4 × NVIDIA RTX Pro 5000 Blackwell / 128GB 内存 / 2TB SSD）上，使用 vLLM 对 DeepSeek-V4-Flash 与 Qwen3.8-Flash-Next 两款开源模型进行同平台横向实测。基于飞致云生产环境的真实负载（平均输入 ~90k tokens / 平均输出 ~500 tokens / 缓存命中率 ~91%），客观呈现最大并发、TTFT、聚合解码吞吐与单流解码速度四项指标的实测数据，并从 Attention 稀疏化与 MoE 路由机制的角度说明数据差异的技术成因。",
+    "date": "2026-09-04",
+    "dateText": "2026 年 9 月 4 日",
+    "slug": "1panel-ai-appliance-plan5-benchmark",
+    "path": "/images/blog/1panel-ai-appliance-plan5-benchmark/cover.png",
+    "url": "https://1panel.cn/blog/1panel-ai-appliance-plan5-benchmark.html",
+    "cover": "/images/blog/1panel-ai-appliance-plan5-benchmark/cover.png",
+    "content": "<p>在企业级 AI 一体机的选型过程中，一个绕不开的问题是：同一套硬件平台下，不同的开源模型会带来多大的性能差异？为回答这个问题，我们在 1Panel AI 一体机（方案五，4 × NVIDIA RTX Pro 5000 Blackwell / 128GB 内存）上，使用同一套推理栈、同一份压测脚本，对 DeepSeek-V4-Flash 与 Qwen3.8-Flash-Next 两款主流的 FP4 / FP8 混合精度开源模型进行了横向实测。本文完整呈现这套方案的软硬件搭配、压测场景设计、四项核心指标的实测数据及其技术成因，供正在评估私有化 AI 基础设施的企业团队作为决策参考。</p>\n\n<p>本文只呈现可复现的实测数据与客观的技术分析。两款模型在架构设计上各有不同的取舍，在不同业务场景下也各有其适用的空间，本次实测不对其能力高低作出评价。</p>\n\n<h2>一、方案软硬件配置</h2>\n\n<p>方案五采用多卡 PCIe 拓扑的通用企业级架构。这一设计使得软件栈的兼容范围更为广泛——绝大多数开源模型和推理引擎都能直接部署使用，无须为特定芯片做专门的适配。具体配置如下：</p>\n\n<ul>\n    <li><strong>CPU：</strong>Intel Xeon w7-3445（20 Core）</li>\n    <li><strong>内存：</strong>128GB</li>\n    <li><strong>存储：</strong>2TB SSD</li>\n    <li><strong>加速卡：</strong>4 张 NVIDIA RTX Pro 5000 Blackwell 72GB</li>\n    <li><strong>推理引擎：</strong>vLLM</li>\n    <li><strong>可选模型：</strong>DeepSeek-V4-Flash、Qwen3.8-Flash-Next</li>\n    <li><strong>管理软件：</strong>1Panel 企业版（含 AI 网关）、MaxKB 企业版</li>\n</ul>\n\n<p>RTX Pro 5000 单卡提供 72GB 显存，4 张合计 288GB 显存容量。两款模型的 FP4 / FP8 权重体积均在 200GB 以内，因此在承载模型权重之外，还能为 KV Cache 留出较为充裕的空间，用于支撑长上下文与多路并发。整套设备由 1Panel 企业版统一管理，内置的 AI 网关提供统一路由、用量统计和水平扩容能力，MaxKB 企业版负责知识库与智能体编排。这套\"一体机 + 网关 + 应用\"的组合，是飞致云在 2026 年面向中大型组织私有化部署 AI 能力的主推方案之一。</p>\n\n<h2>二、实测场景说明</h2>\n\n<p>实测在飞致云生产环境下进行，对外开放的能力以 WorkBuddy 为主的 AI 办公场景，涵盖智能问答、文档总结、邮件草拟、数据 SQL 生成、合同条款解析等典型工作流。压测请求经由 1Panel 内置 AI 网关发起，所有指标由网关层统一采集，避免应用层差异带来的误差。</p>\n\n<p>本次实测的关键参数如下：</p>\n\n<ul>\n    <li><strong>平均输入 tokens：</strong>~90k</li>\n    <li><strong>平均输出 tokens：</strong>~500</li>\n    <li><strong>缓存命中率：</strong>~91%</li>\n</ul>\n\n\n\n<h2>三、实测数据对比</h2>\n\n<p>我们重点关注四项核心指标：最大并发数、首字延时（TTFT）、聚合解码吞吐（Aggregate Decode Throughput）、单流解码速度（Decode per Stream）。前两项反映单台设备能够承载的并发规模与响应时效，后两项反映单位算力的内容产出效率。</p>\n\n<table>\n    <thead>\n        <tr>\n            <th>指标</th>\n            <th>Qwen3.8-Flash-Next</th>\n            <th>DeepSeek-V4-Flash</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>并发</td>\n            <td>12 个</td>\n            <td>8 个</td>\n        </tr>\n        <tr>\n            <td>TTFT</td>\n            <td>&lt; 5s</td>\n            <td>&lt; 10s</td>\n        </tr>\n        <tr>\n            <td>Aggregate Decode Throughput</td>\n            <td>~400 token/s</td>\n            <td>~200 token/s</td>\n        </tr>\n        <tr>\n            <td>Decode per Stream</td>\n            <td>~33 token/s</td>\n            <td>~25 token/s</td>\n        </tr>\n    </tbody>\n</table>\n\n<p>实测数据显示，两款模型在四项指标上呈现出不同的表现特征：</p>\n\n<ul>\n    <li><strong>最大并发数：</strong>Qwen3.8-Flash-Next 为 12 路，DeepSeek-V4-Flash 为 8 路；</li>\n    <li><strong>首字延时（TTFT）：</strong>Qwen3.8-Flash-Next 在 5 秒以内，DeepSeek-V4-Flash 在 10 秒以内；</li>\n    <li><strong>聚合解码吞吐：</strong>Qwen3.8-Flash-Next 约 400 token/s，DeepSeek-V4-Flash 约 200 token/s；</li>\n    <li><strong>单流解码速度：</strong>Qwen3.8-Flash-Next 约 33 token/s，DeepSeek-V4-Flash 约 25 token/s。</li>\n</ul>\n\n<p>需要特别说明的是，上述数据是在\"平均输入 ~90k tokens、平均输出 ~500 tokens、缓存命中率 ~91%\"这一特定负载组合下测得的结果，反映的是两款模型在该场景下的性能表现。输入与输出长度、并发配置、量化精度等条件发生变化时，测量结果也会相应不同。建议读者结合自身的实际负载特征理解这份数据。</p>\n\n<h2>四、数据差异的技术成因</h2>\n\n<p>两组数据的差异，主要来自两款模型在架构设计上的不同取向。</p>\n\n<p>在本次测试的 90k 长输入场景下，Prefill（预填充）阶段需要处理大量输入 token，KV Cache 的显存占用成为影响并发路数的关键变量。Qwen3.8-Flash-Next 在 Attention 机制上采用了稀疏化设计，长上下文场景下单位请求的 KV Cache 占用相对更低，因此在相同的 288GB 显存总量下，能够同时容纳更多的并发请求副本。DeepSeek-V4-Flash 采用 MoE（混合专家）架构，其路由机制需要维护更大规模的专家权重与对应的 KV Cache，单请求的显存开销相对更高，因而在固定显存条件下能够并行处理的请求数较少。</p>\n\n<p>在解码（Decode）阶段，两款模型每生成一个 token 所须读取的权重规模存在差异，这一差异直接反映在聚合解码吞吐与单流解码速度两项指标上。整体而言，本次实测呈现的数据差异，是两款模型在显存效率、注意力机制与专家路由策略上的不同设计取向，在这一特定负载条件下的自然结果，而非模型能力层面的高低之分。</p>\n\n<h2>五、写在最后</h2>\n\n<p>1Panel AI 一体机的产品迭代始终围绕一条主线：让企业用更低的成本获得更接近云端体验的本地 AI 能力。本次在方案五上完成的双模型对比，意在为企业选型提供一份可复现、可验证的实测参考，而不是给出一个简单的优劣结论。</p>\n\n<p>如果您正在评估本地 AI 一体机的投入产出比，建议结合自身的业务负载特征，采用与本报告一致的硬件平台与压测脚本进行复现验证。1Panel 官方提供完整的方案配置清单、压测工具与脚本，欢迎联系飞致云团队获取详细方案。</p>",
+    "keywords": [
+      "1Panel AI 一体机",
+      "方案五",
+      "DeepSeek-V4-Flash",
+      "Qwen3.8-Flash-Next",
+      "RTX Pro 5000",
+      "vLLM",
+      "实测对比",
+      "企业 AI 基础设施",
+      "AI 私有化部署"
+    ]
+  },
+  {
     "id": 1,
     "title": "1Panel AI 网关向社区用户开放，10 人及以下团队免费使用",
     "description": "2026 年 9 月 1 日，1Panel AI 网关正式向社区用户开放，10 人及以下规模的团队可免费使用完整的 AI 治理能力。覆盖两种部署方式（应用商店一键部署 / Docker 官方镜像）、六大核心能力（统一接入 / 席位管理 / 智能路由 / 负载控制 / 内容合规 / 用量洞察）与真实落地案例数据。",
