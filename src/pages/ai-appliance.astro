@@ -163,6 +163,7 @@ const pricingPlans = [
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 企业版"],
     chassis: "超聚变 Tokenbox（办公室级液冷超节点）",
     accent: "blue",
+    expandable: "可扩容至 8 卡",
   },
 ];
 
@@ -487,6 +488,9 @@ const productSchema = {
                         </h3>
                         {plan.hot && (
                           <span class="inline-flex h-5 items-center rounded-md bg-gradient-to-r from-orange-500 to-amber-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">HOT</span>
+                        )}
+                        {plan.expandable && (
+                          <span class="inline-flex h-5 items-center rounded-md border border-blue-200 bg-blue-50 px-2 text-[10px] font-bold tracking-wider text-blue-700 shadow-sm">可扩容至 8 卡</span>
                         )}
                       </div>
                       <span class="text-[11px] font-medium uppercase tracking-wider text-gray-400">{plan.gpuType}</span>
