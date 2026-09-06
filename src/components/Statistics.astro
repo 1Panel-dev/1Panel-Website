@@ -1,12 +1,14 @@
 ---
 // Statistics section for 1Panel website
 ---
-<!-- 百度统计 -->
+<!-- 百度统计：defer 注入避免抢占首屏带宽 -->
 <script is:inline>
   var _hmt = _hmt || [];
   (function () {
     var hm = document.createElement("script");
     hm.src = "https://hm.baidu.com/hm.js?702b760894a434f58ec2b765f9ad39ba";
+    hm.async = true;
+    hm.defer = true;
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();

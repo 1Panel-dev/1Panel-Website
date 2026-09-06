@@ -156,6 +156,42 @@ const structuredDataItems = [
     ))
   }
   <slot name="head" />
+
+  <noscript>
+    <style>
+      .fade-in-up,
+      .fade-in-left,
+      .fade-in-right {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
+
+  <style is:inline>
+    /* 兜底：即使 JS 没执行或执行太晚，也确保动画元素在 1.2s 内可见，
+       避免依赖 setupAnimations() 网络等待造成首屏空白。 */
+    @keyframes _force-visible {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .fade-in-up,
+    .fade-in-left,
+    .fade-in-right {
+      animation: _force-visible 0.01s linear 1.2s forwards;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in-up,
+      .fade-in-left,
+      .fade-in-right {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
 </head>
 <body class="bg-dark-900 text-gray-100 antialiased">
   <!-- Background particles -->
@@ -168,48 +204,55 @@ const structuredDataItems = [
   
   <!-- Global scripts -->
   <script>
-    // 获取 Stars 数量和下载量并在获取后再执行动画
-    async function fetchStarsAndDownloadCountAndAnimate() {
+    // 通用 fetch 加超时，避免外部接口慢/挂死时拖累整页
+    function fetchWithTimeout(url, options = {}, timeoutMs = 3500) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      return fetch(url, { ...options, signal: controller.signal })
+        .finally(() => clearTimeout(timer));
+    }
+
+    // 获取 Stars 数量和下载量；与首屏动画解耦，绝对不能阻塞 hero 显示
+    async function fetchStarsAndDownloadCount() {
       let starsCount = 36000; // 默认值
 
       try {
-        const response = await fetch(
-          "https://api.github.com/repos/1panel-dev/1panel"
+        const response = await fetchWithTimeout(
+          "https://api.github.com/repos/1panel-dev/1panel",
+          { headers: { Accept: "application/vnd.github+json" } },
+          3000,
         );
         const data = await response.json();
         starsCount = data.stargazers_count || starsCount;
       } catch (error) {
-        console.error("Failed to fetch stars count:", error);
+        // 静默失败：保留默认值，绝不让异常抛出影响主流程
       }
 
-      let downloadCount = 1722992; // 默认值
+      let downloadCount = 1722992;
       try {
-        const response = await fetch(
-          "https://community.fit2cloud.com/installation-statistics?product=OnePanel&dateRange=AllTime"
+        const response = await fetchWithTimeout(
+          "https://community.fit2cloud.com/installation-statistics?product=OnePanel&dateRange=AllTime",
+          {},
+          3000,
         );
         const count = await response.text();
         downloadCount = parseInt(count) || downloadCount;
       } catch (error) {
-        console.error("Failed to fetch download count:", error);
+        // 静默失败
       }
-      
+
+      // 直接更新 DOM；不再依赖任何动画 observer / IntersectionObserver
       const starsEl = document.getElementById("stars-count");
       if (starsEl) {
         starsEl.dataset.target = `${starsCount}`;
         starsEl.textContent = Number(starsCount).toLocaleString();
       }
 
-      // 更新页面上显示的下载量（假设有 id="download-count" 的元素）
       const downloadEl = document.getElementById("download-count");
       if (downloadEl) {
         downloadEl.dataset.target = `${downloadCount}`;
-        // 立即显示初始值
         downloadEl.textContent = Number(downloadCount).toLocaleString();
       }
-
-      // 现在再执行动画
-      setupAnimations();
-      animateCounters();
     }
 
     // Intersection Observer for animations
@@ -223,6 +266,7 @@ const structuredDataItems = [
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
@@ -234,21 +278,20 @@ const structuredDataItems = [
     }
 
     // Number counter animation
-    function animateCounters() {
+    function setupCounters() {
       const counters = document.querySelectorAll('.counter');
-      const observerOptions = {
-        threshold: 0.5
-      };
+      if (counters.length === 0) return;
+
+      const observerOptions = { threshold: 0.5 };
 
       const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const counter = entry.target;
-            // 兼容 null
             const dataTarget = counter.getAttribute('data-target');
             const target = dataTarget ? parseInt(dataTarget) : 0;
-            const duration = 2000; // 2 seconds
-            const step = target / (duration / 16); // 60fps
+            const duration = 2000;
+            const step = target / (duration / 16);
             let current = 0;
 
             const updateCounter = () => {
@@ -271,13 +314,19 @@ const structuredDataItems = [
       });
     }
 
-    // Particle background
+    // Particle background - 控制数量并响应 reduced-motion
     function createParticles() {
       const container = document.getElementById('particles-background');
       if (!container) return;
 
-      const particleCount = 50;
-      
+      const prefersReduced = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return; // 减少动效偏好直接禁用
+
+      const isMobile = window.matchMedia('(max-width: 640px)').matches;
+      const particleCount = isMobile ? 12 : 30;
+
+      const fragment = document.createDocumentFragment();
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'absolute w-1 h-1 bg-blue-500 rounded-full opacity-20 particles';
@@ -285,8 +334,9 @@ const structuredDataItems = [
         particle.style.top = Math.random() * 100 + '%';
         particle.style.animationDelay = Math.random() * 8 + 's';
         particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
-        container.appendChild(particle);
+        fragment.appendChild(particle);
       }
+      container.appendChild(fragment);
     }
 
     // Smooth scroll for anchor links
@@ -323,6 +373,8 @@ const structuredDataItems = [
     // Start typing effect when element is visible
     function setupTypingEffect() {
       const typingElements = document.querySelectorAll('.typing-effect');
+      if (typingElements.length === 0) return;
+
       const observer = new IntersectionObserver((entries) => {
               entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -339,12 +391,16 @@ const structuredDataItems = [
       typingElements.forEach(el => observer.observe(el));
     }
 
-    // 初始化
+    // 初始化：本地动画/交互立即启动，不等待任何外部网络请求
     document.addEventListener('DOMContentLoaded', () => {
-      fetchStarsAndDownloadCountAndAnimate();
+      setupAnimations();
+      setupCounters();
       createParticles();
       setupSmoothScroll();
       setupTypingEffect();
+
+      // 统计数据后台异步获取，独立于首屏显示
+      fetchStarsAndDownloadCount();
     });
   </script>
 </body>
