@@ -177,8 +177,3 @@
   from, to { border-color: transparent }
   50% { border-color: #3b82f6 }
 }
-
-/* Number counter animation */
-.counter {
-  transition: all 0.5s ease;
-}

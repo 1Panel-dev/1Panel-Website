@@ -204,57 +204,6 @@ const structuredDataItems = [
   
   <!-- Global scripts -->
   <script>
-    // 通用 fetch 加超时，避免外部接口慢/挂死时拖累整页
-    function fetchWithTimeout(url, options = {}, timeoutMs = 3500) {
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), timeoutMs);
-      return fetch(url, { ...options, signal: controller.signal })
-        .finally(() => clearTimeout(timer));
-    }
-
-    // 获取 Stars 数量和下载量；与首屏动画解耦，绝对不能阻塞 hero 显示
-    async function fetchStarsAndDownloadCount() {
-      let starsCount = 36000; // 默认值
-
-      try {
-        const response = await fetchWithTimeout(
-          "https://api.github.com/repos/1panel-dev/1panel",
-          { headers: { Accept: "application/vnd.github+json" } },
-          3000,
-        );
-        const data = await response.json();
-        starsCount = data.stargazers_count || starsCount;
-      } catch (error) {
-        // 静默失败：保留默认值，绝不让异常抛出影响主流程
-      }
-
-      let downloadCount = 1722992;
-      try {
-        const response = await fetchWithTimeout(
-          "https://community.fit2cloud.com/installation-statistics?product=OnePanel&dateRange=AllTime",
-          {},
-          3000,
-        );
-        const count = await response.text();
-        downloadCount = parseInt(count) || downloadCount;
-      } catch (error) {
-        // 静默失败
-      }
-
-      // 直接更新 DOM；不再依赖任何动画 observer / IntersectionObserver
-      const starsEl = document.getElementById("stars-count");
-      if (starsEl) {
-        starsEl.dataset.target = `${starsCount}`;
-        starsEl.textContent = Number(starsCount).toLocaleString();
-      }
-
-      const downloadEl = document.getElementById("download-count");
-      if (downloadEl) {
-        downloadEl.dataset.target = `${downloadCount}`;
-        downloadEl.textContent = Number(downloadCount).toLocaleString();
-      }
-    }
-
     // Intersection Observer for animations
     function setupAnimations() {
       const observerOptions = {
@@ -274,43 +223,6 @@ const structuredDataItems = [
       // Observe all elements with animation classes
       document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
         observer.observe(el);
-      });
-    }
-
-    // Number counter animation
-    function setupCounters() {
-      const counters = document.querySelectorAll('.counter');
-      if (counters.length === 0) return;
-
-      const observerOptions = { threshold: 0.5 };
-
-      const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const counter = entry.target;
-            const dataTarget = counter.getAttribute('data-target');
-            const target = dataTarget ? parseInt(dataTarget) : 0;
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-
-            const updateCounter = () => {
-              if (current < target) {
-                current += step;
-                if (current > target) current = target;
-                counter.textContent = Math.floor(current).toLocaleString();
-                requestAnimationFrame(updateCounter);
-              }
-            };
-
-            updateCounter();
-            counterObserver.unobserve(counter);
-          }
-        });
-      }, observerOptions);
-
-      counters.forEach(counter => {
-        counterObserver.observe(counter);
       });
     }
 
@@ -394,13 +306,9 @@ const structuredDataItems = [
     // 初始化：本地动画/交互立即启动，不等待任何外部网络请求
     document.addEventListener('DOMContentLoaded', () => {
       setupAnimations();
-      setupCounters();
       createParticles();
       setupSmoothScroll();
       setupTypingEffect();
-
-      // 统计数据后台异步获取，独立于首屏显示
-      fetchStarsAndDownloadCount();
     });
   </script>
 </body>
