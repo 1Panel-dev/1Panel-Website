@@ -27,6 +27,10 @@ import { SITE_URL, createOrganizationSchema, createWebPageSchema, createWebsiteS
 import Statistics from '../components/Statistics.astro';
 import LanguageModal from '../components/LanguageModal.astro';
 
+// 全局样式在此统一导入（此前由 24 个页面各自导入，导致 Vite 生成多个重复 CSS chunk，
+// 首页会同时加载两份几乎完全相同的 Tailwind 基础样式，白白增加约 54KB 阻塞渲染的 CSS）
+import '../styles/global.css';
+
 const siteOrigin = (import.meta.env.SITE ?? 'https://1panel.pro').replace(/\/$/, '');
 const faviconHref = publicAsset('favicon.png');
 const interLatinHref = publicAsset('fonts/inter-latin.woff2');

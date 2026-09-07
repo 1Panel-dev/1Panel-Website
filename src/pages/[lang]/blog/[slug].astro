@@ -19,8 +19,6 @@ import {
   BLOG_DATE_LOCALE,
   schemaInLanguage,
 } from '../../../lib/blog';
-import '../../../styles/global.css';
-
 export async function getStaticPaths() {
   const all = await getCollection('blog');
   const articleSlugs = collectArticleSlugs(all);

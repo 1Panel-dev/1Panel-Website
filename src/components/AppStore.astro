@@ -168,6 +168,11 @@ function getAppIcon(app: App, basePath: string): string {
   return app.icon || `${basePath}images/default-app-icon.png`;
 }
 
+// 1x1 透明占位图：非激活分类的图标只渲染占位，等用户切到该分类时再由 JS 换成真实地址，
+// 避免首屏就向 apps-assets.fit2cloud.com 发起上百个图片请求
+const ICON_PLACEHOLDER =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
 // Format download count
 function formatDownloads(downloads: number): string {
   if (downloads >= 1000000) {
@@ -229,10 +234,14 @@ function formatDownloads(downloads: number): string {
                   <!-- App Icon -->
                   <div class="flex-shrink-0">
                     <img
-                      src={getAppIcon(app, basePath)}
+                      src={categoryIndex === 0 ? getAppIcon(app, basePath) : ICON_PLACEHOLDER}
+                      data-src={categoryIndex === 0 ? undefined : getAppIcon(app, basePath)}
                       alt={app.name}
+                      width="64"
+                      height="64"
                       class="w-16 h-16 rounded-xl object-cover group-hover:scale-110 transition-transform duration-300"
                       loading="lazy"
+                      decoding="async"
                       onerror={`this.src='${basePath}images/default-app-icon.png'`}
                     />
                   </div>
@@ -361,6 +370,16 @@ function formatDownloads(downloads: number): string {
     const categoryTabs = document.querySelectorAll('.category-tab');
     const categoryContents = document.querySelectorAll('.category-content');
 
+    // 把占位图换成真实图标地址：只有真正要显示的分类才会发起网络请求
+    function hydrateIcons(container: Element) {
+      container.querySelectorAll('img[data-src]').forEach((img) => {
+        const realSrc = img.getAttribute('data-src');
+        if (!realSrc) return;
+        img.setAttribute('src', realSrc);
+        img.removeAttribute('data-src');
+      });
+    }
+
     categoryTabs.forEach(tab => {
       tab.addEventListener('click', (event) => {
         const target = event.currentTarget as HTMLElement;
@@ -379,8 +398,13 @@ function formatDownloads(downloads: number): string {
         if (targetContent) {
           targetContent.classList.remove('hidden');
           targetContent.classList.add('active');
+          hydrateIcons(targetContent);
         }
       });
     });
+
+    // 兜底：确保默认激活分类的图标即使走占位分支也能正常加载
+    const activeContent = document.querySelector('.category-content.active');
+    if (activeContent) hydrateIcons(activeContent);
   });
 </script>

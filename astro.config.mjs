@@ -76,6 +76,14 @@ export default defineConfig({
     assets: 'assets',
     format: 'file'
   },
+  vite: {
+    build: {
+      // 关闭 CSS 代码分割：此前 Vite 会为全站生成两份内容几乎完全重复的 Tailwind chunk
+      // （_app_.css 66KB + 1panel-vs-cpanel.css 54KB），2192/2201 个页面都在重复下载，
+      // 且二者都是阻塞渲染的。合并后每个页面只加载一份、且可跨页面复用缓存。
+      cssCodeSplit: false
+    }
+  },
   server: {
     host: true,
     port: 4321,

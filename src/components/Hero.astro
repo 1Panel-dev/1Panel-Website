@@ -200,11 +200,24 @@ const prefix = !lang || lang === 'en' ? '' : `/${lang}`;
                 style="outline: none;"
                 aria-label={t(translations, 'hero.playVideo')}
               >
-                  <img
-                    src={`${basePath}images/overview-full.png`}
-                    alt={t(translations, 'hero.dashboardAlt')}
-                    class="w-full h-auto rounded-lg shadow-2xl border border-gray-200"
-                  />
+                  <!-- LCP 元素：用 WebP（约 91KB）替代原 PNG（约 347KB），
+                       并显式声明尺寸避免布局抖动，fetchpriority 提升加载优先级 -->
+                  <picture>
+                    <source
+                      srcset={`${basePath}images/overview-full.webp`}
+                      type="image/webp"
+                    />
+                    <img
+                      src={`${basePath}images/overview-full.png`}
+                      alt={t(translations, 'hero.dashboardAlt')}
+                      width="2143"
+                      height="1134"
+                      loading="eager"
+                      fetchpriority="high"
+                      decoding="async"
+                      class="w-full h-auto rounded-lg shadow-2xl border border-gray-200"
+                    />
+                  </picture>
                   <span
                   class="absolute inset-0 flex items-center justify-center pointer-events-none"
                   style="z-index: 2;"

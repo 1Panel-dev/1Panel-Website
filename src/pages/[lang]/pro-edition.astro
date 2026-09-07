@@ -5,8 +5,6 @@ import PricingContent from '../../components/Pricing.astro';
 import Footer from '../../components/Footer.astro';
 import { NON_DEFAULT_LOCALES, SUPPORTED_LOCALES } from '../../i18n/config';
 import { getTranslations, t, getBasePath } from '../../i18n/utils';
-import '../../styles/global.css';
-
 export function getStaticPaths() {
   return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
 }

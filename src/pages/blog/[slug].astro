@@ -17,8 +17,6 @@ import {
   BLOG_DATE_LOCALE,
 } from '../../lib/blog';
 import { DEFAULT_LOCALE } from '../../i18n/config';
-import '../../styles/global.css';
-
 export async function getStaticPaths() {
   const all = await getCollection('blog');
   return getPostsForLocale(all, DEFAULT_LOCALE).map((post) => ({

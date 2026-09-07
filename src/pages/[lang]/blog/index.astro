@@ -16,8 +16,6 @@ import {
   BLOG_DATE_LOCALE,
 } from '../../../lib/blog';
 import type { Locale } from '../../../i18n/config';
-import '../../../styles/global.css';
-
 export function getStaticPaths() {
   return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang }, props: { lang } }));
 }

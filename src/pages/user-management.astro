@@ -9,8 +9,6 @@ import {
   createBreadcrumbSchema,
   toAbsoluteUrl,
 } from "../lib/seo";
-import '../styles/global.css';
-
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/user-management.html", siteUrl);
 const trialUrl = "mailto:sales@lxware.hk?subject=1Panel Enterprise Trial";

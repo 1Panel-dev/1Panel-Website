@@ -8,8 +8,6 @@ import AppStore from '../components/AppStore.astro';
 import Footer from '../components/Footer.astro';
 import { getTranslations, t, getBasePath } from '../i18n/utils';
 import { SUPPORTED_LOCALES } from '../i18n/config';
-import '../styles/global.css';
-
 const lang = 'en';
 const translations = getTranslations(lang);
 const basePath = getBasePath(undefined);
@@ -83,6 +81,11 @@ const softwareJsonLd = {
       />
     ))}
     <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).href} />
+    <!-- 性能：提前与应用图标 CDN 建立连接，省去首次取图时的 DNS + TCP + TLS 往返 -->
+    <link rel="preconnect" href="https://apps-assets.fit2cloud.com" crossorigin />
+    <link rel="dns-prefetch" href="https://apps-assets.fit2cloud.com" />
+    <!-- 性能：预载首屏 LCP 图片（WebP），避免等 HTML 解析完才开始下载 -->
+    <link rel="preload" as="image" href="/images/overview-full.webp" type="image/webp" fetchpriority="high" />
     <script type="application/ld+json" set:html={JSON.stringify(softwareJsonLd)} />
   </Fragment>
   <Fragment slot="main">
