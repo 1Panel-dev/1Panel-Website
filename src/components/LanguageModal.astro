@@ -4,26 +4,26 @@ import { Icon } from 'astro-icon/components';
 ---
 <!-- Language Detection Modal -->
 <div id="language-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 transform transition-all">
+    <div role="dialog" aria-modal="true" aria-labelledby="language-modal-title" aria-describedby="language-modal-description" class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 transform transition-all">
       <div class="p-6">
         <div class="flex items-center mb-4">
           <div class="flex-shrink-0">
             <Icon name="carbon:earth-filled" class="w-6 h-6 text-1panel" />
           </div>
           <div class="ml-2">
-            <h3 class="text-lg font-medium text-gray-900">Language Detection</h3>
+            <h3 id="language-modal-title" class="text-lg font-medium text-gray-900">Language Detection</h3>
           </div>
         </div>
         <div class="mb-6">
-          <p class="text-sm text-gray-600">
+          <p id="language-modal-description" class="text-sm text-gray-600">
             Your browser language is not Chinese. Would you like to switch to our English site for a better experience?
           </p>
         </div>
         <div class="flex justify-end space-x-3">
-          <button id="stay-here" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors">
+          <button id="stay-here" type="button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors">
             Stay Here
           </button>
-          <button id="go-english" class="px-4 py-2 text-sm font-medium text-white bg-1panel border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+          <button id="go-english" type="button" class="px-4 py-2 text-sm font-medium text-white bg-1panel border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
             Go to English Site
           </button>
         </div>
@@ -55,13 +55,16 @@ import { Icon } from 'astro-icon/components';
     const goButton = document.getElementById('go-english');
 
     if (modal && stayButton && goButton) {
+        const previousFocus = document.activeElement;
+        const modalContent = modal.querySelector('.bg-white');
+        let closing = false;
+
         // 显示弹框
         modal.classList.remove('hidden');
         modal.classList.add('flex');
 
         // 添加淡入动画
-        setTimeout(() => {
-        const modalContent = modal.querySelector('.bg-white');
+        const openingTimer = setTimeout(() => {
         if (modalContent) {
             modalContent.classList.add('scale-100');
             modalContent.classList.remove('scale-95');
@@ -82,7 +85,7 @@ import { Icon } from 'astro-icon/components';
 
         // 点击"前往英文网站"按钮
         goButton.addEventListener('click', function() {
-        window.location.href = 'https://1panel.pro';
+        if (!closing) window.location.href = 'https://1panel.pro';
         });
 
         // 点击背景关闭弹框
@@ -92,16 +95,47 @@ import { Icon } from 'astro-icon/components';
         }
         });
 
+        // 键盘操作只作用于弹框，关闭动画期间也保持焦点在两个按钮之间。
+        function handleKeydown(event) {
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            event.stopPropagation();
+            hideModal();
+        } else if (event.key === 'Tab') {
+            event.preventDefault();
+            const buttons = [stayButton, goButton];
+            const currentIndex = buttons.indexOf(document.activeElement);
+            const nextIndex = event.shiftKey
+              ? (currentIndex <= 0 ? buttons.length - 1 : currentIndex - 1)
+              : (currentIndex + 1) % buttons.length;
+            buttons[nextIndex].focus({ preventScroll: true });
+        }
+        }
+        modal.addEventListener('keydown', handleKeydown);
+        stayButton.focus({ preventScroll: true });
+
         // 隐藏弹框函数
         function hideModal() {
-        const modalContent = modal.querySelector('.bg-white');
+        if (closing) return;
+        closing = true;
+        // 点击遮罩可能先让焦点落到 body，动画结束前仍需留在弹框内。
+        if (!modal.contains(document.activeElement)) {
+            stayButton.focus({ preventScroll: true });
+        }
+        clearTimeout(openingTimer);
         if (modalContent) {
             modalContent.classList.add('scale-95');
             modalContent.classList.remove('scale-100');
         }
         setTimeout(() => {
+            // 如果焦点已经移到页面别处，延迟回调不能再次抢走它。
+            const shouldRestoreFocus = modal.contains(document.activeElement);
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            modal.removeEventListener('keydown', handleKeydown);
+            if (shouldRestoreFocus && previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+                previousFocus.focus({ preventScroll: true });
+            }
         }, 200);
         }
     }

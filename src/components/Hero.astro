@@ -1,6 +1,16 @@
 ---
 // Hero section for 1Panel website
 import { Icon } from "astro-icon/components";
+import { getImage } from "astro:assets";
+import overview from "../../public/images/overview-full.png";
+
+const preview = await getImage({
+  src: overview,
+  width: 600,
+  widths: [600, 1200, 1800],
+  format: "webp",
+  quality: 85,
+});
 ---
 
 <section
@@ -190,7 +200,17 @@ import { Icon } from "astro-icon/components";
               >
                   <picture>
                     <!-- The preview is only visible at lg; mobile needs no image request. -->
-                    <source media="(min-width: 1024px)" srcset="./images/overview-full.png" />
+                    <source
+                      media="(min-width: 1024px)"
+                      type="image/webp"
+                      srcset={preview.srcSet.attribute}
+                      sizes="(min-width: 1280px) 576px, calc((100vw - 128px) / 2)"
+                    />
+                    <source
+                      media="(min-width: 1024px)"
+                      type="image/png"
+                      srcset="./images/overview-full.png"
+                    />
                     <img
                       src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                       alt="1Panel 产品主界面"

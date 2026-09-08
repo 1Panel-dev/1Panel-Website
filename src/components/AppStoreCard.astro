@@ -1,0 +1,59 @@
+---
+export interface AppCardData {
+  name: string;
+  description: string;
+  icon: string;
+  tags: string[];
+  enterprise: boolean;
+}
+
+interface Props {
+  app?: AppCardData;
+  index?: number;
+}
+
+const { app, index = 0 } = Astro.props;
+---
+
+<div class="fade-in-up card group hover:scale-105" style={`animation-delay: ${index * 0.05}s;`}>
+  <div class="flex items-start space-x-4">
+    <div class="flex-shrink-0">
+      <img
+        data-app-icon
+        src={app?.icon}
+        alt={app?.name || ''}
+        class="w-16 h-16 rounded-xl object-cover group-hover:scale-110 transition-transform duration-300"
+        width="64"
+        height="64"
+        loading="lazy"
+        decoding="async"
+        onerror="this.onerror=null;this.src='./images/default-app-icon.png'"
+      />
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between mb-2">
+        <h3 data-app-name class="text-lg font-semibold text-gray-800 truncate pr-2">{app?.name}</h3>
+      </div>
+      <p data-app-description class="text-sm text-gray-600 mb-3 line-clamp-2">
+        {app?.description}
+      </p>
+      {(!app || app.tags.length > 0) && (
+        <div data-app-tags class="flex flex-wrap gap-1 mb-3">
+          {(app?.tags || ['']).map(tag => (
+            <span class="inline-block px-2 py-1 text-xs rounded-md bg-1panel/10 text-1panel border border-1panel/20">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      {(!app || app.enterprise) && (
+        <div data-app-enterprise class="flex items-center text-xs mb-2 text-yellow-700">
+          <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd"></path>
+          </svg>
+          企业版
+        </div>
+      )}
+    </div>
+  </div>
+</div>
