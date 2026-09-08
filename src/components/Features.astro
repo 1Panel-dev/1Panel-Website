@@ -77,22 +77,3 @@ const features = [
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate')
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    document
-      .querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right')
-      .forEach((el) => observer.observe(el))
-  })
-</script>

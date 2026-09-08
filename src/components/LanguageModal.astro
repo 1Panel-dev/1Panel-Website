@@ -31,9 +31,15 @@ import { Icon } from 'astro-icon/components';
     </div>
 </div>
 <script is:inline>
-document.addEventListener('DOMContentLoaded', function() {
+// The modal markup is already parsed. Do not wait for unrelated module downloads.
+(function() {
     // 检查是否已经显示过弹框
-    const hasShownModal = sessionStorage.getItem('languageModalShown');
+    let hasShownModal = false;
+    try {
+      hasShownModal = Boolean(sessionStorage.getItem('languageModalShown'));
+    } catch {
+      // Language selection must still work when storage is unavailable.
+    }
     if (hasShownModal) {
     return;
     }
@@ -63,7 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10);
 
         // 标记已显示
-        sessionStorage.setItem('languageModalShown', 'true');
+        try {
+          sessionStorage.setItem('languageModalShown', 'true');
+        } catch {
+          // Browsers can block session storage in private or restricted contexts.
+        }
 
         // 点击"留在这里"按钮
         stayButton.addEventListener('click', function() {
@@ -96,6 +106,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     }
-});
+})();
 </script>
-  
