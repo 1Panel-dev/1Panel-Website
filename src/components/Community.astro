@@ -1,11 +1,21 @@
 ---
 // Community section for 1Panel website
+import { getImage } from "astro:assets";
+// Original: https://www.lxware.cn/1panel-contributors/static/image/contributors.590ce064.png
+import contributors from "../assets/contributors.png";
+
+const imageWidths = [480, 960, 1440, 2272];
+const imageSizes = "(min-width: 1280px) 1216px, (min-width: 1024px) calc(100vw - 64px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)";
+const [avif, webp] = await Promise.all([
+  getImage({ src: contributors, width: 2272, widths: imageWidths, format: "avif", quality: 45 }),
+  getImage({ src: contributors, width: 2272, widths: imageWidths, format: "webp", quality: 85 }),
+]);
 ---
 
 <section id="quickstart" class="section-padding bg-gray-100">
   <div class="container-custom">
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-8 lg:mb-16">
       <h2 class="fade-in-up text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
         活跃的
         <span class="text-1panel-gradient">开源社区</span>
@@ -14,19 +24,25 @@
         众多开发者、用户和社区成员共同构建了 1Panel 的繁荣生态。
       </p>
     </div>
-    <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="hidden lg:block shadow-lg rounded-lg overflow-hidden">
       <a href="https://www.lxware.cn/1panel-contributors#/all" target="_blank">
-        <img
-          src="https://www.lxware.cn/1panel-contributors/static/image/contributors.590ce064.png"
-          alt="Contributors"
-          width="2272"
-          height="736"
-          loading="lazy"
-          decoding="async"
-        />
+        <picture>
+          <!-- Match the desktop-only container so mobile does not request any image format. -->
+          <source media="(min-width: 1024px)" type="image/avif" srcset={avif.srcSet.attribute} sizes={imageSizes} />
+          <source media="(min-width: 1024px)" type="image/webp" srcset={webp.srcSet.attribute} sizes={imageSizes} />
+          <source media="(min-width: 1024px)" type="image/png" srcset={contributors.src} />
+          <img
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            alt="Contributors"
+            width={contributors.width}
+            height={contributors.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
       </a>
     </div>
-    <div class="text-center mt-8">
+    <div class="text-center lg:mt-8">
       <a 
         href="https://www.lxware.cn/1panel-contributors#/" 
         target="_blank" 

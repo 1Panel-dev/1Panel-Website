@@ -1,6 +1,8 @@
 ---
 // Header component for 1Panel website
 import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+import logo from "../../public/images/logo-blue.png";
 import Fit2cloudHeader from "./Fit2cloudHeader.astro";
 import { withBasePath } from "../lib/seo";
 
@@ -16,7 +18,19 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
       <!-- Logo -->
       <div class="flex items-center space-x-3">
         <a href="/">
-          <img src="/images/logo-blue.png" alt="1Panel Logo" class="h-10 lg:h-11" />
+          <Picture
+            src={logo}
+            alt="1Panel Logo"
+            width={480}
+            widths={[160, 320, 480]}
+            sizes="(min-width: 1024px) 160px, 145px"
+            formats={["webp"]}
+            fallbackFormat="png"
+            quality={90}
+            loading="eager"
+            class="h-10 lg:h-11 w-auto"
+            style="aspect-ratio: 1762 / 486;"
+          />
         </a>
       </div>
 
@@ -209,9 +223,14 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
+        type="button"
+        aria-label="切换导航菜单"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
         class="lg:hidden p-2 text-gray-700 hover:text-gray-900"
       >
         <svg
+          aria-hidden="true"
           class="w-6 h-6"
           fill="none"
           stroke="currentColor"
@@ -413,16 +432,29 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
     );
 
     if (mobileMenuBtn && mobileMenu) {
+      const setMobileMenuOpen = (isOpen: boolean) => {
+        mobileMenu.classList.toggle("hidden", !isOpen);
+        mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
+      };
+
       mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        setMobileMenuOpen(mobileMenu.classList.contains("hidden"));
       });
 
       // Close mobile menu when clicking on a link
       const mobileLinks = mobileMenu.querySelectorAll("a");
       mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
+          setMobileMenuOpen(false);
         });
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+          const focusIsInMenu = mobileMenu.contains(document.activeElement);
+          setMobileMenuOpen(false);
+          if (focusIsInMenu) mobileMenuBtn.focus();
+        }
       });
     }
 

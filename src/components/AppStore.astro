@@ -1,6 +1,7 @@
 ---
 // AppStore section for 1Panel website
 // 获取应用商店数据并实现分类切换功能
+import AppStoreCard, { type AppCardData } from './AppStoreCard.astro';
 
 interface App {
   id: string;
@@ -114,6 +115,33 @@ try {
 function getAppIcon(app: App): string {
   return app.icon || './images/default-app-icon.png';
 }
+
+function getCardData(app: App): AppCardData {
+  return {
+    name: app.name,
+    description: app.description || app.title || '',
+    icon: getAppIcon(app),
+    tags: app.tags?.slice(0, 2) || [],
+    enterprise: Boolean(app.additionalProperties?.enterprise),
+  };
+}
+
+// Keep the default cards in HTML; share each remaining application's data across categories.
+const appIndexes = new Map<App, number>();
+const catalogApps: AppCardData[] = [];
+const catalogCategories = categories.map(category => ({
+  name: category.name,
+  totalApps: category.totalApps,
+  apps: category.apps.map(app => {
+    if (!appIndexes.has(app)) {
+      appIndexes.set(app, catalogApps.length);
+      catalogApps.push(getCardData(app));
+    }
+    return appIndexes.get(app)!;
+  }),
+}));
+const catalogJson = JSON.stringify({ apps: catalogApps, categories: catalogCategories })
+  .replace(/</g, '\\u003c');
 ---
 
 <section id="appstore" class="section-padding bg-gray-100">
@@ -133,13 +161,16 @@ function getAppIcon(app: App): string {
         <div class="fade-in-up flex flex-wrap justify-center gap-2 mb-8" style="animation-delay: 0.4s;">
           {categories.map((category: Category, index: number) => (
             <button 
+              type="button"
               class={`category-tab px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                 index === 0 ? 'active' : ''
               }`}
               data-category={category.name}
+              data-category-index={index}
+              aria-pressed={index === 0 ? 'true' : 'false'}
             >
               {category.name}
-              <span class="ml-2 text-xs opacity-75">({category.totalApps})</span>
+              <span class="ml-2 text-xs">({category.totalApps})</span>
             </button>
           ))}
         </div>
@@ -148,65 +179,20 @@ function getAppIcon(app: App): string {
 
     <!-- Apps Container -->
     <div id="apps-container">
-      {categories.map((category: Category, categoryIndex: number) => (
+      {categories.slice(0, 1).map((category: Category) => (
         <div 
-          class={`category-content ${categoryIndex === 0 ? 'active' : 'hidden'}`}
+          class="category-content active"
           data-category={category.name}
         >
           <!-- Apps Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div id="app-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {category.apps.map((app: App, index: number) => (
-              <div class="fade-in-up card group hover:scale-105" style={`animation-delay: ${index * 0.05}s;`}>
-                <div class="flex items-start space-x-4">
-                  <!-- App Icon -->
-                  <div class="flex-shrink-0">
-                    <img 
-                      src={getAppIcon(app)} 
-                      alt={app.name}
-                      class="w-16 h-16 rounded-xl object-cover group-hover:scale-110 transition-transform duration-300"
-                      loading="lazy"
-                      onerror="this.src='./images/default-app-icon.png'"
-                    />
-                  </div>
-                  
-                  <!-- App Info -->
-                  <div class="flex-1 min-w-0">
-                    <div class="flex items-start justify-between mb-2">
-                      <h3 class="text-lg font-semibold text-gray-800 truncate pr-2">{app.name}</h3>
-                    </div>
-                    
-                    <p class="text-sm text-gray-600 mb-3 line-clamp-2">
-                      {app.description || app.title}
-                    </p>
-                    
-                    <!-- Tags -->
-                    {app.tags && app.tags.length > 0 && (
-                      <div class="flex flex-wrap gap-1 mb-3">
-                        {app.tags.slice(0, 2).map((tag: string) => (
-                          <span class="inline-block px-2 py-1 text-xs rounded-md bg-1panel/10 text-1panel border border-1panel/20">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    
-                    <!-- Enterprise Badge -->
-                    {app.additionalProperties?.enterprise && (
-                      <div class="flex items-center text-xs mb-2 text-yellow-600">
-                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                          <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd"></path>
-                        </svg>
-                        企业版
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <AppStoreCard app={getCardData(app)} index={index} />
             ))}
           </div>
           <!-- Category Stats and View All Button -->
           <div class="text-center mt-8">
-            <p class="text-sm text-gray-500 mb-4">
+            <p id="app-category-summary" class="text-sm text-gray-600 mb-4">
               {category.name} • 共 {category.totalApps} 个应用
             </p>
             
@@ -225,6 +211,13 @@ function getAppIcon(app: App): string {
         </div>
       ))}
     </div>
+
+    {categories.length > 1 && (
+      <>
+        <template id="app-card-template"><AppStoreCard /></template>
+        <script id="app-catalog-data" type="application/json" is:inline set:html={catalogJson} />
+      </>
+    )}
 
     <!-- No Apps Message -->
     {categories.length === 0 && (
@@ -251,13 +244,13 @@ function getAppIcon(app: App): string {
   
   .category-tab {
     background: rgba(229, 231, 235, 0.8);
-    color: #6b7280;
+    color: #4b5563;
     border: 1px solid rgba(209, 213, 219, 0.5);
   }
   
   .category-tab:hover {
     background: rgba(0, 94, 235, 0.1);
-    color: #005eeb;
+    color: #0055d4;
     border-color: rgba(0, 94, 235, 0.3);
     transform: translateY(-2px);
   }
@@ -296,29 +289,77 @@ function getAppIcon(app: App): string {
 </style>
 
 <script>
-  // 分类切换功能
+  import type { AppCardData } from './AppStoreCard.astro';
+
+  interface AppCatalog {
+    apps: AppCardData[];
+    categories: { name: string; totalApps: number; apps: number[] }[];
+  }
+
+  // Render a category only when selected, without fetching any data in the browser.
   document.addEventListener('DOMContentLoaded', function() {
-    const categoryTabs = document.querySelectorAll('.category-tab');
-    const categoryContents = document.querySelectorAll('.category-content');
-    
-    categoryTabs.forEach(tab => {
-      tab.addEventListener('click', (event) => {
-        const target = event.currentTarget as HTMLElement;
-        const targetCategory = target.getAttribute('data-category');
-        
-        // 移除所有活动状态
-        categoryTabs.forEach(t => t.classList.remove('active'));
-        categoryContents.forEach(c => {
-          c.classList.remove('active');
-          c.classList.add('hidden');
+    const section = document.getElementById('appstore');
+    const data = section?.querySelector<HTMLScriptElement>('#app-catalog-data');
+    const template = section?.querySelector<HTMLTemplateElement>('#app-card-template');
+    const grid = section?.querySelector<HTMLElement>('#app-grid');
+    const panel = section?.querySelector<HTMLElement>('.category-content');
+    const summary = section?.querySelector<HTMLElement>('#app-category-summary');
+    if (!section || !data || !template || !grid || !panel || !summary) return;
+
+    const catalog: AppCatalog = JSON.parse(data.textContent || '{}');
+    const tabs = section.querySelectorAll<HTMLButtonElement>('.category-tab');
+    let activeCategoryIndex = 0;
+
+    function createCard(app: AppCardData, index: number): HTMLElement {
+      const card = template!.content.firstElementChild!.cloneNode(true) as HTMLElement;
+      const icon = card.querySelector<HTMLImageElement>('[data-app-icon]')!;
+      icon.src = app.icon;
+      icon.alt = app.name;
+      card.querySelector('[data-app-name]')!.textContent = app.name;
+      card.querySelector('[data-app-description]')!.textContent = app.description;
+
+      const tags = card.querySelector('[data-app-tags]')!;
+      const tagTemplate = tags.firstElementChild!;
+      if (app.tags.length) {
+        tags.replaceChildren(...app.tags.map(tag => {
+          const label = tagTemplate.cloneNode(true);
+          label.textContent = tag;
+          return label;
+        }));
+      } else {
+        tags.remove();
+      }
+      if (!app.enterprise) card.querySelector('[data-app-enterprise]')!.remove();
+
+      // These cards are created after Layout's initial animation observers run.
+      card.classList.add('animate');
+      card.style.animationDelay = `${index * 0.05}s`;
+      return card;
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const categoryIndex = Number(tab.dataset.categoryIndex);
+        if (categoryIndex === activeCategoryIndex) return;
+        const category = catalog.categories[categoryIndex];
+        if (!category) return;
+
+        const cards = category.apps.map((appIndex, index) => createCard(catalog.apps[appIndex], index));
+        grid.replaceChildren(...cards);
+        panel.dataset.category = category.name;
+        summary.textContent = `${category.name} • 共 ${category.totalApps} 个应用`;
+        tabs.forEach(item => {
+          const selected = item === tab;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-pressed', String(selected));
         });
-        
-        // 添加当前选中状态
-        target.classList.add('active');
-        const targetContent = document.querySelector(`[data-category="${targetCategory}"].category-content`);
-        if (targetContent) {
-          targetContent.classList.remove('hidden');
-          targetContent.classList.add('active');
+        activeCategoryIndex = categoryIndex;
+
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          panel.animate?.(
+            [{ opacity: 0, transform: 'translateY(20px)' }, { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 500, easing: 'ease-out' },
+          );
         }
       });
     });
