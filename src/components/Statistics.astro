@@ -1,22 +1,9 @@
 ---
 // Statistics section for 1Panel website
 ---
-<!-- 百度统计：defer 注入避免抢占首屏带宽 -->
+<!-- 立即保留统计队列，首屏加载完成后再请求第三方脚本。 -->
 <script is:inline>
   var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?702b760894a434f58ec2b765f9ad39ba";
-    hm.async = true;
-    hm.defer = true;
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2ER2N0NSN"
-></script>
-<script is:inline>
   window.dataLayer = window.dataLayer || [];
 
   function gtag() {
@@ -24,6 +11,45 @@
   }
 
   gtag("js", new Date());
-
   gtag("config", "G-P2ER2N0NSN");
+
+  (function () {
+    var loaded = false;
+    var scheduled = false;
+
+    function loadStatistics() {
+      if (loaded) return;
+      loaded = true;
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener("load", scheduleStatistics);
+
+      [
+        "https://hm.baidu.com/hm.js?702b760894a434f58ec2b765f9ad39ba",
+        "https://www.googletagmanager.com/gtag/js?id=G-P2ER2N0NSN",
+      ].forEach(function (src) {
+        var script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        document.head.appendChild(script);
+      });
+    }
+
+    function scheduleStatistics() {
+      if (loaded || scheduled) return;
+      scheduled = true;
+      if (typeof window.requestIdleCallback === "function") {
+        window.requestIdleCallback(loadStatistics, { timeout: 1500 });
+      } else {
+        window.setTimeout(loadStatistics, 200);
+      }
+    }
+
+    // 慢速或失败的图片不应无限推迟统计，也不要求用户先发生交互。
+    var fallbackTimer = window.setTimeout(loadStatistics, 4000);
+    if (document.readyState === "complete") {
+      scheduleStatistics();
+    } else {
+      window.addEventListener("load", scheduleStatistics, { once: true });
+    }
+  })();
 </script>

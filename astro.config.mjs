@@ -33,7 +33,8 @@ const extensionlessComparisonRoutes = () => ({
 });
 
 export default defineConfig({
-  integrations: [tailwind(), react(), icon(), extensionlessComparisonRoutes()],
+  // global.css already includes Tailwind's base, components and utilities.
+  integrations: [tailwind({ applyBaseStyles: false }), react(), icon(), extensionlessComparisonRoutes()],
   site: 'https://1panel.cn',
   output: 'static',
   build: {
