@@ -1,3 +1,6 @@
+# 应用商店数据：构建／开发前由 scripts/fetch-1panel-json.mjs 自动拉取
+src/1panel.json
+
 # Vite related
 dist/
 node_modules/
