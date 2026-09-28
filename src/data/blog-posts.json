@@ -1,5 +1,34 @@
 [
   {
+    "id": 121,
+    "title": "1Panel AI 网关 v1.3 发布：智能路由新增支持 Jev 模式",
+    "description": "2026 年 9 月 28 日，1Panel AI 网关发布 v1.3 版本，智能路由新增面向多个自定义业务目标的 Jev 语义决策模式。管理员定义路由目标及其适用范围后，业务应用统一通过 auto 入口发起请求，由 Jev 完成结构化目标选择，网关负责权限校验、模型组调度与失败兜底。文章包含实现原理、两种智能路由模式对比、配置方法与兜底熔断、数据边界说明。",
+    "date": "2026-09-28",
+    "dateText": "2026 年 9 月 28 日",
+    "slug": "1panel-ai-gateway-jev-mode",
+    "path": "/blog/1panel-ai-gateway-jev-mode.html",
+    "url": "https://1panel.cn/blog/1panel-ai-gateway-jev-mode.html",
+    "cover": "/images/blog/1panel-ai-gateway-jev-mode/cover.png",
+    "content": "<p>企业接入多款大模型之后，常常会遇到一类决策问题：简单任务要不要用高价大模型？复杂推理如何稳定匹配强能力模型？不同类型的业务请求，又该怎样挑选适配的模型？</p>\n\n<p>2026 年 9 月 28 日，<a href=\"/ai-gateway.html\" class=\"text-1panel hover:underline\">1Panel AI 网关</a>发布 v1.3 版本。该版本集成了 TypeSafe AI 的 AI 模型 Jev，新增面向多个自定义业务目标的语义决策模式。管理员只需定义路由目标及其适用范围，业务应用统一使用 auto 模型入口；收到请求后，请求交由 Jev 判定匹配目标，1Panel AI 网关负责调度对应的模型组，业务应用无需自行判断模型选择逻辑。</p>\n\n<h2>一、实现原理</h2>\n\n<p>Jev 是 TypeSafe AI 推出的 System One 模型。与面向内容生成的大语言模型不同，Jev 面向软件流程中的快速判断：应用提供状态和类型化问题，Jev 返回结构化答案、候选概率以及置信度，代码可以直接据此分支、排序或路由。</p>\n\n<p>在实际业务中，不同业务请求对模型的能力、成本、时延要求差异很大。翻译、摘要、简单问答类任务适合使用低成本、低延迟的轻量模型；架构分析、复杂代码、多步推理类任务适合使用高能力大模型。原有的向量模式只能区分简单与复杂任务，而 1Panel AI 网关集成的 Jev 模式解决的，是“这个请求应该进入哪个自定义业务目标”的问题。</p>\n\n<p>Jev 模式的工作流程如下：</p>\n\n<ul>\n    <li><strong>统一入口：</strong>业务应用只访问一个统一入口，并将模型名称设置为 auto；</li>\n    <li><strong>目标定义：</strong>管理员按业务需要定义 2～10 个路由目标，并为每个目标关联一个模型组；</li>\n    <li><strong>结构化选择：</strong>Jev 根据当前请求，在已配置目标中完成结构化选择；</li>\n    <li><strong>网关调度：</strong>1Panel AI 网关负责权限校验、候选模型筛选、模型组调度、失败兜底、日志和统计。</li>\n</ul>\n\n<p>这样一来，路由策略与业务代码解耦，模型调整也不再要求应用侧同步改造。</p>\n\n<figure><img src=\"/images/blog/1panel-ai-gateway-jev-mode/image001.png\" alt=\"图1 向量模式和 Jev 模式实现原理\" loading=\"lazy\" /><figcaption>图1 向量模式和 Jev 模式实现原理</figcaption></figure>\n\n<h2>二、两种智能路由模式对比</h2>\n\n<p>Jev 模式不会替代原有的向量模式，两种模式的决策方式与适用场景不同。同一时间只运行选中的一种模式；切换模式时，另一种模式的既有配置会被保留，方便管理员根据需要调整和切回。管理员可以根据路由维度、目标数量、现有数据和外部服务边界，选择更合适的模式。</p>\n\n<p><strong>表 1 本地规则 + 向量模式与 Jev 模式对比</strong></p>\n<table>\n    <thead>\n        <tr>\n            <th>对比维度</th>\n            <th>本地规则 + 向量模式</th>\n            <th>Jev 模式</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>核心问题</td>\n            <td>判断请求属于“简单”还是“复杂”</td>\n            <td>从 2～10 个自定义目标中选择最合适的一项</td>\n        </tr>\n        <tr>\n            <td>目标结构</td>\n            <td>固定的简单模型组与复杂模型组</td>\n            <td>管理员自定义目标名称、适用说明、排除说明、示例和关联模型组</td>\n        </tr>\n        <tr>\n            <td>判断依据</td>\n            <td>本地复杂度规则，加上可选的样本向量相似度</td>\n            <td>Jev 对当前请求和目标定义进行 Choice 语义判断</td>\n        </tr>\n        <tr>\n            <td>配置重点</td>\n            <td>路由样本、向量、相似度阈值、置信度差值和 Top-K</td>\n            <td>目标之间清晰的语义边界，以及 TypeSafe API Key</td>\n        </tr>\n        <tr>\n            <td>结果信息</td>\n            <td>简单 / 复杂标签、路由分数、匹配样本等</td>\n            <td>目标选择、所有候选目标的概率、置信度和 Jev Token</td>\n        </tr>\n        <tr>\n            <td>异常处理</td>\n            <td>向量不可用时按本地规则继续判断</td>\n            <td>Jev 不可用、限流、超时或返回 other 时进入指定兜底模型组</td>\n        </tr>\n        <tr>\n            <td>更适合</td>\n            <td>以任务难度分层、类别稳定且希望用自有样本校准的场景</td>\n            <td>多业务意图、多专长模型组、目标经常调整，且难以靠二分类表达的场景</td>\n        </tr>\n    </tbody>\n</table>\n\n<h3>1. 选择“本地规则 + 向量模式”的场景</h3>\n\n<p>如果路由目标主要是“轻量模型”和“高能力模型”的二级分流，分类边界长期稳定，并且已经积累了一批具有代表性的简单 / 复杂样本，原有的向量模式更加直接。管理员可以通过样本、阈值和 Top-K 控制匹配过程；即使向量服务暂时不可用，AI 网关仍可使用本地复杂度规则完成基础判断。其典型的应用场景包括：</p>\n\n<ul>\n    <li>简单问答调用轻量模型，复杂推理调用高能力模型；</li>\n    <li>希望用自身业务样本校准“简单 / 复杂”的判断边界；</li>\n    <li>更关注任务难度分层，而不是业务意图或模型专长。</li>\n</ul>\n\n<h3>2. 选择 Jev 模式的场景</h3>\n\n<p>当“简单 / 复杂”已经不足以表达模型选择策略时，Jev 模式更加合适。它可以同时判断多个管理员定义的目标，不需要先维护路由样本或构建样本向量，而是直接理解目标名称、适用说明、排除说明和示例之间的语义边界。其典型的应用场景包括：</p>\n\n<ul>\n    <li>在通用问答、代码分析、内容创作、翻译等多个专长模型组之间进行选择；</li>\n    <li>按业务意图选择对应知识域或能力侧重的模型组；</li>\n    <li>目标会随业务变化，希望通过修改自然语言定义快速调整策略；</li>\n    <li>希望看到各目标概率与置信度，用于观察和持续优化路由边界。</li>\n</ul>\n\n<h2>三、Jev 模式配置方法</h2>\n\n<h3>1. 启用智能路由并选择 Jev 模型</h3>\n\n<p>用户进入 1Panel AI 网关管理端，依次选择“网关设置”→“智能路由”，打开智能路由的“状态”开关，将“路由模式”选项切换为“Jev”模式，并且确认统一入口模型名称。默认情况下，应用可通过 auto 发起智能路由请求。</p>\n\n<h3>2. 配置 TypeSafe 连接与兜底模型组</h3>\n\n<p>在“Jev 决策服务”栏目中填写 TypeSafe API Key 配置信息，并且选择兜底模型组。兜底模型组用于处理 Jev 判定为其他目标时，或者决策服务超时、限流、暂时不可用等情况。保存后可以点击“测试连接”按钮检查凭据，并且确认 jev-latest 模型是否可用。</p>\n\n<figure><img src=\"/images/blog/1panel-ai-gateway-jev-mode/image002.png\" alt=\"图2 启用 Jev 模式并配置相关信息\" loading=\"lazy\" /><figcaption>图2 启用 Jev 模式并配置相关信息</figcaption></figure>\n\n<h3>3. 定义路由目标</h3>\n\n<p>每个路由目标包含目标名称、关联模型组、适用说明、排除说明和示例。启用 Jev 模式至少需要 2 个已启用目标，最多可配置 10 个目标。编写目标时，建议遵循以下三个原则：</p>\n\n<ul>\n    <li><strong>目标名称要直观</strong>，例如“日常问答”“复杂推理与代码分析”；</li>\n    <li><strong>适用说明</strong>描述应该进入该目标的任务类型、难度和场景；</li>\n    <li><strong>排除说明</strong>重点写容易混淆、但不应进入该目标的情况，并且补充具有代表性的示例。</li>\n</ul>\n\n<figure><img src=\"/images/blog/1panel-ai-gateway-jev-mode/image003.png\" alt=\"图3 在 1Panel AI 网关的 Jev 模式下定义路由目标\" loading=\"lazy\" /><figcaption>图3 在 1Panel AI 网关的 Jev 模式下定义路由目标</figcaption></figure>\n\n<p>配置完成后，管理员还可以点击“测试 Jev 路由”按钮，在打开的对话框中输入请求文本，查看目标名称、置信度、目标概率、Jev Token 用量与决策时延，快速检查目标描述是否清晰。</p>\n\n<figure><img src=\"/images/blog/1panel-ai-gateway-jev-mode/image004.png\" alt=\"图4“测试 Jev 路由”对话框\" loading=\"lazy\" /><figcaption>图4“测试 Jev 路由”对话框</figcaption></figure>\n\n<h2>四、总结</h2>\n\n<p>1Panel AI 网关会在决策日志和统计中记录路由目标、决策来源、Jev 模型、候选概率、置信度、决策 Token、决策时延与回退原因等信息。管理员可以据此观察各类请求的分布，定位边界不清的目标，并且持续优化适用说明、排除说明和示例。</p>\n\n<p>当 Jev 返回 other，或遇到超时、限流、服务不可用、并发过载等情况时，AI 网关会自动进入已配置的兜底模型组。对于连续发生的上游异常，AI 网关还会通过熔断机制减少无效调用，避免决策服务故障持续放大至业务请求链路。</p>\n\n<p>在数据边界上，AI 网关只向 TypeSafe 发送截断后的当前用户文本，以及请求是否包含工具声明、文本是否发生截断这两个必要特征，不会发送系统消息、助手历史、工具定义、网关凭据、模型组信息或者非文本内容。管理员仍需根据自身业务的数据合规要求，决定是否启用外部决策服务。</p>\n\n<figure><img src=\"/images/blog/1panel-ai-gateway-jev-mode/image005.png\" alt=\"图5 1Panel AI 网关智能路由决策日志\" loading=\"lazy\" /><figcaption>图5 1Panel AI 网关智能路由决策日志</figcaption></figure>\n\n<figure><img src=\"/images/blog/1panel-ai-gateway-jev-mode/image006.png\" alt=\"图6 1Panel AI 网关智能路由统计页面\" loading=\"lazy\" /><figcaption>图6 1Panel AI 网关智能路由统计页面</figcaption></figure>",
+    "keywords": [
+      "1Panel AI 网关",
+      "Jev 模式",
+      "智能路由",
+      "TypeSafe AI",
+      "System One",
+      "语义决策",
+      "模型路由",
+      "auto 模型入口",
+      "兜底模型组",
+      "熔断",
+      "向量模式",
+      "路由目标",
+      "大模型网关",
+      "AI 治理",
+      "私有化部署"
+    ]
+  },
+  {
     "id": 120,
     "title": "1Panel AI一体机（方案三）实测报告：双卡RTX Pro 5000部署Qwen3.8-Flash-Next",
     "description": "在 1Panel AI 一体机（方案三，2 × NVIDIA RTX Pro 5000 Blackwell 72GB / 128GB 内存）上，使用 vLLM 部署 Qwen3.8-Flash-Next 完成压力测试，并接入 WorkBuddy 在飞致云生产环境中连续运行一周。本文完整呈现该配置的软硬件参数与测试口径，给出从 1 到 16 并发的压力测试数据，以及在真实办公负载下的首字延时与吞吐表现，为评估部门级私有化 AI 部署提供一份可复现的实测参考。",
