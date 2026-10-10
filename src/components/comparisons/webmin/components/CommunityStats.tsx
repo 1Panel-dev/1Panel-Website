@@ -50,7 +50,7 @@ const CommunityStats: React.FC = () => {
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <Calendar className="h-8 w-8 text-green-500 mx-auto mb-3" />
-                <div className="text-lg font-bold text-gray-900 mb-1">2025-06-17</div>
+                <div className="text-lg font-bold text-gray-900 mb-1">2026-09-24</div>
                 <div className="text-gray-600 font-medium">最近更新</div>
                 <div className="text-green-600 text-sm mt-1">活跃开发</div>
               </div>
