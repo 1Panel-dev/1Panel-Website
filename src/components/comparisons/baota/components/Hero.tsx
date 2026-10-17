@@ -67,7 +67,7 @@ const Hero = () => {
                 pointerEvents: 'auto'
               }}
               target="_blank"
-              href="https://1panel.cn/docs/installation/online_installation/"
+              href="https://docs.fit2cloud.com/1panel/installation/online-installation"
               rel="noopener noreferrer"
                 className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-all duration-200 font-semibold"
               >

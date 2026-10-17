@@ -22,7 +22,7 @@ const CallToAction = () => {
       icon: BookOpen,
       title: '官方文档',
       description: '详细的安装和使用指南',
-      link: 'https://1panel.cn/docs/',
+      link: 'https://docs.fit2cloud.com/1panel/',
       color: 'bg-green-600 hover:bg-green-700',
       primary: false
     }
@@ -197,7 +197,7 @@ const CallToAction = () => {
                 <span>GitHub 社区</span>
               </a>
               <a
-                href="https://1panel.cn/docs/"
+                href="https://docs.fit2cloud.com/1panel/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center space-x-2 rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-gray-700 transition-all duration-300 hover:border-blue-300 hover:text-blue-700"

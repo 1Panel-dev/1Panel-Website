@@ -77,7 +77,7 @@ const capabilityCards = [
 
 const pageTitle = "1Panel AI 网关 - 打造企业专属的 AI 统一接入与治理平台";
 const pageDescription =
-  "1Panel AI 网关为内部 AI 应用和模型调用提供统一接入入口，支持模型代理、席位管理、用量统计、智能路由和内容合规。现已向社区开放，10 人及以下团队可免费使用，支持 1Panel 应用商店一键安装与 Docker 部署。";
+  "1Panel AI 网关为内部 AI 应用和模型调用提供统一接入入口，支持模型代理、席位管理、用量统计、智能路由和内容合规。现已向社区开放，10 人及以下团队可免费使用，支持离线安装与 1Panel 应用商店一键安装。";
 const aiGatewaySchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -117,7 +117,7 @@ const aiGatewaySchema = {
     "1Panel AI 网关",
     "AI 网关",
     "AI 网关免费使用",
-    "AI 网关 Docker 部署",
+    "AI 网关离线安装",
     "统一接入",
     "模型代理",
     "席位管理",
@@ -201,7 +201,75 @@ const aiGatewaySchema = {
           </div>
 
           <div class="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
-            <!-- 方式一：1Panel 应用商店 -->
+            <!-- 方式一：离线安装 -->
+            <div class="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-orange-200 hover:shadow-md lg:p-7">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-orange-50 text-orange-600">
+                    <Icon name="carbon:package" class="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p class="text-xs font-semibold tracking-wider text-gray-400">安装方式一</p>
+                    <h3 class="text-lg font-bold leading-snug text-gray-900">使用离线安装包部署（推荐）</h3>
+                  </div>
+                </div>
+              </div>
+
+              <p class="mt-4 text-sm leading-relaxed text-gray-600">
+                推荐部署方式。离线包内置 Docker、AI 网关与 PostgreSQL 镜像，安装全程无需外网，适用于内网、离线机房及涉密环境。
+              </p>
+
+              <ol class="mt-5 space-y-3">
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">1</span>
+                  <p class="text-sm leading-relaxed text-gray-600">准备一台 Linux 部署服务器</p>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">2</span>
+                  <p class="text-sm leading-relaxed text-gray-600">从 <strong class="font-semibold text-gray-800">飞致云开源社区</strong> 下载离线包，并上传至服务器</p>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">3</span>
+                  <p class="text-sm leading-relaxed text-gray-600">解压安装包，执行安装脚本 <code class="rounded bg-gray-50 px-1.5 py-0.5 font-mono text-[13px] text-gray-800">install.sh</code></p>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">4</span>
+                  <p class="text-sm leading-relaxed text-gray-600">按提示设置安装目录、端口与管理员账号密码</p>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-semibold text-gray-600">5</span>
+                  <p class="text-sm leading-relaxed text-gray-600">安装完成后，浏览器访问 <code class="rounded bg-gray-50 px-1.5 py-0.5 font-mono text-[13px] text-gray-800">http://服务器IP:8080</code> 登录网关</p>
+                </li>
+              </ol>
+
+              <div class="relative mt-5 rounded-lg bg-gray-900 px-4 py-3.5">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="font-mono text-[11px] uppercase tracking-wider text-gray-500">Terminal</span>
+                  <button
+                    type="button"
+                    data-copy-target="offline-install-cmd"
+                    aria-label="复制离线安装命令"
+                    class="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-gray-200 transition-colors duration-200 hover:bg-white/20"
+                  >
+                    <Icon name="carbon:copy" class="h-3.5 w-3.5" />
+                    <span data-copy-label>复制</span>
+                  </button>
+                </div>
+                <pre class="overflow-x-auto"><code id="offline-install-cmd" class="whitespace-pre font-mono text-[13px] leading-relaxed text-gray-100">cd /home
+tar zxvf 1panel-ai-gateway-v1.4.0-linux-amd64.tar.gz
+cd 1panel-ai-gateway-v1.4.0-linux-amd64
+/bin/bash install.sh</code></pre>
+              </div>
+
+              <div class="mt-auto border-t border-gray-100 pt-4">
+                <a href="https://docs.fit2cloud.com/ai-gateway/installation/offline_installation" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-1panel">
+                  查看详情
+                  <Icon name="carbon:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
+              </div>
+            </div>
+
+            <!-- 方式二：1Panel 应用商店 -->
             <div class="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-orange-200 hover:shadow-md lg:p-7">
               <div class="flex items-start justify-between gap-3">
                 <div class="flex items-center gap-3">
@@ -209,7 +277,7 @@ const aiGatewaySchema = {
                     <Icon name="carbon:application" class="h-5 w-5" />
                   </span>
                   <div>
-                    <p class="text-xs font-semibold tracking-wider text-gray-400">安装方式一</p>
+                    <p class="text-xs font-semibold tracking-wider text-gray-400">安装方式二</p>
                     <h3 class="text-lg font-bold leading-snug text-gray-900">通过 1Panel 应用商店一键安装</h3>
                   </div>
                 </div>
@@ -248,68 +316,6 @@ const aiGatewaySchema = {
                   在 1Panel 应用商店中找到「1Panel AI 网关」
                 </figcaption>
               </figure>
-
-              <div class="mt-auto border-t border-gray-100 pt-4">
-                <a href="https://docs.fit2cloud.com/ai-gateway/quick_start" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-1panel">
-                  查看详情
-                  <Icon name="carbon:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-              </div>
-            </div>
-
-            <!-- 方式二：docker run -->
-            <div class="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-orange-200 hover:shadow-md lg:p-7">
-              <div class="flex items-start justify-between gap-3">
-                <div class="flex items-center gap-3">
-                  <span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-orange-50 text-orange-600">
-                    <Icon name="carbon:terminal" class="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p class="text-xs font-semibold tracking-wider text-gray-400">安装方式二</p>
-                    <h3 class="text-lg font-bold leading-snug text-gray-900">使用 docker run 直接运行</h3>
-                  </div>
-                </div>
-              </div>
-
-              <p class="mt-4 text-sm leading-relaxed text-gray-600">
-                官方镜像为 <code class="rounded bg-gray-50 px-1.5 py-0.5 font-mono text-[13px] text-gray-800">1panel/ai-gateway</code>，未指定版本时默认拉取最新版本。
-              </p>
-
-              <div class="relative mt-5 rounded-lg bg-gray-900 px-4 py-3.5">
-                <div class="mb-2 flex items-center justify-between">
-                  <span class="font-mono text-[11px] uppercase tracking-wider text-gray-500">Terminal</span>
-                  <button
-                    type="button"
-                    data-copy-target="docker-run-cmd"
-                    aria-label="复制部署命令"
-                    class="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-gray-200 transition-colors duration-200 hover:bg-white/20"
-                  >
-                    <Icon name="carbon:copy" class="h-3.5 w-3.5" />
-                    <span data-copy-label>复制</span>
-                  </button>
-                </div>
-                <pre class="overflow-x-auto"><code id="docker-run-cmd" class="whitespace-pre font-mono text-[13px] leading-relaxed text-gray-100">docker run --pull always -d \
-  --name 1panel-ai-gateway \
-  --restart unless-stopped \
-  -p 8080:8080 \
-  -v /opt/ai-gateway:/opt/ai-gateway \
-  1panel/ai-gateway</code></pre>
-              </div>
-
-              <p class="mt-4 text-sm leading-relaxed text-gray-600">
-                首次启动会在容器日志中输出管理员临时密码：
-              </p>
-              <div class="relative mt-2 rounded-lg bg-gray-900 px-4 py-3">
-                <pre class="overflow-x-auto"><code id="docker-logs-cmd" class="whitespace-pre font-mono text-[13px] leading-relaxed text-gray-100">docker logs 1panel-ai-gateway</code></pre>
-                <button
-                  type="button"
-                  data-copy-target="docker-logs-cmd"
-                  aria-label="复制查看密码命令"
-                  class="absolute right-2 top-2 inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-gray-200 transition-colors duration-200 hover:bg-white/20"
-                >
-                  <Icon name="carbon:copy" class="h-3.5 w-3.5" />
-                </button>
-              </div>
 
               <div class="mt-auto border-t border-gray-100 pt-4">
                 <a href="https://docs.fit2cloud.com/ai-gateway/quick_start" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-1panel">
