@@ -6,6 +6,7 @@ export const ORGANIZATION_NAME = "杭州飞致云信息科技有限公司";
 export const ORGANIZATION_ALTERNATE_NAME = "FIT2CLOUD 飞致云";
 export const ORGANIZATION_URL = "https://www.fit2cloud.com/";
 export const GITHUB_URL = "https://github.com/1Panel-dev/1Panel";
+export const DOCS_URL = "https://docs.fit2cloud.com/1panel/";
 export const DEFAULT_DESCRIPTION =
   "1Panel 是现代化、开源的 Linux 服务器运维管理面板，提供网站、数据库、容器、文件、备份、安全与 AI 管理能力，支持应用商店一键部署。";
 export const DEFAULT_KEYWORDS = [
@@ -371,7 +372,7 @@ export function createSoftwareApplicationSchema(
     image: toAbsoluteUrl(DEFAULT_OG_IMAGE, siteUrl, basePath),
     screenshot: toAbsoluteUrl("/images/dashboard-preview.png", siteUrl, basePath),
     downloadUrl: GITHUB_URL,
-    softwareHelp: toAbsoluteUrl("/docs", siteUrl, basePath),
+    softwareHelp: DOCS_URL,
     isAccessibleForFree: true,
     offers: {
       "@type": "Offer",
