@@ -166,6 +166,15 @@ const pricingPlans = [
   },
 ];
 
+// 预装软件中可跳转到产品详情页的条目（键必须与 software 里的字符串完全一致）
+// 站内路径直接写，外部站点写完整 URL（模板里按 http 前缀自动加 target="_blank"）
+const softwareLinks: Record<string, string> = {
+  "1Panel 企业版（含 AI 网关）": "/enterprise.html",
+  "MaxKB 社区版": "https://maxkb.cn/price",
+  "MaxKB 专业版": "https://maxkb.cn/price",
+  "MaxKB 企业版": "https://maxkb.cn/price",
+};
+
 const accentMap = {
   blue: {
     band: "from-blue-500 to-blue-600",
@@ -538,15 +547,31 @@ const productSchema = {
                         <span>预装软件</span>
                       </div>
                       <ul class="space-y-1.5">
-                        {plan.software.map((s) => (
-                          <li class="flex items-start gap-1.5 text-xs text-gray-700 leading-relaxed">
-                            <svg viewBox="0 0 32 32" fill="currentColor" class={`h-3.5 w-3.5 flex-shrink-0 mt-0.5 ${c.text}`} aria-hidden="true">
-                              <path d="M16 4l10 6v12l-10 6L6 22V10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                              <path d="M11 16l3.5 3.5L21 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>{s}</span>
-                          </li>
-                        ))}
+                        {plan.software.map((s) => {
+                          const href = softwareLinks[s];
+                          const isExternal = href ? href.startsWith("http") : false;
+                          return (
+                            <li class="flex items-start gap-1.5 text-xs text-gray-700 leading-relaxed">
+                              <svg viewBox="0 0 32 32" fill="currentColor" class={`h-3.5 w-3.5 flex-shrink-0 mt-0.5 ${c.text}`} aria-hidden="true">
+                                <path d="M16 4l10 6v12l-10 6L6 22V10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M11 16l3.5 3.5L21 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                              {href ? (
+                                <a
+                                  href={href}
+                                  target={isExternal ? "_blank" : undefined}
+                                  rel={isExternal ? "noopener noreferrer" : undefined}
+                                  class="font-semibold text-1panel underline decoration-dotted underline-offset-2 transition-colors hover:text-blue-700 hover:decoration-solid"
+                                >
+                                  {s}
+                                  <span aria-hidden="true" class="relative -top-0.5 ml-0.5 inline-block text-[10px] leading-none opacity-70">↗</span>
+                                </a>
+                              ) : (
+                                <span>{s}</span>
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
 
