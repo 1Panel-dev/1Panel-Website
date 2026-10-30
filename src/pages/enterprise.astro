@@ -38,7 +38,7 @@ const layerTabs = [
     color: "indigo",
     description:
       "提供从统一接入、智能路由到合规审计的全链条管控，让企业 AI 落地更安全、更高效、更可控。",
-    items: ["AI 门户", "Skills Hub", "MCP 市场", "AI 网关"],
+    items: ["AI 门户", "Skills 仓库", "MCP 市场", "AI 网关"],
     groups: ["统一接入", "统一治理", "安全审计"]
   },
   {
@@ -81,7 +81,7 @@ const enterpriseOnlyCapabilities = [
     href: "/model-management.html",
     tag: "全生命周期",
     description:
-      "官方精选并验证 DeepSeek、Qwen 和 GLM 模型，支持便捷下载、VLLM 可视化部署与本地推理引擎监控。",
+      "官方精选并验证 DeepSeek、Qwen 和 GLM 模型，支持便捷下载、vLLM 可视化部署与本地推理引擎监控。",
     points: ["精选模型", "便捷下载", "快速启动", "持续监控"],
   },
   {
@@ -95,7 +95,7 @@ const enterpriseOnlyCapabilities = [
   },
   {
     icon: "carbon:headset",
-    title: "Skills Hub",
+    title: "Skills 仓库",
     href: "/skills-hub.html",
     tag: "持续积累",
     description:
@@ -165,10 +165,10 @@ const enterpriseSchema = {
   featureList: [
     "1Panel AI 门户",
     "AI 网关自助管理",
-    "Skills Hub 自助管理",
+    "Skills 仓库自助管理",
     "MCP 市场自助管理",
     "AI 网关",
-    "Skills Hub",
+    "Skills 仓库",
     "多用户管理",
     "认证管理",
     "AD/LDAP",
@@ -208,7 +208,7 @@ const enterpriseSchema = {
     "1Panel 企业版",
     "1Panel AI 门户",
     "1Panel AI 网关",
-    "Skills Hub",
+    "Skills 仓库",
     "API Key 管理",
     "技能市场",
     "MCP 市场",
@@ -296,7 +296,7 @@ const enterpriseSchema = {
                   </div>
                   <div class="space-y-2.5 p-4 sm:p-5">
                     <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
-                      {["AI 门户", "Skills Hub", "MCP 市场"].map((item) => (
+                      {["AI 门户", "Skills 仓库", "MCP 市场"].map((item) => (
                         <span class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-center text-sm font-semibold text-gray-800 shadow-sm">
                           {item}
                         </span>
@@ -447,7 +447,7 @@ const enterpriseSchema = {
                         <>
                           <div class="mx-auto w-full max-w-2xl">
                             <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
-                              {["AI 门户", "Skills Hub", "MCP 市场"].map((item) => (
+                              {["AI 门户", "Skills 仓库", "MCP 市场"].map((item) => (
                                 <div class="rounded-md border border-white/80 bg-white p-4 text-center text-sm font-semibold text-gray-800 shadow-sm">
                                   {item}
                                 </div>
