@@ -29,14 +29,14 @@ const featureCards = [
     icon: "carbon:cloud-download",
     step: "02",
     title: "便捷下载",
-    description: "支持快速从魔搭社区和 HuggingFace 下载模型。",
+    description: "支持快速从魔搭社区和 Hugging Face 下载模型。",
   },
   {
     icon: "carbon:rocket",
     step: "03",
     title: "快速启动",
     description:
-      "支持 VLLM 可视化部署，预置官方验证过的启动模板。",
+      "支持 vLLM 可视化部署，预置官方验证过的启动模板。",
   },
   {
     icon: "carbon:activity",
@@ -57,14 +57,14 @@ const workflowSteps = [
   {
     no: "2",
     icon: "carbon:download",
-    title: "从魔搭社区或 HuggingFace 下载",
+    title: "从魔搭社区或 Hugging Face 下载",
     description:
       "下载管理集中呈现下载任务与已下载模型，模型版本与权重体积提前可见，避免选错版本或占满磁盘。",
   },
   {
     no: "3",
     icon: "carbon:play-filled-alt",
-    title: "用 VLLM 模板一键启动",
+    title: "用 vLLM 模板一键启动",
     description:
       "基于官方验证过的启动模板可视化部署推理服务，随后在本地推理引擎中持续查看运行情况。",
   },
@@ -72,7 +72,7 @@ const workflowSteps = [
 
 const pageTitle = "1Panel 模型管理 - 实现模型全生命周期的可视化便捷管理";
 const pageDescription =
-  "1Panel 模型管理提供模型全生命周期的可视化便捷管理：官方精选并验证 DeepSeek、Qwen、GLM 等模型，支持从魔搭社区和 HuggingFace 快速下载，通过 VLLM 可视化部署与官方验证启动模板快速启动，并持续监控本地推理引擎的运行情况。";
+  "1Panel 模型管理提供模型全生命周期的可视化便捷管理：官方精选并验证 DeepSeek、Qwen、GLM 等模型，支持从魔搭社区和 Hugging Face 快速下载，通过 vLLM 可视化部署与官方验证启动模板快速启动，并持续监控本地推理引擎的运行情况。";
 const modelManagementSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -103,8 +103,8 @@ const modelManagementSchema = {
   description={pageDescription}
   canonical="/model-management.html"
   image="/images/1p-model-management.png"
-  imageWidth={2200}
-  imageHeight={1128}
+  imageWidth={3432}
+  imageHeight={2172}
   imageAlt="1Panel 模型管理 - 模型广场"
   keywords={[
     "1Panel 模型管理",
@@ -113,8 +113,8 @@ const modelManagementSchema = {
     "精选模型",
     "模型下载",
     "魔搭社区",
-    "HuggingFace",
-    "VLLM 部署",
+    "Hugging Face",
+    "vLLM 部署",
     "本地推理引擎",
     "DeepSeek",
     "Qwen",
@@ -167,8 +167,8 @@ const modelManagementSchema = {
                 <img
                   src="/images/1p-model-management.png"
                   alt="1Panel 模型管理 - 模型广场中的精选模型列表"
-                  width="2200"
-                  height="1128"
+                  width="3432"
+                  height="2172"
                   class="h-auto w-full object-contain"
                   loading="eager"
                 />
@@ -266,7 +266,7 @@ const modelManagementSchema = {
                   在 1Panel 企业版中管理你的本地模型
                 </h2>
                 <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
-                  1Panel 模型管理把精选模型、模型下载、VLLM 部署与运行监控收进同一个可视化界面，配合 AI 网关统一对外提供模型服务，让本地模型的引入、上线和运行状态都可控可见。
+                  1Panel 模型管理把精选模型、模型下载、vLLM 部署与运行监控收进同一个可视化界面，配合 AI 网关统一对外提供模型服务，让本地模型的引入、上线和运行状态都可控可见。
                 </p>
               </div>
               <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
