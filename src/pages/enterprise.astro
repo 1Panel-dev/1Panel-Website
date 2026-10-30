@@ -76,6 +76,15 @@ const enterpriseOnlyCapabilities = [
     points: ["模型代理", "智能路由", "合规审计"],
   },
   {
+    icon: "carbon:machine-learning-model",
+    title: "模型管理",
+    href: "/model-management.html",
+    tag: "全生命周期",
+    description:
+      "官方精选并验证 DeepSeek、Qwen 和 GLM 模型，支持便捷下载、VLLM 可视化部署与本地推理引擎监控。",
+    points: ["精选模型", "便捷下载", "快速启动", "持续监控"],
+  },
+  {
     icon: "carbon:user-access",
     title: "AI 门户",
     href: "/ai-portal.html",
@@ -95,12 +104,12 @@ const enterpriseOnlyCapabilities = [
   },
   {
     icon: "carbon:user-multiple",
-    title: "用户管理",
+    title: "用户及认证管理",
     href: "/user-management.html",
     tag: "组织协作",
     description:
       "面向部门和企业内部多角色使用场景，支持用户、权限与认证管理，可接入 AD/LDAP、OIDC 和 SAML2。",
-    points: ["用户管理", "权限分配", "认证管理"],
+    points: ["用户账号", "权限分配", "认证管理"],
   },
   {
     icon: "carbon:virtual-machine",
@@ -110,15 +119,6 @@ const enterpriseOnlyCapabilities = [
     description:
       "集中管理虚拟机、镜像、模板、网络和存储池，覆盖创建、运行、监控、控制台与快照等日常操作。",
     points: ["资源概览", "生命周期", "镜像与存储"],
-  },
-  {
-    icon: "carbon:report",
-    title: "安全运维报表",
-    href: "/security-ops-report.html",
-    tag: "持续可见",
-    description:
-      "将系统、模型、智能体、网站、安全和运维侧的关键状态沉淀成报表，帮助管理员发现待关注项。",
-    points: ["风险概览", "安全巡检", "报表沉淀"],
   },
 ];
 
@@ -145,7 +145,7 @@ const layerClassMap = {
 
 const pageTitle = "1Panel 企业版 - AI 服务器管理面板";
 const pageDescription =
-  "1Panel 企业版是从底层硬件、虚拟机等基础资源到智能体（Metal-to-Agent）的统一管理面板，覆盖企业级 AI 治理、用户与认证管理及基础设施管理。";
+  "1Panel 企业版是从底层硬件、虚拟机等基础资源到智能体（Metal-to-Agent）的统一管理面板，覆盖企业级 AI 治理、用户及认证管理及基础设施管理。";
 const enterpriseSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -223,6 +223,7 @@ const enterpriseSchema = {
     "虚拟机管理",
     "KVM Web 管理",
     "KVM 虚拟机管理",
+    "模型管理",
     "安全运维报表",
     "纯离线部署",
   ]}

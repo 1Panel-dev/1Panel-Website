@@ -1,0 +1,283 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/model-management.html", siteUrl);
+const trialUrl = "https://jsj.top/f/umuYtv";
+
+const modelKeywords = ["精选模型", "便捷下载", "快速启动", "持续监控"];
+
+const featureCards = [
+  {
+    icon: "carbon:star-filled",
+    step: "01",
+    title: "精选模型",
+    description:
+      "官方精选挑选和验证过的 DeepSeek、Qwen 和 GLM 模型。",
+  },
+  {
+    icon: "carbon:cloud-download",
+    step: "02",
+    title: "便捷下载",
+    description: "支持快速从魔搭社区和 HuggingFace 下载模型。",
+  },
+  {
+    icon: "carbon:rocket",
+    step: "03",
+    title: "快速启动",
+    description:
+      "支持 VLLM 可视化部署，预置官方验证过的启动模板。",
+  },
+  {
+    icon: "carbon:activity",
+    step: "04",
+    title: "持续监控",
+    description: "可视化方式查看本地推理引擎的运行情况。",
+  },
+];
+
+const workflowSteps = [
+  {
+    no: "1",
+    icon: "carbon:catalog",
+    title: "在模型广场挑选模型",
+    description:
+      "按 Qwen、DeepSeek、GLM 等模型系列浏览精选模型，卡片上直接给出模型类型（MoE / Dense）、参数量、激活参数与权重体积，按类别筛选、搜索后即可下载。",
+  },
+  {
+    no: "2",
+    icon: "carbon:download",
+    title: "从魔搭社区或 HuggingFace 下载",
+    description:
+      "下载管理集中呈现下载任务与已下载模型，模型版本与权重体积提前可见，避免选错版本或占满磁盘。",
+  },
+  {
+    no: "3",
+    icon: "carbon:play-filled-alt",
+    title: "用 VLLM 模板一键启动",
+    description:
+      "基于官方验证过的启动模板可视化部署推理服务，随后在本地推理引擎中持续查看运行情况。",
+  },
+];
+
+const pageTitle = "1Panel 模型管理 - 实现模型全生命周期的可视化便捷管理";
+const pageDescription =
+  "1Panel 模型管理提供模型全生命周期的可视化便捷管理：官方精选并验证 DeepSeek、Qwen、GLM 等模型，支持从魔搭社区和 HuggingFace 快速下载，通过 VLLM 可视化部署与官方验证启动模板快速启动，并持续监控本地推理引擎的运行情况。";
+const modelManagementSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel 模型管理",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "Model management",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  url: pageUrl,
+  featureList: [
+    "精选模型",
+    "便捷下载",
+    "快速启动",
+    "持续监控",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel 模型管理"
+  schemaName="1Panel 模型管理"
+  description={pageDescription}
+  canonical="/model-management.html"
+  image="/images/1p-model-management.png"
+  imageWidth={2200}
+  imageHeight={1128}
+  imageAlt="1Panel 模型管理 - 模型广场"
+  keywords={[
+    "1Panel 模型管理",
+    "模型管理",
+    "模型广场",
+    "精选模型",
+    "模型下载",
+    "魔搭社区",
+    "HuggingFace",
+    "VLLM 部署",
+    "本地推理引擎",
+    "DeepSeek",
+    "Qwen",
+    "GLM",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel 模型管理", url: pageUrl },
+    ]),
+    modelManagementSchema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a href="/enterprise.html" class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50" style="animation-delay: 0.05s;">
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              返回企业版
+            </a>
+            <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
+              1Panel 模型管理
+            </h1>
+            <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
+              实现模型全生命周期的可视化便捷管理
+            </p>
+            <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
+              {modelKeywords.map((keyword) => (
+                <span class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <div class="fade-in-up mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row" style="animation-delay: 0.32s;">
+              <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex w-full items-center justify-center px-9 py-4 text-base sm:w-auto">
+                申请企业版试用
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          <div class="fade-in-up mt-8" style="animation-delay: 0.35s;">
+            <div class="relative overflow-hidden rounded-lg shadow-2xl shadow-blue-100/70">
+              <div class="relative overflow-hidden rounded-lg bg-white">
+                <img
+                  src="/images/1p-model-management.png"
+                  alt="1Panel 模型管理 - 模型广场中的精选模型列表"
+                  width="2200"
+                  height="1128"
+                  class="h-auto w-full object-contain"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四大特性 -->
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              精选、下载、启动、监控
+              <span class="mt-1 block text-1panel">一条链路跑通</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              从挑一个模型到把它跑起来，全部在 1Panel 可视化界面中完成，不需要记一堆命令行参数。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {featureCards.map((feature, index) => (
+              <article
+                class="fade-in-up relative overflow-hidden rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <div class="mb-5 flex items-start justify-between">
+                  <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                    <Icon name={feature.icon} class="h-6 w-6" />
+                  </span>
+                  <span class="mt-1 text-sm font-bold leading-none tracking-widest text-blue-300">{feature.step}</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">{feature.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  {feature.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- 三步上手 -->
+      <section class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+              三步把模型跑起来
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              模型广场、下载管理、本地推理引擎围绕同一套模型资产协作，下载好的模型可以直接进入部署与监控环节。
+            </p>
+          </div>
+
+          <div class="relative grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {workflowSteps.map((step, index) => (
+              <div
+                class="fade-in-up relative flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md lg:p-7"
+                style={`animation-delay: ${index * 0.06}s;`}
+              >
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                    <Icon name={step.icon} class="h-5 w-5" />
+                  </span>
+                  <span class="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-1panel px-2 text-xs font-bold leading-none text-white">
+                    {step.no}
+                  </span>
+                </div>
+                <h3 class="mt-5 text-lg font-bold leading-snug text-gray-900">{step.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="carbon:checkmark-filled" class="h-4 w-4 text-1panel" />
+              支持 NVIDIA、华为昇腾、Intel 等算力环境
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-white pb-16 lg:pb-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  在 1Panel 企业版中管理你的本地模型
+                </h2>
+                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                  1Panel 模型管理把精选模型、模型下载、VLLM 部署与运行监控收进同一个可视化界面，配合 AI 网关统一对外提供模型服务，让本地模型的引入、上线和运行状态都可控可见。
+                </p>
+              </div>
+              <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+                了解企业版
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>

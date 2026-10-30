@@ -90,6 +90,13 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
                 <span class="ml-1.5 inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">HOT</span>
               </a>
               <a
+                href="/model-management.html"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+              >
+                <Icon name="carbon:machine-learning-model" class="h-5 w-5 flex-shrink-0" />
+                模型管理
+              </a>
+              <a
                 href="/ai-portal.html"
                 class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
@@ -108,7 +115,7 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
                 class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
               >
                 <Icon name="carbon:user-multiple" class="h-5 w-5 flex-shrink-0" />
-                用户管理
+                用户及认证管理
               </a>
               <a
                 href={virtualMachinePath}
@@ -116,13 +123,6 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
               >
                 <Icon name="carbon:virtual-machine" class="h-5 w-5 flex-shrink-0" />
                 虚拟机管理
-              </a>
-              <a
-                href="/security-ops-report.html"
-                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
-              >
-                <Icon name="carbon:report" class="h-5 w-5 flex-shrink-0" />
-                安全运维报表
               </a>
             </div>
           </div>
@@ -283,6 +283,13 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
               <span class="ml-1.5 inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">HOT</span>
             </a>
             <a
+              href="/model-management.html"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+            >
+              <Icon name="carbon:machine-learning-model" class="h-5 w-5 flex-shrink-0" />
+              模型管理
+            </a>
+            <a
               href="/ai-portal.html"
               class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
@@ -301,7 +308,7 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
               class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
             >
               <Icon name="carbon:user-multiple" class="h-5 w-5 flex-shrink-0" />
-              用户管理
+              用户及认证管理
             </a>
             <a
               href={virtualMachinePath}
@@ -309,13 +316,6 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
             >
               <Icon name="carbon:virtual-machine" class="h-5 w-5 flex-shrink-0" />
               虚拟机管理
-            </a>
-            <a
-              href="/security-ops-report.html"
-              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
-            >
-              <Icon name="carbon:report" class="h-5 w-5 flex-shrink-0" />
-              安全运维报表
             </a>
           </div>
         </div>

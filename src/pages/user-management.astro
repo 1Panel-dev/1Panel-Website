@@ -128,14 +128,14 @@ const authenticationFlow = [
   },
 ];
 
-const pageTitle = "1Panel 用户与认证管理 - AD/LDAP、OIDC、SAML2";
+const pageTitle = "1Panel 用户及认证管理 - AD/LDAP、OIDC、SAML2";
 const pageDescription =
-  "1Panel 企业版用户管理面向部门和企业内部多角色使用场景，支持用户、角色权限与认证管理，可接入 AD/LDAP、OIDC 和 SAML2。";
+  "1Panel 企业版用户及认证管理面向部门和企业内部多角色使用场景，支持用户、角色权限与认证管理，可接入 AD/LDAP、OIDC 和 SAML2。";
 const userManagementSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "@id": `${pageUrl}#product`,
-  name: "1Panel 用户与认证管理",
+  name: "1Panel 用户及认证管理",
   applicationCategory: "DeveloperApplication",
   applicationSubCategory: "User, authentication and permission management",
   operatingSystem: "Linux",
@@ -162,16 +162,18 @@ const userManagementSchema = {
 
 <Layout
   title={pageTitle}
-  socialTitle="1Panel 用户与认证管理"
-  schemaName="1Panel 用户与认证管理"
+  socialTitle="1Panel 用户及认证管理"
+  schemaName="1Panel 用户及认证管理"
   description={pageDescription}
   canonical="/user-management.html"
   image="/images/enterprise-user-management.png"
   imageWidth={3426}
   imageHeight={1808}
-  imageAlt="1Panel 企业版用户与认证管理界面"
+  imageAlt="1Panel 企业版用户及认证管理界面"
   modifiedTime="2026-08-26"
   keywords={[
+    "1Panel 用户及认证管理",
+    "用户及认证管理",
     "1Panel 用户管理",
     "用户管理",
     "权限分配",
@@ -188,7 +190,7 @@ const userManagementSchema = {
   structuredData={[
     createBreadcrumbSchema([
       { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
-      { name: "1Panel 用户与认证管理", url: pageUrl },
+      { name: "1Panel 用户及认证管理", url: pageUrl },
     ]),
     userManagementSchema,
   ]}
@@ -206,7 +208,7 @@ const userManagementSchema = {
               返回企业版
             </a>
             <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
-              用户管理
+              用户及认证管理
             </h1>
             <p class="fade-in-up mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
               面向部门和企业内部多角色使用场景，支持用户、权限与认证管理。
@@ -229,7 +231,7 @@ const userManagementSchema = {
               <div class="relative overflow-hidden rounded-lg bg-gray-50">
                 <img
                   src="/images/enterprise-user-management.png"
-                  alt="1Panel 用户管理功能介绍"
+                  alt="1Panel 用户及认证管理功能介绍"
                   class="h-auto w-full object-cover"
                   loading="eager"
                 />
@@ -279,7 +281,7 @@ const userManagementSchema = {
               认证管理，统一接入企业身份源
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              认证管理作为用户管理的子菜单，集中配置 AD/LDAP、OIDC 和 SAML2，帮助企业复用现有身份体系登录 1Panel。
+              认证管理作为用户及认证管理的子菜单，集中配置 AD/LDAP、OIDC 和 SAML2，帮助企业复用现有身份体系登录 1Panel。
             </p>
           </div>
 
@@ -352,7 +354,7 @@ const userManagementSchema = {
                   面向企业团队的多用户与权限管理
                 </h2>
                 <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
-                  用户管理面向部门和企业内部多角色使用场景，提供用户管理、权限分配、认证管理和协作使用能力。通过集中管理用户账号、对接企业身份源、配置角色权限和控制不同成员的操作范围，帮助企业提升 1Panel 在团队协作场景下的安全性、规范性和管理效率。
+                  用户及认证管理面向部门和企业内部多角色使用场景，提供用户管理、权限分配、认证管理和协作使用能力。通过集中管理用户账号、对接企业身份源、配置角色权限和控制不同成员的操作范围，帮助企业提升 1Panel 在团队协作场景下的安全性、规范性和管理效率。
                 </p>
               </div>
               <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">

@@ -59,12 +59,13 @@ const plans = [
       "智能体（不限个数）",
       "AI 网关（限 10 个用户）",  
       "虚拟机管理（限 5 台）",
-      "模型管理",
+      { label: "模型管理", href: "/model-management.html" },
       "多机管理",
       "数据库主从复制",
       "移动端 App",
       "WAF 防火墙",
       "网站监控报表",
+      { label: "安全运维报表", href: "/security-ops-report.html" },
       "网站防篡改",
       "自定义 LOGO",
       "水印设置",
@@ -82,7 +83,7 @@ const plans = [
     schemaPrice: "30000",
     priceNote: "/ 套",
     subtitle: "面向企业级部署",
-    description: "AI 服务器管理面板，助力企业打造本地 AI 自主环境。",
+    description: "专为 AI 服务器管理打造的管理面板，助力企业打造本地 AI 自主环境。",
     action: "查看详情",
     href: "/enterprise.html",
     color: "blue",
@@ -91,12 +92,10 @@ const plans = [
       "智能体（不限个数）",                             
       { label: "AI 网关（不限用户数）", href: "/ai-gateway.html", hot: true },
       { label: "虚拟机管理（不限台数）", href: virtualMachinePath },
+      { label: "模型管理", href: "/model-management.html" },
       { label: "AI 门户", href: "/ai-portal.html" },
-      "模型管理",  
-      "基准测试",     
       { label: "Skills Hub", href: "/skills-hub.html" },
-      { label: "用户与认证管理", href: "/user-management.html" },
-      { label: "安全运维报表", href: "/security-ops-report.html" },
+      { label: "用户及认证管理", href: "/user-management.html" },
       "多节点纳管（节点数按需授权）",
       "适配纯离线环境",
       "企业级支持服务（5x8 线上）",
@@ -130,7 +129,7 @@ const colorClassMap = {
 
 const pageTitle = "1Panel 版本对比 - 社区版、专业版、企业版功能与价格";
 const pageDescription =
-  "查看 1Panel 社区版、专业版、企业版的功能差异、价格信息与适用场景，了解 AI 门户、AI 网关、用户与认证管理、虚拟机管理、纯离线环境适配和企业级 AI 治理能力。";
+  "查看 1Panel 社区版、专业版、企业版的功能差异、价格信息与适用场景，了解 AI 门户、AI 网关、用户及认证管理、虚拟机管理、纯离线环境适配和企业级 AI 治理能力。";
 const versionsPageUrl = toAbsoluteUrl("/versions.html", siteUrl, siteBase);
 const versionComparisonSchema = {
   "@context": "https://schema.org",
@@ -182,6 +181,7 @@ const versionComparisonSchema = {
     "1Panel 价格",
     "1Panel 功能对比",
     "1Panel 纯离线环境",
+    "1Panel 用户及认证管理",
     "1Panel 多用户管理",
     "1Panel 认证管理",
     "1Panel AI 门户",
@@ -226,7 +226,14 @@ const versionComparisonSchema = {
                   style={`animation-delay: ${index * 0.1}s;`}
                 >
                   <div class="mb-5 text-center">
-                    <h2 class={`text-2xl font-bold ${colors.title}`}>{plan.name}</h2>
+                    <h2 class={`relative inline-block text-2xl font-bold ${colors.title}`}>
+                      {plan.name}
+                      {plan.name === "1Panel 企业版" && (
+                        <span class="absolute left-full top-1/2 ml-2 inline-flex -translate-y-1/2 items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">
+                          HOT
+                        </span>
+                      )}
+                    </h2>
                     <p class="mx-auto mt-3 min-h-[44px] max-w-[260px] text-sm leading-relaxed text-gray-500">
                       {plan.description}
                     </p>
