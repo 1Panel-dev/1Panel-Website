@@ -29,9 +29,9 @@ const plans = [
     color: "blue",
     features: [
       { label: "智能体（限 5 个）", href: "/agent-management.html" },
-      "AI 网关（限 10 个用户）",
-      "虚拟机管理（限 1 台）",      
-      { label: "模型管理（限 Ollama）", href: "/model-management.html" },      
+      { label: "AI 网关（限 10 个用户）", href: "/ai-gateway.html" },
+      { label: "虚拟机管理（限 1 台）", href: virtualMachinePath },
+      { label: "模型管理（限 Ollama）", href: "/model-management.html" },
       "GPU 监控",
       "MCP 管理",      
       "应用商店",
@@ -62,8 +62,8 @@ const plans = [
     features: [
       "社区版全部功能",
       { label: "智能体（不限个数）", href: "/agent-management.html" },
-      "AI 网关（限 10 个用户）",  
-      "虚拟机管理（限 5 台）",
+      { label: "AI 网关（限 10 个用户）", href: "/ai-gateway.html" },
+      { label: "虚拟机管理（限 5 台）", href: virtualMachinePath },
       { label: "模型管理（支持 vLLM）", href: "/model-management.html" },
       "多机管理",
       "数据库主从复制",
