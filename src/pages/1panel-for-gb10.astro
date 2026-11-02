@@ -1,0 +1,618 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/1panel-for-gb10.html", siteUrl);
+const trialUrl = "https://jsj.top/f/umuYtv";
+
+const heroKeywords = [
+  "GPU 实时监控",
+  "智能体一键部署",
+  "模型一键部署",
+  "内置 AI 网关",
+];
+
+// 产品图均取自各厂商官方产品资料，统一处理为 680×420 白底
+const devices = [
+  {
+    name: "NVIDIA DGX Spark",
+    note: "NVIDIA",
+    image: "/images/gb10/devices/nvidia-dgx-spark.webp",
+    alt: "NVIDIA DGX Spark 桌面 AI 超级计算机",
+  },
+  {
+    name: "超聚变 FusionXpark",
+    note: "xFusion",
+    image: "/images/gb10/devices/xfusion-fusionxpark.webp",
+    alt: "超聚变 FusionXpark GB10 桌面 AI 超级计算机",
+  },
+  {
+    name: "Dell Pro Max",
+    note: "Dell",
+    image: "/images/gb10/devices/dell-pro-max.webp",
+    alt: "Dell Pro Max with GB10 迷你工作站",
+  },
+  {
+    name: "ASUS ASCENT GX10",
+    note: "ASUS",
+    image: "/images/gb10/devices/asus-ascent-gx10.webp",
+    alt: "ASUS Ascent GX10 超小型 AI 超级计算机",
+  },
+  {
+    name: "联想 ThinkStation PGX",
+    note: "Lenovo",
+    image: "/images/gb10/devices/lenovo-thinkstation-pgx.webp",
+    alt: "联想 ThinkStation PGX 便携式 AI 工作站",
+  },
+];
+
+const slides = [
+  {
+    src: "/images/gb10/1p-gb10-01-gpu-status.webp",
+    width: 2000,
+    height: 1024,
+    alt: "1Panel for GB10 的 GPU 实时状态与 GPU 详情面板",
+    caption: "GPU 实时状态与设备详情：驱动、CUDA 版本、温度、显存、PCIe 链路一目了然",
+  },
+  {
+    src: "/images/gb10/1p-gb10-02-gpu-monitor.webp",
+    width: 2000,
+    height: 1026,
+    alt: "1Panel for GB10 的 GPU 监控数据图表",
+    caption: "监控数据：GPU 使用率、系统共享内存、功耗与温度的时序曲线",
+  },
+  {
+    src: "/images/gb10/1p-gb10-03-agent-deploy.webp",
+    width: 2000,
+    height: 1022,
+    alt: "1Panel for GB10 中一键创建智能体的配置面板，左侧为已部署的智能体列表，右侧为创建向导",
+    caption: "一键部署智能体：从内置清单选类型与版本，填好 WebUI 端口与模型供应商即可确认",
+  },
+  {
+    src: "/images/gb10/1p-gb10-04-model-market.webp",
+    width: 2000,
+    height: 1028,
+    alt: "1Panel for GB10 的模型广场与精选模型列表",
+    caption: "模型广场：Qwen、DeepSeek、GLM 等精选开源模型，可直接下载",
+  },
+  {
+    src: "/images/gb10/1p-gb10-05-app-store.webp",
+    width: 2000,
+    height: 1026,
+    alt: "1Panel for GB10 的应用商店，展示 1Panel AI 网关、MaxKB、DeepSeek Harness、OpenClaw 等可一键安装的应用",
+    caption: "应用商店：AI 网关、智能体与知识库等应用在线安装，装完即可用",
+  },
+];
+
+const valueCards = [
+  {
+    icon: "carbon:activity",
+    step: "01",
+    title: "快速查看 GPU 运行状态",
+    description: "快速查看 GPU 实时状态和监控数据。",
+  },
+  {
+    icon: "carbon:bot",
+    step: "02",
+    title: "快速部署智能体",
+    description: "DeepSeek Harness、Octop、OpenClaw、QwenClaw、Hermes Agent 等一键部署。",
+  },
+  {
+    icon: "carbon:machine-learning-model",
+    step: "03",
+    title: "快速部署模型",
+    description:
+      "内置多款精选开源模型，从模型下载、模型运行、到模型运行监控，全面掌控。",
+  },
+  {
+    icon: "carbon:gateway",
+    step: "04",
+    title: "内置 AI 网关",
+    description: "还可以通过 1Panel AI 网关将模型能力开放给其他人使用。",
+  },
+];
+
+// 双 GB10 互联方案的规格与实测数据，取自《双 GB10 算力节点部署 DeepSeek-V4-Flash 实测》
+const dualGb10Stats = [
+  { value: "256", unit: "GB", label: "LPDDR5x 统一内存，完整承载大模型权重" },
+  { value: "2", unit: "PFLOP", label: "FP4 稀疏峰值算力，双节点合计" },
+  { value: "200", unit: "Gbps", label: "ConnectX 高速互联，支撑跨节点协同推理" },
+  { value: "100–120", unit: "TPS", label: "中短上下文整机吞吐（tokens/s）" },
+];
+
+const pageTitle = "1Panel for GB10 解决方案 - GB10 桌面超算的最佳搭档";
+const pageDescription =
+  "1Panel for GB10 解决方案：NVIDIA GB10 桌面超算的最佳搭档，适用于 NVIDIA DGX Spark、超聚变 FusionXpark、Dell Pro Max、ASUS ASCENT GX10、联想 ThinkStation PGX，提供 GPU 实时状态与监控、智能体一键部署、模型一键部署和内置 AI 网关能力。";
+const gb10Schema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel for GB10 解决方案",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "AI server management panel for GB10 desktop supercomputers",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  url: pageUrl,
+  featureList: [
+    "快速查看 GPU 运行状态",
+    "快速部署智能体",
+    "快速部署模型",
+    "内置 AI 网关",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel for GB10 解决方案"
+  schemaName="1Panel for GB10 解决方案"
+  description={pageDescription}
+  canonical="/1panel-for-gb10.html"
+  image="/images/gb10/1p-gb10-01-gpu-status.webp"
+  imageWidth={2000}
+  imageHeight={1024}
+  imageAlt="1Panel for GB10 解决方案 - GPU 实时状态"
+  keywords={[
+    "1Panel for GB10",
+    "GB10 解决方案",
+    "DGX Spark",
+    "NVIDIA GB10",
+    "GB10 桌面超算",
+    "FusionXpark",
+    "Dell Pro Max",
+    "ASUS ASCENT GX10",
+    "ThinkStation PGX",
+    "GPU 监控",
+    "智能体部署",
+    "模型部署",
+    "1Panel AI 网关",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel for GB10 解决方案", url: pageUrl },
+    ]),
+    gb10Schema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <!-- Hero -->
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a
+              href="/enterprise.html"
+              class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50"
+              style="animation-delay: 0.05s;"
+            >
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              返回企业版
+            </a>
+            <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
+              1Panel for GB10 <span class="whitespace-nowrap">解决方案</span>
+            </h1>
+            <p class="fade-in-up mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
+              NVIDIA GB10 桌面超算的最佳搭档，适用于
+              {devices.map((device, index) => (
+                <><span class="whitespace-nowrap">{device.name}{index < devices.length - 1 ? "、" : "。"}</span>{index < devices.length - 1 && <wbr />}</>
+              ))}
+            </p>
+            <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
+              {heroKeywords.map((keyword) => (
+                <span class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <div class="fade-in-up mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row" style="animation-delay: 0.32s;">
+              <a
+                href={trialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary inline-flex w-full items-center justify-center px-9 py-4 text-base sm:w-auto"
+              >
+                申请企业版试用
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          <!-- 截图轮播 -->
+          <div class="fade-in-up mt-10" style="animation-delay: 0.35s;">
+            <div
+              class="relative mx-auto max-w-6xl"
+              data-carousel
+              role="group"
+              aria-roledescription="carousel"
+              aria-label="1Panel for GB10 界面截图"
+              tabindex="0"
+            >
+              <div class="overflow-hidden rounded-lg bg-white shadow-2xl shadow-blue-100/70">
+                <div class="relative aspect-[2000/1026]">
+                  {slides.map((slide, index) => (
+                    <figure
+                      class={`absolute inset-0 transition-opacity duration-500 ${
+                        index === 0 ? "opacity-100" : "pointer-events-none opacity-0"
+                      }`}
+                      data-slide
+                      data-caption={slide.caption}
+                      aria-hidden={index === 0 ? "false" : "true"}
+                    >
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        width={slide.width}
+                        height={slide.height}
+                        class="h-full w-full object-contain"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                      />
+                    </figure>
+                  ))}
+
+                  <button
+                    type="button"
+                    data-carousel-prev
+                    aria-label="上一张截图"
+                    class="absolute left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-blue-100 bg-white/90 text-1panel shadow-md transition-all duration-300 hover:bg-white hover:shadow-lg sm:flex"
+                  >
+                    <Icon name="carbon:chevron-left" class="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    data-carousel-next
+                    aria-label="下一张截图"
+                    class="absolute right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-blue-100 bg-white/90 text-1panel shadow-md transition-all duration-300 hover:bg-white hover:shadow-lg sm:flex"
+                  >
+                    <Icon name="carbon:chevron-right" class="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-5 flex flex-col items-center gap-4">
+                <p class="hidden text-center text-sm leading-relaxed text-gray-500 sm:block" data-carousel-caption>
+                  {slides[0].caption}
+                </p>
+                <div class="flex items-center justify-center gap-2.5">
+                  {slides.map((slide, index) => (
+                    <button
+                      type="button"
+                      data-carousel-dot
+                      data-index={index}
+                      aria-label={`查看第 ${index + 1} 张截图`}
+                      aria-current={index === 0 ? "true" : "false"}
+                      class={`h-2 rounded-full transition-all duration-300 ${
+                        index === 0
+                          ? "w-7 bg-1panel"
+                          : "w-2 bg-blue-200 hover:bg-blue-300"
+                      }`}
+                    ></button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 双 GB10 互联方案 -->
+      <section id="dual-gb10" class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+              <div>
+                <span class="inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-bold tracking-wide text-white shadow-sm">
+                  双 GB10 互联
+                </span>
+                <h2 class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
+                  双 GB10 互联，
+                  <span class="block text-1panel">跑得动更大的模型</span>
+                </h2>
+                <p class="mt-5 text-base leading-relaxed text-gray-600">
+                  两个 GB10 算力节点通过 200Gbps ConnectX 高速互联，组成 256GB 统一内存与 2 PFLOP FP4 稀疏算力，可承载<span class="whitespace-nowrap">DeepSeek-V4-Flash</span>、<span class="whitespace-nowrap">Qwen3.8-Flash-Next</span> 等<span class="whitespace-nowrap">更大尺寸的模型</span>。
+                </p>
+
+                <dl class="mt-7 grid grid-cols-2 gap-4">
+                  {dualGb10Stats.map((item) => (
+                    <div class="rounded-xl border border-blue-100 bg-white p-4 shadow-sm">
+                      <dt class="flex flex-col gap-y-1 lg:flex-row lg:flex-wrap lg:items-baseline lg:gap-x-1">
+                        <span class="text-xl font-extrabold leading-none text-1panel lg:text-2xl">{item.value}</span>
+                        <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
+                      </dt>
+                      <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <div class="mt-8">
+                  <a
+                    href="/blog/dual-gb10-deepseek-v4-flash-benchmark.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-primary inline-flex items-center justify-center px-7 py-3 text-base"
+                  >
+                    查看双 GB10 实测报告
+                    <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+                  </a>
+                </div>
+
+                <p class="mt-5 text-xs leading-relaxed text-gray-500">
+                  数据来自双 GB10 版部署 DeepSeek-V4-Flash 的两周压测：整机功耗低于 80W，GPU 温度低于 70°C，无需独立机房散热。
+                </p>
+              </div>
+
+              <div class="relative mx-auto w-full max-w-md">
+                <div class="absolute inset-8 rounded-full bg-gradient-to-br from-blue-200/50 via-blue-100/40 to-transparent blur-2xl" aria-hidden="true"></div>
+                <img
+                  src="/images/1p-ai-appliance-dual-gb10.webp"
+                  alt="1Panel AI 一体机（双 GB10 版），内置两个 GB10 算力节点"
+                  width="664"
+                  height="544"
+                  class="relative mx-auto w-full max-w-[400px] drop-shadow-2xl"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 核心价值 -->
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
+              看状态、装智能体、跑模型、发接口
+              <span class="mt-1 block text-1panel">一台 GB10 上全部搞定</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              GB10 桌面超算装好之后最常做的四件事，1Panel 都提供了可视化入口，不必在命令行、Docker 与推理框架之间来回切换。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {valueCards.map((feature, index) => (
+              <article
+                class="fade-in-up relative overflow-hidden rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <div class="mb-5 flex items-start justify-between">
+                  <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                    <Icon name={feature.icon} class="h-6 w-6" />
+                  </span>
+                  <span class="mt-1 text-sm font-bold leading-none tracking-widest text-blue-300">{feature.step}</span>
+                </div>
+                <h3 class="text-xl font-bold leading-snug text-gray-900">{feature.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  {feature.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- 适配设备 -->
+      <section class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+              已适配的 GB10 设备
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              同一套 1Panel 界面，适配不同厂商的 GB10 主机形态；系统装好后即可安装 1Panel，接上 GPU 就能看到实时状态。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {devices.map((device, index) => (
+              <div
+                class="fade-in-up flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <div class="overflow-hidden rounded-lg bg-white">
+                  <img
+                    src={device.image}
+                    alt={device.alt}
+                    width="680"
+                    height="420"
+                    class="h-auto w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p class="mt-4 text-sm font-bold leading-snug text-gray-900">{device.name}</p>
+                <p class="mt-1 text-xs font-medium uppercase tracking-wide text-gray-400">{device.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="carbon:checkmark-filled" class="h-4 w-4 text-1panel" />
+              统一的 GPU 监控、智能体与模型管理入口
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-white pb-16 lg:pb-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  在 GB10 桌面超算上跑起你的本地 AI
+                </h2>
+                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                  1Panel for GB10 把 GPU 监控、智能体部署、模型部署与 AI 网关收进同一个面板，让桌面超算的算力、模型和服务都看得见、管得住。
+                </p>
+              </div>
+              <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+                申请企业版试用
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          <!-- 相关入口 -->
+          <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <a
+              href="/enterprise.html"
+              class="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+            >
+              <div class="flex items-start justify-between">
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name="carbon:enterprise" class="h-5 w-5" />
+                </span>
+                <Icon
+                  name="carbon:arrow-up-right"
+                  class="h-5 w-5 text-gray-300 transition-colors duration-300 group-hover:text-1panel"
+                />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-gray-900">1Panel 企业版</h3>
+              <p class="mt-2 text-sm leading-relaxed text-gray-600">
+                AI 服务器管理面板：从底层硬件、KVM Web 虚拟机，到 AI 网关、模型管理与智能体的统一管理。
+              </p>
+              <span class="mt-auto pt-4 inline-flex items-center text-sm font-semibold text-1panel">
+                了解企业版能力
+                <Icon
+                  name="carbon:arrow-right"
+                  class="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </span>
+            </a>
+            <a
+              href="/ai-appliance.html"
+              class="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+            >
+              <div class="flex items-start justify-between">
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                  <Icon name="carbon:bare-metal-server" class="h-5 w-5" />
+                </span>
+                <Icon
+                  name="carbon:arrow-up-right"
+                  class="h-5 w-5 text-gray-300 transition-colors duration-300 group-hover:text-1panel"
+                />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-gray-900">1Panel AI 一体机</h3>
+              <p class="mt-2 text-sm leading-relaxed text-gray-600">
+                以「超融合」理念整合底层算力、模型服务与 AI 应用，按团队规模选型的私有化 AI 方案。
+              </p>
+              <span class="mt-auto pt-4 inline-flex items-center text-sm font-semibold text-1panel">
+                查看一体机方案
+                <Icon
+                  name="carbon:arrow-right"
+                  class="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>("[data-slide]"));
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]"));
+    const caption = root.querySelector<HTMLElement>("[data-carousel-caption]");
+    const prev = root.querySelector<HTMLButtonElement>("[data-carousel-prev]");
+    const next = root.querySelector<HTMLButtonElement>("[data-carousel-next]");
+    if (slides.length < 2) return;
+
+    const captions = slides.map((slide) => slide.dataset.caption ?? "");
+    let index = 0;
+    let timer: number | undefined;
+
+    const render = () => {
+      slides.forEach((slide, i) => {
+        const active = i === index;
+        slide.classList.toggle("opacity-100", active);
+        slide.classList.toggle("opacity-0", !active);
+        slide.classList.toggle("pointer-events-none", !active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+      dots.forEach((dot, i) => {
+        const active = i === index;
+        dot.classList.toggle("w-7", active);
+        dot.classList.toggle("bg-1panel", active);
+        dot.classList.toggle("w-2", !active);
+        dot.classList.toggle("bg-blue-200", !active);
+        dot.classList.toggle("hover:bg-blue-300", !active);
+        dot.setAttribute("aria-current", active ? "true" : "false");
+      });
+      if (caption) caption.textContent = captions[index] ?? "";
+    };
+
+    const go = (target: number) => {
+      index = (target + slides.length) % slides.length;
+      render();
+    };
+
+    const start = () => {
+      stop();
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      timer = window.setInterval(() => go(index + 1), 6000);
+    };
+    const stop = () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      timer = undefined;
+    };
+
+    prev?.addEventListener("click", () => {
+      go(index - 1);
+      start();
+    });
+    next?.addEventListener("click", () => {
+      go(index + 1);
+      start();
+    });
+    dots.forEach((dot, i) =>
+      dot.addEventListener("click", () => {
+        go(i);
+        start();
+      })
+    );
+
+    root.addEventListener("pointerenter", stop);
+    root.addEventListener("pointerleave", start);
+    root.addEventListener("focusin", stop);
+    root.addEventListener("focusout", start);
+    root.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        go(index - 1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        go(index + 1);
+      }
+    });
+
+    render();
+    start();
+  });
+</script>
