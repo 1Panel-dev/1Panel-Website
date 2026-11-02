@@ -313,6 +313,85 @@ const gb10Schema = {
         </div>
       </section>
 
+      <!-- 适配设备 -->
+      <section class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+              已适配的 GB10 设备
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              同一套 1Panel 界面，适配不同厂商的 GB10 主机形态；系统装好后即可安装 1Panel，接上 GPU 就能看到实时状态。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {devices.map((device, index) => (
+              <div
+                class="fade-in-up flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <div class="overflow-hidden rounded-lg bg-white">
+                  <img
+                    src={device.image}
+                    alt={device.alt}
+                    width="680"
+                    height="420"
+                    class="h-auto w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p class="mt-4 text-sm font-bold leading-snug text-gray-900">{device.name}</p>
+                <p class="mt-1 text-xs font-medium uppercase tracking-wide text-gray-400">{device.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="carbon:checkmark-filled" class="h-4 w-4 text-1panel" />
+              统一的 GPU 监控、智能体与模型管理入口
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 核心价值 -->
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
+              看状态、装智能体、跑模型、发接口
+              <span class="mt-1 block text-1panel">一台 GB10 上全部搞定</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              GB10 桌面超算装好之后最常做的四件事，1Panel 都提供了可视化入口，不必在命令行、Docker 与推理框架之间来回切换。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {valueCards.map((feature, index) => (
+              <article
+                class="fade-in-up relative overflow-hidden rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <div class="mb-5 flex items-start justify-between">
+                  <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                    <Icon name={feature.icon} class="h-6 w-6" />
+                  </span>
+                  <span class="mt-1 text-sm font-bold leading-none tracking-widest text-blue-300">{feature.step}</span>
+                </div>
+                <h3 class="text-xl font-bold leading-snug text-gray-900">{feature.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  {feature.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <!-- 双 GB10 互联方案 -->
       <section id="dual-gb10" class="py-16 lg:py-24">
         <div class="container-custom">
@@ -359,98 +438,36 @@ const gb10Schema = {
                 </p>
               </div>
 
-              <div class="relative mx-auto w-full max-w-md">
-                <div class="absolute inset-8 rounded-full bg-gradient-to-br from-blue-200/50 via-blue-100/40 to-transparent blur-2xl" aria-hidden="true"></div>
-                <img
-                  src="/images/1p-ai-appliance-dual-gb10.webp"
-                  alt="1Panel AI 一体机（双 GB10 版），内置两个 GB10 算力节点"
-                  width="664"
-                  height="544"
-                  class="relative mx-auto w-full max-w-[400px] drop-shadow-2xl"
-                  loading="lazy"
-                  decoding="async"
-                />
+              <div class="mx-auto w-full max-w-[420px]">
+                <div class="space-y-3">
+                  <figure class="overflow-hidden rounded-xl border border-blue-100">
+                    <img
+                      src="/images/1p-gb10-dual-back.webp"
+                      alt="1Panel AI 一体机（双 GB10 版）背面：上下两个 GB10 节点，各自独立的接口面板"
+                      width="878"
+                      height="693"
+                      class="h-auto w-full mix-blend-multiply"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <figure class="overflow-hidden rounded-xl border border-blue-100 shadow-sm">
+                    <img
+                      src="/images/1p-gb10-dual-front.webp"
+                      alt="1Panel AI 一体机（双 GB10 版）正面：1Panel 金色标识与高密度进风散热格栅"
+                      width="878"
+                      height="560"
+                      class="h-auto w-full"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                </div>
+                <p class="mt-3 text-center text-xs leading-relaxed text-gray-500">
+                  背面：双节点接口面板 · 正面：高密度进风格栅
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 核心价值 -->
-      <section class="py-16 lg:py-24">
-        <div class="container-custom">
-          <div class="mx-auto mb-12 max-w-3xl text-center">
-            <h2 class="text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
-              看状态、装智能体、跑模型、发接口
-              <span class="mt-1 block text-1panel">一台 GB10 上全部搞定</span>
-            </h2>
-            <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              GB10 桌面超算装好之后最常做的四件事，1Panel 都提供了可视化入口，不必在命令行、Docker 与推理框架之间来回切换。
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {valueCards.map((feature, index) => (
-              <article
-                class="fade-in-up relative overflow-hidden rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
-                style={`animation-delay: ${index * 0.05}s;`}
-              >
-                <div class="mb-5 flex items-start justify-between">
-                  <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
-                    <Icon name={feature.icon} class="h-6 w-6" />
-                  </span>
-                  <span class="mt-1 text-sm font-bold leading-none tracking-widest text-blue-300">{feature.step}</span>
-                </div>
-                <h3 class="text-xl font-bold leading-snug text-gray-900">{feature.title}</h3>
-                <p class="mt-3 text-sm leading-relaxed text-gray-600">
-                  {feature.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- 适配设备 -->
-      <section class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24">
-        <div class="container-custom">
-          <div class="mx-auto mb-12 max-w-3xl text-center">
-            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
-              已适配的 GB10 设备
-            </h2>
-            <p class="mt-4 text-base leading-relaxed text-gray-600">
-              同一套 1Panel 界面，适配不同厂商的 GB10 主机形态；系统装好后即可安装 1Panel，接上 GPU 就能看到实时状态。
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {devices.map((device, index) => (
-              <div
-                class="fade-in-up flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md"
-                style={`animation-delay: ${index * 0.05}s;`}
-              >
-                <div class="overflow-hidden rounded-lg bg-white">
-                  <img
-                    src={device.image}
-                    alt={device.alt}
-                    width="680"
-                    height="420"
-                    class="h-auto w-full object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <p class="mt-4 text-sm font-bold leading-snug text-gray-900">{device.name}</p>
-                <p class="mt-1 text-xs font-medium uppercase tracking-wide text-gray-400">{device.note}</p>
-              </div>
-            ))}
-          </div>
-
-          <div class="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
-            <span class="inline-flex items-center gap-1.5">
-              <Icon name="carbon:checkmark-filled" class="h-4 w-4 text-1panel" />
-              统一的 GPU 监控、智能体与模型管理入口
-            </span>
           </div>
         </div>
       </section>
