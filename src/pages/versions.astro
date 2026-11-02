@@ -28,7 +28,7 @@ const plans = [
     href: "https://docs.fit2cloud.com/1panel/installation/online-installation",
     color: "blue",
     features: [
-      "智能体（限 5 个）",
+      { label: "智能体（限 5 个）", href: "/agent-management.html" },
       "AI 网关（限 10 个用户）",
       "虚拟机管理（限 1 台）",      
       { label: "模型管理（限 Ollama）", href: "/model-management.html" },      
@@ -61,7 +61,7 @@ const plans = [
     color: "blue",
     features: [
       "社区版全部功能",
-      "智能体（不限个数）",
+      { label: "智能体（不限个数）", href: "/agent-management.html" },
       "AI 网关（限 10 个用户）",  
       "虚拟机管理（限 5 台）",
       { label: "模型管理（支持 vLLM）", href: "/model-management.html" },
@@ -94,7 +94,7 @@ const plans = [
     color: "blue",
     features: [
       "专业版全部功能（不含短信）",
-      "智能体（不限个数）",                             
+      { label: "智能体（不限个数）", href: "/agent-management.html" },                             
       { label: "AI 网关（不限用户数）", href: "/ai-gateway.html", hot: true },
       { label: "虚拟机管理（不限台数）", href: virtualMachinePath },
       { label: "模型管理（支持 vLLM）", href: "/model-management.html" },

@@ -1,0 +1,284 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/agent-management.html", siteUrl);
+const trialUrl = "https://jsj.top/f/umuYtv";
+
+const agentKeywords = ["托管运行", "主流智能体", "无缝升级", "备份恢复"];
+
+const featureCards = [
+  {
+    icon: "carbon:cloud-monitoring",
+    step: "01",
+    title: "托管运行",
+    description:
+      "智能体以托管方式常驻运行，进程由面板统一看护，不用自己写守护脚本，7×24 小时持续提供服务。",
+  },
+  {
+    icon: "carbon:bot",
+    step: "02",
+    title: "主流智能体",
+    description:
+      "内置 DeepSeek Harness、Octop、OpenClaw、QwenClaw、Hermes Agent 等主流 AI 助理，选好类型即可创建。",
+  },
+  {
+    icon: "carbon:upgrade",
+    step: "03",
+    title: "无缝升级",
+    description:
+      "智能体版本随上游持续迭代，在面板内即可完成升级，无需重装，原有配置继续沿用。",
+  },
+  {
+    icon: "carbon:data-backup",
+    step: "04",
+    title: "备份恢复",
+    description:
+      "支持一键备份与一键恢复，升级、迁移前先做一次备份，出问题时随时还原到可用状态。",
+  },
+];
+
+const workflowSteps = [
+  {
+    no: "1",
+    icon: "carbon:add-alt",
+    title: "创建智能体，选择类型",
+    description:
+      "在智能体页新建实例，选择 OpenClaw、QwenClaw 等类型与应用版本，填好备注就得到一台独立运行的托管实例。",
+  },
+  {
+    no: "2",
+    icon: "carbon:plug",
+    title: "绑定模型，接入频道",
+    description:
+      "为智能体指定本地模型（如 Ollama 中的 qwen3.5），在频道页接入微信、QQ、企业微信、钉钉、飞书、Telegram、Discord 等入口。",
+  },
+  {
+    no: "3",
+    icon: "carbon:play-filled-alt",
+    title: "交给托管，随时查看",
+    description:
+      "实例由面板托管运行，在概览、日志、终端里随时查看状态与工作目录，需要时一键升级、备份或恢复。",
+  },
+];
+
+const pageTitle = "1Panel 智能体管理 - 快速部署 7×24 小时运行的主流 AI 助理智能体";
+const pageDescription =
+  "1Panel 智能体管理以托管方式运行主流 AI 助理智能体：内置 DeepSeek Harness、Octop、OpenClaw、QwenClaw、Hermes Agent 等类型，创建后 7×24 小时持续提供服务，支持绑定本地模型与微信、QQ、企业微信、钉钉、飞书、Telegram、Discord 等频道，并支持持续无缝升级与一键备份恢复。";
+const agentManagementSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel 智能体管理",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory: "AI agent management",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  url: pageUrl,
+  featureList: [
+    "托管运行",
+    "主流智能体",
+    "无缝升级",
+    "备份恢复",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel 智能体管理"
+  schemaName="1Panel 智能体管理"
+  description={pageDescription}
+  canonical="/agent-management.html"
+  image="/images/1p-agent-management.png"
+  imageWidth={3482}
+  imageHeight={1786}
+  imageAlt="1Panel 智能体管理 - 智能体列表与 OpenClaw 配置面板"
+  keywords={[
+    "1Panel 智能体管理",
+    "智能体管理",
+    "AI 助理",
+    "AI 智能体",
+    "托管运行",
+    "DeepSeek Harness",
+    "Octop",
+    "OpenClaw",
+    "QwenClaw",
+    "Hermes Agent",
+    "智能体备份恢复",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel 智能体管理", url: pageUrl },
+    ]),
+    agentManagementSchema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a href="/enterprise.html" class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50" style="animation-delay: 0.05s;">
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              返回企业版
+            </a>
+            <h1 class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl" style="animation-delay: 0.1s;">
+              1Panel 智能体管理
+            </h1>
+            <p class="fade-in-up mt-6 text-base leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
+              快速部署 <span class="whitespace-nowrap">7×24 小时运行</span>的主流 AI 助理智能体
+            </p>
+            <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
+              {agentKeywords.map((keyword) => (
+                <span class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <div class="fade-in-up mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row" style="animation-delay: 0.32s;">
+              <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex w-full items-center justify-center px-9 py-4 text-base sm:w-auto">
+                申请企业版试用
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          <div class="fade-in-up mt-8" style="animation-delay: 0.35s;">
+            <div class="relative overflow-hidden rounded-lg shadow-2xl shadow-blue-100/70">
+              <div class="relative overflow-hidden rounded-lg bg-white">
+                <img
+                  src="/images/1p-agent-management.png"
+                  alt="1Panel 智能体管理 - 智能体列表与 OpenClaw 配置面板，可接入微信、QQ、企业微信、钉钉、飞书等频道"
+                  width="3482"
+                  height="1786"
+                  class="h-auto w-full object-contain"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四大特性 -->
+      <section class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">
+              创建、接入、托管
+              <span class="mt-1 block text-1panel">一条链路跑通</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              从拉起一个智能体到接入微信、飞书等频道，全部在 1Panel 可视化界面中完成，不需要自己维护守护进程。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {featureCards.map((feature, index) => (
+              <article
+                class="fade-in-up relative overflow-hidden rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <div class="mb-5 flex items-start justify-between">
+                  <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                    <Icon name={feature.icon} class="h-6 w-6" />
+                  </span>
+                  <span class="mt-1 text-sm font-bold leading-none tracking-widest text-blue-300">{feature.step}</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">{feature.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  {feature.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- 三步上手 -->
+      <section class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+              三步把智能体交给 1Panel 托管
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              智能体列表、配置面板与运行监控围绕同一个实例协作，创建好的智能体可以直接进入模型绑定、频道接入与日常运维。
+            </p>
+          </div>
+
+          <div class="relative grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {workflowSteps.map((step, index) => (
+              <div
+                class="fade-in-up relative flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md lg:p-7"
+                style={`animation-delay: ${index * 0.06}s;`}
+              >
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-1panel">
+                    <Icon name={step.icon} class="h-5 w-5" />
+                  </span>
+                  <span class="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-1panel px-2 text-xs font-bold leading-none text-white">
+                    {step.no}
+                  </span>
+                </div>
+                <h3 class="mt-5 text-lg font-bold leading-snug text-gray-900">{step.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="carbon:checkmark-filled" class="h-4 w-4 text-1panel" />
+              配置、日志、终端、概览都收在同一个实例卡片里
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-white pb-16 lg:pb-24">
+        <div class="container-custom">
+          <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  在 1Panel 企业版中托管你的 AI 助理
+                </h2>
+                <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-600">
+                  1Panel 智能体管理把创建实例、绑定模型、接入频道与运行监控收进同一个可视化界面，配合模型管理与 AI 网关，让本地 AI 助理从部署到 7×24 运行都可控可见。
+                </p>
+              </div>
+              <a href="/enterprise.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
+                了解企业版
+                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>
