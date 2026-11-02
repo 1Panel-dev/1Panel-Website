@@ -94,6 +94,14 @@ jobs:
         with:
           name: production-site-dist
           path: ${{ env.BUILD_PATH }}/dist
+      - name: Rewrite paths for website-2026 subpath
+        run: node scripts/make-mirror-relative.mjs dist
+        working-directory: ${{ env.BUILD_PATH }}
+      - name: Upload website-2026 artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: website-2026-dist
+          path: ${{ env.BUILD_PATH }}/dist
 
   deploy:
     environment:
@@ -123,7 +131,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v8
         with:
-          name: production-site-dist
+          name: website-2026-dist
           path: dist
 
       - name: Copy build output to website-2026/1panel
