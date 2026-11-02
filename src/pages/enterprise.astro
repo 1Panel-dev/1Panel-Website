@@ -22,6 +22,7 @@ const layerTabs = [
     description:
       "支持通过 1Panel 应用商店快速部署和管理 AI 编程、AI 办公、AI 知识库与 AI 工作流等各种 AI 应用。",
     items: ["DeepSeek Harness", "Octop", "OpenClaw", "Hermes Agent", "MaxKB", "n8n"],
+    detailHref: "/agent-management.html",
   },
   {
     id: "governance-layer",
@@ -32,6 +33,7 @@ const layerTabs = [
     description:
       "提供从统一接入、智能路由到合规审计的全链条管控，让企业 AI 落地更安全、更高效、更可控。",
     items: ["AI 门户", "Skills 仓库", "MCP 市场", "AI 网关"],
+    detailHref: "/ai-gateway.html",
   },
   {
     id: "model-layer",
@@ -42,6 +44,7 @@ const layerTabs = [
     description:
       "提供本地模型统一管理能力，支持 DeepSeek、Qwen、GLM 等主流开源大模型，并适配 NVIDIA、Intel、华为昇腾等主流算力环境。",
     items: ["Qwen", "deepseek", "GLM", "NVIDIA", "华为昇腾", "Intel"],
+    detailHref: "/model-management.html",
   },
   {
     id: "infrastructure-layer",
@@ -52,6 +55,7 @@ const layerTabs = [
     description:
       "集中管理虚拟机及其镜像、模板、网络和存储池，覆盖资源概览、生命周期操作、控制台、监控与快照等日常管理。",
     items: ["虚拟机", "镜像与模板", "网络", "存储池"],
+    detailHref: "/virtual-machine.html",
   },
 ];
 
@@ -408,6 +412,16 @@ const enterpriseSchema = {
                       </div>
                       <h3 class="mt-5 text-2xl font-bold text-gray-900 lg:text-3xl">{layer.subtitle}</h3>
                       <p class="mt-4 text-base leading-relaxed text-gray-600">{layer.description}</p>
+                      <a
+                        href={layer.detailHref}
+                        class="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-1panel transition-colors duration-300 hover:text-blue-700"
+                      >
+                        了解详情
+                        <Icon
+                          name="carbon:arrow-right"
+                          class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                        />
+                      </a>
                     </div>
                     <div class={`rounded-lg border ${colors.border} bg-gradient-to-br ${colors.accent} p-5`}>
                       {layer.id === "model-layer" ? (
