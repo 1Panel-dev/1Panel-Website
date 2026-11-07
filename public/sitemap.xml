@@ -1468,4 +1468,14 @@
       <image:title>支持千问安全围栏模型，1Panel AI 网关 v1.6.0 版本发布</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://1panel.cn/blog/1panel-ai-appliance-plan6-benchmark.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://1panel.cn/images/blog/1panel-ai-appliance-plan6-benchmark/cover.png</image:loc>
+      <image:title>1Panel AI 一体机（方案六）实测报告：8 卡部署 DeepSeek-V4.1-Flash-1017</image:title>
+    </image:image>
+  </url>
 </urlset>
