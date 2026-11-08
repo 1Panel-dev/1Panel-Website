@@ -58,7 +58,7 @@ FONT_FALLBACKS = ["/System/Library/Fonts/PingFang.ttc"]
 
 # ---- 模板档案（几何参数均针对 1536×864 系列封面实测标定）-------------------
 PROFILES: dict[str, dict] = {
-    # 深色系「1Panel AI 网关」封面（v1.3 / 评测 等）
+    # 亮蓝系「1Panel AI 网关」封面（v1.3 / 评测 等）；2026-11-08 起模板底色统一
     "ai-gateway": {
         "template": "public/images/blog/1panel-ai-gateway-vs-litellm-new-api/cover.png",
         "mode": "tight",
@@ -78,7 +78,7 @@ PROFILES: dict[str, dict] = {
                      "ink_zone": (350, 516)},
         },
     },
-    # 深色系「1Panel AI 一体机（方案X 实测报告）」封面
+    # 亮蓝系「1Panel AI 一体机（方案X 实测报告）」封面；2026-11-08 起模板底色统一
     "ai-appliance": {
         "template": "public/images/blog/1panel-ai-appliance-plan5-benchmark/cover.png",
         "mode": "rect",
@@ -88,10 +88,9 @@ PROFILES: dict[str, dict] = {
         # 历史实现把淡投影写成了叠加白色光晕（region*(1-s)+255*s）。
         # 这里保留该行为，使新生成的一体机封面与既有封面保持像素级一致。
         "legacy_shadow": True,
-        # 历史实现还在修复区叠加了噪声（σ≈1.7/2.1/4.2）。实测模板背景是无噪的，
-        # 该噪声在放大观察时表现为可见色块 —— 属既有缺陷。
-        # 保留旧值仅为让本工具能原样复现已发布封面；如需干净结果加 --noise 0,0,0。
-        "noise": (1.7, 2.1, 4.2),
+        # 历史实现曾在修复区叠加噪声（σ≈1.7/2.1/4.2），放大观察会出现可见色块。
+        # 2026-11-08 模板底色统一为亮蓝后取消该噪声，保证新封面背景完全无噪。
+        "noise": (0.0, 0.0, 0.0),
         "slots": {
             "top1": {"text": "方案五 · 双模型实测", "font": "SHS-Heavy", "size": 36,
                      "center": (766.5, 137.5), "box": (575, 110, 961, 166), "pad": 0},
