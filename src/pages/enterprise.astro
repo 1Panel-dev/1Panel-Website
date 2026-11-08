@@ -50,7 +50,16 @@ const screenshots = [
       "vLLM 管理 · 精选模型：按厂商、类别和权重提供商筛选模型，查看激活参数与权重体积后直接下载。",
   },
   {
-    src: "/images/enterprise/1p-enterprise-05-model-service.webp",
+    src: "/images/enterprise/1p-enterprise-05-model-deploy.webp",
+    width: 1920,
+    height: 1080,
+    tab: "模型部署",
+    alt: "1Panel 企业版模型部署：创建 vLLM 实例并配置 GPU、镜像与服务端口",
+    caption:
+      "vLLM 管理 · 模型部署：选择 GPU 类型、vLLM 版本与镜像，配置服务端口、模型权重与加速卡编排后，一键创建推理实例。",
+  },
+  {
+    src: "/images/enterprise/1p-enterprise-06-model-service.webp",
     width: 1920,
     height: 1215,
     tab: "模型服务",
@@ -59,7 +68,16 @@ const screenshots = [
       "vLLM 管理 · 模型服务：统一管理已部署模型的 API 类型、验证状态与访问端点，供智能体与外部工具调用。",
   },
   {
-    src: "/images/enterprise/1p-enterprise-06-usage.webp",
+    src: "/images/enterprise/1p-enterprise-07-benchmark.webp",
+    width: 1920,
+    height: 1080,
+    tab: "基准测试",
+    alt: "1Panel 企业版基准测试：多并发场景的 TTFT、TPOT 与吞吐指标",
+    caption:
+      "基准测试：按并发数与输入 / 输出 Token 组合压测，查看 TTFT、TPOT、单路与总输出吞吐，并导出 JSON / CSV / HTML / ZIP 报告。",
+  },
+  {
+    src: "/images/enterprise/1p-enterprise-08-usage.webp",
     width: 2000,
     height: 1031,
     tab: "用量统计",
@@ -421,7 +439,7 @@ const enterpriseSchema = {
             </span>
             <h2 class="mt-5 text-3xl font-bold leading-snug [text-wrap:balance] text-gray-900 lg:text-5xl">不用安装，先走一遍真实界面</h2>
             <p class="mt-5 text-base leading-relaxed text-gray-600 sm:text-lg">
-              从 GPU 状态与监控曲线，到模型下载、服务接入和用量统计，六张界面截图自动轮播，帮你快速看清 1Panel 企业版每天都在管什么。
+              从 GPU 状态与监控曲线，到模型下载、部署、服务接入、基准测试与用量统计，八张界面截图自动轮播，帮你快速看清 1Panel 企业版每天都在管什么。
             </p>
           </div>
 
@@ -485,7 +503,7 @@ const enterpriseSchema = {
               </div>
             </div>
 
-            <div class="mt-5 flex items-center gap-2 overflow-x-auto pb-1 sm:justify-center">
+            <div class="mt-5 flex items-center gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center lg:flex-nowrap">
               {screenshots.map((shot, index) => (
                 <button
                   type="button"
