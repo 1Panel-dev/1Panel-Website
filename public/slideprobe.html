@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>界面速览单张探针</title>
+<style>
+  html,body{margin:0;padding:0;background:#fff}
+  iframe{display:block;width:1200px;height:1300px;border:0}
+</style>
+</head>
+<body>
+<iframe id="f" src="/enterprise.html"></iframe>
+<script>
+  const i = Number(new URLSearchParams(location.search).get('i') || 0);
+  const f = document.getElementById('f');
+  f.addEventListener('load', () => setTimeout(() => {
+    try {
+      const d = f.contentDocument, w = f.contentWindow;
+      const tab = d.querySelector(`[data-tour-tab][data-index="${i}"]`);
+      if (tab) tab.click();
+      const sec = d.querySelector('#screenshots');
+      if (sec) w.scrollTo(0, sec.getBoundingClientRect().top + w.scrollY - 20);
+      const active = d.querySelector('[data-tour-tab][aria-current="true"]');
+      document.body.setAttribute('data-ready', active ? active.textContent.trim() : 'no-tab');
+    } catch (e) {
+      document.body.setAttribute('data-ready', 'ERR ' + e.message);
+    }
+  }, 700));
+</script>
+</body>
+</html>

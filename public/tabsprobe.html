@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>界面速览标签测量</title>
+<style>html,body{margin:0;padding:0}iframe{border:0;display:block}</style>
+</head>
+<body>
+<script>
+  const W = Number(new URLSearchParams(location.search).get('w') || 1440);
+  const f = document.createElement('iframe');
+  f.style.width = W + 'px';
+  f.style.height = '1500px';
+  f.src = '/enterprise.html';
+  document.body.appendChild(f);
+  f.addEventListener('load', () => setTimeout(() => {
+    try {
+      const d = f.contentDocument;
+      const row = d.querySelector('[data-tour-tab]').parentElement;
+      const tabs = [...row.querySelectorAll('[data-tour-tab]')];
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const total = tabs.reduce((s, t) => s + t.getBoundingClientRect().width, 0);
+      const contentWidth = Math.round(total + gap * (tabs.length - 1));
+      const innerWidth = Math.round(row.clientWidth);
+      const rowRight = Math.round(row.getBoundingClientRect().right);
+      const lastRight = Math.round(tabs[tabs.length - 1].getBoundingClientRect().right);
+      const tops = new Set(tabs.map((t) => Math.round(t.getBoundingClientRect().top)));
+      const out = {
+        width: W,
+        pageOverflow: d.documentElement.scrollWidth > d.documentElement.clientWidth,
+        tabCount: tabs.length,
+        contentWidth,
+        innerWidth,
+        lastOverflow: lastRight - rowRight,
+        rows: tops.size,
+        gap,
+        wrap: getComputedStyle(row).flexWrap,
+      };
+      document.body.setAttribute('data-result', JSON.stringify(out));
+    } catch (e) {
+      document.body.setAttribute('data-result', 'ERR ' + e.message);
+    }
+  }, 800));
+</script>
+</body>
+</html>

@@ -53,13 +53,22 @@ const screenshots = [
     src: "/images/enterprise/1p-enterprise-05-model-deploy.webp",
     width: 1920,
     height: 1080,
-    tab: "模型部署",
-    alt: "1Panel 企业版模型部署：创建 vLLM 实例并配置 GPU、镜像与服务端口",
+    tab: "vLLM 模型部署",
+    alt: "1Panel 企业版 vLLM 模型部署：创建 vLLM 实例并配置 GPU、镜像与服务端口",
     caption:
       "vLLM 管理 · 模型部署：选择 GPU 类型、vLLM 版本与镜像，配置服务端口、模型权重与加速卡编排后，一键创建推理实例。",
   },
   {
-    src: "/images/enterprise/1p-enterprise-06-model-service.webp",
+    src: "/images/enterprise/1p-enterprise-06-vllm-monitor.webp",
+    width: 1920,
+    height: 1215,
+    tab: "vLLM 实例监控",
+    alt: "1Panel 企业版 vLLM 实例监控：Token 吞吐、请求数、KV 缓存与请求吞吐的实时曲线",
+    caption:
+      "vLLM 管理 · 实例监控：按实例查看 Token 吞吐、请求数、KV 缓存与请求吞吐的实时曲线，支持延迟与请求分析。",
+  },
+  {
+    src: "/images/enterprise/1p-enterprise-07-model-service.webp",
     width: 1920,
     height: 1215,
     tab: "模型服务",
@@ -68,7 +77,7 @@ const screenshots = [
       "vLLM 管理 · 模型服务：统一管理已部署模型的 API 类型、验证状态与访问端点，供智能体与外部工具调用。",
   },
   {
-    src: "/images/enterprise/1p-enterprise-07-benchmark.webp",
+    src: "/images/enterprise/1p-enterprise-08-benchmark.webp",
     width: 1920,
     height: 1080,
     tab: "基准测试",
@@ -77,13 +86,13 @@ const screenshots = [
       "基准测试：按并发数与输入 / 输出 Token 组合压测，查看 TTFT、TPOT、单路与总输出吞吐，并导出 JSON / CSV / HTML / ZIP 报告。",
   },
   {
-    src: "/images/enterprise/1p-enterprise-08-usage.webp",
+    src: "/images/enterprise/1p-enterprise-09-ai-gateway-access.webp",
     width: 2000,
-    height: 1262,
-    tab: "用量统计",
-    alt: "1Panel AI 网关用量统计：请求量、Token 用量与缓存命中率",
+    height: 1124,
+    tab: "接入 AI 网关",
+    alt: "1Panel AI 网关接入 vLLM：在账号池添加 vLLM 供应商并配置模型映射",
     caption:
-      "AI 网关 · 用量统计：按供应商、上游账号、模型组统计请求量、输入与输出 Token、缓存命中率，用量与成本可量化。",
+      "AI 网关 · 接入模型：在账号池添加自建 vLLM 服务，填写地址与 API Key，勾选支持的协议并配置模型映射，即可统一纳管。",
   },
 ];
 
@@ -439,7 +448,7 @@ const enterpriseSchema = {
             </span>
             <h2 class="mt-5 text-3xl font-bold leading-snug [text-wrap:balance] text-gray-900 lg:text-5xl">不用安装，先走一遍真实界面</h2>
             <p class="mt-5 text-base leading-relaxed text-gray-600 sm:text-lg">
-              从 GPU 状态与监控曲线，到模型下载、部署、服务接入、基准测试与用量统计，八张界面截图自动轮播，帮你快速看清 1Panel 企业版每天都在管什么。
+              从 GPU 状态到 vLLM 部署、实例监控、服务接入与基准测试，再到 AI 网关统一纳管，九张截图自动轮播，帮你看清 1Panel 企业版每天都在管什么。
             </p>
           </div>
 
@@ -503,7 +512,7 @@ const enterpriseSchema = {
               </div>
             </div>
 
-            <div class="mt-5 flex items-center gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center lg:flex-nowrap">
+            <div class="mt-5 flex items-center gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center xl:flex-nowrap xl:gap-1.5">
               {screenshots.map((shot, index) => (
                 <button
                   type="button"
@@ -511,7 +520,7 @@ const enterpriseSchema = {
                   data-index={index}
                   aria-label={`查看${shot.tab}界面`}
                   aria-current={index === 0 ? "true" : "false"}
-                  class={`shrink-0 whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors duration-200 hover:border-blue-200 hover:text-1panel sm:text-sm ${
+                  class={`shrink-0 whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors duration-200 hover:border-blue-200 hover:text-1panel sm:text-sm lg:px-3 xl:px-3.5 ${
                     index === 0
                       ? "border-blue-200 bg-blue-50 text-1panel shadow-sm"
                       : "border-gray-200 bg-white text-gray-500"
