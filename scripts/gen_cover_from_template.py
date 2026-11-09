@@ -121,6 +121,29 @@ PROFILES: dict[str, dict] = {
         # 标题下方的两条横线 + 菱形装饰（字形墨迹之外，换字后从模板贴回）
         "restore": {"box": (446, 519, 1094, 552), "thresh": 150.0, "ramp": 40.0},
     },
+    # 亮蓝系「更新日志」封面（2026-11-09，由 gpu-selection 派生）：
+    # 产品动态里旧版「更新日志 / Release Notes」纯蓝块与「实测报告 / 版本发布」系列
+    # 版式不一致，改用同一套模板，使整组缩略图视觉统一。
+    "release-notes": {
+        "template": "public/images/blog/1panel-ai-appliance-plan5-benchmark/cover.png",
+        "mode": "rect",
+        "fit_iters": 0,
+        "seed": 11,
+        "legacy_shadow": True,
+        "noise": (0.0, 0.0, 0.0),
+        "slots": {
+            "top1": {"text": "方案五 · 双模型实测", "font": "SHS-Heavy", "size": 36,
+                     "center": (766.5, 137.5), "box": (575, 110, 961, 166), "pad": 0},
+            "top2": {"text": "1Panel AI 一体机", "font": "PuHuiTi-Medium", "size": 40,
+                     "center": (768.5, 195.5), "box": (578, 170, 956, 226), "pad": 0},
+            "main": {"text": "实测报告", "font": "PuHuiTi-Heavy", "size": 150,
+                     "center": (767.5, 446.5), "box": (446, 350, 1094, 554), "pad": 14,
+                     "mode": "tight", "ink_zone": (350, 516)},
+        },
+        "pill": {"box": (587, 754, 949, 824), "center": (768.0, 793.0),
+                 "font": "PuHuiTi-Bold", "size": 35, "color": (27, 61, 161)},
+        "restore": {"box": (446, 519, 1094, 552), "thresh": 150.0, "ramp": 40.0},
+    },
 }
 
 # 旧版 CLI 的默认参数（等价于 ai-appliance 档案的 top1 槽位）
@@ -368,7 +391,12 @@ def build_profile(profile_name: str, sets: dict[str, str], out_path: str,
         restored = restore_ink(out, arr, prof["restore"])
 
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
-    Image.fromarray(out.astype(np.uint8)).save(out_path)
+    img = Image.fromarray(out.astype(np.uint8))
+    # JPEG 走高质量保存，避免纯色渐变背景出现块状伪影
+    if out_path.lower().endswith((".jpg", ".jpeg")):
+        img.save(out_path, quality=95, subsampling=0)
+    else:
+        img.save(out_path)
 
     print(f"[ok] {out_path}")
     print(f"     模板: {os.path.relpath(template, REPO)}  模式: {prof['mode']}")
