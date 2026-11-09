@@ -146,6 +146,14 @@ PROFILES: dict[str, dict] = {
     },
 }
 
+# 亮蓝系「操作教程」封面（2026-11-09）：产品动态里旧版「操作教程」纯蓝块与
+# 「实测报告 / 版本发布」系列不一致，沿用同一版式，仅槽位文案不同。
+PROFILES["tutorial"] = {
+    **PROFILES["release-notes"],
+    "slots": {k: dict(v) for k, v in PROFILES["release-notes"]["slots"].items()},
+    "pill": dict(PROFILES["release-notes"]["pill"]),
+}
+
 # 旧版 CLI 的默认参数（等价于 ai-appliance 档案的 top1 槽位）
 LEGACY_TEMPLATE = os.path.join(REPO, PROFILES["ai-appliance"]["template"])
 LEGACY_CENTER = PROFILES["ai-appliance"]["slots"]["top1"]["center"]
@@ -392,9 +400,11 @@ def build_profile(profile_name: str, sets: dict[str, str], out_path: str,
 
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     img = Image.fromarray(out.astype(np.uint8))
-    # JPEG 走高质量保存，避免纯色渐变背景出现块状伪影
+    # JPEG / WEBP 走高质量保存，避免纯色渐变背景出现块状伪影
     if out_path.lower().endswith((".jpg", ".jpeg")):
         img.save(out_path, quality=95, subsampling=0)
+    elif out_path.lower().endswith(".webp"):
+        img.save(out_path, quality=95, method=6)
     else:
         img.save(out_path)
 
