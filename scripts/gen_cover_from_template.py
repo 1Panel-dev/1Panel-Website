@@ -96,6 +96,31 @@ PROFILES: dict[str, dict] = {
                      "center": (766.5, 137.5), "box": (575, 110, 961, 166), "pad": 0},
         },
     },
+    # 亮蓝系「NVIDIA GPU 选型指南」封面（2026-11-09，由 ai-appliance 模板派生：
+    # 版式完全一致，但主标题、副标题与底部胶囊都要可替换，不再绑定「实测报告 / 一体机」）
+    "gpu-selection": {
+        "template": "public/images/blog/1panel-ai-appliance-plan5-benchmark/cover.png",
+        "mode": "rect",
+        "fit_iters": 0,
+        "seed": 11,
+        "legacy_shadow": True,
+        "noise": (0.0, 0.0, 0.0),
+        "slots": {
+            "top1": {"text": "方案五 · 双模型实测", "font": "SHS-Heavy", "size": 36,
+                     "center": (766.5, 137.5), "box": (575, 110, 961, 166), "pad": 0},
+            "top2": {"text": "1Panel AI 一体机", "font": "PuHuiTi-Medium", "size": 40,
+                     "center": (768.5, 195.5), "box": (578, 170, 956, 226), "pad": 0},
+            # 主标题区有装饰弧线穿过，用紧贴字形的 tight 模式；ink_zone 止于下方菱形装饰之上
+            "main": {"text": "实测报告", "font": "PuHuiTi-Heavy", "size": 150,
+                     "center": (767.5, 446.5), "box": (446, 350, 1094, 554), "pad": 14,
+                     "mode": "tight", "ink_zone": (350, 516)},
+        },
+        # 底部白色胶囊徽标：不是「白字压蓝底」，需单独重置胶囊再重绘深色文字
+        "pill": {"box": (587, 754, 949, 824), "center": (768.0, 793.0),
+                 "font": "PuHuiTi-Bold", "size": 35, "color": (27, 61, 161)},
+        # 标题下方的两条横线 + 菱形装饰（字形墨迹之外，换字后从模板贴回）
+        "restore": {"box": (446, 519, 1094, 552), "thresh": 150.0, "ramp": 40.0},
+    },
 }
 
 # 旧版 CLI 的默认参数（等价于 ai-appliance 档案的 top1 槽位）
@@ -251,6 +276,66 @@ def replace_slot(out: np.ndarray, arr: np.ndarray, slot: dict, new_text: str, mo
             "erased": int(erase.sum())}
 
 
+def replace_pill(out: np.ndarray, spec: dict, new_text: str) -> dict:
+    """重绘底部白色胶囊徽标（深色小字压在白色胶囊上，不能套白字逻辑）。
+
+    做法：把胶囊内部（按圆角矩形内缩 2px）重置为纯白，保留模板自带的边缘抗锯齿，
+    再按原字重与原文字色重绘新文案；胶囊尺寸不变，文字过宽时自动等比缩小字号。
+    """
+    x0, y0, x1, y1 = spec["box"]
+    w, h = x1 - x0, y1 - y0
+    r = h / 2.0
+    a = max(0.0, w / 2.0 - r)
+
+    yy, xx = np.mgrid[y0:y1, x0:x1]
+    dx = np.abs(xx + 0.5 - (x0 + x1) / 2.0)
+    dy = np.abs(yy + 0.5 - (y0 + y1) / 2.0)
+    # 距胶囊中轴线段 ≤ r-2 的像素：内缩后重置为白，避免破坏原边缘的抗锯齿过渡
+    inside = np.sqrt(np.maximum(dx - a, 0.0) ** 2 + dy ** 2) <= (r - 2.0)
+    region = out[y0:y1, x0:x1].copy()
+    region[inside] = 255.0
+
+    size = int(spec["size"])
+    font = resolve_font(spec["font"], size)
+    # 留边约 30px（与原胶囊文案的左右留白一致），超宽才缩字号
+    limit = w - 2 * max(24.0, r * 0.85)
+    while size > 10:
+        bb = font.getbbox(new_text)
+        if bb[2] - bb[0] <= limit:
+            break
+        size -= 1
+        font = resolve_font(spec["font"], size)
+
+    bb = font.getbbox(new_text)
+    tw, th = bb[2] - bb[0], bb[3] - bb[1]
+    layer = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(layer).text(
+        (spec["center"][0] - x0 - tw / 2 - bb[0],
+         spec["center"][1] - y0 - th / 2 - bb[1]), new_text, font=font, fill=255)
+    alpha = (np.asarray(layer, dtype=np.float64) / 255.0)[..., None]
+    color = np.asarray(spec["color"], dtype=np.float64)
+    region = region * (1.0 - alpha) + color * alpha
+
+    out[y0:y1, x0:x1] = np.clip(region, 0, 255)
+    return {"new_text": new_text, "dims": (tw, th), "size": size,
+            "reset": int(inside.sum())}
+
+
+def restore_ink(out: np.ndarray, arr: np.ndarray, spec: dict) -> int:
+    """把模板里的装饰（标题下方的横线与菱形）贴回去。
+
+    主标题换字时，紧贴字形的擦除会连带清掉下方装饰；这些装饰位于字形墨迹之外的
+    窄带里，直接按「模板中比背景亮」的像素取回即可，不会带回旧笔画。
+    """
+    x0, y0, x1, y1 = spec["box"]
+    src = arr[y0:y1, x0:x1]
+    lum = src.mean(axis=2)
+    th, ramp = spec.get("thresh", 150.0), spec.get("ramp", 40.0)
+    alpha = np.clip((lum - th) / ramp, 0.0, 1.0)[..., None]
+    out[y0:y1, x0:x1] = out[y0:y1, x0:x1] * (1.0 - alpha) + src * alpha
+    return int((alpha[..., 0] > 0.5).sum())
+
+
 def build_profile(profile_name: str, sets: dict[str, str], out_path: str,
                   template_override: str | None = None,
                   noise_override: tuple[float, float, float] | None = None) -> None:
@@ -262,6 +347,8 @@ def build_profile(profile_name: str, sets: dict[str, str], out_path: str,
 
     info = []
     for key, new_text in sets.items():
+        if key == "pill":
+            continue
         if key not in prof["slots"]:
             raise SystemExit(f"档案 {profile_name} 没有槽位 {key}；可用：{list(prof['slots'])}")
         info.append(replace_slot(out, arr, prof["slots"][key], new_text,
@@ -269,6 +356,16 @@ def build_profile(profile_name: str, sets: dict[str, str], out_path: str,
                                  prof.get("fit_iters", 5), prof.get("seed", 20260928),
                                  prof["slots"][key].get("ring", prof.get("ring", 14)),
                                  prof.get("legacy_shadow", False), noise_override or prof.get("noise", NOISE_SIGMA)))
+
+    pill_info = None
+    if "pill" in sets:
+        if "pill" not in prof:
+            raise SystemExit(f"档案 {profile_name} 没有 pill 槽位")
+        pill_info = replace_pill(out, prof["pill"], sets["pill"])
+
+    restored = 0
+    if prof.get("restore"):
+        restored = restore_ink(out, arr, prof["restore"])
 
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     Image.fromarray(out.astype(np.uint8)).save(out_path)
@@ -279,9 +376,17 @@ def build_profile(profile_name: str, sets: dict[str, str], out_path: str,
         s = it["slot"]
         print(f"     {s['text']!r} -> {it['new_text']!r}  "
               f"({it['dims'][0]}×{it['dims'][1]} px, {s['font']} {s['size']}, 重建 {it['erased']} px)")
+    if pill_info:
+        print(f"     pill -> {pill_info['new_text']!r}  "
+              f"({pill_info['dims'][0]}×{pill_info['dims'][1]} px, 字号 {pill_info['size']}, "
+              f"重置 {pill_info['reset']} px)")
+    if restored:
+        print(f"     装饰回贴: {restored} px")
 
     # 校验：所有槽位之外必须逐像素一致
-    boxes = [tuple(prof["slots"][k]["box"]) for k in sets]
+    boxes = [tuple(prof["slots"][k]["box"]) for k in sets if k != "pill"]
+    if "pill" in sets and "pill" in prof:
+        boxes.append(tuple(prof["pill"]["box"]))
     diff = np.abs(out - arr).sum(axis=2)
     guard = np.zeros(diff.shape, bool)
     for x0, y0, x1, y1 in boxes:
