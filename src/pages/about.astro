@@ -4,6 +4,7 @@ import Statistics from "../components/Statistics.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import LanguageModal from "../components/LanguageModal.astro";
+import { Icon } from "astro-icon/components";
 import {
   SITE_URL,
   createBreadcrumbSchema,
@@ -12,13 +13,43 @@ import {
 import "../styles/global.css";
 
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
+
+const offerings = [
+  {
+    tag: "版本对比",
+    title: "社区版 / 专业版 / 企业版",
+    description:
+      "社区版开源免费，覆盖日常运维与快速上手；专业版扩展移动端 App、网站安全与告警能力；企业版面向企业的 AI 生产环境，提供 AI 网关、AI 门户、Skills 仓库与用户认证管理。",
+    points: ["免费开源", "按套授权", "企业级 AI 治理"],
+    href: "/versions.html",
+    cta: "查看版本与价格",
+  },
+  {
+    tag: "企业 AI 治理",
+    title: "1Panel AI 网关",
+    description:
+      "打造企业专属的 AI 统一接入与治理平台：对内统一承接各业务系统的模型调用，对外按席位与配额分发，并把路由、合规与用量收在同一处。",
+    points: ["统一接入", "智能路由", "内容合规", "用量统计"],
+    href: "/ai-gateway.html",
+    cta: "了解 AI 网关",
+  },
+  {
+    tag: "软硬一体",
+    title: "1Panel AI 一体机",
+    description:
+      "以「超融合」理念整合底层算力、模型服务与 AI 应用，预装 1Panel 企业版，支持 GB10、RTX Pro 5000 等算力方案，开箱即用，适合私有化部署。",
+    points: ["开箱即用", "私有化部署", "GB10 / RTX Pro 5000"],
+    href: "/ai-appliance.html",
+    cta: "了解 AI 一体机",
+  },
+];
 ---
 
 <Layout
   title="关于 1Panel - 开源 Linux 服务器运维管理面板"
   socialTitle="关于 1Panel - 开源 Linux 面板简介与产品信息"
   schemaName="关于 1Panel"
-  description="了解 1Panel 的产品背景、定位与核心能力。1Panel 是现代化、开源的 Linux 服务器运维管理面板，由杭州飞致云信息科技有限公司推出，支持网站、数据库、容器、备份与安全管理。"
+  description="了解 1Panel 的产品背景、定位与核心能力。1Panel 是现代化、开源的 Linux 服务器运维管理面板，由杭州飞致云信息科技有限公司推出，支持网站、数据库、容器、备份与安全管理，并提供社区版、专业版、企业版以及 1Panel AI 网关、1Panel AI 一体机等产品。"
   canonical="/about.html"
   keywords={[
     "1Panel 简介",
@@ -29,6 +60,10 @@ const siteUrl = Astro.site?.toString() ?? SITE_URL;
     "Linux 服务器管理",
     "服务器运维管理面板",
     "杭州飞致云 1Panel",
+    "1Panel 版本对比",
+    "1Panel 社区版 专业版 企业版",
+    "1Panel AI 网关",
+    "1Panel AI 一体机",
   ]}
   structuredData={[
     createBreadcrumbSchema([
@@ -82,6 +117,43 @@ const siteUrl = Astro.site?.toString() ?? SITE_URL;
               OSS、AWS S3 云存储、MinIO 云原生对象存储和 SFTP 文件传输协议。
             </li>
           </ul>
+          <h2 class="mt-10 text-2xl font-semibold mb-3">版本与产品线</h2>
+          <p class="mb-6 text-gray-600">
+            除开源社区版外，1Panel 还提供按规模分级的商业版本，以及面向企业 AI 场景的
+            AI 网关与 AI 一体机，可按团队规模与落地阶段组合选用。
+          </p>
+          <div class="mb-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {offerings.map((offering) => (
+              <a
+                href={offering.href}
+                class="group flex h-full flex-col rounded-lg border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
+              >
+                <span class="inline-flex w-fit items-center rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-1panel">
+                  {offering.tag}
+                </span>
+                <h3 class="mt-3 text-lg font-bold leading-snug text-gray-900">
+                  {offering.title}
+                </h3>
+                <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
+                  {offering.description}
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {offering.points.map((point) => (
+                    <span class="rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600">
+                      {point}
+                    </span>
+                  ))}
+                </div>
+                <span class="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-1panel">
+                  {offering.cta}
+                  <Icon
+                    name="carbon:arrow-right"
+                    class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                  />
+                </span>
+              </a>
+            ))}
+          </div>
           <p class="text-sm text-gray-500">
             1Panel
             是杭州飞致云信息科技有限公司主办的网站，审核通过日期：2023-01-31，ICP备案/许可证号：浙ICP备14038283号。
