@@ -61,11 +61,11 @@ const ProductOverview: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-blue-600">29k+</div>
+                <div className="text-2xl font-bold text-blue-600">37k+</div>
                 <div className="text-sm text-gray-600">GitHub Stars</div>
               </div>
               <div className="bg-white rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-blue-600">2.5k+</div>
+                <div className="text-2xl font-bold text-blue-600">3.4k+</div>
                 <div className="text-sm text-gray-600">Forks</div>
               </div>
             </div>
@@ -119,7 +119,7 @@ const ProductOverview: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-gray-600">5k+</div>
+                <div className="text-2xl font-bold text-gray-600">6k+</div>
                 <div className="text-sm text-gray-600">GitHub Stars</div>
               </div>
               <div className="bg-white rounded-xl p-4 text-center">

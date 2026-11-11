@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
               >
                 <Github className="mr-2 h-5 w-5" />
                 <Star className="mr-1 h-4 w-4" />
-                29k+
+                37k+
               </a>
             </div>
 
