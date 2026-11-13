@@ -1,0 +1,136 @@
+---
+import { Icon } from "astro-icon/components";
+
+// 评价均摘自公开发布的用户评论与技术媒体评测，按原文摘录（个别标点与大小写经编辑）
+const testimonials = [
+  {
+    quote:
+      "1Panel 是以 Docker 为核心的开源面板，非常适合生产环境使用。容器操作非常高效，在 Docker 管理的整个流程都考虑得非常细致，简直是业界的标杆！",
+    name: "马俊杰",
+    meta: "社区用户 · 江苏",
+    tag: "生产环境",
+    href: "/blog/community-comments-october-2023.html",
+    external: false,
+  },
+  {
+    quote:
+      "作为一个刚入行的新手，1Panel 对新手来说无疑是很大的助力，精美的 UI、简洁的界面也符合当下大多数人的审美。系统的一键式安装对新手也十分友好，减少了不少时间成本。",
+    name: "李嘉图",
+    meta: "社区用户 · 广西",
+    tag: "新手友好",
+    href: "/blog/community-comments-october-2023.html",
+    external: false,
+  },
+  {
+    quote:
+      "1Panel 是一个可执行程序，安装快捷，功能十分方便。……防火墙、Docker 都有了控制面板，无需其他第三方控制软件，极大节省了切换平台操作的时间。",
+    name: "ALEX",
+    meta: "社区用户 · 江苏",
+    tag: "安装与运维",
+    href: "/blog/community-comments-october-2023.html",
+    external: false,
+  },
+  {
+    quote:
+      "Best all-rounder: 1Panel (covers both PHP and Docker with a modern Go backend).",
+    name: "Bitdoze",
+    meta: "海外技术博客 · 2026 自建服务器面板横评",
+    tag: "海外评测",
+    href: "https://www.bitdoze.com/best-self-hosted-panels/",
+    external: true,
+    lang: "en",
+    note: "译：全能首选 —— 同时覆盖 PHP 站点与 Docker 容器，Go 后端更轻快。",
+  },
+  {
+    quote:
+      "除了 Docker 管理，还带网站管理、数据库管理、文件管理、防火墙配置等。如果你只需要一个面板管好整台服务器，1Panel 最合适。",
+    name: "IT 大叔的工具箱",
+    meta: "技术博客 · Docker 面板横评 2026",
+    tag: "全能面板",
+    href: "https://www.vpnt.top/docker-panel-comparison-2026/",
+    external: true,
+  },
+  {
+    quote:
+      "简单明了，对热门的软件都已经支持安装，对服务器上的 Docker 管理、编排都做得非常详细。研发人员服务态度很好，有问必答。",
+    name: "微清晨",
+    meta: "社区用户 · 河北",
+    tag: "界面与响应",
+    href: "/blog/community-comments-october-2023.html",
+    external: false,
+  },
+];
+---
+
+<section id="testimonials" class="section-padding bg-white">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="fade-in-up text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+        真实的
+        <span class="text-1panel-gradient">用户评价</span>
+      </h2>
+      <p
+        class="fade-in-up text-xl text-gray-600 max-w-3xl mx-auto"
+        style="animation-delay: 0.2s;"
+      >
+        来自社区用户、站长与技术媒体的公开评价，原文均可查证。
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:auto-rows-fr sm:grid-cols-2 lg:grid-cols-3">
+      {
+        testimonials.map((item, index) => (
+          <figure
+            class="fade-in-up group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/60"
+            style={`animation-delay: ${(0.1 + index * 0.05).toFixed(2)}s;`}
+          >
+            <div class="flex items-center justify-between gap-3">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-1panel transition-colors duration-300 group-hover:bg-1panel group-hover:text-white">
+                <Icon name="carbon:quotes" class="h-4 w-4" />
+              </span>
+              <span class="rounded-full bg-gray-50 px-2.5 py-1 text-[11px] font-medium leading-none text-gray-500 ring-1 ring-inset ring-gray-200/80">
+                {item.tag}
+              </span>
+            </div>
+
+            <div class="mt-4 flex-1">
+              <blockquote lang={item.lang} class="text-[15px] leading-relaxed text-gray-700">
+                {item.quote}
+              </blockquote>
+              {item.note && (
+                <p class="mt-2 text-xs leading-relaxed text-gray-500">{item.note}</p>
+              )}
+            </div>
+
+            <figcaption class="mt-5 flex items-center gap-3 border-t border-gray-100 pt-4">
+              <span
+                class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-1panel-gradient text-sm font-bold text-white"
+                aria-hidden="true"
+              >
+                {item.name.slice(0, 1)}
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block truncate text-sm font-semibold text-gray-900">{item.name}</span>
+                <span class="mt-0.5 block text-xs leading-snug text-gray-500">{item.meta}</span>
+              </span>
+              <a
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 hover:bg-blue-50 hover:text-1panel focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                aria-label={`查看 ${item.name} 的评价原文`}
+              >
+                <Icon name="carbon:arrow-up-right" class="h-3.5 w-3.5" />
+              </a>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <p class="fade-in-up mt-8 text-center text-xs leading-relaxed text-gray-500">
+      评价摘自 1Panel 社区点评征集、Bitdoze 2026 自建服务器面板横评与技术媒体公开评测，按原文摘录，个别标点与大小写经编辑。
+    </p>
+  </div>
+</section>
