@@ -6,6 +6,7 @@ import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
 import QuickStart from '../components/QuickStart.astro';
 import AppStore from '../components/AppStore.astro';
+import Testimonials from '../components/Testimonials.astro';
 import Community from '../components/Community.astro';
 import Partners from '../components/Partners.astro';
 import CTA from '../components/CTA.astro';
@@ -48,9 +49,10 @@ const siteUrl = Astro.site?.toString() ?? SITE_URL;
       <Hero />
       <Features />
       <AppStore />
-      <QuickStart />
+      <Testimonials />
       <Community />
       <Partners />
+      <QuickStart />
     </main>
     <Footer />
     <LanguageModal />

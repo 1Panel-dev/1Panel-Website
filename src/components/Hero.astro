@@ -40,6 +40,13 @@ const preview = await getImage({
     </div>
   </div>
 
+  <!-- Bottom fade: 让 Hero 的浅蓝光晕平滑过渡到下方白色区块 -->
+  <div
+    class="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-white/0 via-white/55 to-white sm:h-40"
+    aria-hidden="true"
+  >
+  </div>
+
   <!-- Main Content -->
   <div class="relative z-10 container-custom py-12 lg:py-16 pb-24 lg:pb-32">
     <div
