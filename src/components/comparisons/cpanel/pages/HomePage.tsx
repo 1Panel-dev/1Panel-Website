@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
   ]
 
   const stats = [
-    { label: "GitHub Stars", value: "29K+", icon: Star },
+    { label: "GitHub Stars", value: "37K+", icon: Star },
     { label: "社区贡献者", value: "300+", icon: Users },
     { label: "累计部署", value: "1,500,000+", icon: TrendingUp },
   ]
