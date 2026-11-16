@@ -42,7 +42,7 @@ const ComparisonTable: React.FC = () => {
     {
       category: "社区与支持",
       items: [
-        { feature: "GitHub Stars", onepanel: "29k+", webmin: "5k+", onepanelBetter: true },
+        { feature: "GitHub Stars", onepanel: "37k+", webmin: "6k+", onepanelBetter: true },
         { feature: "社区活跃度", onepanel: "快速增长", webmin: "稳定维护", onepanelBetter: true },
         { feature: "文档质量", onepanel: "中文完善", webmin: "英文详尽", onepanelBetter: false },
         { feature: "技术支持", onepanel: "商业版支持", webmin: "Virtualmin支持", onepanelBetter: false }

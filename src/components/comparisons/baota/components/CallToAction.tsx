@@ -38,7 +38,7 @@ const CallToAction = () => {
   ]
 
   const stats = [
-    { number: '29K+', label: 'GitHub Stars', icon: '⭐' },
+    { number: '37K+', label: 'GitHub Stars', icon: '⭐' },
     { number: '100K+', label: '活跃用户', icon: '👥' },
     { number: '99.9%', label: '运行稳定性', icon: '🚀' },
     { number: '< 100MB', label: '内存占用', icon: '💻' }

@@ -47,7 +47,7 @@ const ProductOverview = () => {
   }
 
   const stats = [
-    { icon: Star, label: 'GitHub Stars', value: '29K+', trend: '+500%' },
+    { icon: Star, label: 'GitHub Stars', value: '37K+', trend: '+500%' },
     { icon: Calendar, label: '版本迭代', value: '月度', trend: '稳定更新' },
     { icon: Code, label: '代码质量', value: '优秀', trend: '持续优化' },
     { icon: Users, label: '开发者', value: '活跃', trend: '快速增长' }

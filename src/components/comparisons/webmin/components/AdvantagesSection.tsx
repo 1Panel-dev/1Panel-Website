@@ -51,11 +51,11 @@ const AdvantagesSection: React.FC = () => {
     {
       icon: <Users className="h-8 w-8 text-blue-600" />,
       title: "活跃社区生态",
-      description: "GitHub 29k+ Stars，快速增长的开发者社区。丰富的中文文档和教程，积极的社区支持和问题解答。",
+      description: "GitHub 37k+ Stars，快速增长的开发者社区。丰富的中文文档和教程，积极的社区支持和问题解答。",
       image: "/images/comparisons/webmin/cloud-infrastructure.png",
       width: 1355,
       height: 1068,
-      stats: "100+ 贡献者"
+      stats: "130+ 贡献者"
     }
   ];
 
@@ -128,15 +128,15 @@ const AdvantagesSection: React.FC = () => {
           <h3 className="text-3xl font-bold text-center mb-12">1Panel 关键指标</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2">29k+</div>
+              <div className="text-4xl font-bold mb-2">37k+</div>
               <div className="text-blue-100">GitHub Stars</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2">2.5k+</div>
+              <div className="text-4xl font-bold mb-2">3.4k+</div>
               <div className="text-blue-100">Forks</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2">100+</div>
+              <div className="text-4xl font-bold mb-2">130+</div>
               <div className="text-blue-100">贡献者</div>
             </div>
             <div className="text-center">
