@@ -130,6 +130,21 @@ const dualGb10Stats = [
   { value: "100–120", unit: "TPS", label: "中短上下文整机吞吐（tokens/s）" },
 ];
 
+// 4 GB10 集群方案的实测数据，取自《4 x GB10 集群部署 DeepSeek V4.1-Flash》
+const clusterGb10Stats = [
+  { value: "6", unit: "路并发", label: "真实业务并发数" },
+  { value: "88K", unit: "输入 Tokens", label: "单请求上下文长度" },
+  { value: "2.3", unit: "s", label: "首字延时 TTFT" },
+  { value: "150", unit: "tok/s", label: "输出吞吐 TPS" },
+];
+
+const clusterGb10Specs = [
+  { label: "计算节点", value: "4 × FusionXpark GB10（2TB 版），合计 576GB 显存" },
+  { label: "高速组网", value: "1 × 400G 交换机 + 4 根 QSFP56 200G 线缆，星型 RDMA" },
+  { label: "模型", value: "DeepSeek V4.1 Flash，官方 FP8 + FP4 混合精度，权重约 511GB" },
+  { label: "管理平台", value: "1Panel 企业版（含 AI 网关）：模型部署、运行监控与 Token 服务发布" },
+];
+
 const pageTitle = "1Panel for GB10 解决方案 - GB10 桌面超算的最佳搭档";
 const pageDescription =
   "1Panel for GB10 解决方案：NVIDIA GB10 桌面超算的最佳搭档，适用于 NVIDIA DGX Spark、超聚变 FusionXpark、Dell Pro Max、ASUS ASCENT GX10、联想 ThinkStation PGX，提供 GPU 实时状态与监控、智能体一键部署、模型一键部署和内置 AI 网关能力。";
@@ -180,6 +195,8 @@ const gb10Schema = {
     "智能体部署",
     "模型部署",
     "1Panel AI 网关",
+    "GB10 集群",
+    "DeepSeek V4.1 Flash",
   ]}
   structuredData={[
     createBreadcrumbSchema([
@@ -389,6 +406,103 @@ const gb10Schema = {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <!-- 4 GB10 集群方案 -->
+      <section id="cluster-gb10" class="border-t border-blue-100 bg-gradient-to-b from-blue-50/50 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto max-w-3xl text-center">
+            <span class="inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-bold tracking-wide text-white shadow-sm">
+              4 GB10 集群
+            </span>
+            <h2 class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
+              4 台 GB10 组成集群，
+              <span class="block text-1panel">跑得动 DeepSeek V4.1 Flash</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              4 个 GB10 节点通过一台 400G 交换机组成星型 RDMA 网络，合计
+              <span class="whitespace-nowrap">576GB 显存</span>，承载权重约
+              <span class="whitespace-nowrap">511GB</span> 的
+              <span class="whitespace-nowrap">DeepSeek-V4.1-Flash</span>，并由 1Panel 企业版完成部署、监控与网关发布。
+            </p>
+          </div>
+
+          <!-- 实测数据 -->
+          <div class="mt-10 rounded-xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+              <p class="text-sm font-bold text-gray-900">真实业务负载实测</p>
+              <p class="text-xs leading-relaxed text-gray-500">
+                6 路并发 · 每请求输入 88K Tokens / 输出 0.25K Tokens
+              </p>
+            </div>
+            <dl class="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+              {clusterGb10Stats.map((item) => (
+                <div class="rounded-lg bg-blue-50/70 px-4 py-3.5">
+                  <dt class="flex items-baseline gap-x-1">
+                    <span class="text-2xl font-extrabold leading-none text-1panel lg:text-3xl">{item.value}</span>
+                    <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
+                  </dt>
+                  <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <!-- 拓扑 + 方案组成 -->
+          <div class="mt-10 grid grid-cols-1 items-center gap-8 lg:mt-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-10">
+            <div>
+              <figure class="overflow-hidden rounded-xl border border-blue-100 bg-[#f6fafe] shadow-sm">
+                <img
+                  src="/images/gb10/1p-gb10-cluster-topology.webp"
+                  alt="4 台 GB10 通过一台 400G 交换机组成星型 RDMA 网络，节点地址为 10.0.1.1 至 10.0.1.4"
+                  width="1511"
+                  height="747"
+                  class="h-auto w-full"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <p class="mt-3 text-center text-xs leading-relaxed text-gray-500">
+                交换式星型组网：跨节点通信由交换机线速转发，比环形直连的延迟更均衡，后续扩容也更容易
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-gray-900">方案组成</h3>
+              <dl class="mt-4 divide-y divide-blue-100 overflow-hidden rounded-xl border border-blue-100 bg-white shadow-sm">
+                {clusterGb10Specs.map((spec) => (
+                  <div class="px-4 py-3.5 sm:px-5">
+                    <dt class="text-xs font-semibold tracking-wide text-gray-500">{spec.label}</dt>
+                    <dd class="mt-1 text-sm leading-relaxed text-gray-700">{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+
+          <!-- 部署实况：vLLM 实例创建界面 -->
+          <figure class="mt-10 overflow-hidden rounded-2xl border border-slate-700/60 bg-[#1f222b] shadow-xl shadow-slate-900/10 lg:mt-12">
+            <figcaption class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-white/[0.07] px-5 py-3.5 sm:px-6">
+              <span class="flex items-center gap-x-2.5">
+                <span class="inline-flex items-center rounded-full bg-blue-600 px-2.5 py-[3px] text-[11px] font-bold leading-none text-white shadow-sm">部署实况</span>
+                <span class="text-sm font-bold text-white">在 1Panel 中创建 vLLM 实例</span>
+              </span>
+              <span class="text-xs leading-none text-slate-400">1Panel 企业版 · vLLM 管理</span>
+            </figcaption>
+            <img
+              src="/images/gb10/1p-gb10-cluster-vllm-deploy.webp"
+              alt="1Panel 的 vLLM 管理界面：左侧列表显示已创建的 vLLM 实例，右侧编辑面板选择定制镜像、DeepSeek-V4.1-Flash-1017 模型并配置 8000 端口与 API Key"
+              width="1920"
+              height="911"
+              class="block h-auto w-full"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="border-t border-white/[0.07] px-5 py-3 text-xs leading-relaxed text-slate-400 sm:px-6">
+              截图取自 4 台 GB10 集群上的实际部署环境：镜像类型选「定制镜像」，即针对 4 台 GB10 优化的 vLLM 版本；模型选 DeepSeek-V4.1-Flash-1017，填好服务端口与 API Key 后即可生成配置并部署
+            </p>
+          </figure>
         </div>
       </section>
 
