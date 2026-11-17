@@ -103,7 +103,7 @@ const clusterGb10Stats = [
 ];
 
 const clusterGb10Specs = [
-  { label: "算力节点", value: "4 × FusionXpark GB10（2TB 版），合计 576GB 显存" },
+  { label: "算力节点", value: "4 × FusionXpark GB10（2TB 版），合计 512GB 统一内存" },
   { label: "高速组网", value: "1 × 400G 交换机 + 4 根 QSFP56 200G 线缆，星型 RDMA" },
   { label: "模型", value: "DeepSeek V4.1 Flash，官方 FP8 + FP4 混合精度，权重约 511GB" },
   { label: "管理平台", value: "1Panel 企业版（含 AI 网关）：模型部署、运行监控与 Token 服务发布" },
@@ -300,7 +300,7 @@ const gb10Schema = {
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
               4 个 GB10 节点通过一台 400G 交换机组成星型 RDMA 网络，合计
-              <span class="whitespace-nowrap">576GB 显存</span>，承载权重约
+              <span class="whitespace-nowrap">512GB 统一内存</span>，承载权重约
               <span class="whitespace-nowrap">511GB</span> 的
               <span class="whitespace-nowrap">DeepSeek-V4.1-Flash</span>，并由 1Panel 企业版完成部署、监控与网关发布。
             </p>
