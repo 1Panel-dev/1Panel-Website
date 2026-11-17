@@ -126,21 +126,20 @@ const pricingPlans = [
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 专业版"],
     chassis: "旗舰工作站",
     accent: "blue",
-    hot: true,
   },
   {
     id: "方案四",
     title: "1Panel AI 一体机（方案四）",
     gpuType: "NVIDIA GB10",
-    compute: "GB10 × 2",
-    vram: "合计 256G 共享显存",
-    models: ["Qwen3.8-Flash-Next","DeepSeek-V4-Flash"],
+    compute: "GB10 × 2 或 4",
+    vram: "合计 256G - 512G 共享显存",
+    models: ["Qwen3.8-Flash-Next","DeepSeek-V4-Flash","DeepSeek-V4.1-Flash"],
     scenes: ["知识库问答", "AI 工作流", "AI 编程", "AI 办公"],
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 社区版"],
     chassis: "桌面小盒子",
     chassisHref: "/1panel-for-gb10.html",
     accent: "blue",
-    hot: true,
+    hot: "HOT",
   },
   {
     id: "方案五",
@@ -165,6 +164,7 @@ const pricingPlans = [
     software: ["1Panel 企业版（含 AI 网关）", "MaxKB 企业版"],
     chassis: "机架服务器、办公室级液冷超节点" ,
     accent: "blue",
+    hot: "HOT",
   },
 ];
 
@@ -528,19 +528,19 @@ const productSchema = {
                 >
                   <div class="flex flex-1 flex-col p-6">
                     <div class="mb-4 flex items-start justify-between gap-2">
-                      <div class="flex items-center gap-2">
+                      <div class="flex min-w-0 flex-wrap items-center gap-2">
                         <h3
                           id={`pricing-plan-${index + 1}-title`}
                           aria-label={plan.title}
-                          class={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-bold ${c.vramBg} ${c.vramText}`}
+                          class={`inline-flex items-center whitespace-nowrap rounded-md px-2.5 py-1 text-xs font-bold ${c.vramBg} ${c.vramText}`}
                         >
                           {plan.id}
                         </h3>
                         {plan.hot && (
-                          <span class="inline-flex h-5 items-center rounded-md bg-gradient-to-r from-orange-500 to-amber-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">HOT</span>
+                          <span class="inline-flex items-center rounded-md bg-gradient-to-r from-orange-500 to-amber-500 px-2 py-0.5 text-[10px] font-bold uppercase leading-tight tracking-wide text-white shadow-sm">{plan.hot}</span>
                         )}
                       </div>
-                      <span class="text-[11px] font-medium uppercase tracking-wider text-gray-400">{plan.gpuType}</span>
+                      <span class="shrink-0 text-[11px] font-medium uppercase tracking-wider text-gray-400">{plan.gpuType}</span>
                     </div>
 
                     <div class={`flex items-center justify-between rounded-xl ${c.chassisBg} border px-4 py-3 mb-4`}>
