@@ -85,12 +85,13 @@ const valueCards = [
   },
 ];
 
-// 双 GB10 互联方案的规格与实测数据，取自《双 GB10 算力节点部署 DeepSeek-V4-Flash 实测》
+// 双 GB10 互联方案的实测数据，取自《双 GB10 算力节点部署 DeepSeek-V4-Flash 实测》
+// 采用 WorkBuddy 办公场景（两周真实生产环境验证）的口径，与 4 GB10 集群面板结构一致
 const dualGb10Stats = [
-  { value: "256", unit: "GB", label: "LPDDR5x 统一内存，完整承载大模型权重" },
-  { value: "2", unit: "PFLOP", label: "FP4 稀疏峰值算力，双节点合计" },
-  { value: "200", unit: "Gbps", label: "ConnectX 高速互联，支撑跨节点协同推理" },
-  { value: "100–120", unit: "TPS", label: "中短上下文整机吞吐（tokens/s）" },
+  { value: "2", unit: "路并发", label: "办公场景并发数" },
+  { value: "60+", unit: "tok/s", label: "整机输出吞吐 TPS" },
+  { value: "<80", unit: "W", label: "整机功耗" },
+  { value: "<70", unit: "°C", label: "GPU 温度" },
 ];
 
 // 4 GB10 集群方案的实测数据，取自《4 x GB10 集群部署 DeepSeek V4.1-Flash》
@@ -257,7 +258,7 @@ const gb10Schema = {
               已适配的 GB10 设备
             </h2>
             <p class="mt-4 text-base leading-relaxed text-gray-600">
-              同一套 1Panel 界面，适配不同厂商的 GB10 主机形态；系统装好后即可安装 1Panel，接上 GPU 就能看到实时状态。
+              同一套 1Panel 界面，适配不同厂商的 GB10 主机形态。
             </p>
           </div>
 
@@ -282,13 +283,6 @@ const gb10Schema = {
                 <p class="mt-1 text-xs font-medium uppercase tracking-wide text-gray-400">{device.note}</p>
               </div>
             ))}
-          </div>
-
-          <div class="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
-            <span class="inline-flex items-center gap-1.5">
-              <Icon name="carbon:checkmark-filled" class="h-4 w-4 text-1panel" />
-              统一的 GPU 监控、智能体与模型管理入口
-            </span>
           </div>
         </div>
       </section>
@@ -407,17 +401,26 @@ const gb10Schema = {
                   两个 GB10 算力节点通过 200Gbps ConnectX 高速互联，组成 256GB 统一内存与 2 PFLOP FP4 稀疏算力，可承载<span class="whitespace-nowrap">DeepSeek-V4-Flash</span>、<span class="whitespace-nowrap">Qwen3.8-Flash-Next</span> 等<span class="whitespace-nowrap">更大尺寸的模型</span>。
                 </p>
 
-                <dl class="mt-7 grid grid-cols-2 gap-4">
-                  {dualGb10Stats.map((item) => (
-                    <div class="rounded-xl border border-blue-100 bg-white p-4 shadow-sm">
-                      <dt class="flex flex-col gap-y-1 lg:flex-row lg:flex-wrap lg:items-baseline lg:gap-x-1">
-                        <span class="text-xl font-extrabold leading-none text-1panel lg:text-2xl">{item.value}</span>
-                        <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
-                      </dt>
-                      <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <!-- 实测数据（WorkBuddy 办公场景，结构同 4 GB10 集群面板） -->
+                <div class="mt-7 rounded-xl border border-blue-100 bg-white p-5 shadow-sm sm:p-6">
+                  <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+                    <p class="text-sm font-bold text-gray-900">WorkBuddy 办公场景实测</p>
+                    <p class="text-xs leading-relaxed text-gray-500">
+                      2 路并发 · 两周真实生产环境验证
+                    </p>
+                  </div>
+                  <dl class="mt-5 grid grid-cols-2 gap-3">
+                    {dualGb10Stats.map((item) => (
+                      <div class="rounded-lg bg-blue-50/70 px-3.5 py-3.5">
+                        <dt class="flex items-baseline gap-x-1">
+                          <span class="text-xl font-extrabold leading-none text-1panel lg:text-2xl">{item.value}</span>
+                          <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
+                        </dt>
+                        <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
 
                 <div class="mt-8">
                   <a
@@ -432,7 +435,7 @@ const gb10Schema = {
                 </div>
 
                 <p class="mt-5 text-xs leading-relaxed text-gray-500">
-                  数据来自双 GB10 版部署 DeepSeek-V4-Flash 的两周压测：整机功耗低于 80W，GPU 温度低于 70°C，无需独立机房散热。
+                  数据来自双 GB10 版接入 WorkBuddy 办公智能体的两周真实生产环境验证：负载覆盖销售运营、方案撰写、会议纪要、邮件处理等典型办公任务，长时间稳定运行、无崩溃，放在办公室即可运行，无需独立机房散热。
                 </p>
               </div>
 
