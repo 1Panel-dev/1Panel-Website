@@ -168,6 +168,14 @@ const pricingPlans = [
   },
 ];
 
+// 4 GB10 集群压测数据，口径与 /1panel-for-gb10.html 保持一致
+const benchStats = [
+  { value: "6", unit: "路并发", label: "压测并发路数" },
+  { value: "84K", unit: "输入 Tokens", label: "单请求输入长度" },
+  { value: "4.7", unit: "s", label: "首字延时 TTFT" },
+  { value: "210", unit: "tok/s", label: "整机输出吞吐 TPS" },
+];
+
 // 预装软件中可跳转到产品详情页的条目（键必须与 software 里的字符串完全一致）
 // 站内路径直接写，外部站点写完整 URL（模板里按 http 前缀自动加 target="_blank"）
 const softwareLinks: Record<string, string> = {
@@ -664,156 +672,122 @@ const productSchema = {
           </div>
 
           <div id="pricing-contact" class="scroll-mt-28 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-md sm:p-8 lg:p-10">
-            <!-- 顶部通栏：方案三实测报告最新消息卡片 -->
-            <div class="mb-8 w-full rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 px-6 py-5 shadow-lg ring-1 ring-blue-100">
-              <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-8">
-                <div class="min-w-0 lg:w-80 lg:flex-shrink-0">
-                  <div class="mb-2 flex flex-wrap items-center gap-2">
-                    <span class="inline-flex h-5 items-center rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">最新消息</span>
-                    <span class="text-[11px] font-semibold text-blue-700">2 × RTX Pro 5000 Blackwell</span>
-                  </div>
-                  <h4 class="text-base font-extrabold leading-snug text-gray-900">
-                    <a href="/blog/1panel-ai-appliance-plan3-benchmark.html" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200 hover:text-1panel">方案三：双卡 RTX Pro 5000 实测报告</a>
-                  </h4>
-                  <a href="/blog/1panel-ai-appliance-plan3-benchmark.html" target="_blank" rel="noopener noreferrer" class="group mt-3 inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800">
-                    查看方案三完整实测报告
-                    <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </a>
+            <!-- 压测数据面板（方案四） -->
+            <div class="mb-8">
+              <span class="mb-3 inline-flex h-5 w-fit items-center rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">方案四压测报告</span>
+              <div class="rounded-xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+                  <p class="text-sm font-bold text-gray-900">压测数据</p>
+                  <p class="text-xs leading-relaxed text-gray-500">
+                    6 路并发 · 每请求输入 84K Tokens / 输出 1K Tokens
+                  </p>
                 </div>
-                <div class="grid flex-1 grid-cols-2 gap-3 lg:grid-cols-4">
-                  <div class="rounded-lg border border-gray-200 bg-white px-3 py-2.5">
-                    <div class="text-[11px] font-semibold leading-tight text-gray-600">整机峰值吞吐</div>
-                    <div class="mt-1 text-lg font-extrabold tabular-nums text-1panel">324.89</div>
-                    <div class="text-[10px] leading-tight text-gray-400">tokens/s · 16 路并发</div>
-                  </div>
-                  <div class="rounded-lg border border-gray-200 bg-white px-3 py-2.5">
-                    <div class="text-[11px] font-semibold leading-tight text-gray-600">单路峰值吞吐</div>
-                    <div class="mt-1 text-lg font-extrabold tabular-nums text-1panel">135.60</div>
-                    <div class="text-[10px] leading-tight text-gray-400">tokens/s · 1 路单流</div>
-                  </div>
-                  <div class="rounded-lg border border-gray-200 bg-white px-3 py-2.5">
-                    <div class="text-[11px] font-semibold leading-tight text-gray-600">生产整机吞吐</div>
-                    <div class="mt-1 text-lg font-extrabold tabular-nums text-1panel">~300</div>
-                    <div class="text-[10px] leading-tight text-gray-400">tokens/s · 6 路真实负载</div>
-                  </div>
-                  <div class="rounded-lg border border-gray-200 bg-white px-3 py-2.5">
-                    <div class="text-[11px] font-semibold leading-tight text-gray-600">生产首字延时</div>
-                    <div class="mt-1 text-lg font-extrabold tabular-nums text-1panel">&lt; 8</div>
-                    <div class="text-[10px] leading-tight text-gray-400">秒 · 6 路真实负载</div>
-                  </div>
-                </div>
+                <p class="mt-2 text-sm font-bold leading-relaxed text-blue-700 sm:text-[15px]">
+                  4 台 GB10 组成的集群部署 DeepSeek-V4.1-Flash-1017
+                </p>
+                <dl class="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+                  {benchStats.map((item) => (
+                    <div class="rounded-lg bg-blue-50/70 px-4 py-3.5">
+                      <dt class="flex items-baseline gap-x-1">
+                        <span class="text-2xl font-extrabold leading-none text-1panel lg:text-3xl">{item.value}</span>
+                        <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
+                      </dt>
+                      <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <a
+                  href="/1panel-for-gb10.html"
+                  class="group mt-5 inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800"
+                >
+                  查看方案详情：1Panel for GB10 解决方案
+                  <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
-              <!-- 左侧：促销海报 -->
-              <div class="flex flex-col items-center justify-center py-10">
-                <div class="mb-4 flex flex-col items-center lg:items-start">
-                  <h3 class="mt-2 text-lg lg:text-xl font-extrabold leading-snug">
-                    <span class="bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-transparent">方案四限时促销中！</span>
-                  </h3>
-                  <p class="mt-1 text-xs text-gray-500 font-medium">
-                    GB10 × 2 · 合计 256G 共享显存
-                  </p>
-                </div>
-                <img
-                  src="/images/2gb10-promotion.jpg"
-                  alt="1Panel AI 一体机 GB10 促销方案 ¥9.9 万"
-                  class="w-full max-w-md rounded-xl border border-gray-200 shadow-md"
-                  loading="lazy"
-                />
-                <div class="mt-4 w-full max-w-md">
-                  <a href="/blog/dual-gb10-deepseek-v4-flash-benchmark.html" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800">
-                    查看方案四完整实测报告
-                    <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </a>
-                </div>
-              </div>
-
-              <!-- 右侧：方案六、方案五实测报告 -->
-              <div class="flex flex-col items-center justify-center gap-6 py-8">
-                <!-- 方案六 8 卡实测报告 -->
-                <div class="w-full max-w-2xl rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 px-6 py-5 shadow-lg ring-1 ring-blue-100">
+            <div class="grid grid-cols-1 gap-6 xl:grid-cols-2 xl:items-stretch">
+              <!-- 方案六 8 卡实测报告 -->
+              <div class="mx-auto flex w-full max-w-2xl flex-col rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 px-6 py-5 shadow-lg ring-1 ring-blue-100">
                   <div class="mb-3 flex flex-col gap-1.5">
                     <span class="inline-flex h-5 w-fit items-center rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">方案六测试报告</span>
                     <h4 class="text-base font-extrabold leading-snug text-gray-900">8 卡部署 DeepSeek-V4.1-Flash-1017</h4>
                     <div class="text-[11px] font-semibold text-blue-700">8 × RTX Pro 5000 Blackwell 72GB</div>
                   </div>
                   <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white text-sm">
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 bg-gray-50 px-4 py-2.5 text-xs font-semibold text-gray-600">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 bg-gray-50 px-4 py-2.5 text-xs font-semibold text-gray-600">
                       <span class="whitespace-nowrap">指标</span>
                       <span class="whitespace-nowrap text-left">通用业务</span>
                       <span class="whitespace-nowrap text-right">AI 编程 / Agent</span>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">单并发 TTFT</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-blue-800">0.17s</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">1.08s</span>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">整机峰值吞吐</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-blue-800">~450 token/s</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">~454 token/s</span>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">单并发单路吞吐</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-blue-800">117 token/s</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">179 token/s</span>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">建议并发</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-blue-800">8–12 路</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">10–16 路</span>
                     </div>
                   </div>
                   <p class="mt-2 text-xs leading-relaxed text-gray-500">负载条件：通用业务 输入 1,024 / 输出 256；编程场景 64K 输入、90% Prefix Cache 命中率</p>
-                  <a href="/blog/1panel-ai-appliance-plan6-benchmark.html" target="_blank" rel="noopener noreferrer" class="group mt-3 inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800">
+                  <a href="/blog/1panel-ai-appliance-plan6-benchmark.html" target="_blank" rel="noopener noreferrer" class="group mt-auto inline-flex items-center gap-1 pt-3 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800">
                     查看方案六完整实测报告
                     <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </a>
                 </div>
 
                 <!-- 方案五双模型实测对比 -->
-                <div class="w-full max-w-2xl rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 px-6 py-5 shadow-lg ring-1 ring-blue-100">
+                <div class="mx-auto flex w-full max-w-2xl flex-col rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 px-6 py-5 shadow-lg ring-1 ring-blue-100">
                   <div class="mb-3 flex flex-col gap-1.5">
                     <span class="inline-flex h-5 w-fit items-center rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">方案五测试报告</span>
                     <h4 class="text-base font-extrabold leading-snug text-gray-900">双模型实测对比</h4>
                     <div class="text-[11px] font-semibold text-blue-700">4 × RTX Pro 5000 Blackwell 72GB</div>
                   </div>
                   <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white text-sm">
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 bg-gray-50 px-4 py-2.5 text-xs font-semibold text-gray-600">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 bg-gray-50 px-4 py-2.5 text-xs font-semibold text-gray-600">
                       <span class="whitespace-nowrap">指标</span>
                       <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap text-left font-bold text-amber-700 underline decoration-amber-300 underline-offset-2 hover:text-amber-800">Qwen3.8-Flash-Next</a>
                       <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap text-right font-bold text-blue-800 underline decoration-blue-300 underline-offset-2 hover:text-blue-900">DeepSeek-V4-Flash</a>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">并发</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-amber-700">12 路</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">8 路</span>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">首字延时 TTFT</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-amber-700">&lt; 5s</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">&lt; 10s</span>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">聚合解码吞吐</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-amber-700">~400 token/s</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">~200 token/s</span>
                     </div>
-                    <div class="grid grid-cols-[7rem_8.5rem_8.5rem] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
+                    <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">单流解码速度</span>
                       <span class="whitespace-nowrap text-left font-bold tabular-nums text-amber-700">~33 token/s</span>
                       <span class="whitespace-nowrap text-right font-bold tabular-nums text-blue-800">~25 token/s</span>
                     </div>
                   </div>
                   <p class="mt-2 text-xs leading-relaxed text-gray-500">负载条件：平均输入 ~90k / 输出 ~500 / 缓存命中率 ~91%</p>
-                  <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="group mt-3 inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800">
+                  <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="group mt-auto inline-flex items-center gap-1 pt-3 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800">
                     查看方案五完整实测对比
                     <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </a>
                 </div>
-              </div>
             </div>
           </div>
         </div>
