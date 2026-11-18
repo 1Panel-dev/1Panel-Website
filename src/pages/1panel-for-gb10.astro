@@ -62,26 +62,26 @@ const valueCards = [
     icon: "carbon:activity",
     step: "01",
     title: "高效管理设备",
-    description: "可视化方式管理设备，快速查看 GPU 实时状态和监控数据。",
+    description: "设备、GPU 与模型的运行状态集中在一屏，实时查看利用率与显存占用，不必登录命令行敲 nvidia-smi。",
   },
   {
     icon: "carbon:machine-learning-model",
     step: "02",
     title: "快速部署模型",
     description:
-      "内置多款精选开源模型，从模型下载、模型运行、到运行监控，全面掌控。",
+      "预置 Qwen3.8-Flash-Next、DeepSeek-V4.1-Flash 等模型，下载、启动到监控一条链路走完，单机与 4 台集群通用。",
   },
   {
     icon: "carbon:gateway",
     step: "03",
     title: "快速提供服务",
-    description: "可以通过 1Panel AI 网关将模型服务开放给其他人使用。",
+    description: "通过 1Panel AI 网关把本地模型发布成统一 API：模型代理、智能路由、席位与用量统计、内容合规，团队按 Key 直接调用。",
   },
   {
     icon: "carbon:bot",
     step: "04",
     title: "快速部署智能体",
-    description: "DeepSeek Harness、Octop、OpenClaw 等一键部署。",
+    description: "DeepSeek Harness、Octop、OpenClaw 等一键部署，装好即可接入本地模型。",
   },
 ];
 
@@ -110,9 +110,9 @@ const clusterGb10Specs = [
   { label: "管理平台", value: "1Panel 企业版（含 AI 网关）：模型部署、运行监控与 Token 服务发布" },
 ];
 
-const pageTitle = "1Panel for GB10 解决方案 - GB10 桌面超算的最佳管家";
+const pageTitle = "1Panel for GB10 解决方案 - NVIDIA GB10（DGX Spark 等）桌面超算的最佳管家";
 const pageDescription =
-  "1Panel for GB10 解决方案：NVIDIA GB10 桌面超算的最佳管家，适用于 NVIDIA DGX Spark、超聚变 FusionXpark、Dell Pro Max、ASUS ASCENT GX10、联想 ThinkStation PGX，提供 GPU 实时状态与监控、智能体一键部署、模型一键部署和内置 AI 网关能力。";
+  "1Panel for GB10 解决方案：NVIDIA GB10（DGX Spark 等）桌面超算的最佳管家，已适配 NVIDIA DGX Spark、超聚变 FusionXpark、Dell Pro Max、ASUS ASCENT GX10、联想 ThinkStation PGX 等机型，提供 GPU 实时状态与监控、智能体一键部署、模型一键部署和内置 AI 网关能力。";
 const gb10Schema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -192,7 +192,7 @@ const gb10Schema = {
               1Panel for GB10 <span class="whitespace-nowrap">解决方案</span>
             </h1>
             <p class="fade-in-up mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
-              NVIDIA GB10 桌面超算的最佳管家，无论是管理单台设备，还是管理 4 台组成的集群，1Panel 都可以<span class="whitespace-nowrap">轻松管理</span>。
+              NVIDIA GB10（DGX Spark 等）桌面超算的最佳管家，无论是管理单台设备，还是管理<span class="whitespace-nowrap">4 台组成的集群</span>，1Panel 都可以<span class="whitespace-nowrap">轻松管理</span>。
             </p>
             <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
               {heroKeywords.map((keyword) => (
@@ -225,7 +225,7 @@ const gb10Schema = {
               <span class="mt-1 block text-1panel">一个 1Panel 全部搞定</span>
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              GB10 桌面超算装好之后最常做的四件事，1Panel 都提供了可视化入口，不必在命令行、Docker 与推理框架之间来回切换。
+              GB10 桌面超算到手后最常做的四件事——看 GPU 状态、部署推理模型、把模型发布成 Token 服务、再装一个智能体，1Panel 都提供了可视化入口。单台设备能跑，扩到 4 台组成集群仍是同一套界面，不必在命令行、Docker 与推理框架之间来回切换。
             </p>
           </div>
 
