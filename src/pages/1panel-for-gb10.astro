@@ -94,17 +94,18 @@ const dualGb10Stats = [
   { value: "<70", unit: "°C", label: "GPU 温度" },
 ];
 
-// 4 GB10 集群方案的实测数据，取自《4 x GB10 集群部署 DeepSeek V4.1-Flash》
+// 4 GB10 集群方案的压测数据，取自《4 x GB10 集群部署 DeepSeek V4.1-Flash》
 const clusterGb10Stats = [
-  { value: "6", unit: "路并发", label: "真实业务并发数" },
-  { value: "88K", unit: "输入 Tokens", label: "单请求上下文长度" },
-  { value: "2.3", unit: "s", label: "首字延时 TTFT" },
-  { value: "150", unit: "tok/s", label: "输出吞吐 TPS" },
+  { value: "6", unit: "路并发", label: "压测并发路数" },
+  { value: "84K", unit: "输入 Tokens", label: "单请求输入长度" },
+  { value: "4.7", unit: "s", label: "首字延时 TTFT" },
+  { value: "210", unit: "tok/s", label: "整机输出吞吐 TPS" },
 ];
 
 const clusterGb10Specs = [
   { label: "算力节点", value: "4 × FusionXpark GB10（2TB 版），合计 512GB 共享显存" },
   { label: "高速组网", value: "1 × 400G 交换机 + 4 根 QSFP56 200G 线缆，星型 RDMA" },
+  { label: "桌面级小型机柜", value: "10 寸 6U 机柜，集中收纳节点与交换机" },
   { label: "模型", value: "DeepSeek V4.1 Flash，官方 FP8 + FP4 混合精度，权重约 511GB" },
   { label: "管理平台", value: "1Panel 企业版（含 AI 网关）：模型部署、运行监控与 Token 服务发布" },
 ];
@@ -305,12 +306,12 @@ const gb10Schema = {
             </p>
           </div>
 
-          <!-- 实测数据 -->
+          <!-- 压测数据 -->
           <div class="mt-10 rounded-xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
             <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-              <p class="text-sm font-bold text-gray-900">真实业务负载实测</p>
+              <p class="text-sm font-bold text-gray-900">压测数据</p>
               <p class="text-xs leading-relaxed text-gray-500">
-                6 路并发 · 每请求输入 88k Tokens
+                6 路并发 · 每请求输入 84K Tokens / 输出 1K Tokens
               </p>
             </div>
             <dl class="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
