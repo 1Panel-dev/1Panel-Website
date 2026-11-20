@@ -1,0 +1,780 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Statistics from "../components/Statistics.astro";
+import { Icon } from "astro-icon/components";
+import {
+  SITE_URL,
+  createBreadcrumbSchema,
+  toAbsoluteUrl,
+} from "../lib/seo";
+import blogData from "../data/blog-posts.json";
+import "../styles/global.css";
+
+const siteUrl = Astro.site?.toString() ?? SITE_URL;
+const pageUrl = toAbsoluteUrl("/1panel-for-rtx-pro-5000.html", siteUrl);
+const trialUrl = "https://jsj.top/f/umuYtv";
+
+// 四个方案对应的卡数，同时用作 Hero 关键词胶囊
+const heroKeywords = ["单卡 72GB", "双卡 144GB", "四卡 288GB", "八卡 576GB"];
+
+// 核心参数取自 NVIDIA 官方产品规格，算力为稠密峰值（不含稀疏）
+const coreSpecs = [
+  {
+    label: "FP4 稠密算力",
+    value: "1000",
+    unit: "TFLOPS",
+    note: "NVFP4 已是新一代开源模型发布时的默认量化精度",
+  },
+  {
+    label: "FP8 稠密算力",
+    value: "500",
+    unit: "TFLOPS",
+    note: "不支持 FP4 的卡，只能靠这一档低精度算力",
+  },
+  {
+    label: "显存容量",
+    value: "72",
+    unit: "GB GDDR7",
+    note: "单卡装下 125B 级稀疏 MoE 的权重与 KV Cache",
+  },
+  {
+    label: "显存带宽",
+    value: "1344",
+    unit: "GB/s",
+    note: "decode 阶段每生成一个 Token 的等待时间由它决定",
+  },
+  {
+    label: "整卡功耗",
+    value: "300",
+    unit: "W",
+    note: "8 卡合计 2400W，标准 4U 风冷即可承载",
+  },
+  {
+    label: "每瓦算力",
+    value: "1.67",
+    unit: "TFLOPS / W",
+    note: "RTX 系列第一，与旗舰 RTX Pro 6000 并列",
+  },
+];
+
+// 8 卡整机合计值，单卡线性折算（不含张量并行切分损耗）
+const eightCardTotals = [
+  { value: "576", unit: "GB", label: "8 卡显存合计" },
+  { value: "2400", unit: "W", label: "8 卡 GPU 功耗" },
+  { value: "4000", unit: "TFLOPS", label: "8 卡 FP8 算力" },
+  { value: "4U", unit: "风冷", label: "标准机箱即可承载" },
+];
+
+// FP8 稠密算力 ÷ 功耗，数据取自选型指南
+const efficiencyRanking = [
+  { name: "H200", eff: 2.83, fp8: 1979, tdp: 700 },
+  { name: "RTX Pro 5000", eff: 1.67, fp8: 500, tdp: 300, highlight: true },
+  { name: "RTX Pro 6000", eff: 1.67, fp8: 1000, tdp: 600 },
+  { name: "RTX 5090", eff: 1.46, fp8: 838, tdp: 575 },
+  { name: "RTX Pro 5500", eff: 0.99, fp8: 594, tdp: 600 },
+  { name: "L20", eff: 0.68, fp8: 238, tdp: 350 },
+  { name: "RTX 6000D", eff: 0.66, fp8: 296, tdp: 450 },
+  { name: "H20", eff: 0.59, fp8: 296, tdp: 500 },
+];
+const effMax = Math.max(...efficiencyRanking.map((item) => item.eff));
+
+const advantages = [
+  {
+    icon: "carbon:flash",
+    title: "每瓦算力 RTX 系列第一",
+    description:
+      "1.67 TFLOPS/W，与旗舰 RTX Pro 6000 并列，是 RTX Pro 5500 的 1.68 倍、RTX 6000D 的 2.5 倍。相对 5500，规格打 8.4 折，功耗打 5 折。",
+  },
+  {
+    icon: "carbon:chart-line",
+    title: "显存先卡住门槛",
+    description:
+      "单卡 72GB、八卡 576GB，覆盖 125B 到 552B 稀疏 MoE 的完整区间。RTX 5090 的 32GB 算力再漂亮，权重也装不下，进不了这张牌桌。",
+  },
+  {
+    icon: "carbon:temperature",
+    title: "8 卡装得进风冷机柜",
+    description:
+      "2400W 落在 4U 标准风冷 2400–3200W 的供电预算内；同代 5500 / 6000 是 4800W，H200 是 5600W——那不只是多买一台电源，而要改配电、上液冷。",
+  },
+];
+
+const plans = [
+  {
+    id: "方案二",
+    cardCount: "1",
+    cardLabel: "单卡",
+    vram: "72",
+    headline: "单卡起步，把本地模型跑起来",
+    chassis: "旗舰工作站",
+    cpu: "Intel Core Ultra 9 285K",
+    memory: "64GB 内存 · 1TB SSD",
+    models: ["Qwen3.6-35B-A3B", "Qwen3.8-27B"],
+    scenes: "知识库问答 · AI 工作流 · AI 编程 · AI 办公",
+    report: "qwen3-8-27b-private-deployment",
+  },
+  {
+    id: "方案三",
+    cardCount: "2",
+    cardLabel: "双卡",
+    vram: "144",
+    headline: "双卡并联，跑得动 Flash 级模型",
+    chassis: "旗舰工作站",
+    cpu: "2 × Intel Xeon Silver 4510",
+    memory: "128GB 内存",
+    models: ["Qwen3.6-35B-A3B", "Qwen3.8-27B", "Qwen3.8-Flash-Next"],
+    scenes: "知识库问答 · AI 工作流 · AI 编程 · AI 办公",
+    report: "1panel-ai-appliance-plan3-benchmark",
+  },
+  {
+    id: "方案五",
+    cardCount: "4",
+    cardLabel: "四卡",
+    vram: "288",
+    headline: "四卡同机，多模型并行服务",
+    chassis: "旗舰工作站",
+    cpu: "Intel Xeon w7-3445（20 核）",
+    memory: "128GB 内存 · 2TB SSD",
+    models: ["Qwen3.8-Flash-Next", "DeepSeek-V4-Flash", "GLM-5.3-Flash"],
+    scenes: "知识库问答 · AI 工作流 · AI 编程 · AI 办公",
+    report: "1panel-ai-appliance-plan5-benchmark",
+  },
+  {
+    id: "方案六",
+    cardCount: "8",
+    cardLabel: "八卡",
+    vram: "576",
+    headline: "八卡整机，单机跑完整 552B MoE",
+    chassis: "4U 机架服务器 / 办公室级液冷超节点",
+    cpu: "2 × Intel Xeon Gold 6430",
+    memory: "512GB 内存 · 4TB SSD",
+    models: [
+      "Qwen3.8-Flash-Next",
+      "DeepSeek-V4-Flash",
+      "GLM-5.3-Flash",
+      "DeepSeek-V4.1-Flash",
+    ],
+    scenes: "知识库问答 · AI 工作流 · AI 编程 · AI 办公",
+    report: "1panel-ai-appliance-plan6-benchmark",
+  },
+];
+
+// 实测报告按卡数排序：单卡 → 双卡 → 四卡 → 八卡
+const reportRefs = [
+  { slug: "qwen3-8-27b-private-deployment", tag: "单卡" },
+  { slug: "1panel-ai-appliance-plan3-benchmark", tag: "双卡" },
+  { slug: "1panel-ai-appliance-plan5-benchmark", tag: "四卡" },
+  { slug: "1panel-ai-appliance-plan6-benchmark", tag: "八卡" },
+];
+
+const reports = reportRefs
+  .map(({ slug, tag }) => {
+    const post = (
+      blogData as Array<{
+        title: string;
+        slug: string;
+        date: string;
+        cover: string;
+        description: string;
+      }>
+    ).find((item) => item.slug === slug);
+    return post ? { ...post, tag } : null;
+  })
+  .filter((post): post is NonNullable<typeof post> => post !== null);
+
+const pageTitle =
+  "1Panel for RTX Pro 5000 解决方案 - 单卡到八卡的私有化 AI 算力方案";
+const pageDescription =
+  "1Panel for RTX Pro 5000 解决方案：NVIDIA RTX Pro 5000 单卡 72GB 显存、FP4 1000 TFLOPS、整卡 300W，每瓦算力在 RTX 系列中并列第一。基于这张卡提供单卡、双卡、四卡、八卡四套 1Panel AI 一体机方案，配套公开的实机评测报告。";
+
+const rtxSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${pageUrl}#product`,
+  name: "1Panel for RTX Pro 5000 解决方案",
+  applicationCategory: "DeveloperApplication",
+  applicationSubCategory:
+    "AI server management panel for NVIDIA RTX Pro 5000 GPU servers",
+  operatingSystem: "Linux",
+  description: pageDescription,
+  url: pageUrl,
+  featureList: [
+    "单卡 72GB 显存",
+    "单卡到八卡四套方案",
+    "GPU 实时状态与监控",
+    "模型一键部署",
+    "内置 AI 网关",
+  ],
+  publisher: {
+    "@type": "Organization",
+    name: "杭州飞致云信息科技有限公司",
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  socialTitle="1Panel for RTX Pro 5000 解决方案"
+  schemaName="1Panel for RTX Pro 5000 解决方案"
+  description={pageDescription}
+  canonical="/1panel-for-rtx-pro-5000.html"
+  image="/images/rtx-pro-5000/og-cover.png"
+  imageWidth={1536}
+  imageHeight={864}
+  imageAlt="1Panel for RTX Pro 5000 解决方案 - 单卡到八卡"
+  keywords={[
+    "1Panel for RTX Pro 5000",
+    "RTX Pro 5000 解决方案",
+    "NVIDIA RTX Pro 5000",
+    "RTX Pro 5000 参数",
+    "RTX Pro 5000 显存",
+    "RTX Pro 5000 每瓦算力",
+    "1Panel AI 一体机",
+    "单卡 RTX Pro 5000",
+    "8 卡 RTX Pro 5000",
+    "DeepSeek V4.1 Flash",
+    "Qwen3.8-Flash-Next",
+    "GPU 选型",
+    "私有化 AI 部署",
+  ]}
+  structuredData={[
+    createBreadcrumbSchema([
+      { name: "1Panel 官网", url: toAbsoluteUrl("/", siteUrl) },
+      { name: "1Panel AI 一体机", url: toAbsoluteUrl("/ai-appliance.html", siteUrl) },
+      { name: "1Panel for RTX Pro 5000 解决方案", url: pageUrl },
+    ]),
+    rtxSchema,
+  ]}
+>
+  <Statistics slot="head" />
+  <Fragment slot="main">
+    <Header />
+    <main class="relative z-10 bg-white text-gray-800">
+      <!-- Hero -->
+      <section
+        class="relative overflow-hidden bg-gradient-to-b from-blue-50/80 via-white to-white pt-20 pb-16 lg:pt-28 lg:pb-24"
+      >
+        <div
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"
+        >
+        </div>
+        <div class="container-custom">
+          <div class="mx-auto max-w-4xl text-center">
+            <a
+              href="/ai-appliance.html"
+              class="fade-in-up mb-6 inline-flex items-center justify-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm transition-all duration-300 hover:border-blue-200 hover:bg-blue-50"
+              style="animation-delay: 0.05s;"
+            >
+              <Icon name="carbon:arrow-left" class="mr-2 h-4 w-4" />
+              返回 1Panel AI 一体机
+            </a>
+            <h1
+              class="fade-in-up text-4xl font-bold leading-tight tracking-normal text-gray-950 sm:text-5xl lg:text-6xl"
+              style="animation-delay: 0.1s;"
+            >
+              1Panel for RTX Pro 5000
+              <span class="whitespace-nowrap">解决方案</span>
+            </h1>
+            <p
+              class="fade-in-up mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl"
+              style="animation-delay: 0.2s;"
+            >
+              NVIDIA RTX Pro 5000 是这一代最均衡的一颗推理卡：单卡
+              <span class="whitespace-nowrap">72GB 显存</span>、FP4 1000 TFLOPS、整卡
+              300W。1Panel 把它装成一套可直接交付的私有化 AI 方案——<span
+                class="whitespace-nowrap">单卡到八卡</span
+              >，同一套面板管到底。
+            </p>
+            <div
+              class="fade-in-up mt-8 flex flex-wrap justify-center gap-3"
+              style="animation-delay: 0.3s;"
+            >
+              {heroKeywords.map((keyword) => (
+                <span
+                  class="rounded-md border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-1panel shadow-sm"
+                >
+                  {keyword}
+                </span>
+              ))}
+            </div>
+            <div
+              class="fade-in-up mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row"
+              style="animation-delay: 0.32s;"
+            >
+              <a
+                href="#benchmark"
+                class="btn-secondary inline-flex items-center justify-center px-8 py-4 text-base"
+              >
+                先看实机评测
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. 核心参数 -->
+      <section id="specs" class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span
+              class="inline-flex items-center rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-bold tracking-wide text-1panel"
+            >
+              核心参数
+            </span>
+            <h2
+              class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl"
+            >
+              72GB 显存，300W 功耗
+              <span class="mt-1 block text-1panel">一张卡撑起一套私有化方案</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              参数取自 NVIDIA 官方产品规格，算力均为稠密峰值。大模型推理真正吃的是低精度矩阵算力与显存带宽，FP32
+              与稀疏峰值不在比较范围内。
+            </p>
+          </div>
+
+          <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {coreSpecs.map((spec) => (
+              <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                <dt class="text-xs font-semibold tracking-wide text-gray-500">
+                  {spec.label}
+                </dt>
+                <dd class="mt-3 flex items-baseline gap-x-1.5">
+                  <span class="text-3xl font-extrabold leading-none text-gray-900 lg:text-4xl">
+                    {spec.value}
+                  </span>
+                  <span class="text-sm font-semibold text-gray-500">{spec.unit}</span>
+                </dd>
+                <dd class="mt-3 text-xs leading-relaxed text-gray-500">{spec.note}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <!-- 8 卡整机合计 -->
+          <div class="mt-6 rounded-xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 sm:p-8">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+              <p class="text-sm font-bold text-gray-900">8 卡整机合计</p>
+              <p class="text-xs leading-relaxed text-gray-500">
+                单卡线性折算，不含张量并行切分损耗
+              </p>
+            </div>
+            <dl class="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+              {eightCardTotals.map((item) => (
+                <div class="rounded-lg border border-blue-100/70 bg-white px-4 py-3.5">
+                  <dt class="flex items-baseline gap-x-1">
+                    <span class="text-2xl font-extrabold leading-none text-1panel lg:text-3xl">
+                      {item.value}
+                    </span>
+                    <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
+                  </dt>
+                  <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
+                </div>
+              ))}
+            </dl>
+            <p class="mt-4 text-xs leading-relaxed text-gray-500">
+              整机总功耗还要叠加 CPU、内存、风扇与电源损耗，通常是 GPU 功耗的 1.2–1.4 倍。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 相比其他卡的优势 -->
+      <section
+        id="advantages"
+        class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24"
+      >
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span
+              class="inline-flex items-center rounded-full border border-blue-100 bg-white px-3 py-1 text-xs font-bold tracking-wide text-1panel"
+            >
+              为什么是它
+            </span>
+            <h2
+              class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl"
+            >
+              算力、显存、能效
+              <span class="mt-1 block text-1panel">三项都没有明显短板</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              选型不是挑最强的，是挑那个不会被某一项卡住的。把 8 款加速卡放进同一张表，再除以功耗，排序会变一次。
+            </p>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-5">
+            {advantages.map((item, index) => (
+              <article
+                class="fade-in-up flex w-full flex-col rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.8334rem)]"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <span
+                  class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-1panel"
+                >
+                  <Icon name={item.icon} class="h-6 w-6" />
+                </span>
+                <h3 class="mt-5 text-lg font-bold leading-snug text-gray-900">
+                  {item.title}
+                </h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <!-- 每瓦算力排序 -->
+          <div class="mt-10 rounded-xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+              <p class="text-sm font-bold text-gray-900">FP8 每瓦算力排序（TFLOPS / W）</p>
+              <a
+                href="/blog/rtx-pro-5000-gpu-selection-guide.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800"
+              >
+                查看完整选型指南
+                <Icon
+                  name="carbon:arrow-right"
+                  class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                />
+              </a>
+            </div>
+            <ul class="mt-5 space-y-2.5">
+              {efficiencyRanking.map((item) => (
+                <li class="flex items-center gap-3">
+                  <span
+                    class={`w-[6.5rem] shrink-0 text-right text-xs font-semibold sm:w-[8rem] sm:text-[13px] ${
+                      item.highlight ? "text-1panel" : "text-gray-600"
+                    }`}
+                  >
+                    {item.name}
+                  </span>
+                  <div class="h-6 flex-1 overflow-hidden rounded bg-gray-100">
+                    <div
+                      class={`h-full rounded ${
+                        item.highlight
+                          ? "bg-gradient-to-r from-blue-500 to-blue-600"
+                          : "bg-slate-300"
+                      }`}
+                      style={`width: ${((item.eff / effMax) * 100).toFixed(1)}%`}
+                    >
+                    </div>
+                  </div>
+                  <span
+                    class={`w-14 shrink-0 text-right text-xs font-bold tabular-nums ${
+                      item.highlight ? "text-1panel" : "text-gray-500"
+                    }`}
+                  >
+                    {item.eff.toFixed(2)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div
+              class="mt-5 flex flex-wrap items-start gap-x-5 gap-y-2 border-t border-gray-100 pt-4 text-xs leading-relaxed text-gray-500"
+            >
+              <span>
+                <span class="font-semibold text-gray-700">RTX Pro 5000：</span>FP8 500T / 300W
+              </span>
+              <span>
+                <span class="font-semibold text-gray-700">RTX Pro 5500：</span>FP8 594T / 600W
+              </span>
+              <span>
+                <span class="font-semibold text-gray-700">RTX 6000D：</span>FP8 296T / 450W
+              </span>
+            </div>
+            <p class="mt-3 text-xs leading-relaxed text-gray-500">
+              H200 的每瓦算力最高，但采购单价与 8 卡 5600W 的供电需求不在同一量级——这是它赢在带宽、也贵在带宽的边界；RTX Pro 5000
+              赢在中模型的高并发与能效，不赢在极端带宽场景。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 四个方案 -->
+      <section id="plans" class="py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span
+              class="inline-flex items-center rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-bold tracking-wide text-1panel"
+            >
+              四种规模
+            </span>
+            <h2
+              class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl"
+            >
+              从一张卡到八张卡
+              <span class="mt-1 block text-1panel">同一套面板，扩卡不用换平台</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              四套方案都在 1Panel AI 一体机上交付，区别只在卡数、显存与整机形态；预置模型、AI 网关与运维界面完全一致。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {plans.map((plan) => (
+              <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold tracking-wide text-gray-400">
+                    {plan.id}
+                  </span>
+                  <span class="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-xs font-bold text-1panel">
+                    <Icon name="carbon:chip" class="h-3.5 w-3.5" />
+                    {plan.cardCount} 卡
+                  </span>
+                </div>
+
+                <div class="mt-5 flex items-baseline gap-x-1.5">
+                  <span class="text-4xl font-extrabold leading-none text-gray-900">
+                    {plan.vram}
+                  </span>
+                  <span class="text-sm font-bold text-gray-500">GB 显存</span>
+                </div>
+                <p class="mt-2.5 text-sm font-semibold leading-relaxed text-1panel">
+                  {plan.headline}
+                </p>
+
+                <dl class="mt-5 space-y-3 border-t border-gray-100 pt-5">
+                  <div>
+                    <dt class="text-[11px] font-semibold tracking-wide text-gray-400">
+                      主机形态
+                    </dt>
+                    <dd class="mt-1 text-sm leading-relaxed text-gray-700">{plan.chassis}</dd>
+                  </div>
+                  <div>
+                    <dt class="text-[11px] font-semibold tracking-wide text-gray-400">
+                      处理器与内存
+                    </dt>
+                    <dd class="mt-1 text-sm leading-relaxed text-gray-700">{plan.cpu}</dd>
+                    <dd class="text-sm leading-relaxed text-gray-700">{plan.memory}</dd>
+                  </div>
+                  <div>
+                    <dt class="text-[11px] font-semibold tracking-wide text-gray-400">
+                      预置模型
+                    </dt>
+                    <dd class="mt-2 flex flex-wrap gap-1.5">
+                      {plan.models.map((model) => (
+                        <span class="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-700">
+                          {model}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                </dl>
+
+                <a
+                  href={`/blog/${plan.report}.html`}
+                  class="group mt-auto inline-flex items-center gap-1 pt-5 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800"
+                >
+                  查看{plan.cardLabel}方案实测报告
+                  <Icon
+                    name="carbon:arrow-right"
+                    class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                  />
+                </a>
+              </article>
+            ))}
+          </div>
+
+          <p class="mt-6 text-center text-sm leading-relaxed text-gray-500">
+            四套方案均预置 1Panel 企业版（含 AI 网关）与 MaxKB，可按团队规模与模型尺寸选择。
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. 评测报告 -->
+      <section
+        id="benchmark"
+        class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24"
+      >
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <span
+              class="inline-flex items-center rounded-full border border-blue-100 bg-white px-3 py-1 text-xs font-bold tracking-wide text-1panel"
+            >
+              实机评测
+            </span>
+            <h2
+              class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl"
+            >
+              每一档卡数，都有一份实测报告
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              四套方案都在飞致云生产环境完成压测与真实业务验证，测试口径、软硬件参数与数据全部公开。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {reports.map((post) => (
+              <a
+                href={`/blog/${post.slug}.html`}
+                class="group flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div class="relative aspect-[16/9] overflow-hidden bg-gray-50">
+                  <img
+                    src={post.cover}
+                    alt={post.title}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <span class="absolute left-3 top-3 inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-bold text-1panel shadow-sm">
+                    {post.tag}
+                  </span>
+                </div>
+                <div class="flex flex-1 flex-col p-6">
+                  <div class="mb-3 flex items-center gap-2 text-xs text-gray-500">
+                    <Icon name="carbon:calendar" class="h-4 w-4" />
+                    <time datetime={post.date}>{post.date}</time>
+                  </div>
+                  <h3 class="text-base font-bold leading-snug text-gray-900 group-hover:text-1panel">
+                    {post.title}
+                  </h3>
+                  <p class="mt-3 text-sm leading-relaxed text-gray-600 line-clamp-3">
+                    {post.description}
+                  </p>
+                  <span class="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-blue-700">
+                    阅读报告
+                    <Icon
+                      name="carbon:arrow-right"
+                      class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                    />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="mt-10 text-center">
+            <a
+              href="/blog.html"
+              class="btn-secondary inline-flex items-center justify-center px-7 py-3 text-base"
+            >
+              查看全部产品动态
+              <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. CTA -->
+      <section id="consult" class="bg-white pb-16 pt-16 lg:pb-24 lg:pt-24">
+        <div class="container-custom">
+          <div
+            class="overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 via-white to-blue-50 p-6 shadow-md sm:p-8 lg:p-10"
+          >
+            <div class="flex flex-col items-center gap-10 lg:flex-row lg:justify-between lg:gap-14">
+              <div class="text-center lg:text-left">
+                <h2 class="text-2xl font-bold text-gray-900 lg:text-3xl">
+                  把你的模型规模，换算成一套 RTX Pro 5000 配置
+                </h2>
+                <p class="mt-4 max-w-2xl text-base leading-relaxed text-gray-600">
+                  告诉我们模型尺寸、并发量与部署环境，1Panel 团队会结合四套方案的实测数据，帮你定卡数、算整机功耗、理清落地路径。
+                </p>
+                <div class="mt-7 flex flex-col items-center gap-3 sm:flex-row">
+                  <a
+                    href={trialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-primary inline-flex w-full items-center justify-center px-8 py-4 text-base sm:w-auto"
+                  >
+                    申请企业版试用
+                    <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+                  </a>
+                  <a
+                    href="#plans"
+                    class="btn-secondary inline-flex w-full items-center justify-center px-6 py-4 text-base sm:w-auto"
+                  >
+                    回看四套方案
+                  </a>
+                </div>
+              </div>
+              <div
+                class="flex w-full max-w-xs flex-shrink-0 flex-col items-center rounded-2xl border border-gray-100 bg-white px-8 py-6 shadow-lg lg:w-auto"
+              >
+                <img
+                  src="/images/wecom-qrcode.png"
+                  alt="微信扫码咨询 1Panel for RTX Pro 5000 解决方案"
+                  class="h-40 w-40 rounded-md border border-gray-200 bg-white p-2 [image-rendering:pixelated]"
+                  loading="lazy"
+                  width="134"
+                  height="135"
+                />
+                <div class="mt-4 text-sm font-bold text-gray-900">微信扫码咨询</div>
+                <div class="mt-1.5 text-center text-xs leading-relaxed text-gray-500">
+                  获取配置建议 · 实测数据 · 方案报价
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 相关入口 -->
+          <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <a
+              href="/ai-appliance.html"
+              class="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+            >
+              <div class="flex items-start justify-between">
+                <span
+                  class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-1panel"
+                >
+                  <Icon name="carbon:bare-metal-server" class="h-5 w-5" />
+                </span>
+                <Icon
+                  name="carbon:arrow-up-right"
+                  class="h-5 w-5 text-gray-300 transition-colors duration-300 group-hover:text-1panel"
+                />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-gray-900">1Panel AI 一体机</h3>
+              <p class="mt-2 text-sm leading-relaxed text-gray-600">
+                以「超融合」理念整合底层算力、模型服务与 AI 应用，六个方案覆盖 GB10 与 RTX Pro 5000 两条产品线。
+              </p>
+              <span
+                class="mt-auto inline-flex items-center pt-4 text-sm font-semibold text-1panel"
+              >
+                查看全部方案
+                <Icon
+                  name="carbon:arrow-right"
+                  class="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </span>
+            </a>
+            <a
+              href="/1panel-for-gb10.html"
+              class="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl"
+            >
+              <div class="flex items-start justify-between">
+                <span
+                  class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-1panel"
+                >
+                  <Icon name="carbon:cube" class="h-5 w-5" />
+                </span>
+                <Icon
+                  name="carbon:arrow-up-right"
+                  class="h-5 w-5 text-gray-300 transition-colors duration-300 group-hover:text-1panel"
+                />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-gray-900">
+                1Panel for GB10 解决方案
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-gray-600">
+                面向 DGX Spark 等 GB10 桌面超算：单台设备到 4 台集群，同一套面板管理 GPU、模型与服务。
+              </p>
+              <span
+                class="mt-auto inline-flex items-center pt-4 text-sm font-semibold text-1panel"
+              >
+                查看 GB10 方案
+                <Icon
+                  name="carbon:arrow-right"
+                  class="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </Fragment>
+</Layout>

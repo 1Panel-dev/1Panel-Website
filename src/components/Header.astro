@@ -139,13 +139,56 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
         >
           <span class="nav-link-label" data-text="AI 网关">AI 网关</span>
         </a>
-        <a
-          href="/ai-appliance.html"
-          class="relative inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
-        >
-          <span class="nav-link-label" data-text="AI 一体机">AI 一体机</span>
-          <span class="ml-1.5 inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">HOT</span>
-        </a>
+        <div id="appliance-dropdown-container" class="relative">
+          <button
+            id="appliance-dropdown-trigger"
+            type="button"
+            class="relative inline-flex items-center text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 group"
+            aria-expanded="false"
+            aria-controls="appliance-dropdown"
+          >
+            <span class="nav-link-label" data-text="AI 一体机">
+              <span class="nav-link-content">
+                <span>AI 一体机</span>
+                <Icon
+                  id="appliance-dropdown-icon"
+                  name="carbon:chevron-down"
+                  class="w-4 h-4 transition-transform duration-200"
+                />
+              </span>
+            </span>
+            <span class="ml-1.5 inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">HOT</span>
+          </button>
+          <div
+            id="appliance-dropdown"
+            class="absolute left-1/2 top-full z-[9999] hidden w-72 -translate-x-1/2 pt-5"
+          >
+            <div class="rounded-lg border border-gray-100 bg-white py-2 shadow-xl shadow-gray-900/10">
+              <a
+                href="/ai-appliance.html"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+              >
+                <Icon name="carbon:application" class="h-5 w-5 flex-shrink-0" />
+                1Panel AI 一体机
+              </a>
+              <div class="my-1 mx-4 border-t border-gray-200"></div>
+              <a
+                href="/1panel-for-gb10.html"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+              >
+                <Icon name="carbon:cube" class="h-5 w-5 flex-shrink-0" />
+                NVIDIA GB10 解决方案
+              </a>
+              <a
+                href="/1panel-for-rtx-pro-5000.html"
+                class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 transition-colors duration-200 hover:bg-blue-50 hover:text-1panel"
+              >
+                <Icon name="carbon:chip" class="h-5 w-5 flex-shrink-0" />
+                NVIDIA RTX Pro 5000 解决方案
+              </a>
+            </div>
+          </div>
+        </div>
         <div id="support-dropdown-container" class="relative">
           <button
             id="support-dropdown-trigger"
@@ -356,13 +399,35 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
         >
           AI 网关
         </a>
-        <a
-          href="/ai-appliance.html"
-          class="text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300 inline-flex items-center"
-        >
-          AI 一体机
-          <span class="ml-1.5 inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">HOT</span>
-        </a>
+        <div class="space-y-3">
+          <div class="flex items-center gap-1.5 text-sm font-semibold text-gray-900">
+            AI 一体机
+            <span class="inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-1.5 py-[3px] text-[9px] font-extrabold uppercase tracking-wider leading-none text-white shadow-sm">HOT</span>
+          </div>
+          <div class="flex flex-col space-y-3 pl-3 border-l border-gray-200">
+            <a
+              href="/ai-appliance.html"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+            >
+              <Icon name="carbon:application" class="h-5 w-5 flex-shrink-0" />
+              1Panel AI 一体机
+            </a>
+            <a
+              href="/1panel-for-gb10.html"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+            >
+              <Icon name="carbon:cube" class="h-5 w-5 flex-shrink-0" />
+              NVIDIA GB10 解决方案
+            </a>
+            <a
+              href="/1panel-for-rtx-pro-5000.html"
+              class="flex items-center gap-3 text-gray-700 hover:text-gray-900 hover:font-bold transition-colors duration-300"
+            >
+              <Icon name="carbon:chip" class="h-5 w-5 flex-shrink-0" />
+              NVIDIA RTX Pro 5000 解决方案
+            </a>
+          </div>
+        </div>
         <div class="space-y-3">
           <div class="text-sm font-semibold text-gray-900">帮助与支持</div>
           <div class="flex flex-col space-y-3 pl-3 border-l border-gray-200">
@@ -472,6 +537,16 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
     const enterpriseDropdownIcon = document.getElementById(
       "enterprise-dropdown-icon"
     );
+    const applianceDropdownContainer = document.getElementById(
+      "appliance-dropdown-container"
+    );
+    const applianceDropdownTrigger = document.getElementById(
+      "appliance-dropdown-trigger"
+    );
+    const applianceDropdown = document.getElementById("appliance-dropdown");
+    const applianceDropdownIcon = document.getElementById(
+      "appliance-dropdown-icon"
+    );
     const supportDropdownContainer = document.getElementById(
       "support-dropdown-container"
     );
@@ -555,6 +630,12 @@ const virtualMachinePath = withBasePath("/virtual-machine.html", import.meta.env
       enterpriseDropdownTrigger,
       enterpriseDropdown,
       enterpriseDropdownIcon
+    );
+    setupDropdown(
+      applianceDropdownContainer,
+      applianceDropdownTrigger,
+      applianceDropdown,
+      applianceDropdownIcon
     );
     setupDropdown(
       supportDropdownContainer,
