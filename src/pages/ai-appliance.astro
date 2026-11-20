@@ -255,7 +255,9 @@ const accentMap = {
 };
 
 const featuredSlugs = [
+  "1panel-ai-appliance-plan4-benchmark",
   "1panel-ai-appliance-plan6-benchmark",
+  "1panel-ai-appliance-plan3-benchmark",
   "dual-gb10-deepseek-v4-flash-benchmark",
   "qwen3-8-27b-private-deployment",
   "deepseek-v4-flash-private-deployment-report",
@@ -270,7 +272,7 @@ const featuredPosts = (blogData as Array<{
   description: string;
 }>)
   .filter((post) => featuredSlugs.includes(post.slug))
-  .sort((a, b) => featuredSlugs.indexOf(a.slug) - featuredSlugs.indexOf(b.slug));
+  .sort((a, b) => b.date.localeCompare(a.date));
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -838,7 +840,7 @@ const productSchema = {
             </p>
           </div>
 
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
             {featuredPosts.map((post) => (
               <a
                 href={`/blog/${post.slug}.html`}

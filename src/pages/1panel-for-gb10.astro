@@ -309,7 +309,18 @@ const gb10Schema = {
           <!-- 压测数据 -->
           <div class="mt-10 rounded-xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
             <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-              <p class="text-sm font-bold text-gray-900">压测数据</p>
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <p class="text-sm font-bold text-gray-900">压测数据</p>
+                <a
+                  href="/blog/1panel-ai-appliance-plan4-benchmark.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800"
+                >
+                  查看详细测评报告
+                  <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
+              </div>
               <p class="text-xs leading-relaxed text-gray-500">
                 6 路并发 · 每请求输入 84K Tokens / 输出 1K Tokens
               </p>
