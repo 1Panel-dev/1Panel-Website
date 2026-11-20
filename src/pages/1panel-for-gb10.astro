@@ -13,7 +13,6 @@ import "../styles/global.css";
 
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/1panel-for-gb10.html", siteUrl);
-const trialUrl = "https://jsj.top/f/umuYtv";
 
 const heroKeywords = [
   "DGX Spark",
@@ -201,15 +200,13 @@ const gb10Schema = {
                 </span>
               ))}
             </div>
-            <div class="fade-in-up mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row" style="animation-delay: 0.32s;">
+            <div class="fade-in-up mt-7 flex justify-center" style="animation-delay: 0.32s;">
               <a
-                href={trialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-primary inline-flex w-full items-center justify-center px-9 py-4 text-base sm:w-auto"
+                href="#consult"
+                class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base"
               >
-                申请企业版试用
-                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
+                <Icon name="carbon:qr-code" class="mr-2 h-5 w-5" />
+                微信扫码咨询
               </a>
             </div>
           </div>
@@ -481,7 +478,7 @@ const gb10Schema = {
       </section>
 
       <!-- CTA -->
-      <section class="bg-white pb-16 lg:pb-24">
+      <section id="consult" class="scroll-mt-28 bg-white pb-16 lg:pb-24">
         <div class="container-custom">
           <div class="overflow-hidden rounded-lg border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-sm sm:p-8 lg:p-10">
             <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_auto]">
@@ -493,10 +490,22 @@ const gb10Schema = {
                   1Panel for GB10 把 GPU 监控、智能体部署、模型部署与 AI 网关收进同一个面板，让桌面超算的算力、模型和服务都看得见、管得住。
                 </p>
               </div>
-              <a href={trialUrl} target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base">
-                申请企业版试用
-                <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
-              </a>
+              <div
+                class="mx-auto flex w-full max-w-xs flex-col items-center rounded-xl border border-gray-100 bg-white px-8 py-6 shadow-lg lg:mx-0 lg:w-auto"
+              >
+                <img
+                  src="/images/wecom-qrcode.png"
+                  alt="微信扫码咨询 1Panel for GB10 解决方案"
+                  class="h-40 w-40 rounded-md border border-gray-200 bg-white p-2 [image-rendering:pixelated]"
+                  loading="lazy"
+                  width="134"
+                  height="135"
+                />
+                <div class="mt-4 text-sm font-bold text-gray-900">微信扫码咨询</div>
+                <div class="mt-1.5 text-center text-xs leading-relaxed text-gray-500">
+                  获取配置建议 · 实测数据 · 方案报价
+                </div>
+              </div>
             </div>
           </div>
 

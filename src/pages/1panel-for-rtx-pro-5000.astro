@@ -14,7 +14,6 @@ import "../styles/global.css";
 
 const siteUrl = Astro.site?.toString() ?? SITE_URL;
 const pageUrl = toAbsoluteUrl("/1panel-for-rtx-pro-5000.html", siteUrl);
-const trialUrl = "https://jsj.top/f/umuYtv";
 
 // 四个方案对应的卡数，同时用作 Hero 关键词胶囊
 const heroKeywords = ["单卡 72GB", "双卡 144GB", "四卡 288GB", "八卡 576GB"];
@@ -298,6 +297,15 @@ const rtxSchema = {
                   {keyword}
                 </span>
               ))}
+            </div>
+            <div class="fade-in-up mt-7 flex justify-center" style="animation-delay: 0.32s;">
+              <a
+                href="#consult"
+                class="btn-primary inline-flex items-center justify-center px-8 py-4 text-base"
+              >
+                <Icon name="carbon:qr-code" class="mr-2 h-5 w-5" />
+                微信扫码咨询
+              </a>
             </div>
           </div>
         </div>
@@ -648,7 +656,7 @@ const rtxSchema = {
       </section>
 
       <!-- 5. CTA -->
-      <section id="consult" class="bg-white pb-16 pt-16 lg:pb-24 lg:pt-24">
+      <section id="consult" class="scroll-mt-28 bg-white pb-16 pt-16 lg:pb-24 lg:pt-24">
         <div class="container-custom">
           <div
             class="overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 via-white to-blue-50 p-6 shadow-md sm:p-8 lg:p-10"
@@ -662,15 +670,6 @@ const rtxSchema = {
                   告诉我们模型尺寸、并发量与部署环境，1Panel 团队会结合四套方案的实测数据，帮你定卡数、算整机功耗、理清落地路径。
                 </p>
                 <div class="mt-7 flex flex-col items-center gap-3 sm:flex-row">
-                  <a
-                    href={trialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-primary inline-flex w-full items-center justify-center px-8 py-4 text-base sm:w-auto"
-                  >
-                    申请企业版试用
-                    <Icon name="carbon:arrow-right" class="ml-2 h-5 w-5" />
-                  </a>
                   <a
                     href="#plans"
                     class="btn-secondary inline-flex w-full items-center justify-center px-6 py-4 text-base sm:w-auto"
