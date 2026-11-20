@@ -16,10 +16,11 @@ const pageUrl = toAbsoluteUrl("/1panel-for-gb10.html", siteUrl);
 const trialUrl = "https://jsj.top/f/umuYtv";
 
 const heroKeywords = [
-  "GPU 实时监控",
-  "智能体一键部署",
-  "模型一键部署",
-  "内置 AI 网关",
+  "DGX Spark",
+  "FusionXpark",
+  "Dell Pro Max",
+  "ThinkStation PGX",
+  "ASUS ASCENT GX10",
 ];
 
 // 产品图均取自各厂商官方产品资料，统一处理为 680×420 白底
@@ -56,83 +57,62 @@ const devices = [
   },
 ];
 
-const slides = [
-  {
-    src: "/images/gb10/1p-gb10-01-gpu-status.webp",
-    width: 2000,
-    height: 1024,
-    alt: "1Panel for GB10 的 GPU 实时状态与 GPU 详情面板",
-    caption: "GPU 实时状态与设备详情：驱动、CUDA 版本、温度、显存、PCIe 链路一目了然",
-  },
-  {
-    src: "/images/gb10/1p-gb10-02-gpu-monitor.webp",
-    width: 2000,
-    height: 1026,
-    alt: "1Panel for GB10 的 GPU 监控数据图表",
-    caption: "监控数据：GPU 使用率、系统共享内存、功耗与温度的时序曲线",
-  },
-  {
-    src: "/images/gb10/1p-gb10-03-agent-deploy.webp",
-    width: 2000,
-    height: 1022,
-    alt: "1Panel for GB10 中一键创建智能体的配置面板，左侧为已部署的智能体列表，右侧为创建向导",
-    caption: "一键部署智能体：从内置清单选类型与版本，填好 WebUI 端口与模型供应商即可确认",
-  },
-  {
-    src: "/images/gb10/1p-gb10-04-model-market.webp",
-    width: 2000,
-    height: 1028,
-    alt: "1Panel for GB10 的模型广场与精选模型列表",
-    caption: "模型广场：Qwen、DeepSeek、GLM 等精选开源模型，可直接下载",
-  },
-  {
-    src: "/images/gb10/1p-gb10-05-app-store.webp",
-    width: 2000,
-    height: 1026,
-    alt: "1Panel for GB10 的应用商店，展示 1Panel AI 网关、MaxKB、DeepSeek Harness、OpenClaw 等可一键安装的应用",
-    caption: "应用商店：AI 网关、智能体与知识库等应用在线安装，装完即可用",
-  },
-];
-
 const valueCards = [
   {
     icon: "carbon:activity",
     step: "01",
-    title: "快速查看 GPU 运行状态",
-    description: "快速查看 GPU 实时状态和监控数据。",
-  },
-  {
-    icon: "carbon:bot",
-    step: "02",
-    title: "快速部署智能体",
-    description: "DeepSeek Harness、Octop、OpenClaw、QwenClaw、Hermes Agent 等一键部署。",
+    title: "高效管理设备",
+    description: "设备、GPU 与模型的运行状态集中在一屏，实时查看利用率与显存占用，不必登录命令行敲 nvidia-smi。",
   },
   {
     icon: "carbon:machine-learning-model",
-    step: "03",
+    step: "02",
     title: "快速部署模型",
     description:
-      "内置多款精选开源模型，从模型下载、模型运行、到模型运行监控，全面掌控。",
+      "预置 Qwen3.8-Flash-Next、DeepSeek-V4.1-Flash 等模型，下载、启动到监控一条链路走完，单机与 4 台集群通用。",
   },
   {
     icon: "carbon:gateway",
+    step: "03",
+    title: "快速提供服务",
+    description: "通过 1Panel AI 网关把本地模型发布成统一 API：模型代理、智能路由、席位与用量统计、内容合规，团队按 Key 直接调用。",
+  },
+  {
+    icon: "carbon:bot",
     step: "04",
-    title: "内置 AI 网关",
-    description: "还可以通过 1Panel AI 网关将模型能力开放给其他人使用。",
+    title: "快速部署智能体",
+    description: "DeepSeek Harness、Octop、OpenClaw 等一键部署，装好即可接入本地模型。",
   },
 ];
 
-// 双 GB10 互联方案的规格与实测数据，取自《双 GB10 算力节点部署 DeepSeek-V4-Flash 实测》
+// 双 GB10 互联方案的实测数据，取自《双 GB10 算力节点部署 DeepSeek-V4-Flash 实测》
+// 采用 WorkBuddy 办公场景（两周真实生产环境验证）的口径，与 4 GB10 集群面板结构一致
 const dualGb10Stats = [
-  { value: "256", unit: "GB", label: "LPDDR5x 统一内存，完整承载大模型权重" },
-  { value: "2", unit: "PFLOP", label: "FP4 稀疏峰值算力，双节点合计" },
-  { value: "200", unit: "Gbps", label: "ConnectX 高速互联，支撑跨节点协同推理" },
-  { value: "100–120", unit: "TPS", label: "中短上下文整机吞吐（tokens/s）" },
+  { value: "2", unit: "路并发", label: "办公场景并发数" },
+  { value: "60+", unit: "tok/s", label: "整机输出吞吐 TPS" },
+  { value: "<80", unit: "W", label: "整机功耗" },
+  { value: "<70", unit: "°C", label: "GPU 温度" },
 ];
 
-const pageTitle = "1Panel for GB10 解决方案 - GB10 桌面超算的最佳搭档";
+// 4 GB10 集群方案的压测数据，取自《4 x GB10 集群部署 DeepSeek V4.1-Flash》
+const clusterGb10Stats = [
+  { value: "6", unit: "路并发", label: "压测并发路数" },
+  { value: "84K", unit: "输入 Tokens", label: "单请求输入长度" },
+  { value: "4.7", unit: "s", label: "首字延时 TTFT" },
+  { value: "210", unit: "tok/s", label: "整机输出吞吐 TPS" },
+];
+
+const clusterGb10Specs = [
+  { label: "算力节点", value: "4 × FusionXpark GB10（2TB 版），合计 512GB 共享显存" },
+  { label: "高速组网", value: "1 × 400G 交换机，组成高速 RDMA 网络" },
+  { label: "桌面级小型机柜", value: "10 寸 6U 机柜，集中收纳节点与交换机" },
+  { label: "模型", value: "DeepSeek V4.1 Flash，官方 FP8 + FP4 混合精度，权重约 511GB" },
+  { label: "管理平台", value: "1Panel 企业版（含 AI 网关）：模型部署、运行监控与 Token 服务发布" },
+];
+
+const pageTitle = "1Panel for GB10 解决方案 - NVIDIA GB10（DGX Spark 等）桌面超算的最佳管家";
 const pageDescription =
-  "1Panel for GB10 解决方案：NVIDIA GB10 桌面超算的最佳搭档，适用于 NVIDIA DGX Spark、超聚变 FusionXpark、Dell Pro Max、ASUS ASCENT GX10、联想 ThinkStation PGX，提供 GPU 实时状态与监控、智能体一键部署、模型一键部署和内置 AI 网关能力。";
+  "1Panel for GB10 解决方案：NVIDIA GB10（DGX Spark 等）桌面超算的最佳管家，已适配 NVIDIA DGX Spark、超聚变 FusionXpark、Dell Pro Max、ASUS ASCENT GX10、联想 ThinkStation PGX 等机型，提供 GPU 实时状态与监控、智能体一键部署、模型一键部署和内置 AI 网关能力。";
 const gb10Schema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -144,7 +124,7 @@ const gb10Schema = {
   description: pageDescription,
   url: pageUrl,
   featureList: [
-    "快速查看 GPU 运行状态",
+    "可视化管理",
     "快速部署智能体",
     "快速部署模型",
     "内置 AI 网关",
@@ -180,6 +160,8 @@ const gb10Schema = {
     "智能体部署",
     "模型部署",
     "1Panel AI 网关",
+    "GB10 集群",
+    "DeepSeek V4.1 Flash",
   ]}
   structuredData={[
     createBreadcrumbSchema([
@@ -210,10 +192,7 @@ const gb10Schema = {
               1Panel for GB10 <span class="whitespace-nowrap">解决方案</span>
             </h1>
             <p class="fade-in-up mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl" style="animation-delay: 0.2s;">
-              NVIDIA GB10 桌面超算的最佳搭档，适用于
-              {devices.map((device, index) => (
-                <><span class="whitespace-nowrap">{device.name}{index < devices.length - 1 ? "、" : "。"}</span>{index < devices.length - 1 && <wbr />}</>
-              ))}
+              NVIDIA GB10（DGX Spark 等）桌面超算的最佳管家，无论是管理单台设备，还是管理<span class="whitespace-nowrap">4 台组成的集群</span>，1Panel 都可以<span class="whitespace-nowrap">轻松管理</span>。
             </p>
             <div class="fade-in-up mt-8 flex flex-wrap justify-center gap-3" style="animation-delay: 0.3s;">
               {heroKeywords.map((keyword) => (
@@ -234,126 +213,6 @@ const gb10Schema = {
               </a>
             </div>
           </div>
-
-          <!-- 截图轮播 -->
-          <div class="fade-in-up mt-10" style="animation-delay: 0.35s;">
-            <div
-              class="relative mx-auto max-w-6xl"
-              data-carousel
-              role="group"
-              aria-roledescription="carousel"
-              aria-label="1Panel for GB10 界面截图"
-              tabindex="0"
-            >
-              <div class="overflow-hidden rounded-lg bg-white shadow-2xl shadow-blue-100/70">
-                <div class="relative aspect-[2000/1026]">
-                  {slides.map((slide, index) => (
-                    <figure
-                      class={`absolute inset-0 transition-opacity duration-500 ${
-                        index === 0 ? "opacity-100" : "pointer-events-none opacity-0"
-                      }`}
-                      data-slide
-                      data-caption={slide.caption}
-                      aria-hidden={index === 0 ? "false" : "true"}
-                    >
-                      <img
-                        src={slide.src}
-                        alt={slide.alt}
-                        width={slide.width}
-                        height={slide.height}
-                        class="h-full w-full object-contain"
-                        loading={index === 0 ? "eager" : "lazy"}
-                        decoding="async"
-                      />
-                    </figure>
-                  ))}
-
-                  <button
-                    type="button"
-                    data-carousel-prev
-                    aria-label="上一张截图"
-                    class="absolute left-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-blue-100 bg-white/90 text-1panel shadow-md transition-all duration-300 hover:bg-white hover:shadow-lg sm:flex"
-                  >
-                    <Icon name="carbon:chevron-left" class="h-5 w-5" />
-                  </button>
-                  <button
-                    type="button"
-                    data-carousel-next
-                    aria-label="下一张截图"
-                    class="absolute right-3 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-blue-100 bg-white/90 text-1panel shadow-md transition-all duration-300 hover:bg-white hover:shadow-lg sm:flex"
-                  >
-                    <Icon name="carbon:chevron-right" class="h-5 w-5" />
-                  </button>
-                </div>
-              </div>
-
-              <div class="mt-5 flex flex-col items-center gap-4">
-                <p class="hidden text-center text-sm leading-relaxed text-gray-500 sm:block" data-carousel-caption>
-                  {slides[0].caption}
-                </p>
-                <div class="flex items-center justify-center gap-2.5">
-                  {slides.map((slide, index) => (
-                    <button
-                      type="button"
-                      data-carousel-dot
-                      data-index={index}
-                      aria-label={`查看第 ${index + 1} 张截图`}
-                      aria-current={index === 0 ? "true" : "false"}
-                      class={`h-2 rounded-full transition-all duration-300 ${
-                        index === 0
-                          ? "w-7 bg-1panel"
-                          : "w-2 bg-blue-200 hover:bg-blue-300"
-                      }`}
-                    ></button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 适配设备 -->
-      <section class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24">
-        <div class="container-custom">
-          <div class="mx-auto mb-12 max-w-3xl text-center">
-            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
-              已适配的 GB10 设备
-            </h2>
-            <p class="mt-4 text-base leading-relaxed text-gray-600">
-              同一套 1Panel 界面，适配不同厂商的 GB10 主机形态；系统装好后即可安装 1Panel，接上 GPU 就能看到实时状态。
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {devices.map((device, index) => (
-              <div
-                class="fade-in-up flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md"
-                style={`animation-delay: ${index * 0.05}s;`}
-              >
-                <div class="overflow-hidden rounded-lg bg-white">
-                  <img
-                    src={device.image}
-                    alt={device.alt}
-                    width="680"
-                    height="420"
-                    class="h-auto w-full object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <p class="mt-4 text-sm font-bold leading-snug text-gray-900">{device.name}</p>
-                <p class="mt-1 text-xs font-medium uppercase tracking-wide text-gray-400">{device.note}</p>
-              </div>
-            ))}
-          </div>
-
-          <div class="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
-            <span class="inline-flex items-center gap-1.5">
-              <Icon name="carbon:checkmark-filled" class="h-4 w-4 text-1panel" />
-              统一的 GPU 监控、智能体与模型管理入口
-            </span>
-          </div>
         </div>
       </section>
 
@@ -362,11 +221,11 @@ const gb10Schema = {
         <div class="container-custom">
           <div class="mx-auto mb-12 max-w-3xl text-center">
             <h2 class="text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
-              看状态、装智能体、跑模型、发接口
-              <span class="mt-1 block text-1panel">一台 GB10 上全部搞定</span>
+              看状态、跑模型、发接口、装智能体
+              <span class="mt-1 block text-1panel">一个 1Panel 全部搞定</span>
             </h2>
             <p class="mt-5 text-lg leading-relaxed text-gray-600">
-              GB10 桌面超算装好之后最常做的四件事，1Panel 都提供了可视化入口，不必在命令行、Docker 与推理框架之间来回切换。
+              GB10 桌面超算到手后最常做的四件事——看 GPU 状态、部署推理模型、把模型发布成 Token 服务、再装一个智能体，1Panel 都提供了可视化入口。单台设备能跑，扩到 4 台组成集群仍是同一套界面，不必在命令行、Docker 与推理框架之间来回切换。
             </p>
           </div>
 
@@ -392,6 +251,135 @@ const gb10Schema = {
         </div>
       </section>
 
+      <!-- 适配设备 -->
+      <section class="border-t border-blue-100 bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto mb-12 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold leading-tight text-gray-900 lg:text-4xl">
+              已适配的 GB10 设备
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              同一套 1Panel 界面，适配不同厂商的 GB10 主机形态。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {devices.map((device, index) => (
+              <div
+                class="fade-in-up flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md"
+                style={`animation-delay: ${index * 0.05}s;`}
+              >
+                <div class="overflow-hidden rounded-lg bg-white">
+                  <img
+                    src={device.image}
+                    alt={device.alt}
+                    width="680"
+                    height="420"
+                    class="h-auto w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p class="mt-4 text-sm font-bold leading-snug text-gray-900">{device.name}</p>
+                <p class="mt-1 text-xs font-medium uppercase tracking-wide text-gray-400">{device.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 GB10 集群方案 -->
+      <section id="cluster-gb10" class="border-t border-blue-100 bg-gradient-to-b from-blue-50/50 to-white py-16 lg:py-24">
+        <div class="container-custom">
+          <div class="mx-auto max-w-3xl text-center">
+            <span class="inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-bold tracking-wide text-white shadow-sm">
+              4 GB10 集群
+            </span>
+            <h2 class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
+              4 台 GB10 组成集群，
+              <span class="block text-1panel">流畅运行 DeepSeek V4.1 Flash</span>
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+              4 个 GB10 节点通过一台 400G 交换机组成高速 RDMA 网络，合计
+              <span class="whitespace-nowrap">512GB 共享显存</span>，运行
+              <span class="whitespace-nowrap">DeepSeek-V4.1-Flash</span>，并由 1Panel 企业版完成全生命周期的部署和管理。
+            </p>
+          </div>
+
+          <!-- 压测数据 -->
+          <div class="mt-10 rounded-xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+              <p class="text-sm font-bold text-gray-900">压测数据</p>
+              <p class="text-xs leading-relaxed text-gray-500">
+                6 路并发 · 每请求输入 84K Tokens / 输出 1K Tokens
+              </p>
+            </div>
+            <dl class="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+              {clusterGb10Stats.map((item) => (
+                <div class="rounded-lg bg-blue-50/70 px-4 py-3.5">
+                  <dt class="flex items-baseline gap-x-1">
+                    <span class="text-2xl font-extrabold leading-none text-1panel lg:text-3xl">{item.value}</span>
+                    <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
+                  </dt>
+                  <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <!-- 整机产品图 + 方案组成 -->
+          <div class="mt-10 grid grid-cols-1 gap-6 lg:mt-12 xl:grid-cols-[1.12fr_0.88fr] xl:items-stretch xl:gap-8">
+            <figure class="overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-900/5">
+              <img
+                src="/images/gb10/1p-gb10-cluster-4x.webp"
+                alt="4 台 GB10 装入 10 寸 6U 桌面机柜，通过一台 400G 交换机组成高速 RDMA 网络，节点地址为 10.0.1.1 至 10.0.1.4"
+                width="1300"
+                height="650"
+                class="block h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <div class="flex flex-col rounded-xl border border-blue-100 bg-white p-5 shadow-sm sm:p-6">
+              <dl aria-label="方案组成" class="flex flex-1 flex-col justify-center divide-y divide-blue-100">
+                {clusterGb10Specs.map((spec) => (
+                  <div class="flex items-baseline gap-x-4 py-3">
+                    <dt class="w-[5.5rem] shrink-0 text-xs font-semibold leading-relaxed tracking-wide text-gray-500">
+                      {spec.label}
+                    </dt>
+                    <dd class="text-sm leading-relaxed text-gray-700">{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+
+          <!-- 部署实况：vLLM 实例创建界面 -->
+          <figure class="mt-10 overflow-hidden rounded-2xl border border-slate-700/60 bg-[#1f222b] shadow-xl shadow-slate-900/10 lg:mt-12">
+            <figcaption class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-white/[0.07] px-5 py-3.5 sm:px-6">
+              <span class="flex items-center gap-x-2.5">
+                <span class="inline-flex items-center rounded-full bg-blue-600 px-2.5 py-[3px] text-[11px] font-bold leading-none text-white shadow-sm">部署实况</span>
+                <span class="text-sm font-bold text-white">在 1Panel 中创建 vLLM 实例</span>
+              </span>
+              <span class="text-xs leading-none text-slate-400">1Panel 企业版 · vLLM 管理</span>
+            </figcaption>
+            <img
+              src="/images/gb10/1p-gb10-cluster-vllm-deploy.webp"
+              alt="1Panel 的 vLLM 管理界面：左侧列表显示已创建的 vLLM 实例，右侧编辑面板选择定制镜像、DeepSeek-V4.1-Flash-1017 模型并配置 8000 端口与 API Key"
+              width="1920"
+              height="911"
+              class="block h-auto w-full"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="border-t border-white/[0.07] px-5 py-3 text-xs leading-relaxed text-slate-400 sm:px-6">
+              截图取自 4 台 GB10 集群上的实际部署环境：镜像类型选「定制镜像」，即针对 4 台 GB10 优化的 vLLM 版本；模型选 DeepSeek-V4.1-Flash-1017，填好服务端口与 API Key 后即可生成配置并部署
+            </p>
+          </figure>
+        </div>
+      </section>
+
       <!-- 双 GB10 互联方案 -->
       <section id="dual-gb10" class="py-16 lg:py-24">
         <div class="container-custom">
@@ -403,23 +391,32 @@ const gb10Schema = {
                 </span>
                 <h2 class="mt-5 text-3xl font-bold leading-tight text-gray-900 [text-wrap:balance] lg:text-4xl">
                   双 GB10 互联，
-                  <span class="block text-1panel">跑得动更大的模型</span>
+                  <span class="block text-1panel">跑得动 DeepSeek V4 Flash 模型</span>
                 </h2>
                 <p class="mt-5 text-base leading-relaxed text-gray-600">
-                  两个 GB10 算力节点通过 200Gbps ConnectX 高速互联，组成 256GB 统一内存与 2 PFLOP FP4 稀疏算力，可承载<span class="whitespace-nowrap">DeepSeek-V4-Flash</span>、<span class="whitespace-nowrap">Qwen3.8-Flash-Next</span> 等<span class="whitespace-nowrap">更大尺寸的模型</span>。
+                  两个 GB10 算力节点通过 200Gbps ConnectX 高速互联，组成 256GB 共享显存与 2 PFLOP FP4 稀疏算力，可承载<span class="whitespace-nowrap">DeepSeek-V4-Flash</span>、<span class="whitespace-nowrap">Qwen3.8-Flash-Next</span> 等<span class="whitespace-nowrap">更大尺寸的模型</span>。
                 </p>
 
-                <dl class="mt-7 grid grid-cols-2 gap-4">
-                  {dualGb10Stats.map((item) => (
-                    <div class="rounded-xl border border-blue-100 bg-white p-4 shadow-sm">
-                      <dt class="flex flex-col gap-y-1 lg:flex-row lg:flex-wrap lg:items-baseline lg:gap-x-1">
-                        <span class="text-xl font-extrabold leading-none text-1panel lg:text-2xl">{item.value}</span>
-                        <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
-                      </dt>
-                      <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <!-- 实测数据（WorkBuddy 办公场景，结构同 4 GB10 集群面板） -->
+                <div class="mt-7 rounded-xl border border-blue-100 bg-white p-5 shadow-sm sm:p-6">
+                  <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+                    <p class="text-sm font-bold text-gray-900">WorkBuddy 办公场景实测</p>
+                    <p class="text-xs leading-relaxed text-gray-500">
+                      2 路并发 · 两周真实生产环境验证
+                    </p>
+                  </div>
+                  <dl class="mt-5 grid grid-cols-2 gap-3">
+                    {dualGb10Stats.map((item) => (
+                      <div class="rounded-lg bg-blue-50/70 px-3.5 py-3.5">
+                        <dt class="flex items-baseline gap-x-1">
+                          <span class="text-xl font-extrabold leading-none text-1panel lg:text-2xl">{item.value}</span>
+                          <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
+                        </dt>
+                        <dd class="mt-2 text-xs leading-relaxed text-gray-600">{item.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
 
                 <div class="mt-8">
                   <a
@@ -434,7 +431,7 @@ const gb10Schema = {
                 </div>
 
                 <p class="mt-5 text-xs leading-relaxed text-gray-500">
-                  数据来自双 GB10 版部署 DeepSeek-V4-Flash 的两周压测：整机功耗低于 80W，GPU 温度低于 70°C，无需独立机房散热。
+                  数据来自双 GB10 版接入 WorkBuddy 办公智能体的两周真实生产环境验证：负载覆盖销售运营、方案撰写、会议纪要、邮件处理等典型办公任务，长时间稳定运行、无崩溃，放在办公室即可运行，无需独立机房散热。
                 </p>
               </div>
 
@@ -551,85 +548,3 @@ const gb10Schema = {
     <Footer />
   </Fragment>
 </Layout>
-
-<script>
-  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
-    const slides = Array.from(root.querySelectorAll<HTMLElement>("[data-slide]"));
-    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]"));
-    const caption = root.querySelector<HTMLElement>("[data-carousel-caption]");
-    const prev = root.querySelector<HTMLButtonElement>("[data-carousel-prev]");
-    const next = root.querySelector<HTMLButtonElement>("[data-carousel-next]");
-    if (slides.length < 2) return;
-
-    const captions = slides.map((slide) => slide.dataset.caption ?? "");
-    let index = 0;
-    let timer: number | undefined;
-
-    const render = () => {
-      slides.forEach((slide, i) => {
-        const active = i === index;
-        slide.classList.toggle("opacity-100", active);
-        slide.classList.toggle("opacity-0", !active);
-        slide.classList.toggle("pointer-events-none", !active);
-        slide.setAttribute("aria-hidden", active ? "false" : "true");
-      });
-      dots.forEach((dot, i) => {
-        const active = i === index;
-        dot.classList.toggle("w-7", active);
-        dot.classList.toggle("bg-1panel", active);
-        dot.classList.toggle("w-2", !active);
-        dot.classList.toggle("bg-blue-200", !active);
-        dot.classList.toggle("hover:bg-blue-300", !active);
-        dot.setAttribute("aria-current", active ? "true" : "false");
-      });
-      if (caption) caption.textContent = captions[index] ?? "";
-    };
-
-    const go = (target: number) => {
-      index = (target + slides.length) % slides.length;
-      render();
-    };
-
-    const start = () => {
-      stop();
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      timer = window.setInterval(() => go(index + 1), 6000);
-    };
-    const stop = () => {
-      if (timer !== undefined) window.clearInterval(timer);
-      timer = undefined;
-    };
-
-    prev?.addEventListener("click", () => {
-      go(index - 1);
-      start();
-    });
-    next?.addEventListener("click", () => {
-      go(index + 1);
-      start();
-    });
-    dots.forEach((dot, i) =>
-      dot.addEventListener("click", () => {
-        go(i);
-        start();
-      })
-    );
-
-    root.addEventListener("pointerenter", stop);
-    root.addEventListener("pointerleave", start);
-    root.addEventListener("focusin", stop);
-    root.addEventListener("focusout", start);
-    root.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        go(index - 1);
-      } else if (event.key === "ArrowRight") {
-        event.preventDefault();
-        go(index + 1);
-      }
-    });
-
-    render();
-    start();
-  });
-</script>

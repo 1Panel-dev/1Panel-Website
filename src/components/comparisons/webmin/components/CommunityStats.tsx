@@ -29,28 +29,28 @@ const CommunityStats: React.FC = () => {
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <Star className="h-8 w-8 text-yellow-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">29k+</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">37k+</div>
                 <div className="text-gray-600 font-medium">GitHub Stars</div>
                 <div className="text-green-600 text-sm mt-1">↗ 快速增长</div>
               </div>
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <GitFork className="h-8 w-8 text-blue-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">2.5k+</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">3.4k+</div>
                 <div className="text-gray-600 font-medium">Forks</div>
                 <div className="text-green-600 text-sm mt-1">↗ 活跃贡献</div>
               </div>
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <Users className="h-8 w-8 text-purple-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">100+</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">130+</div>
                 <div className="text-gray-600 font-medium">贡献者</div>
                 <div className="text-blue-600 text-sm mt-1">持续增长</div>
               </div>
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <Calendar className="h-8 w-8 text-green-500 mx-auto mb-3" />
-                <div className="text-lg font-bold text-gray-900 mb-1">2026-09-24</div>
+                <div className="text-lg font-bold text-gray-900 mb-1">2026-11-12</div>
                 <div className="text-gray-600 font-medium">最近更新</div>
                 <div className="text-green-600 text-sm mt-1">活跃开发</div>
               </div>
@@ -94,21 +94,21 @@ const CommunityStats: React.FC = () => {
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <Star className="h-8 w-8 text-yellow-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">5k+</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">6k+</div>
                 <div className="text-gray-600 font-medium">GitHub Stars</div>
                 <div className="text-gray-500 text-sm mt-1">稳定增长</div>
               </div>
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <GitFork className="h-8 w-8 text-blue-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">695+</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">800+</div>
                 <div className="text-gray-600 font-medium">Forks</div>
                 <div className="text-gray-500 text-sm mt-1">稳定维护</div>
               </div>
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg">
                 <Users className="h-8 w-8 text-purple-500 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">120+</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">130+</div>
                 <div className="text-gray-600 font-medium">贡献者</div>
                 <div className="text-gray-500 text-sm mt-1">经验丰富</div>
               </div>
