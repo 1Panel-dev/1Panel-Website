@@ -681,21 +681,16 @@ const productSchema = {
 
           <div id="pricing-contact" class="scroll-mt-28 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-white p-6 shadow-md sm:p-8 lg:p-10">
             <!-- 压测数据面板（方案四） -->
-            <div class="mb-8">
-              <span class="mb-3 inline-flex h-5 w-fit items-center rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">方案四压测报告</span>
-              <div class="rounded-xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
-                <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-                  <p class="text-sm font-bold text-gray-900">压测数据</p>
-                  <p class="text-xs leading-relaxed text-gray-500">
-                    6 路并发 · 每请求输入 84K Tokens / 输出 1K Tokens
-                  </p>
-                </div>
-                <p class="mt-2 text-sm font-bold leading-relaxed text-blue-700 sm:text-[15px]">
-                  4 台 GB10 组成的集群部署 DeepSeek-V4.1-Flash-1017
-                </p>
-                <dl class="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            <div class="mb-6 flex flex-col rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 px-6 py-5 shadow-lg ring-1 ring-blue-100">
+              <div class="mb-3 flex flex-col gap-1.5">
+                <span class="inline-flex h-5 w-fit items-center rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">方案四压测报告</span>
+                <h4 class="text-base font-extrabold leading-snug text-gray-900">4 台 GB10 集群部署 DeepSeek-V4.1-Flash-1017</h4>
+                <div class="text-[11px] font-semibold text-blue-700">6 路并发 · 每请求输入 84K Tokens / 输出 1K Tokens</div>
+              </div>
+              <div class="rounded-lg border border-gray-200 bg-white">
+                <dl class="grid grid-cols-2 gap-px bg-gray-100 sm:grid-cols-4">
                   {benchStats.map((item) => (
-                    <div class="rounded-lg bg-blue-50/70 px-4 py-3.5">
+                    <div class="bg-white px-4 py-3.5">
                       <dt class="flex items-baseline gap-x-1">
                         <span class="text-2xl font-extrabold leading-none text-1panel lg:text-3xl">{item.value}</span>
                         <span class="text-xs font-semibold text-gray-500">{item.unit}</span>
@@ -704,14 +699,16 @@ const productSchema = {
                     </div>
                   ))}
                 </dl>
-                <a
-                  href="blog/1panel-ai-appliance-plan4-benchmark.html"
-                  class="group mt-5 inline-flex items-center gap-1 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800"
-                >
-                  查看方案六完整实测报告
-                  <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </a>
               </div>
+              <a
+                href="/blog/1panel-ai-appliance-plan4-benchmark.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group mt-auto inline-flex items-center gap-1 pt-3 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:text-blue-800"
+              >
+                查看方案四完整实测报告
+                <Icon name="carbon:arrow-right" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </a>
             </div>
 
             <div class="grid grid-cols-1 gap-6 xl:grid-cols-2 xl:items-stretch">
@@ -766,8 +763,8 @@ const productSchema = {
                   <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white text-sm">
                     <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 bg-gray-50 px-4 py-2.5 text-xs font-semibold text-gray-600">
                       <span class="whitespace-nowrap">指标</span>
-                      <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap text-left font-bold text-amber-700 underline decoration-amber-300 underline-offset-2 hover:text-amber-800">Qwen3.8-Flash-Next</a>
-                      <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap text-right font-bold text-blue-800 underline decoration-blue-300 underline-offset-2 hover:text-blue-900">DeepSeek-V4-Flash</a>
+                      <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="text-left font-bold leading-tight text-amber-700 underline decoration-amber-300 underline-offset-2 hover:text-amber-800">Qwen3.8-Flash-Next</a>
+                      <a href="/blog/1panel-ai-appliance-plan5-benchmark.html" target="_blank" rel="noopener noreferrer" class="text-right font-bold leading-tight text-blue-800 underline decoration-blue-300 underline-offset-2 hover:text-blue-900">DeepSeek-V4-Flash</a>
                     </div>
                     <div class="grid grid-cols-[6.25rem_minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 border-t border-gray-100 px-4 py-2.5">
                       <span class="whitespace-nowrap text-gray-600">并发</span>
